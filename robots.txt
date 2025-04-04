@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+Disallow: /Logo Skylar Solutions/
+Disallow: /fonts/
+Disallow: /*/wp-admin/
+Disallow: /cgi-bin/
+
+# Allow web crawlers to find all language versions
+Allow: /en/
+Allow: /fr/
+
+# Sitemap location
+Sitemap: https://skylarsolution.com/sitemap.xml

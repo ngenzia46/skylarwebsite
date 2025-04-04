@@ -50,21 +50,177 @@
       }
     }
     </script>
+
+    <style>
+        [data-lang-en], [data-lang-fr] {
+            display: none;
+        }
+        
+        html[lang="en"] [data-lang-en],
+        html[lang="fr"] [data-lang-fr] {
+            display: block;
+        }
+        
+        /* For inline elements */
+        html[lang="en"] span[data-lang-en],
+        html[lang="fr"] span[data-lang-fr] {
+            display: inline;
+        }
+        
+        /* For list items */
+        html[lang="en"] li[data-lang-en],
+        html[lang="fr"] li[data-lang-fr] {
+            display: list-item;
+        }
+
+        /* Language toggle button styles */
+        .lang-toggle {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            margin-left: 20px;
+        }
+
+        .lang-toggle:hover {
+            background: var(--primary-color-dark);
+        }
+
+        @media (max-width: 768px) {
+            .lang-toggle {
+                margin: 10px 0;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <div class="container">
             <a href="../index.html" class="logo">
-                <img src="../logo.png" alt="Skylar Solutions Logo">
+                <img src="../Logo Skylar Solutions/logo_transparent.png" style="height: 150px; width: auto;" alt="Skylar Solutions Logo">
             </a>
             <div class="navbar-container">
-                <div class="navbar-toggle" aria-label="Toggle navigation menu">
+                <div class="navbar-toggle">
                     <i class="fas fa-bars"></i>
                 </div>
+                <ul class="navbar">
+                    <li><a href="../index.html" data-lang-en="Home" data-lang-fr="Accueil">Home</a></li>
+                    <li><a href="../About.html" data-lang-en="About" data-lang-fr="À propos">About</a></li>
+                    <li class="dropdown">
+                        <a href="services.html" data-lang-en="Services" data-lang-fr="Services" class="dropdown-toggle active">Services <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="app-development.html" data-lang-en="App Development" data-lang-fr="Développement d'Applications" class="active">App Development</a></li>
+                            <li><a href="ai-data-sciences.html" data-lang-en="AI & Data Sciences" data-lang-fr="IA & Sciences des Données">AI & Data Sciences</a></li>
+                            <li><a href="cyber-security.html" data-lang-en="Cyber Security" data-lang-fr="Cybersécurité">Cyber Security</a></li>
+                            <li><a href="collaboration-solutions.html" data-lang-en="Collaboration Solutions" data-lang-fr="Solutions de Collaboration">Collaboration Solutions</a></li>
+                            <li><a href="blockchain-nft.html" data-lang-en="Blockchain & NFT" data-lang-fr="Blockchain & NFT">Blockchain & NFT</a></li>
+                            <li><a href="support.html" data-lang-en="24/7 Support" data-lang-fr="Support 24/7">24/7 Support</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../blog.html" data-lang-en="Blog" data-lang-fr="Blog">Blog</a></li>
+                    <li><a href="../Contact.html" data-lang-en="Contact" data-lang-fr="Contact">Contact</a></li>
+                </ul>
+                <div class="language-switcher">
+                    <a href="#" data-lang="en" class="active">EN</a>
+                    <div class="language-divider"></div>
+                    <a href="#" data-lang="fr">FR</a>
+                </div>
+            </div>
+        </div>
+    </header>
 
-                <!-- Sidebar content -->
-                <div class="service-sidebar">
+    <!-- Service Hero Section -->
+    <section class="service-hero">
+        <div class="container">
+            <h1 class="hero-title" data-lang-en>Custom Application Development</h1>
+            <h1 class="hero-title" data-lang-fr>Développement d'Applications sur Mesure</h1>
+            <p class="hero-subtitle" data-lang-en>Transform your business ideas into powerful, scalable applications tailored to your specific needs.</p>
+            <p class="hero-subtitle" data-lang-fr>Transformez vos idées commerciales en applications puissantes et évolutives adaptées à vos besoins spécifiques.</p>
+        </div>
+    </section>
+
+    <!-- Main Content Section -->
+    <section class="service-content">
+        <div class="container">
+            <div class="service-grid">
+                <!-- Main Content -->
+                <div class="service-main">
+                    <div data-lang-en>
+                        <h2>Expert Application Development Services</h2>
+                        <p>At Skylar Solutions, we specialize in creating custom applications that drive business growth and efficiency. Our experienced team of developers works closely with you to understand your unique requirements and deliver solutions that exceed expectations.</p>
+
+                        <h3>Our Development Process</h3>
+                        <ul>
+                            <li><strong>Discovery & Planning:</strong> We begin with a thorough analysis of your business needs and objectives.</li>
+                            <li><strong>Design & Architecture:</strong> Creating intuitive interfaces and robust system architecture.</li>
+                            <li><strong>Development:</strong> Agile development with regular updates and client feedback.</li>
+                            <li><strong>Testing & QA:</strong> Rigorous testing to ensure quality and reliability.</li>
+                            <li><strong>Deployment:</strong> Smooth implementation and system integration.</li>
+                            <li><strong>Maintenance:</strong> Ongoing support and updates to keep your application running optimally.</li>
+                        </ul>
+
+                        <h3>Types of Applications We Develop</h3>
+                        <ul>
+                            <li><strong>Web Applications:</strong> Responsive, browser-based solutions accessible from any device.</li>
+                            <li><strong>Mobile Applications:</strong> Native and cross-platform apps for iOS and Android.</li>
+                            <li><strong>Enterprise Software:</strong> Custom business applications and workflow automation tools.</li>
+                            <li><strong>E-commerce Solutions:</strong> Online stores and marketplace platforms.</li>
+                            <li><strong>SaaS Products:</strong> Cloud-based software solutions with subscription models.</li>
+                        </ul>
+
+                        <h3>Technologies We Use</h3>
+                        <p>We leverage the latest technologies and frameworks to build robust, scalable applications:</p>
+                        <ul>
+                            <li><strong>Frontend:</strong> React, Angular, Vue.js, Next.js</li>
+                            <li><strong>Backend:</strong> Node.js, Python, Java, .NET</li>
+                            <li><strong>Mobile:</strong> React Native, Flutter, Swift, Kotlin</li>
+                            <li><strong>Database:</strong> PostgreSQL, MongoDB, MySQL, Redis</li>
+                            <li><strong>Cloud:</strong> AWS, Azure, Google Cloud</li>
+                        </ul>
+                    </div>
+
+                    <div data-lang-fr>
+                        <h2>Services de Développement d'Applications Experts</h2>
+                        <p>Chez Skylar Solutions, nous sommes spécialisés dans la création d'applications personnalisées qui stimulent la croissance et l'efficacité des entreprises. Notre équipe expérimentée de développeurs travaille en étroite collaboration avec vous pour comprendre vos besoins uniques et fournir des solutions qui dépassent les attentes.</p>
+
+                        <h3>Notre Processus de Développement</h3>
+                        <ul>
+                            <li><strong>Découverte & Planification:</strong> Nous commençons par une analyse approfondie de vos besoins et objectifs commerciaux.</li>
+                            <li><strong>Design & Architecture:</strong> Création d'interfaces intuitives et d'une architecture système robuste.</li>
+                            <li><strong>Développement:</strong> Développement agile avec mises à jour régulières et retours clients.</li>
+                            <li><strong>Tests & AQ:</strong> Tests rigoureux pour garantir la qualité et la fiabilité.</li>
+                            <li><strong>Déploiement:</strong> Mise en œuvre et intégration système en douceur.</li>
+                            <li><strong>Maintenance:</strong> Support et mises à jour continus pour maintenir votre application en fonctionnement optimal.</li>
+                        </ul>
+
+                        <h3>Types d'Applications que Nous Développons</h3>
+                        <ul>
+                            <li><strong>Applications Web:</strong> Solutions responsives basées sur navigateur accessibles depuis n'importe quel appareil.</li>
+                            <li><strong>Applications Mobiles:</strong> Applications natives et multiplateformes pour iOS et Android.</li>
+                            <li><strong>Logiciels d'Entreprise:</strong> Applications métier personnalisées et outils d'automatisation des flux de travail.</li>
+                            <li><strong>Solutions E-commerce:</strong> Boutiques en ligne et plateformes de marketplace.</li>
+                            <li><strong>Produits SaaS:</strong> Solutions logicielles basées sur le cloud avec modèles d'abonnement.</li>
+                        </ul>
+
+                        <h3>Technologies Utilisées</h3>
+                        <p>Nous utilisons les dernières technologies et frameworks pour construire des applications robustes et évolutives:</p>
+                        <ul>
+                            <li><strong>Frontend:</strong> React, Angular, Vue.js, Next.js</li>
+                            <li><strong>Backend:</strong> Node.js, Python, Java, .NET</li>
+                            <li><strong>Mobile:</strong> React Native, Flutter, Swift, Kotlin</li>
+                            <li><strong>Base de données:</strong> PostgreSQL, MongoDB, MySQL, Redis</li>
+                            <li><strong>Cloud:</strong> AWS, Azure, Google Cloud</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <aside class="service-sidebar">
                     <div class="sidebar-widget">
                         <h3 data-lang-en>Our Services</h3>
                         <h3 data-lang-fr>Nos Services</h3>
@@ -82,7 +238,7 @@
                         <h3 data-lang-en>Get in Touch</h3>
                         <h3 data-lang-fr>Contactez-nous</h3>
                         <p data-lang-en>Have an app idea? Let's build it together. Contact our development team.</p>
-                        <p data-lang-fr>Vous avez une idée d'application ? Construisons-la ensemble. Contactez notre équipe de développement.</p>
+                        <p data-lang-fr>Vous avez une idée d'application ? Construissons-la ensemble. Contactez notre équipe de développement.</p>
                         <a href="../Contact.html" class="btn btn-primary btn-block" data-lang-en>Discuss Your App</a>
                         <a href="../Contact.html" class="btn btn-primary btn-block" data-lang-fr>Discuter de Votre App</a>
                     </div>
@@ -123,7 +279,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </aside>
             </div>
         </div>
     </section>
@@ -238,14 +394,9 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-column">
-                    <div class="footer-logo">
-                         <img src="../logo.png" alt="Skylar Solutions Logo Footer">
-                    </div>
-                    <!-- English content -->
+                    <img src="../Logo Skylar Solutions/logo_transparent.png" alt="Skylar Solutions Logo" class="footer-logo" style="height: 150px; width: auto;">
                     <p class="footer-tagline" data-lang-en>Your strategic partner for digital transformation and innovation</p>
-                    <!-- French content -->
                     <p class="footer-tagline" data-lang-fr>Votre partenaire stratégique pour la transformation numérique et l'innovation</p>
-
                     <div class="footer-social">
                         <a href="https://www.linkedin.com/company/skylar-solutions/" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                         <a href="https://twitter.com/SkylarSolutionsB" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
@@ -254,10 +405,9 @@
                 </div>
 
                 <div class="footer-column">
-                    <!-- English content -->
                     <h4 data-lang-en>Services</h4>
-                    <!-- French content -->
                     <h4 data-lang-fr>Services</h4>
+                    <ul class="footer-links">
 
                     <!-- English content -->
                     <ul class="footer-links" data-lang-en>
@@ -360,207 +510,3 @@
     <script src="../script.js"></script>
 </body>
 </html>
-                <ul class="navbar">
-                    <li><a href="../index.html" data-lang-en="Home" data-lang-fr="Accueil">Home</a></li>
-                    <li><a href="../About.html" data-lang-en="About" data-lang-fr="À propos">About</a></li>
-                    <li class="dropdown">
-                        <a href="services.html" class="dropdown-toggle active" data-lang-en="Services" data-lang-fr="Services">Services <i class="fas fa-chevron-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="app-development.html" class="active" data-lang-en="App Development" data-lang-fr="Développement d'Applications">App Development</a></li>
-                            <li><a href="ai-data-sciences.html" data-lang-en="AI & Data Sciences" data-lang-fr="IA & Sciences des Données">AI & Data Sciences</a></li>
-                            <li><a href="cyber-security.html" data-lang-en="Cyber Security" data-lang-fr="Cybersécurité">Cyber Security</a></li>
-                            <li><a href="collaboration-solutions.html" data-lang-en="Collaboration Solutions" data-lang-fr="Solutions de Collaboration">Collaboration Solutions</a></li>
-                            <li><a href="blockchain-nft.html" data-lang-en="Blockchain & NFT" data-lang-fr="Blockchain & NFT">Blockchain & NFT</a></li>
-                            <li><a href="support.html" data-lang-en="24/7 Support" data-lang-fr="Support 24/7">24/7 Support</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="../Contact.html" data-lang-en="Contact" data-lang-fr="Contact">Contact</a></li>
-                </ul>
-                <div class="language-switcher">
-                    <a href="#" data-lang="en" class="active">EN</a>
-                    <div class="language-divider"></div>
-                    <a href="#" data-lang="fr">FR</a>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="service-hero" id="home">
-        <div class="container">
-            <div class="hero-content animate">
-                <!-- English content -->
-                <div data-lang-en>
-                    <h1 class="hero-title">Custom Application Development</h1>
-                    <h2 class="hero-subtitle">Transform Your Ideas into Powerful Solutions</h2>
-                </div>
-
-                <!-- French content -->
-                <div data-lang-fr>
-                    <h1 class="hero-title">Développement d'Applications sur Mesure</h1>
-                    <h2 class="hero-subtitle">Transformez vos idées en solutions puissantes</h2>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Service Content Section -->
-    <section class="service-content">
-        <div class="container">
-            <div class="service-grid">
-                <!-- Main content area -->
-                <div class="service-main">
-                    <!-- English content -->
-                    <div data-lang-en>
-                        <p>At Skylar Solutions, we bring your business ideas to life by building customized, intuitive, and scalable applications. Our expert team transforms your vision into concrete digital solutions – from web platforms to mobile apps – precisely tailored to meet your unique operational needs and strategic goals.</p>
-
-                        <h2>Our App Development Services Include:</h2>
-
-                        <ul>
-                            <li>
-                                <strong>Custom Business Applications:</strong><br>
-                                We design and develop bespoke software solutions (web, mobile, desktop) specifically engineered to address your company's unique challenges, optimize critical processes, and improve operational efficiency.
-                            </li>
-                            <li>
-                                <strong>Rapid Deployment & Prototyping:</strong><br>
-                                Leveraging modern frameworks, agile methodologies, and low-code/no-code platforms where appropriate, we ensure agile development, faster time-to-market, and flexible implementation while maintaining high quality standards.
-                            </li>
-                            <li>
-                                <strong>Seamless System Integration:</strong><br>
-                                Our applications integrate flawlessly with your existing IT ecosystem (ERPs, CRMs, APIs, legacy systems), ensuring a smooth transition, data consistency, and preserving your previous technological investments.
-                            </li>
-                            <li>
-                                <strong>Mobile App Development:</strong><br>
-                                Creating engaging and high-performance native or cross-platform mobile applications for iOS and Android to connect with your customers and empower your workforce on the go.
-                            </li>
-                             <li>
-                                <strong>Web Application Development:</strong><br>
-                                Building robust, secure, and scalable web applications, portals, and platforms accessible from any browser.
-                            </li>
-                        </ul>
-                        
-                        <figure class="service-image">
-                            <img src="../images/app-dev-process.jpg" alt="Software development team collaborating on application design" width="800" height="450">
-                            <figcaption>Our collaborative development process ensures your application meets business goals while exceeding user expectations</figcaption>
-                        </figure>
-                        
-                        <h2>Our Development Approach</h2>
-
-                        <ol>
-                            <li>
-                                <strong>In-depth Discovery & Analysis:</strong><br>
-                                We start by thoroughly understanding your business objectives, target users, workflows, and technical requirements through collaborative workshops.
-                            </li>
-                            <li>
-                                <strong>User-Centric Design (UI/UX):</strong><br>
-                                Our interfaces are meticulously designed for intuitiveness, efficiency, accessibility, and a delightful user experience. We create wireframes and prototypes for early feedback.
-                            </li>
-                            <li>
-                                <strong>Agile & Iterative Development:</strong><br>
-                                We employ agile methodologies (like Scrum) involving you at every sprint, allowing for flexibility, continuous feedback, and adaptation throughout the development lifecycle.
-                            </li>
-                            <li>
-                                <strong>Rigorous Quality Assurance & Testing:</strong><br>
-                                Each application undergoes comprehensive testing (functional, performance, security, usability) to ensure reliability, robustness, and security.
-                            </li>
-                            <li>
-                                <strong>Deployment & Ongoing Support:</strong><br>
-                                We manage the deployment process and provide post-launch support, maintenance, and evolutionary development to ensure your application remains effective and up-to-date.
-                            </li>
-                        </ol>
-                        
-                        <figure class="service-image">
-                            <img src="../images/app-dev-technologies.jpg" alt="Modern development technology stack and platforms" width="800" height="450">
-                            <figcaption>We leverage the latest technologies and frameworks to deliver high-quality, future-proof applications</figcaption>
-                        </figure>
-                        
-                        <h2>Why Choose Skylar Solutions for Your App Development?</h2>
-
-                        <ul>
-                            <li><strong>Diverse Technical Expertise:</strong> Proficient across a wide range of modern programming languages, frameworks, databases, and cloud platforms.</li>
-                            <li><strong>Deep Business Understanding:</strong> We grasp the business challenges and opportunities within various sectors to build solutions with real impact.</li>
-                            <li><strong>Result-Oriented Partnership:</strong> Our focus is always on delivering measurable business value and achieving your strategic objectives.</li>
-                            <li><strong>Commitment to Quality & Timeliness:</strong> We adhere to high coding standards and project management practices to deliver on time and on budget.</li>
-                            <li><strong>Scalable & Future-Proof Solutions:</strong> We architect applications designed for growth, adaptability, and long-term maintainability.</li>
-                        </ul>
-
-                        <p>Ready to transform your operations with a custom application that delivers tangible results? <strong>Contact Skylar Solutions today</strong> to discuss your project and discover how we can turn your vision into a reality.</p>
-                    </div>
-
-                    <!-- French content -->
-                    <div data-lang-fr>
-                        <p>Chez Skylar Solutions, nous donnons vie à vos idées métier en construisant des applications personnalisées, intuitives et évolutives. Notre équipe d'experts transforme votre vision en solutions digitales concrètes – des plateformes web aux applications mobiles – conçues précisément pour répondre à vos besoins opérationnels uniques et à vos objectifs stratégiques.</p>
-
-                        <h2>Nos services de développement d'applications incluent :</h2>
-
-                        <ul>
-                            <li>
-                                <strong>Applications Métiers sur Mesure :</strong><br>
-                                Nous concevons et développons des solutions logicielles sur mesure (web, mobile, bureau) spécifiquement élaborées pour relever les défis uniques de votre entreprise, optimiser les processus critiques et améliorer l'efficacité opérationnelle.
-                            </li>
-                            <li>
-                                <strong>Déploiement Rapide & Prototypage :</strong><br>
-                                En exploitant les frameworks modernes, les méthodologies agiles et les plateformes low-code/no-code lorsque pertinent, nous assurons un développement agile, une mise sur le marché plus rapide et une implémentation flexible tout en maintenant des normes de qualité élevées.
-                            </li>
-                            <li>
-                                <strong>Intégration Transparente des Systèmes :</strong><br>
-                                Nos applications s'intègrent parfaitement à votre écosystème informatique existant (ERP, CRM, API, systèmes hérités), garantissant une transition en douceur, la cohérence des données et la préservation de vos investissements technologiques antérieurs.
-                            </li>
-                             <li>
-                                <strong>Développement d'Applications Mobiles :</strong><br>
-                                Création d'applications mobiles natives ou multiplateformes engageantes et performantes pour iOS et Android afin de connecter vos clients et d'autonomiser votre personnel mobile.
-                            </li>
-                             <li>
-                                <strong>Développement d'Applications Web :</strong><br>
-                                Construction d'applications web, portails et plateformes robustes, sécurisés et évolutifs accessibles depuis n'importe quel navigateur.
-                            </li>
-                        </ul>
-                        
-                        <figure class="service-image">
-                            <img src="../images/app-dev-process.jpg" alt="Équipe de développement logiciel collaborant sur la conception d'une application" width="800" height="450">
-                            <figcaption>Notre processus de développement collaboratif garantit que votre application répond aux objectifs métier tout en dépassant les attentes des utilisateurs</figcaption>
-                        </figure>
-                        
-                        <h2>Notre approche de développement</h2>
-
-                        <ol>
-                            <li>
-                                <strong>Découverte & Analyse Approfondie :</strong><br>
-                                Nous commençons par comprendre en profondeur vos objectifs commerciaux, utilisateurs cibles, flux de travail et exigences techniques à travers des ateliers collaboratifs.
-                            </li>
-                            <li>
-                                <strong>Conception Centrée Utilisateur (UI/UX) :</strong><br>
-                                Nos interfaces sont méticuleusement conçues pour l'intuitivité, l'efficacité, l'accessibilité et une expérience utilisateur agréable. Nous créons des maquettes fonctionnelles et prototypes pour un retour précoce.
-                            </li>
-                            <li>
-                                <strong>Développement Agile & Itératif :</strong><br>
-                                Nous employons des méthodologies agiles (comme Scrum) vous impliquant à chaque sprint, permettant flexibilité, feedback continu et adaptation tout au long du cycle de développement.
-                            </li>
-                            <li>
-                                <strong>Assurance Qualité & Tests Rigoureux :</strong><br>
-                                Chaque application subit des tests complets (fonctionnels, performance, sécurité, utilisabilité) pour garantir fiabilité, robustesse et sécurité.
-                            </li>
-                            <li>
-                                <strong>Déploiement & Support Continu :</strong><br>
-                                Nous gérons le processus de déploiement et fournissons un support post-lancement, une maintenance et un développement évolutif pour garantir que votre application reste efficace et à jour.
-                            </li>
-                        </ol>
-                        
-                        <figure class="service-image">
-                            <img src="../images/app-dev-technologies.jpg" alt="Stack technologique moderne et plateformes de développement" width="800" height="450">
-                            <figcaption>Nous exploitons les dernières technologies et frameworks pour fournir des applications de haute qualité et pérennes</figcaption>
-                        </figure>
-                        
-                        <h2>Pourquoi choisir Skylar Solutions pour votre développement d'applications ?</h2>
-
-                        <ul>
-                            <li><strong>Expertise Technique Diversifiée :</strong> Maîtrise d'un large éventail de langages de programmation modernes, frameworks, bases de données et plateformes cloud.</li>
-                            <li><strong>Compréhension Approfondie du Métier :</strong> Nous saisissons les défis et opportunités commerciales dans divers secteurs pour construire des solutions ayant un impact réel.</li>
-                            <li><strong>Partenariat Orienté Résultats :</strong> Notre objectif est toujours de fournir une valeur commerciale mesurable et d'atteindre vos objectifs stratégiques.</li>
-                            <li><strong>Engagement Qualité & Respect des Délais :</strong> Nous adhérons à des normes de codage élevées et à des pratiques de gestion de projet pour livrer dans les temps et le budget.</li>
-                            <li><strong>Solutions Évolutives & Pérennes :</strong> Nous concevons des applications pensées pour la croissance, l'adaptabilité et la maintenabilité à long terme.</li>
-                        </ul>
-
-                        <p>Prêt à transformer vos opérations avec une application sur mesure qui génère des résultats tangibles ? <strong>Contactez Skylar Solutions dès aujourd'hui</strong> pour discuter de votre projet et découvrir comment nous pouvons transformer votre vision en réalité.</p>
-                    </div>
-                </div>

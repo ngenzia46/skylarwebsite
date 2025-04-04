@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Stay updated with the latest insights in technology, digital transformation, and IT solutions from Skylar Solutions' expert team.">
+    <meta name="keywords" content="IT Blog, Technology Insights, Digital Transformation, Tech News, Skylar Solutions Blog">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://skylarsolution.com/blog.html">
+    
+    <!-- Language Alternatives -->
+    <link rel="alternate" hreflang="en" href="https://skylarsolution.com/blog.html">
+    <link rel="alternate" hreflang="fr" href="https://skylarsolution.com/fr/blog.html">
+    <link rel="alternate" hreflang="x-default" href="https://skylarsolution.com/blog.html">
+    
+    <title data-lang-en>Blog - Technology Insights | Skylar Solutions</title>
+    <title data-lang-fr>Blog - Perspectives Technologiques | Skylar Solutions</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        /* Blog Specific Styles */
+        .blog-hero {
+            background: var(--gradient-primary);
+            color: var(--white-color);
+            padding: 120px 0 60px;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .blog-card {
+            background: var(--white-color);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition-base);
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .blog-content {
+            padding: 1.5rem;
+        }
+        
+        .blog-category {
+            color: var(--primary-color);
+            font-size: var(--text-sm);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        .blog-title {
+            font-size: var(--text-xl);
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+        
+        .blog-excerpt {
+            color: var(--gray-600);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .blog-meta {
+            display: flex;
+            align-items: center;
+            color: var(--gray-500);
+            font-size: var(--text-sm);
+        }
+        
+        .blog-meta i {
+            margin-right: 0.5rem;
+        }
+        
+        .blog-date {
+            margin-right: 1.5rem;
+        }
+        
+        .blog-filters {
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--gray-300);
+            border-radius: var(--radius);
+            background: var(--white-color);
+            color: var(--gray-700);
+            cursor: pointer;
+            transition: var(--transition-base);
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: var(--white-color);
+            border-color: var(--primary-color);
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 3rem;
+        }
+        
+        .page-link {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--gray-300);
+            border-radius: var(--radius);
+            color: var(--gray-700);
+            transition: var(--transition-base);
+        }
+        
+        .page-link:hover,
+        .page-link.active {
+            background: var(--primary-color);
+            color: var(--white-color);
+            border-color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .blog-hero {
+                padding: 100px 0 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXX"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Theme Toggle Button -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+    </button>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Skylar Solutions Logo">
+            </a>
+            <div class="navbar-container">
+                <div class="navbar-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="navbar">
+                    <li><a href="index.html" data-lang-en="Home" data-lang-fr="Accueil">Home</a></li>
+                    <li><a href="About.html" data-lang-en="About" data-lang-fr="À propos">About</a></li>
+                    <li class="dropdown">
+                        <a href="services/services.html" data-lang-en="Services" data-lang-fr="Services" class="dropdown-toggle">Services <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="services/app-development.html" data-lang-en="App Development" data-lang-fr="Développement d'Applications">App Development</a></li>
+                            <li><a href="services/ai-data-sciences.html" data-lang-en="AI & Data Sciences" data-lang-fr="IA & Sciences des Données">AI & Data Sciences</a></li>
+                            <li><a href="services/cyber-security.html" data-lang-en="Cyber Security" data-lang-fr="Cybersécurité">Cyber Security</a></li>
+                            <li><a href="services/collaboration-solutions.html" data-lang-en="Collaboration Solutions" data-lang-fr="Solutions de Collaboration">Collaboration Solutions</a></li>
+                            <li><a href="services/blockchain-nft.html" data-lang-en="Blockchain & NFT" data-lang-fr="Blockchain & NFT">Blockchain & NFT</a></li>
+                            <li><a href="services/support.html" data-lang-en="24/7 Support" data-lang-fr="Support 24/7">24/7 Support</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="blog.html" data-lang-en="Blog" data-lang-fr="Blog" class="active">Blog</a></li>
+                    <li><a href="Contact.html" data-lang-en="Contact" data-lang-fr="Contact">Contact</a></li>
+                </ul>
+                <div class="language-switcher">
+                    <a href="#" data-lang="en" class="active">EN</a>
+                    <div class="language-divider"></div>
+                    <a href="#" data-lang="fr">FR</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Blog Hero Section -->
+    <section class="blog-hero">
+        <div class="container">
+            <h1 data-lang-en>Our Latest Insights</h1>
+            <h1 data-lang-fr>Nos Dernières Perspectives</h1>
+            <p class="hero-subtitle" data-lang-en>Stay updated with the latest trends and insights in technology and digital transformation</p>
+            <p class="hero-subtitle" data-lang-fr>Restez informé des dernières tendances et perspectives en technologie et transformation digitale</p>
+        </div>
+    </section>
+
+    <!-- Blog Content -->
+    <section class="blog-content section-padding">
+        <div class="container">
+            <!-- Blog Filters -->
+            <div class="blog-filters">
+                <button class="filter-btn active" data-filter="all" data-lang-en>All</button>
+                <button class="filter-btn" data-filter="all" data-lang-fr>Tout</button>
+                <button class="filter-btn" data-filter="tech" data-lang-en>Technology</button>
+                <button class="filter-btn" data-filter="tech" data-lang-fr>Technologie</button>
+                <button class="filter-btn" data-filter="ai" data-lang-en>AI & Data</button>
+                <button class="filter-btn" data-filter="ai" data-lang-fr>IA & Données</button>
+                <button class="filter-btn" data-filter="security" data-lang-en>Security</button>
+                <button class="filter-btn" data-filter="security" data-lang-fr>Sécurité</button>
+                <button class="filter-btn" data-filter="business" data-lang-en>Business</button>
+                <button class="filter-btn" data-filter="business" data-lang-fr>Entreprise</button>
+            </div>
+
+            <!-- Blog Grid -->
+            <div class="blog-grid">
+                <!-- Blog Card 1 -->
+                <article class="blog-card" data-category="ai">
+                    <img src="images/blog/ai-trends.jpg" alt="AI Trends" class="blog-image">
+                    <div class="blog-content">
+                        <span class="blog-category" data-lang-en>AI & Data</span>
+                        <span class="blog-category" data-lang-fr>IA & Données</span>
+                        <h2 class="blog-title" data-lang-en>The Future of AI in Enterprise Solutions</h2>
+                        <h2 class="blog-title" data-lang-fr>L'Avenir de l'IA dans les Solutions d'Entreprise</h2>
+                        <p class="blog-excerpt" data-lang-en>Explore how artificial intelligence is transforming business operations and decision-making processes.</p>
+                        <p class="blog-excerpt" data-lang-fr>Découvrez comment l'intelligence artificielle transforme les opérations commerciales et les processus décisionnels.</p>
+                        <div class="blog-meta">
+                            <span class="blog-date"><i class="far fa-calendar"></i> 15 Mar 2024</span>
+                            <span class="blog-read-time"><i class="far fa-clock"></i> 5 min read</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Card 2 -->
+                <article class="blog-card" data-category="security">
+                    <img src="images/blog/cybersecurity.jpg" alt="Cybersecurity" class="blog-image">
+                    <div class="blog-content">
+                        <span class="blog-category" data-lang-en>Security</span>
+                        <span class="blog-category" data-lang-fr>Sécurité</span>
+                        <h2 class="blog-title" data-lang-en>Essential Cybersecurity Practices for 2024</h2>
+                        <h2 class="blog-title" data-lang-fr>Pratiques Essentielles en Cybersécurité pour 2024</h2>
+                        <p class="blog-excerpt" data-lang-en>Key strategies to protect your business from emerging cyber threats.</p>
+                        <p class="blog-excerpt" data-lang-fr>Stratégies clés pour protéger votre entreprise contre les menaces cybernétiques émergentes.</p>
+                        <div class="blog-meta">
+                            <span class="blog-date"><i class="far fa-calendar"></i> 10 Mar 2024</span>
+                            <span class="blog-read-time"><i class="far fa-clock"></i> 4 min read</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Card 3 -->
+                <article class="blog-card" data-category="tech">
+                    <img src="images/blog/cloud-computing.jpg" alt="Cloud Computing" class="blog-image">
+                    <div class="blog-content">
+                        <span class="blog-category" data-lang-en>Technology</span>
+                        <span class="blog-category" data-lang-fr>Technologie</span>
+                        <h2 class="blog-title" data-lang-en>Cloud Computing: Beyond the Basics</h2>
+                        <h2 class="blog-title" data-lang-fr>Cloud Computing: Au-delà des Bases</h2>
+                        <p class="blog-excerpt" data-lang-en>Advanced cloud strategies for modern businesses.</p>
+                        <p class="blog-excerpt" data-lang-fr>Stratégies cloud avancées pour les entreprises modernes.</p>
+                        <div class="blog-meta">
+                            <span class="blog-date"><i class="far fa-calendar"></i> 5 Mar 2024</span>
+                            <span class="blog-read-time"><i class="far fa-clock"></i> 6 min read</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Add more blog cards as needed -->
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <a href="#" class="page-link active">1</a>
+                <a href="#" class="page-link">2</a>
+                <a href="#" class="page-link">3</a>
+                <a href="#" class="page-link"><i class="fas fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="Logo Skylar Solutions/logo_transparent.png" alt="Skylar Solutions Logo" class="footer-logo" style="height: 240px; width: auto;">
+                    <p data-lang-en>Your trusted partner for digital transformation and innovative technology solutions.</p>
+                    <p data-lang-fr>Votre partenaire de confiance pour la transformation digitale et les solutions technologiques innovantes.</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/company/skylarsolution" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://twitter.com/skylarsolution" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.facebook.com/skylarsolution" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4 data-lang-en>Quick Links</h4>
+                    <h4 data-lang-fr>Liens Rapides</h4>
+                    <ul>
+                        <li><a href="about.html" data-lang-en>About Us</a><a href="about.html" data-lang-fr>À Propos</a></li>
+                        <li><a href="services/services.html" data-lang-en>Services</a><a href="services/services.html" data-lang-fr>Services</a></li>
+                        <li><a href="blog.html" data-lang-en>Blog</a><a href="blog.html" data-lang-fr>Blog</a></li>
+                        <li><a href="careers.html" data-lang-en>Careers</a><a href="careers.html" data-lang-fr>Carrières</a></li>
+                        <li><a href="contact.html" data-lang-en>Contact</a><a href="contact.html" data-lang-fr>Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 data-lang-en>Contact Info</h4>
+                    <h4 data-lang-fr>Coordonnées</h4>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Avenue Pasteur 6, 1300 Wavre, Belgium</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+32 10 25.00.18</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>admin@skylar-solutions.com</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 data-lang-en>Follow Us</h4>
+                    <h4 data-lang-fr>Suivez-nous</h4>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/company/skylarsolution" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://twitter.com/skylarsolution" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.facebook.com/skylarsolution" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p data-lang-en>&copy; 2024 Skylar Solutions. All rights reserved.</p>
+                <p data-lang-fr>&copy; 2024 Skylar Solutions. Tous droits réservés.</p>
+                <div class="footer-links">
+                    <a href="privacy-policy.html" data-lang-en>Privacy Policy</a>
+                    <a href="privacy-policy.html" data-lang-fr>Politique de Confidentialité</a>
+                    <span class="separator">|</span>
+                    <a href="terms.html" data-lang-en>Terms of Service</a>
+                    <a href="terms.html" data-lang-fr>Conditions d'Utilisation</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" aria-label="Back to Top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script>
+        // Blog filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const blogCards = document.querySelectorAll('.blog-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter blog cards
+                    blogCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

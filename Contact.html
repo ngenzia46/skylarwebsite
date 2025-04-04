@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Contact Skylar Solutions - Your digital transformation partner in Belgium. Reach out for custom Application Development, AI & Data Sciences, Cybersecurity and more.">
-    <meta name="keywords" content="Contact Skylar Solutions, IT consulting Belgium, digital transformation, Arthur Ngenzi, contact us, tech support">
+    <meta name="description" content="Contact Skylar Solutions - Your digital transformation partner in Belgium and Africa. Reach out for custom Application Development, AI & Data Sciences, Cybersecurity solutions tailored for European and African markets.">
+    <meta name="keywords" content="Contact Skylar Solutions, IT consulting Belgium, IT services Africa, digital transformation, Arthur Ngenzi, contact us, tech support, EU GDPR compliance, African tech solutions">
+    <meta name="geo.region" content="BE, CD, RW, KE, NG, ZA">
+    <meta name="geo.placename" content="Brussels, Kinshasa, Kigali, Nairobi, Lagos, Johannesburg">
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://skylarsolution.com/contact.html">
@@ -12,21 +14,27 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://skylarsolution.com/contact.html">
-    <meta property="og:title" content="Contact Skylar Solutions | Get in Touch">
-    <meta property="og:description" content="Contact our team of IT experts for digital transformation solutions in Belgium. Schedule a free consultation today.">
+    <meta property="og:title" content="Contact Skylar Solutions | EU & Africa IT Solutions">
+    <meta property="og:description" content="Contact our team of IT experts for digital transformation solutions across Europe and Africa. Our services bridge EU standards with African market needs. Schedule a free consultation today.">
     <meta property="og:image" content="https://skylarsolution.com/images/contact-og-image.webp">
+    <meta property="og:locale" content="en_GB">
+    <meta property="og:locale:alternate" content="fr_FR">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://skylarsolution.com/contact.html">
-    <meta property="twitter:title" content="Contact Skylar Solutions | Get in Touch">
-    <meta property="twitter:description" content="Contact our team of IT experts for digital transformation solutions in Belgium. Schedule a free consultation today.">
+    <meta property="twitter:title" content="Contact Skylar Solutions | EU & Africa IT Solutions">
+    <meta property="twitter:description" content="Contact our team of IT experts for digital transformation solutions across Europe and Africa. Our services bridge EU standards with African market needs. Schedule a free consultation today.">
     <meta property="twitter:image" content="https://skylarsolution.com/images/contact-og-image.webp">
 
     <!-- Language Alternatives -->
     <link rel="alternate" hreflang="en" href="https://skylarsolution.com/contact.html" />
     <link rel="alternate" hreflang="fr" href="https://skylarsolution.com/fr/contact.html" />
     <link rel="alternate" hreflang="x-default" href="https://skylarsolution.com/contact.html" />
+    
+    <!-- Region-specific metadata -->
+    <meta name="ICBM" content="50.8466, 4.3528"> <!-- Brussels coordinates -->
+    <meta name="DC.coverage" content="Europe, Africa">
 
     <title>Contact Skylar Solutions | Get in Touch</title>
     
@@ -103,6 +111,61 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-XXXXX');</script>
     <!-- End Google Tag Manager -->
+    
+    <style>
+        /* Language Switching Styles */
+        [data-lang-en], [data-lang-fr] {
+            display: none !important;
+        }
+
+        html[lang="en"] [data-lang-en] {
+            display: block !important;
+        }
+
+        html[lang="fr"] [data-lang-fr] {
+            display: block !important;
+        }
+
+        html[lang="en"] span[data-lang-en],
+        html[lang="fr"] span[data-lang-fr] {
+            display: inline !important;
+        }
+
+        html[lang="en"] li[data-lang-en],
+        html[lang="fr"] li[data-lang-fr] {
+            display: list-item !important;
+        }
+
+        html[lang="en"] a[data-lang-en],
+        html[lang="fr"] a[data-lang-fr] {
+            display: inline-block !important;
+        }
+
+        /* Language Toggle Button */
+        .lang-toggle {
+            background: var(--primary-color);
+            color: var(--white-color);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            margin-left: 20px;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        .lang-toggle:hover {
+            background: var(--primary-dark);
+        }
+
+        @media (max-width: 768px) {
+            .lang-toggle {
+                margin: 10px 0;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
@@ -117,45 +180,38 @@
     </button>
 
     <!-- Header -->
-    <header class="header sticky">
+    <header class="header">
         <div class="container">
-            <a href="index.html" class="logo" aria-label="Skylar Solutions Homepage">
-                <img src="logo.webp" width="180" height="40" alt="Skylar Solutions Logo">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Skylar Solutions Logo">
             </a>
-            
-            <nav class="navbar">
-                <button class="navbar-toggle" aria-label="Mobile Menu">
+            <div class="navbar-container">
+                <div class="navbar-toggle">
                     <i class="fas fa-bars"></i>
-                </button>
-                
-                <ul class="nav-menu">
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="about.html" class="nav-link">About</a></li>
+                </div>
+                <ul class="navbar">
+                    <li><a href="index.html" data-lang-en="Home" data-lang-fr="Accueil">Home</a></li>
+                    <li><a href="About.html" data-lang-en="About" data-lang-fr="À propos">About</a></li>
                     <li class="dropdown">
-                        <a href="services/" class="nav-link">Services <i class="fas fa-chevron-down"></i></a>
+                        <a href="services/services.html" data-lang-en="Services" data-lang-fr="Services" class="dropdown-toggle">Services <i class="fas fa-chevron-down"></i></a>
                         <ul class="dropdown-menu">
-                            <li><a href="services/app-development.html">App Development</a></li>
-                            <li><a href="services/ai-data-sciences.html">AI & Data Sciences</a></li>
-                            <li><a href="services/cyber-security.html">Cyber Security</a></li>
-                            <li><a href="services/collaboration-solutions.html">Collaboration Solutions</a></li>
-                            <li><a href="services/blockchain-nft.html">Blockchain & NFT</a></li>
-                            <li><a href="services/support.html">24/7 Support</a></li>
+                            <li><a href="services/app-development.html" data-lang-en="App Development" data-lang-fr="Développement d'Applications">App Development</a></li>
+                            <li><a href="services/ai-data-sciences.html" data-lang-en="AI & Data Sciences" data-lang-fr="IA & Sciences des Données">AI & Data Sciences</a></li>
+                            <li><a href="services/cyber-security.html" data-lang-en="Cyber Security" data-lang-fr="Cybersécurité">Cyber Security</a></li>
+                            <li><a href="services/collaboration-solutions.html" data-lang-en="Collaboration Solutions" data-lang-fr="Solutions de Collaboration">Collaboration Solutions</a></li>
+                            <li><a href="services/blockchain-nft.html" data-lang-en="Blockchain & NFT" data-lang-fr="Blockchain & NFT">Blockchain & NFT</a></li>
+                            <li><a href="services/support.html" data-lang-en="24/7 Support" data-lang-fr="Support 24/7">24/7 Support</a></li>
                         </ul>
                     </li>
-                    <li><a href="blog.html" class="nav-link">Blog</a></li>
-                    <li><a href="contact.html" class="nav-link active">Contact</a></li>
+                    <li><a href="blog.html" data-lang-en="Blog" data-lang-fr="Blog">Blog</a></li>
+                    <li><a href="Contact.html" data-lang-en="Contact" data-lang-fr="Contact" class="active">Contact</a></li>
                 </ul>
-                
                 <div class="language-switcher">
-                    <button class="lang-btn active" data-lang="en" aria-label="English Version">
-                        <span class="flag-icon">🇬🇧</span> EN
-                    </button>
-                    <span class="divider"></span>
-                    <button class="lang-btn" data-lang="fr" aria-label="French Version">
-                        <span class="flag-icon">🇫🇷</span> FR
-                    </button>
+                    <a href="#" data-lang="en" class="active">EN</a>
+                    <div class="language-divider"></div>
+                    <a href="#" data-lang="fr">FR</a>
                 </div>
-            </nav>
+            </div>
         </div>
     </header>
 
@@ -444,11 +500,21 @@
                 
                 <div class="faq-item">
                     <div class="faq-question">
-                        <h3>Do you provide services remotely or only in Belgium?</h3>
+                        <h3>Do you provide services in African countries?</h3>
                         <button class="faq-toggle" aria-label="Toggle answer"><i class="fas fa-plus"></i></button>
                     </div>
                     <div class="faq-answer">
-                        <p>While our office is located in Wavre, Belgium, we provide services to clients throughout Belgium and the EU. Many of our services can be delivered remotely, allowing us to serve clients regardless of location.</p>
+                        <p>Yes! While our main office is located in Wavre, Belgium, we provide services to clients throughout both Europe and Africa. We have experience working in various African markets including DR Congo, Rwanda, Kenya, Nigeria, and South Africa. Our team understands the unique technological challenges and opportunities in African markets and can deliver solutions tailored to local needs while maintaining EU standards.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How do you handle EU and African regulatory differences?</h3>
+                        <button class="faq-toggle" aria-label="Toggle answer"><i class="fas fa-plus"></i></button>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our team has extensive experience navigating both European regulations (like GDPR) and African regulatory frameworks. We design solutions that can comply with multiple regulatory environments simultaneously, ensuring your business can operate seamlessly across borders. We stay current with evolving regulations in all markets we serve to provide appropriate guidance.</p>
                     </div>
                 </div>
             </div>
@@ -476,11 +542,21 @@
                 
                 <div class="faq-item">
                     <div class="faq-question">
-                        <h3>Fournissez-vous des services à distance ou uniquement en Belgique?</h3>
+                        <h3>Fournissez-vous des services dans les pays africains?</h3>
                         <button class="faq-toggle" aria-label="Toggle answer"><i class="fas fa-plus"></i></button>
                     </div>
                     <div class="faq-answer">
-                        <p>Bien que notre bureau soit situé à Wavre, en Belgique, nous fournissons des services à des clients dans toute la Belgique et l'UE. Beaucoup de nos services peuvent être fournis à distance, nous permettant de servir des clients indépendamment de leur emplacement.</p>
+                        <p>Oui! Bien que notre bureau principal soit situé à Wavre, en Belgique, nous fournissons des services aux clients à travers l'Europe et l'Afrique. Nous avons de l'expérience sur différents marchés africains, notamment en RD Congo, au Rwanda, au Kenya, au Nigeria et en Afrique du Sud. Notre équipe comprend les défis et opportunités technologiques uniques des marchés africains et peut fournir des solutions adaptées aux besoins locaux tout en maintenant les normes européennes.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Comment gérez-vous les différences réglementaires entre l'UE et l'Afrique?</h3>
+                        <button class="faq-toggle" aria-label="Toggle answer"><i class="fas fa-plus"></i></button>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Notre équipe possède une vaste expérience dans la navigation entre les réglementations européennes (comme le RGPD) et les cadres réglementaires africains. Nous concevons des solutions qui peuvent se conformer simultanément à plusieurs environnements réglementaires, garantissant que votre entreprise peut fonctionner sans problème à travers les frontières. Nous restons à jour avec l'évolution des réglementations sur tous les marchés que nous servons pour fournir des conseils appropriés.</p>
                     </div>
                 </div>
             </div>
@@ -492,62 +568,77 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <img src="logo.webp" width="160" height="35" alt="Skylar Solutions Logo">
-                    <p class="footer-text">Your strategic partner for digital transformation and innovation.</p>
+                    <img src="Logo Skylar Solutions/logo_transparent.png" alt="Skylar Solutions Logo" class="footer-logo" style="height: 240px; width: auto;">
+                    <p data-lang-en>Your trusted partner for digital transformation and innovative technology solutions.</p>
+                    <p data-lang-fr>Votre partenaire de confiance pour la transformation digitale et les solutions technologiques innovantes.</p>
                     <div class="social-links">
-                        <a href="https://www.linkedin.com/company/skylarsolution" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://twitter.com/skylarsolution" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.facebook.com/skylarsolution" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.linkedin.com/company/skylarsolution" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://twitter.com/skylarsolution" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.facebook.com/skylarsolution" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
                     </div>
                 </div>
 
                 <div class="footer-col">
-                    <h4>Services</h4>
+                    <h4 data-lang-en>Quick Links</h4>
+                    <h4 data-lang-fr>Liens Rapides</h4>
                     <ul>
-                        <li><a href="services/app-development.html">App Development</a></li>
-                        <li><a href="services/ai-data-sciences.html">AI & Data Sciences</a></li>
-                        <li><a href="services/cyber-security.html">Cyber Security</a></li>
-                        <li><a href="services/collaboration-solutions.html">Collaboration Solutions</a></li>
-                        <li><a href="services/blockchain-nft.html">Blockchain & NFT</a></li>
-                        <li><a href="services/support.html">24/7 Support</a></li>
+                        <li><a href="about.html" data-lang-en>About Us</a><a href="about.html" data-lang-fr>À Propos</a></li>
+                        <li><a href="services/services.html" data-lang-en>Services</a><a href="services/services.html" data-lang-fr>Services</a></li>
+                        <li><a href="blog.html" data-lang-en>Blog</a><a href="blog.html" data-lang-fr>Blog</a></li>
+                        <li><a href="careers.html" data-lang-en>Careers</a><a href="careers.html" data-lang-fr>Carrières</a></li>
+                        <li><a href="contact.html" data-lang-en>Contact</a><a href="contact.html" data-lang-fr>Contact</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-col">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="team.html">Our Team</a></li>
-                        <li><a href="careers.html">Careers</a></li>
-                        <li><a href="blog.html">Blog</a></li>
+                    <h4 data-lang-en>Contact Info</h4>
+                    <h4 data-lang-fr>Coordonnées</h4>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Avenue Pasteur 6, 1300 Wavre, Belgium</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+32 10 25.00.18</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>admin@skylar-solutions.com</span>
+                        </li>
                     </ul>
                 </div>
 
                 <div class="footer-col">
-                    <h4>Contact</h4>
-                    <address>
-                        <p><i class="fas fa-map-marker-alt"></i> Avenue Pasteur 6<br>1300 Wavre, Belgium</p>
-                        <p><i class="fas fa-phone"></i> <a href="tel:+3210250018">+32 10 25 00 18</a></p>
-                        <p><i class="fas fa-envelope"></i> <a href="mailto:admin@skylar-solutions.com">admin@skylar-solutions.com</a></p>
-                    </address>
+                    <h4 data-lang-en>Follow Us</h4>
+                    <h4 data-lang-fr>Suivez-nous</h4>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/company/skylarsolution" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://twitter.com/skylarsolution" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.facebook.com/skylarsolution" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    </div>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2025 Skylar Solutions SRL. All rights reserved.</p>
-                <div class="legal-links">
-                    <a href="privacy.html">Privacy Policy</a>
-                    <a href="terms.html">Terms of Service</a>
-                    <a href="sitemap.html">Sitemap</a>
+                <p data-lang-en>&copy; 2024 Skylar Solutions. All rights reserved.</p>
+                <p data-lang-fr>&copy; 2024 Skylar Solutions. Tous droits réservés.</p>
+                <div class="footer-links">
+                    <a href="privacy-policy.html" data-lang-en>Privacy Policy</a>
+                    <a href="privacy-policy.html" data-lang-fr>Politique de Confidentialité</a>
+                    <span class="separator">|</span>
+                    <a href="terms.html" data-lang-en>Terms of Service</a>
+                    <a href="terms.html" data-lang-fr>Conditions d'Utilisation</a>
                 </div>
             </div>
         </div>
     </footer>
 
     <!-- Back to Top Button -->
-    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
-        <i class="fas fa-chevron-up"></i>
+    <button class="back-to-top" aria-label="Back to Top">
+        <i class="fas fa-arrow-up"></i>
     </button>
+
 
     <!-- Cookie Consent Banner -->
     <div class="cookie-consent" id="cookieConsent">

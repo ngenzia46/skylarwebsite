@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <!-- Homepage -->
+  <url>
+    <loc>https://skylarsolution.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://skylarsolution.com/index.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://skylarsolution.com/fr/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://skylarsolution.com/"/>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- About Page -->
+  <url>
+    <loc>https://skylarsolution.com/About.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://skylarsolution.com/About.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://skylarsolution.com/fr/About.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Contact Page -->
+  <url>
+    <loc>https://skylarsolution.com/Contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://skylarsolution.com/Contact.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://skylarsolution.com/fr/Contact.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Blog Page -->
+  <url>
+    <loc>https://skylarsolution.com/blog.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://skylarsolution.com/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://skylarsolution.com/fr/blog.html"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Service Pages -->
+  <url>
+    <loc>https://skylarsolution.com/services/services.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://skylarsolution.com/services/services.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://skylarsolution.com/fr/services/services.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://skylarsolution.com/services/app-development.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://skylarsolution.com/services/app-development.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://skylarsolution.com/fr/services/app-development.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://skylarsolution.com/services/ai-data-sciences.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://skylarsolution.com/services/ai-data-sciences.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://skylarsolution.com/fr/services/ai-data-sciences.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://skylarsolution.com/services/cyber-security.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://skylarsolution.com/services/cyber-security.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://skylarsolution.com/fr/services/cyber-security.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://skylarsolution.com/services/collaboration-solutions.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://skylarsolution.com/services/collaboration-solutions.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://skylarsolution.com/fr/services/collaboration-solutions.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://skylarsolution.com/services/blockchain-nft.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://skylarsolution.com/services/blockchain-nft.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://skylarsolution.com/fr/services/blockchain-nft.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://skylarsolution.com/services/support.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://skylarsolution.com/services/support.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://skylarsolution.com/fr/services/support.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Legal Pages -->
+  <url>
+    <loc>https://skylarsolution.com/privacy-policy.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://skylarsolution.com/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://skylarsolution.com/fr/privacy-policy.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  
+  <url>
+    <loc>https://skylarsolution.com/terms.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://skylarsolution.com/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://skylarsolution.com/fr/terms.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+</urlset>

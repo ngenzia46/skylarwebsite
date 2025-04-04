@@ -65,30 +65,38 @@ document.addEventListener('DOMContentLoaded', function() {
       
       // Toggle content
       toggleLanguageContent(newLang);
+      
+      // Force re-render of language-specific elements
+      document.body.style.display = 'none';
+      document.body.offsetHeight; // Force reflow
+      document.body.style.display = '';
     });
   }
   
   // Function to show/hide content based on language
   function toggleLanguageContent(lang) {
-    // Toggle content with data-lang attributes
-    document.querySelectorAll('[data-lang-en], [data-lang-fr]').forEach(element => {
-      if (element.getAttribute(`data-lang-${lang}`)) {
-        element.style.display = 'block';
-      } else {
-        element.style.display = 'none';
-      }
-    });
+    // Update html lang attribute
+    document.documentElement.setAttribute('lang', lang);
     
-    // Toggle content with id="content-en" or id="content-fr"
-    const contentElements = document.querySelectorAll('[id^="content-"]');
-    contentElements.forEach(element => {
-      if (element.id === `content-${lang}`) {
-        element.style.display = 'block';
-      } else {
-        element.style.display = 'none';
-      }
-    });
+    // Force re-render to ensure proper display
+    document.body.style.display = 'none';
+    document.body.offsetHeight; // Force reflow
+    document.body.style.display = '';
+    
+    // Update language toggle button text if it exists
+    const langToggleBtn = document.getElementById('lang-toggle');
+    if (langToggleBtn) {
+        langToggleBtn.textContent = lang === 'en' ? 'FR' : 'EN';
+        langToggleBtn.setAttribute('data-lang', lang);
+    }
+    
+    // Save language preference
+    localStorage.setItem('language', lang);
   }
+  
+  // Initialize language on page load
+  const savedLanguage = localStorage.getItem('language') || 'en';
+  toggleLanguageContent(savedLanguage);
   
   // Mobile Navigation Toggle
   const navbarToggle = document.querySelector('.navbar-toggle');
@@ -97,8 +105,22 @@ document.addEventListener('DOMContentLoaded', function() {
   if (navbarToggle) {
     navbarToggle.addEventListener('click', function() {
       navbar.classList.toggle('active');
+      navbarToggle.classList.toggle('active');
     });
   }
+  
+  // Dropdown menu toggle for mobile
+  const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+  
+  dropdownToggles.forEach(toggle => {
+    toggle.addEventListener('click', function(e) {
+      if (window.innerWidth <= 1024) {
+        e.preventDefault();
+        const parent = this.parentElement;
+        parent.classList.toggle('active');
+      }
+    });
+  });
 
   // Smooth scrolling for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
