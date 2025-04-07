@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,162 +28,75 @@
     <meta property="twitter:image" content="https://skylarsolution.com/images/contact-og-image.webp">
 
     <!-- Language Alternatives -->
-    <link rel="alternate" hreflang="en" href="https://skylarsolution.com/contact.html" />
-    <link rel="alternate" hreflang="fr" href="https://skylarsolution.com/fr/contact.html" />
-    <link rel="alternate" hreflang="x-default" href="https://skylarsolution.com/contact.html" />
+    <link rel="alternate" hreflang="en" href="https://skylarsolution.com/contact.html">
+    <link rel="alternate" hreflang="fr" href="https://skylarsolution.com/fr/contact.html">
+    <link rel="alternate" hreflang="x-default" href="https://skylarsolution.com/contact.html">
     
     <!-- Region-specific metadata -->
     <meta name="ICBM" content="50.8466, 4.3528"> <!-- Brussels coordinates -->
     <meta name="DC.coverage" content="Europe, Africa">
 
-    <title>Contact Skylar Solutions | Get in Touch</title>
+    <title data-lang-en>Contact Skylar Solutions | Get in Touch</title>
+    <title data-lang-fr>Contactez Skylar Solutions | Prenez Contact</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    
-    <!-- Preload Critical Assets -->
-    <link rel="preload" href="styles.css" as="style">
-    <link rel="preload" href="script.js" as="script">
-    <link rel="preload" href="fonts/montserrat-v25-latin-600.woff2" as="font" type="font/woff2" crossorigin>
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="Contact.css">
     
-    <!-- Cookie Consent -->
-    <link rel="stylesheet" href="cookie-consent.css">
-    
-    <!-- Schema Markup -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "ContactPage",
-        "description": "Contact Skylar Solutions for digital transformation services in Belgium",
-        "mainEntity": {
-            "@type": "Organization",
-            "name": "Skylar Solutions",
-            "url": "https://skylarsolution.com",
-            "logo": "https://skylarsolution.com/logo.png",
-            "telephone": "+32-10-25.00.18",
-            "email": "admin@skylar-solutions.com",
-            "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "Avenue Pasteur 6",
-                "addressLocality": "Wavre",
-                "postalCode": "1300",
-                "addressCountry": "BE"
-            },
-            "contactPoint": {
-                "@type": "ContactPoint",
-                "telephone": "+32-10-25.00.18",
-                "contactType": "customer service",
-                "email": "admin@skylar-solutions.com",
-                "availableLanguage": ["English","French"]
-            }
-        },
-        "breadcrumb": {
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-                {
-                    "@type": "ListItem",
-                    "position": 1,
-                    "name": "Home",
-                    "item": "https://skylarsolution.com/"
-                },
-                {
-                    "@type": "ListItem",
-                    "position": 2,
-                    "name": "Contact",
-                    "item": "https://skylarsolution.com/contact.html"
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get saved language or default to English
+            const savedLanguage = localStorage.getItem('language') || 'en';
+            
+            // Set initial language
+            document.documentElement.lang = savedLanguage;
+            
+            // Update active state on language buttons
+            const langButtons = document.querySelectorAll('.language-switcher a');
+            langButtons.forEach(button => {
+                if (button.getAttribute('data-lang') === savedLanguage) {
+                    button.classList.add('active');
+                } else {
+                    button.classList.remove('active');
                 }
-            ]
-        }
-    }
+                
+                // Add click event listeners to language buttons
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const lang = this.getAttribute('data-lang');
+                    
+                    // Update HTML lang attribute
+                    document.documentElement.lang = lang;
+                    
+                    // Save language preference
+                    localStorage.setItem('language', lang);
+                    
+                    // Update active state of buttons
+                    langButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Force re-render for better language switching
+                    document.body.style.display = 'none';
+                    document.body.offsetHeight; // Force reflow
+                    document.body.style.display = '';
+                });
+            });
+        });
     </script>
-    
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-XXXXX');</script>
-    <!-- End Google Tag Manager -->
-    
-    <style>
-        /* Language Switching Styles */
-        [data-lang-en], [data-lang-fr] {
-            display: none !important;
-        }
-
-        html[lang="en"] [data-lang-en] {
-            display: block !important;
-        }
-
-        html[lang="fr"] [data-lang-fr] {
-            display: block !important;
-        }
-
-        html[lang="en"] span[data-lang-en],
-        html[lang="fr"] span[data-lang-fr] {
-            display: inline !important;
-        }
-
-        html[lang="en"] li[data-lang-en],
-        html[lang="fr"] li[data-lang-fr] {
-            display: list-item !important;
-        }
-
-        html[lang="en"] a[data-lang-en],
-        html[lang="fr"] a[data-lang-fr] {
-            display: inline-block !important;
-        }
-
-        /* Language Toggle Button */
-        .lang-toggle {
-            background: var(--primary-color);
-            color: var(--white-color);
-            border: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: background-color 0.3s ease;
-            margin-left: 20px;
-            font-size: 14px;
-            text-transform: uppercase;
-        }
-
-        .lang-toggle:hover {
-            background: var(--primary-dark);
-        }
-
-        @media (max-width: 768px) {
-            .lang-toggle {
-                margin: 10px 0;
-            }
-        }
-    </style>
 </head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXX"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-
-    <!-- Theme Toggle Button -->
-    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
-        <i class="fas fa-moon"></i>
-        <i class="fas fa-sun"></i>
-    </button>
-
     <!-- Header -->
     <header class="header">
         <div class="container">
             <a href="index.html" class="logo">
-                <img src="logo.png" alt="Skylar Solutions Logo">
+                <img src="Logo Skylar Solutions/logo_transparent.png" style="height: 150px; width: auto;" alt="Skylar Solutions Logo">
             </a>
             <div class="navbar-container">
                 <div class="navbar-toggle">
@@ -193,7 +106,7 @@
                     <li><a href="index.html" data-lang-en="Home" data-lang-fr="Accueil">Home</a></li>
                     <li><a href="About.html" data-lang-en="About" data-lang-fr="À propos">About</a></li>
                     <li class="dropdown">
-                        <a href="services/services.html" data-lang-en="Services" data-lang-fr="Services" class="dropdown-toggle">Services <i class="fas fa-chevron-down"></i></a>
+                        <a href="services/services.html" data-lang-en="Services" data-lang-fr="Services">Services <i class="fas fa-chevron-down"></i></a>
                         <ul class="dropdown-menu">
                             <li><a href="services/app-development.html" data-lang-en="App Development" data-lang-fr="Développement d'Applications">App Development</a></li>
                             <li><a href="services/ai-data-sciences.html" data-lang-en="AI & Data Sciences" data-lang-fr="IA & Sciences des Données">AI & Data Sciences</a></li>
@@ -204,7 +117,8 @@
                         </ul>
                     </li>
                     <li><a href="blog.html" data-lang-en="Blog" data-lang-fr="Blog">Blog</a></li>
-                    <li><a href="Contact.html" data-lang-en="Contact" data-lang-fr="Contact" class="active">Contact</a></li>
+                    <li><a href="careers.html" data-lang-en="Careers" data-lang-fr="Carrières">Careers</a></li>
+                    <li><a href="Contact.html" data-lang-en="Contact" data-lang-fr="Contact">Contact</a></li>
                 </ul>
                 <div class="language-switcher">
                     <a href="#" data-lang="en" class="active">EN</a>
@@ -216,13 +130,15 @@
     </header>
 
     <!-- Page Hero Section -->
-    <section class="page-hero contact-hero">
+    <section class="page-hero">
         <div class="container">
             <div class="page-hero-content">
-                <h1>Contact Us</h1>
-                <h2 class="hero-subtitle">Let's start a conversation</h2>
+                <h1 data-lang-en>Contact Us</h1>
+                <h1 data-lang-fr>Contactez-Nous</h1>
                 <div class="breadcrumbs">
-                    <a href="index.html">Home</a> / <span>Contact</span>
+                    <a href="index.html" data-lang-en>Home</a>
+                    <a href="index.html" data-lang-fr>Accueil</a> / 
+                    <span>Contact</span>
                 </div>
             </div>
         </div>
@@ -231,10 +147,12 @@
     <!-- Contact Section -->
     <section class="contact-main">
         <div class="container">
-            <div class="contact-grid" id="content-en">
+            <div class="contact-grid">
                 <div class="contact-info-card">
-                    <h2>Get in Touch</h2>
-                    <p class="lead-text">Reach out to discuss how we can help with your digital transformation journey. Our team is ready to assist you with any questions or inquiries.</p>
+                    <h2 data-lang-en>Get in Touch</h2>
+                    <h2 data-lang-fr>Entrez en Contact</h2>
+                    <p class="lead-text" data-lang-en>Reach out to discuss how we can help with your digital transformation journey. Our team is ready to assist you with any questions or inquiries.</p>
+                    <p class="lead-text" data-lang-fr>Contactez-nous pour discuter de la façon dont nous pouvons vous aider dans votre parcours de transformation numérique. Notre équipe est prête à vous aider pour toute question ou demande.</p>
                     
                     <div class="contact-details">
                         <div class="contact-method">
@@ -242,7 +160,8 @@
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
                             <div class="method-details">
-                                <h3>Our Office</h3>
+                                <h3 data-lang-en>Our Office</h3>
+                                <h3 data-lang-fr>Notre Bureau</h3>
                                 <p>Avenue Pasteur 6<br>1300 Wavre, Belgium</p>
                             </div>
                         </div>
@@ -252,10 +171,13 @@
                                 <i class="fas fa-envelope"></i>
                             </div>
                             <div class="method-details">
-                                <h3>Email</h3>
+                                <h3 data-lang-en>Email</h3>
+                                <h3 data-lang-fr>Email</h3>
                                 <p><a href="mailto:admin@skylar-solutions.com">admin@skylar-solutions.com</a></p>
-                                <p><strong>Managing Director:</strong><br><a href="mailto:ngenzi@skylar-solutions.com">Arthur Ngenzi - ngenzi@skylar-solutions.com</a></p>
-                                <p><strong>Operations Director:</strong><br><a href="mailto:esele@skylar-solutions.com">Denis Esele - esele@skylar-solutions.com</a></p>
+                                <p data-lang-en><strong>Managing Director:</strong><br><a href="mailto:ngenzi@skylar-solutions.com">Arthur Ngenzi - ngenzi@skylar-solutions.com</a></p>
+                                <p data-lang-fr><strong>Directeur Général:</strong><br><a href="mailto:ngenzi@skylar-solutions.com">Arthur Ngenzi - ngenzi@skylar-solutions.com</a></p>
+                                <p data-lang-en><strong>Operations Director:</strong><br><a href="mailto:esele@skylar-solutions.com">Denis Esele - esele@skylar-solutions.com</a></p>
+                                <p data-lang-fr><strong>Directeur des Opérations:</strong><br><a href="mailto:esele@skylar-solutions.com">Denis Esele - esele@skylar-solutions.com</a></p>
                             </div>
                         </div>
                         
@@ -264,9 +186,10 @@
                                 <i class="fas fa-phone-alt"></i>
                             </div>
                             <div class="method-details">
-                                <h3>Phone</h3>
+                                <h3 data-lang-en>Phone</h3>
+                                <h3 data-lang-fr>Téléphone</h3>
                                 <p><a href="tel:+3210250018">+32 10 25 00 18</a></p>
-                                <p><a href="tel:+32474690382">+32 474 69 03 82</a> (WhatsApp available)</p>
+                                <p><a href="tel:+32474690382">+32 474 69 03 82</a> <span data-lang-en>(WhatsApp available)</span><span data-lang-fr>(WhatsApp disponible)</span></p>
                             </div>
                         </div>
                         
@@ -275,14 +198,17 @@
                                 <i class="fas fa-clock"></i>
                             </div>
                             <div class="method-details">
-                                <h3>Business Hours</h3>
-                                <p>Monday-Friday: 9:00 AM - 6:00 PM CET<br>Weekend: Closed</p>
+                                <h3 data-lang-en>Business Hours</h3>
+                                <h3 data-lang-fr>Heures d'Ouverture</h3>
+                                <p data-lang-en>Monday-Friday: 9:00 AM - 6:00 PM CET<br>Weekend: Closed</p>
+                                <p data-lang-fr>Lundi-Vendredi: 9:00 - 18:00 CET<br>Weekend: Fermé</p>
                             </div>
                         </div>
                     </div>
                     
                     <div class="social-links">
-                        <h3>Connect With Us</h3>
+                        <h3 data-lang-en>Connect With Us</h3>
+                        <h3 data-lang-fr>Suivez-Nous</h3>
                         <div class="social-icons">
                             <a href="https://www.linkedin.com/company/skylarsolution" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                             <a href="https://twitter.com/skylarsolution" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
@@ -291,169 +217,60 @@
                     </div>
                 </div>
                 
-                <div class="contact-form-card">
-                    <h2>Send Us a Message</h2>
-                    <form id="contactForm-en" class="contact-form">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="name-en">Full Name*</label>
-                                <input type="text" id="name-en" class="form-control" placeholder="Enter your full name" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="email-en">Email Address*</label>
-                                <input type="email" id="email-en" class="form-control" placeholder="Enter your email address" required>
-                            </div>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="phone-en">Phone Number</label>
-                                <input type="tel" id="phone-en" class="form-control" placeholder="Enter your phone number">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="subject-en">Subject*</label>
-                                <select id="subject-en" class="form-control" required>
-                                    <option value="" disabled selected>Select a subject</option>
-                                    <option value="General Inquiry">General Inquiry</option>
-                                    <option value="Request for Proposal">Request for Proposal</option>
-                                    <option value="Technical Support">Technical Support</option>
-                                    <option value="Partnership">Partnership Opportunity</option>
-                                    <option value="Other">Other</option>
-                                </select>
-                            </div>
+                <div class="contact-form-container">
+                    <h2 data-lang-en>Send Us a Message</h2>
+                    <h2 data-lang-fr>Envoyez-Nous un Message</h2>
+                    <form id="contactForm" class="contact-form" action="https://formspree.io/f/admin@skylar-solutions.com" method="POST">
+                        <div class="form-group">
+                            <label for="name" class="form-label" data-lang-en>Name <span class="required-field">*</span></label>
+                            <label for="name" class="form-label" data-lang-fr>Nom <span class="required-field">*</span></label>
+                            <input type="text" id="name" name="name" class="form-control" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="message-en">Message*</label>
-                            <textarea id="message-en" class="form-control" placeholder="Tell us about your project or inquiry..." rows="6" required></textarea>
-                        </div>
-                        
-                        <div class="form-group checkbox-group">
-                            <input type="checkbox" id="privacy-en" required>
-                            <label for="privacy-en">I agree to the <a href="privacy.html">Privacy Policy</a> and consent to the processing of my data.</label>
-                        </div>
-                        
-                        <div class="form-button">
-                            <button type="submit" class="btn btn-primary">
-                                <i class="fas fa-paper-plane"></i> Send Message
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            
-            <!-- French version -->
-            <div class="contact-grid" id="content-fr" style="display: none;">
-                <div class="contact-info-card">
-                    <h2>Contactez-Nous</h2>
-                    <p class="lead-text">N'hésitez pas à nous contacter pour discuter de la façon dont nous pouvons vous aider dans votre parcours de transformation numérique. Notre équipe est prête à répondre à toutes vos questions.</p>
-                    
-                    <div class="contact-details">
-                        <div class="contact-method">
-                            <div class="method-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="method-details">
-                                <h3>Notre Bureau</h3>
-                                <p>Avenue Pasteur 6<br>1300 Wavre, Belgique</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-method">
-                            <div class="method-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="method-details">
-                                <h3>Email</h3>
-                                <p><a href="mailto:admin@skylar-solutions.com">admin@skylar-solutions.com</a></p>
-                                <p><strong>Directeur Général:</strong><br><a href="mailto:ngenzi@skylar-solutions.com">Arthur Ngenzi - ngenzi@skylar-solutions.com</a></p>
-                                <p><strong>Directeur des Opérations:</strong><br><a href="mailto:esele@skylar-solutions.com">Denis Esele - esele@skylar-solutions.com</a></p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-method">
-                            <div class="method-icon">
-                                <i class="fas fa-phone-alt"></i>
-                            </div>
-                            <div class="method-details">
-                                <h3>Téléphone</h3>
-                                <p><a href="tel:+3210250018">+32 10 25 00 18</a></p>
-                                <p><a href="tel:+32474690382">+32 474 69 03 82</a> (WhatsApp disponible)</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-method">
-                            <div class="method-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div class="method-details">
-                                <h3>Heures d'Ouverture</h3>
-                                <p>Lundi-Vendredi: 9h00 - 18h00 CET<br>Weekend: Fermé</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="social-links">
-                        <h3>Suivez-Nous</h3>
-                        <div class="social-icons">
-                            <a href="https://www.linkedin.com/company/skylarsolution" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                            <a href="https://twitter.com/skylarsolution" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                            <a href="https://www.facebook.com/skylarsolution" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="contact-form-card">
-                    <h2>Envoyez-Nous un Message</h2>
-                    <form id="contactForm-fr" class="contact-form">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="name-fr">Nom Complet*</label>
-                                <input type="text" id="name-fr" class="form-control" placeholder="Entrez votre nom complet" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="email-fr">Adresse Email*</label>
-                                <input type="email" id="email-fr" class="form-control" placeholder="Entrez votre adresse email" required>
-                            </div>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="phone-fr">Numéro de Téléphone</label>
-                                <input type="tel" id="phone-fr" class="form-control" placeholder="Entrez votre numéro de téléphone">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="subject-fr">Sujet*</label>
-                                <select id="subject-fr" class="form-control" required>
-                                    <option value="" disabled selected>Sélectionnez un sujet</option>
-                                    <option value="General Inquiry">Demande Générale</option>
-                                    <option value="Request for Proposal">Demande de Proposition</option>
-                                    <option value="Technical Support">Support Technique</option>
-                                    <option value="Partnership">Opportunité de Partenariat</option>
-                                    <option value="Other">Autre</option>
-                                </select>
-                            </div>
+                            <label for="email" class="form-label" data-lang-en>Email <span class="required-field">*</span></label>
+                            <label for="email" class="form-label" data-lang-fr>Email <span class="required-field">*</span></label>
+                            <input type="email" id="email" name="email" class="form-control" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="message-fr">Message*</label>
-                            <textarea id="message-fr" class="form-control" placeholder="Parlez-nous de votre projet ou de votre demande..." rows="6" required></textarea>
+                            <label for="phone" class="form-label" data-lang-en>Phone</label>
+                            <label for="phone" class="form-label" data-lang-fr>Téléphone</label>
+                            <input type="tel" id="phone" name="phone" class="form-control">
                         </div>
                         
-                        <div class="form-group checkbox-group">
-                            <input type="checkbox" id="privacy-fr" required>
-                            <label for="privacy-fr">J'accepte la <a href="privacy.html">Politique de Confidentialité</a> et je consens au traitement de mes données.</label>
+                        <div class="form-group">
+                            <label for="company" class="form-label" data-lang-en>Company</label>
+                            <label for="company" class="form-label" data-lang-fr>Entreprise</label>
+                            <input type="text" id="company" name="company" class="form-control">
                         </div>
                         
-                        <div class="form-button">
-                            <button type="submit" class="btn btn-primary">
-                                <i class="fas fa-paper-plane"></i> Envoyer le Message
-                            </button>
+                        <div class="form-group">
+                            <label for="subject" class="form-label" data-lang-en>Subject <span class="required-field">*</span></label>
+                            <label for="subject" class="form-label" data-lang-fr>Sujet <span class="required-field">*</span></label>
+                            <input type="text" id="subject" name="subject" class="form-control" required>
                         </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label" data-lang-en>Message <span class="required-field">*</span></label>
+                            <label for="message" class="form-label" data-lang-fr>Message <span class="required-field">*</span></label>
+                            <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
+                        </div>
+                        
+                        <div class="form-check">
+                            <input type="checkbox" id="privacy" name="privacy" class="form-check-input" required>
+                            <label for="privacy" class="form-check-label" data-lang-en>I have read and agree to the <a href="privacy-policy.html" target="_blank">Privacy Policy</a> <span class="required-field">*</span></label>
+                            <label for="privacy" class="form-check-label" data-lang-fr>J'ai lu et j'accepte la <a href="privacy-policy.html" target="_blank">Politique de Confidentialité</a> <span class="required-field">*</span></label>
+                        </div>
+                        
+                        <div data-lang-en>
+                            <button type="submit" class="btn-submit">Send Message</button>
+                        </div>
+                        <div data-lang-fr>
+                            <button type="submit" class="btn-submit">Envoyer le Message</button>
+                        </div>
+                        
+                        <div id="formMessage" class="form-message"></div>
                     </form>
                 </div>
             </div>
@@ -463,100 +280,72 @@
     <!-- Map Section -->
     <section class="map-section">
         <div class="container">
-            <h2 class="section-title">Visit Our Office</h2>
             <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2527.6992763744635!2d4.598878276712294!3d50.71800637498455!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c17de0d22b5f7f%3A0xfcd5e8b8f8da4d01!2sAv.%20Pasteur%206%2C%201300%20Wavre%2C%20Belgium!5e0!3m2!1sen!2sus!4v1712103594953!5m2!1sen!2sus" 
-                    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Skylar Solutions office location"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2528.4731009687153!2d4.6073095!3d50.7151863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c17d2cd136286f%3A0x9c13f74f5fc82a3!2sAvenue%20Pasteur%206%2C%201300%20Wavre%2C%20Belgium!5e0!3m2!1sen!2sbe!4v1614183834378!5m2!1sen!2sbe" allowfullscreen="" loading="lazy" title="Skylar Solutions Office Location"></iframe>
             </div>
         </div>
     </section>
 
     <!-- FAQ Section -->
-    <section class="faq-section contact-faq">
+    <section class="faq-section">
         <div class="container">
-            <h2 class="section-title" id="faq-title-en">Frequently Asked Questions</h2>
-            <h2 class="section-title" id="faq-title-fr" style="display: none;">Questions Fréquemment Posées</h2>
+            <h2 class="section-title text-center" data-lang-en>Frequently Asked Questions</h2>
+            <h2 class="section-title text-center" data-lang-fr>Questions Fréquemment Posées</h2>
             
-            <div class="faq-container" id="faq-en">
+            <div class="faq-container">
                 <div class="faq-item">
                     <div class="faq-question">
-                        <h3>What happens after I submit a contact form?</h3>
-                        <button class="faq-toggle" aria-label="Toggle answer"><i class="fas fa-plus"></i></button>
+                        <h3 data-lang-en>How quickly can you respond to my inquiry?</h3>
+                        <h3 data-lang-fr>Avec quelle rapidité pouvez-vous répondre à ma demande?</h3>
+                        <div class="faq-toggle">
+                            <i class="fas fa-plus"></i>
+                        </div>
                     </div>
                     <div class="faq-answer">
-                        <p>After submitting your contact form, you'll receive an automatic confirmation email. Our team will review your inquiry and respond within 1 business day to schedule a consultation or address your questions.</p>
+                        <p data-lang-en>We typically respond to all inquiries within 24 business hours. For urgent matters, we recommend calling our office directly.</p>
+                        <p data-lang-fr>Nous répondons généralement à toutes les demandes dans les 24 heures ouvrables. Pour les questions urgentes, nous vous recommandons d'appeler directement notre bureau.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <div class="faq-question">
-                        <h3>Can we schedule a video call instead of meeting in person?</h3>
-                        <button class="faq-toggle" aria-label="Toggle answer"><i class="fas fa-plus"></i></button>
+                        <h3 data-lang-en>Do you provide services outside of Belgium?</h3>
+                        <h3 data-lang-fr>Proposez-vous des services en dehors de la Belgique?</h3>
+                        <div class="faq-toggle">
+                            <i class="fas fa-plus"></i>
+                        </div>
                     </div>
                     <div class="faq-answer">
-                        <p>Absolutely! We regularly conduct consultations via video conferencing platforms like Microsoft Teams, Zoom, or Google Meet. Simply indicate your preference for a virtual meeting when you contact us.</p>
+                        <p data-lang-en>Yes, we operate across Europe and Africa. Our international team allows us to serve clients in multiple regions, with particular expertise in bridging European and African markets.</p>
+                        <p data-lang-fr>Oui, nous opérons en Europe et en Afrique. Notre équipe internationale nous permet de servir des clients dans plusieurs régions, avec une expertise particulière dans le rapprochement des marchés européens et africains.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <div class="faq-question">
-                        <h3>Do you provide services in African countries?</h3>
-                        <button class="faq-toggle" aria-label="Toggle answer"><i class="fas fa-plus"></i></button>
+                        <h3 data-lang-en>Can I schedule a consultation before committing to your services?</h3>
+                        <h3 data-lang-fr>Puis-je planifier une consultation avant de m'engager pour vos services?</h3>
+                        <div class="faq-toggle">
+                            <i class="fas fa-plus"></i>
+                        </div>
                     </div>
                     <div class="faq-answer">
-                        <p>Yes! While our main office is located in Wavre, Belgium, we provide services to clients throughout both Europe and Africa. We have experience working in various African markets including DR Congo, Rwanda, Kenya, Nigeria, and South Africa. Our team understands the unique technological challenges and opportunities in African markets and can deliver solutions tailored to local needs while maintaining EU standards.</p>
+                        <p data-lang-en>Absolutely! We offer free initial consultations to understand your needs and demonstrate how we can help. You can request a consultation by filling out our contact form or calling our office.</p>
+                        <p data-lang-fr>Absolument! Nous proposons des consultations initiales gratuites pour comprendre vos besoins et démontrer comment nous pouvons vous aider. Vous pouvez demander une consultation en remplissant notre formulaire de contact ou en appelant notre bureau.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <div class="faq-question">
-                        <h3>How do you handle EU and African regulatory differences?</h3>
-                        <button class="faq-toggle" aria-label="Toggle answer"><i class="fas fa-plus"></i></button>
+                        <h3 data-lang-en>What information should I prepare before contacting you?</h3>
+                        <h3 data-lang-fr>Quelles informations dois-je préparer avant de vous contacter?</h3>
+                        <div class="faq-toggle">
+                            <i class="fas fa-plus"></i>
+                        </div>
                     </div>
                     <div class="faq-answer">
-                        <p>Our team has extensive experience navigating both European regulations (like GDPR) and African regulatory frameworks. We design solutions that can comply with multiple regulatory environments simultaneously, ensuring your business can operate seamlessly across borders. We stay current with evolving regulations in all markets we serve to provide appropriate guidance.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="faq-container" id="faq-fr" style="display: none;">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Que se passe-t-il après avoir soumis un formulaire de contact?</h3>
-                        <button class="faq-toggle" aria-label="Toggle answer"><i class="fas fa-plus"></i></button>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Après avoir soumis votre formulaire de contact, vous recevrez un email de confirmation automatique. Notre équipe examinera votre demande et vous répondra dans un délai d'un jour ouvrable pour planifier une consultation ou répondre à vos questions.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Pouvons-nous programmer un appel vidéo au lieu d'une réunion en personne?</h3>
-                        <button class="faq-toggle" aria-label="Toggle answer"><i class="fas fa-plus"></i></button>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Absolument! Nous effectuons régulièrement des consultations via des plateformes de vidéoconférence comme Microsoft Teams, Zoom ou Google Meet. Indiquez simplement votre préférence pour une réunion virtuelle lorsque vous nous contactez.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Fournissez-vous des services dans les pays africains?</h3>
-                        <button class="faq-toggle" aria-label="Toggle answer"><i class="fas fa-plus"></i></button>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Oui! Bien que notre bureau principal soit situé à Wavre, en Belgique, nous fournissons des services aux clients à travers l'Europe et l'Afrique. Nous avons de l'expérience sur différents marchés africains, notamment en RD Congo, au Rwanda, au Kenya, au Nigeria et en Afrique du Sud. Notre équipe comprend les défis et opportunités technologiques uniques des marchés africains et peut fournir des solutions adaptées aux besoins locaux tout en maintenant les normes européennes.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Comment gérez-vous les différences réglementaires entre l'UE et l'Afrique?</h3>
-                        <button class="faq-toggle" aria-label="Toggle answer"><i class="fas fa-plus"></i></button>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Notre équipe possède une vaste expérience dans la navigation entre les réglementations européennes (comme le RGPD) et les cadres réglementaires africains. Nous concevons des solutions qui peuvent se conformer simultanément à plusieurs environnements réglementaires, garantissant que votre entreprise peut fonctionner sans problème à travers les frontières. Nous restons à jour avec l'évolution des réglementations sur tous les marchés que nous servons pour fournir des conseils appropriés.</p>
+                        <p data-lang-en>To help us provide the most accurate information, it's helpful to have: a brief description of your project or challenge, your timeframe, budget considerations, and any specific technical requirements. However, we're happy to discuss your needs at any stage of planning.</p>
+                        <p data-lang-fr>Pour nous aider à fournir les informations les plus précises, il est utile d'avoir: une brève description de votre projet ou défi, votre calendrier, vos considérations budgétaires et toutes exigences techniques spécifiques. Cependant, nous sommes heureux de discuter de vos besoins à n'importe quelle étape de la planification.</p>
                     </div>
                 </div>
             </div>
@@ -568,7 +357,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <img src="Logo Skylar Solutions/logo_transparent.png" alt="Skylar Solutions Logo" class="footer-logo" style="height: 240px; width: auto;">
+                    <img src="Logo Skylar Solutions/logo_transparent.png" alt="Skylar Solutions Logo" class="footer-logo" style="height: 150px; width: auto;">
                     <p data-lang-en>Your trusted partner for digital transformation and innovative technology solutions.</p>
                     <p data-lang-fr>Votre partenaire de confiance pour la transformation digitale et les solutions technologiques innovantes.</p>
                     <div class="social-links">
@@ -582,11 +371,16 @@
                     <h4 data-lang-en>Quick Links</h4>
                     <h4 data-lang-fr>Liens Rapides</h4>
                     <ul>
-                        <li><a href="about.html" data-lang-en>About Us</a><a href="about.html" data-lang-fr>À Propos</a></li>
-                        <li><a href="services/services.html" data-lang-en>Services</a><a href="services/services.html" data-lang-fr>Services</a></li>
-                        <li><a href="blog.html" data-lang-en>Blog</a><a href="blog.html" data-lang-fr>Blog</a></li>
-                        <li><a href="careers.html" data-lang-en>Careers</a><a href="careers.html" data-lang-fr>Carrières</a></li>
-                        <li><a href="contact.html" data-lang-en>Contact</a><a href="contact.html" data-lang-fr>Contact</a></li>
+                        <li data-lang-en><a href="about.html">About Us</a></li>
+                        <li data-lang-fr><a href="about.html">À Propos</a></li>
+                        <li data-lang-en><a href="services/services.html">Services</a></li>
+                        <li data-lang-fr><a href="services/services.html">Services</a></li>
+                        <li data-lang-en><a href="blog.html">Blog</a></li>
+                        <li data-lang-fr><a href="blog.html">Blog</a></li>
+                        <li data-lang-en><a href="careers.html">Careers</a></li>
+                        <li data-lang-fr><a href="careers.html">Carrières</a></li>
+                        <li data-lang-en><a href="contact.html">Contact</a></li>
+                        <li data-lang-fr><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
 
@@ -624,11 +418,11 @@
                 <p data-lang-en>&copy; 2024 Skylar Solutions. All rights reserved.</p>
                 <p data-lang-fr>&copy; 2024 Skylar Solutions. Tous droits réservés.</p>
                 <div class="footer-links">
-                    <a href="privacy-policy.html" data-lang-en>Privacy Policy</a>
-                    <a href="privacy-policy.html" data-lang-fr>Politique de Confidentialité</a>
+                    <span data-lang-en><a href="privacy-policy.html">Privacy Policy</a></span>
+                    <span data-lang-fr><a href="privacy-policy.html">Politique de Confidentialité</a></span>
                     <span class="separator">|</span>
-                    <a href="terms.html" data-lang-en>Terms of Service</a>
-                    <a href="terms.html" data-lang-fr>Conditions d'Utilisation</a>
+                    <span data-lang-en><a href="terms.html">Terms of Service</a></span>
+                    <span data-lang-fr><a href="terms.html">Conditions d'Utilisation</a></span>
                 </div>
             </div>
         </div>
@@ -639,140 +433,70 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-
-    <!-- Cookie Consent Banner -->
-    <div class="cookie-consent" id="cookieConsent">
-        <div class="cookie-content">
-            <p>We use cookies to enhance your browsing experience, analyze site traffic, and personalize content. By clicking "Accept All", you consent to our use of cookies.</p>
-            <div class="cookie-buttons">
-                <button id="cookieSettings" class="btn-text">Cookie Settings</button>
-                <button id="cookieAccept" class="btn btn-primary">Accept All</button>
-            </div>
-        </div>
-    </div>
-
     <!-- Scripts -->
-    <script src="script.js" defer></script>
-    <script src="cookie-consent.js" defer></script>
+    <script src="script.js"></script>
     <script>
-        // Contact form validation and submission
+        // FAQ toggling
         document.addEventListener('DOMContentLoaded', function() {
-            // Toggle FAQ items
             const faqItems = document.querySelectorAll('.faq-item');
+            
             faqItems.forEach(item => {
-                const toggle = item.querySelector('.faq-toggle');
+                const question = item.querySelector('.faq-question');
                 const answer = item.querySelector('.faq-answer');
                 
-                toggle.addEventListener('click', () => {
-                    const isOpen = item.classList.contains('active');
+                question.addEventListener('click', function() {
+                    // Toggle current item
+                    const isActive = item.classList.contains('active');
                     
-                    // Close all other items
+                    // Close other open items
                     faqItems.forEach(otherItem => {
-                        if (otherItem !== item) {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
                             otherItem.classList.remove('active');
-                            otherItem.querySelector('.faq-answer').style.maxHeight = null;
-                            otherItem.querySelector('.faq-toggle i').className = 'fas fa-plus';
+                            otherItem.querySelector('.faq-answer').style.maxHeight = '0';
                         }
                     });
                     
                     // Toggle current item
-                    if (isOpen) {
+                    if (isActive) {
                         item.classList.remove('active');
-                        answer.style.maxHeight = null;
-                        toggle.querySelector('i').className = 'fas fa-plus';
+                        answer.style.maxHeight = '0';
                     } else {
                         item.classList.add('active');
                         answer.style.maxHeight = answer.scrollHeight + 'px';
-                        toggle.querySelector('i').className = 'fas fa-minus';
                     }
                 });
             });
             
-            // Form validation and submission
-            const forms = document.querySelectorAll('#contactForm-en, #contactForm-fr');
+            // Form submission
+            const contactForm = document.getElementById('contactForm');
+            const formMessage = document.getElementById('formMessage');
             
-            forms.forEach(form => {
-                form.addEventListener('submit', function(e) {
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
                     e.preventDefault();
                     
-                    // Form validation
-                    let isValid = true;
-                    const requiredFields = form.querySelectorAll('[required]');
+                    // Simulate form submission (replace with actual submission code)
+                    formMessage.className = 'form-message success';
+                    formMessage.style.display = 'block';
                     
-                    requiredFields.forEach(field => {
-                        if (!field.value.trim()) {
-                            isValid = false;
-                            field.classList.add('error');
-                        } else {
-                            field.classList.remove('error');
-                        }
-                    });
+                    // Detect language
+                    const lang = document.documentElement.lang;
                     
-                    // Email validation
-                    const emailField = form.querySelector('input[type="email"]');
-                    if (emailField && emailField.value) {
-                        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                        if (!emailPattern.test(emailField.value)) {
-                            isValid = false;
-                            emailField.classList.add('error');
-                        }
-                    }
-                    
-                    if (isValid) {
-                        // In a real implementation, you would send the form data to a server
-                        // For demonstration, show success message
-                        const formContainer = form.parentElement;
-                        const successMsg = document.createElement('div');
-                        successMsg.className = 'form-success';
-                        
-                        if (form.id === 'contactForm-en') {
-                            successMsg.innerHTML = '<i class="fas fa-check-circle"></i> Thank you for your message! We will get back to you within 1 business day.';
-                        } else {
-                            successMsg.innerHTML = '<i class="fas fa-check-circle"></i> Merci pour votre message! Nous vous répondrons dans un délai d\'un jour ouvrable.';
-                        }
-                        
-                        form.style.display = 'none';
-                        formContainer.appendChild(successMsg);
-                        
-                        // Reset form
-                        form.reset();
-                        
-                        // Remove success message after 5 seconds
-                        setTimeout(() => {
-                            successMsg.remove();
-                            form.style.display = 'block';
-                        }, 5000);
-                    }
-                });
-                
-                // Remove error class on input
-                form.querySelectorAll('.form-control').forEach(input => {
-                    input.addEventListener('input', function() {
-                        this.classList.remove('error');
-                    });
-                });
-            });
-            
-            // Language switcher for FAQ section
-            const langButtons = document.querySelectorAll('.lang-btn');
-            langButtons.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const lang = this.getAttribute('data-lang');
-                    
-                    // Toggle FAQ visibility based on language
-                    if (lang === 'en') {
-                        document.getElementById('faq-en').style.display = 'block';
-                        document.getElementById('faq-fr').style.display = 'none';
-                        document.getElementById('faq-title-en').style.display = 'block';
-                        document.getElementById('faq-title-fr').style.display = 'none';
+                    if (lang === 'fr') {
+                        formMessage.textContent = 'Merci pour votre message! Nous vous contacterons sous peu.';
                     } else {
-                        document.getElementById('faq-en').style.display = 'none';
-                        document.getElementById('faq-fr').style.display = 'block';
-                        document.getElementById('faq-title-en').style.display = 'none';
-                        document.getElementById('faq-title-fr').style.display = 'block';
+                        formMessage.textContent = 'Thank you for your message! We will be in touch soon.';
                     }
+                    
+                    // Reset the form
+                    contactForm.reset();
+                    
+                    // Hide success message after a few seconds
+                    setTimeout(() => {
+                        formMessage.style.display = 'none';
+                    }, 5000);
                 });
-            });
+            }
         });
     </script>
 </body>
