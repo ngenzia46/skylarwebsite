@@ -53,6 +53,9 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
     
+    <!-- WebP-specific CSS -->
+    <link rel="stylesheet" href="webp-styles.css">
+    
     <!-- Cookie Consent -->
     <link rel="stylesheet" href="cookie-consent.css">
     
@@ -237,7 +240,7 @@
     <header class="header">
         <div class="container">
             <a href="index.html" class="logo">
-                <img src="Logo Skylar Solutions/logo_transparent.png" style="height: 150px; width: auto;" alt="Skylar Solutions Logo">
+                <img src="Logo Skylar Solutions/logo_transparent.png" style="height: 180px; width: auto;" alt="Skylar Solutions Logo">
             </a>
             <div class="navbar-container">
                 <div class="navbar-toggle">
@@ -258,6 +261,7 @@
                         </ul>
                     </li>
                     <li><a href="blog.html" data-lang-en="Blog" data-lang-fr="Blog">Blog</a></li>
+                    <li><a href="careers.html" data-lang-en="Careers" data-lang-fr="Carrières">Careers</a></li>
                     <li><a href="Contact.html" data-lang-en="Contact" data-lang-fr="Contact">Contact</a></li>
                 </ul>
                 <div class="language-switcher">
@@ -270,18 +274,18 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="home-hero">
         <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title" data-lang-en>Your Partner for Digital Transformation</h1>
-                <h1 class="hero-title" data-lang-fr>Votre Partenaire pour la Transformation Digitale</h1>
+            <div class="home-hero-content">
+                <h1 data-lang-en>Strategic Digital Transformation Partner</h1>
+                <h1 data-lang-fr>Partenaire Stratégique de Transformation Digitale</h1>
                 
-                <p class="hero-subtitle" data-lang-en>Transforming business challenges into technological opportunities</p>
-                <p class="hero-subtitle" data-lang-fr>Transformer les défis commerciaux en opportunités technologiques</p>
+                <p class="hero-subtitle" data-lang-en>We transform business challenges into innovative technology solutions</p>
+                <p class="hero-subtitle" data-lang-fr>Nous transformons les défis commerciaux en solutions technologiques innovantes</p>
                 
-                <div class="cta-group">
-                    <a href="contact.html" class="btn btn-primary pulse-animation" data-lang-en>Schedule Free Consultation</a>
-                    <a href="contact.html" class="btn btn-primary pulse-animation" data-lang-fr>Planifier une Consultation Gratuite</a>
+                <div class="hero-cta">
+                    <a href="contact.html" class="btn btn-primary" data-lang-en>Schedule Consultation</a>
+                    <a href="contact.html" class="btn btn-primary" data-lang-fr>Planifier une Consultation</a>
                     
                     <a href="services/services.html" class="btn btn-outline" data-lang-en>Explore Services</a>
                     <a href="services/services.html" class="btn btn-outline" data-lang-fr>Explorer les Services</a>
@@ -289,16 +293,8 @@
             </div>
             
             <div class="hero-image">
-                <img src="images/hero-illustration.webp" loading="eager" style="max-width: 650px; height: auto;" alt="Digital transformation illustration">
+                <img src="images/hero-illustration.webp" loading="eager" alt="Digital transformation illustration">
             </div>
-        </div>
-        
-        <div class="scroll-indicator">
-            <span class="mouse">
-                <span class="wheel"></span>
-            </span>
-            <p data-lang-en>Scroll to explore</p>
-            <p data-lang-fr>Défilez pour explorer</p>
         </div>
     </section>
 
@@ -308,24 +304,29 @@
             <h2 class="section-subtitle" data-lang-en>Trusted by industry leaders</h2>
             <h2 class="section-subtitle" data-lang-fr>Fait confiance par les leaders de l'industrie</h2>
             <div class="client-logos">
+                <!-- Already using WebP -->
                 <img src="images/client 1 - gsk.webp" style="max-height: 40px; width: auto;" loading="lazy" alt="GSK client logo">
-                <img src="images/client 2 - UCB.png" style="max-height: 40px; width: auto;" loading="lazy" alt="UCB client logo">
-                <img src="images/CLIENT 3 - BGFI BANK.png" style="max-height: 40px; width: auto;" loading="lazy" alt="BGFI Bank client logo">
-                <img src="images/Client 4 - SPF Finances.png" style="max-height: 40px; width: auto;" loading="lazy" alt="SPF Finances client logo">
-                <img src="images/Client 5 - Citibank.png" style="max-height: 40px; width: auto;" loading="lazy" alt="Citibank client logo">
-                <img src="images/CLIENT 6 - GE Money.png" style="max-height: 40px; width: auto;" loading="lazy" alt="GE Money client logo">
+                
+                <!-- Converted images with WebP fallback -->
+                <img src="images/client 2 - UCB.png" data-src-webp="images/client 2 - UCB.webp" style="max-height: 40px; width: auto;" loading="lazy" alt="UCB client logo">
+                <img src="images/CLIENT 3 - BGFI BANK.png" data-src-webp="images/CLIENT 3 - BGFI BANK.webp" style="max-height: 40px; width: auto;" loading="lazy" alt="BGFI Bank client logo">
+                <img src="images/Client 4 - SPF Finances.png" data-src-webp="images/Client 4 - SPF Finances.webp" style="max-height: 40px; width: auto;" loading="lazy" alt="SPF Finances client logo">
+                <img src="images/Client 5 - Citibank.png" data-src-webp="images/Client 5 - Citibank.webp" style="max-height: 40px; width: auto;" loading="lazy" alt="Citibank client logo">
+                <img src="images/CLIENT 6 - GE Money.png" data-src-webp="images/CLIENT 6 - GE Money.webp" style="max-height: 40px; width: auto;" loading="lazy" alt="GE Money client logo">
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section class="services">
+    <section class="key-services">
         <div class="container">
-            <h2 class="section-title" data-lang-en>Our Core Services</h2>
-            <h2 class="section-title" data-lang-fr>Nos Services Principaux</h2>
-            
-            <p class="section-description" data-lang-en>Comprehensive technology solutions tailored to solve your business challenges</p>
-            <p class="section-description" data-lang-fr>Solutions technologiques complètes adaptées pour résoudre vos défis commerciaux</p>
+            <div class="section-header">
+                <h2 class="section-title" data-lang-en>Our Services</h2>
+                <h2 class="section-title" data-lang-fr>Nos Services</h2>
+                
+                <p class="section-description" data-lang-en>Comprehensive technology solutions tailored to your business needs</p>
+                <p class="section-description" data-lang-fr>Solutions technologiques complètes adaptées à vos besoins</p>
+            </div>
             
             <div class="services-grid">
                 <article class="service-card">
@@ -335,22 +336,11 @@
                     <h3 data-lang-en>Application Development</h3>
                     <h3 data-lang-fr>Développement d'Applications</h3>
                     
-                    <p data-lang-en>Transform your ideas into powerful custom applications tailored to your unique business needs.</p>
-                    <p data-lang-fr>Transformez vos idées en applications personnalisées puissantes adaptées à vos besoins uniques.</p>
+                    <p data-lang-en>Custom business applications designed to transform your ideas into powerful solutions.</p>
+                    <p data-lang-fr>Applications métier sur mesure conçues pour transformer vos idées en solutions puissantes.</p>
                     
-                    <ul class="service-features">
-                        <li data-lang-en>Custom business applications</li>
-                        <li data-lang-fr>Applications métier sur mesure</li>
-                        
-                        <li data-lang-en>Low-code/no-code solutions</li>
-                        <li data-lang-fr>Solutions low-code/no-code</li>
-                        
-                        <li data-lang-en>Seamless integration with existing systems</li>
-                        <li data-lang-fr>Intégration transparente avec les systèmes existants</li>
-                    </ul>
-                    
-                    <a href="services/app-development.html" class="card-link" data-lang-en>Learn More <i class="fas fa-arrow-right"></i></a>
-                    <a href="services/app-development.html" class="card-link" data-lang-fr>En savoir plus <i class="fas fa-arrow-right"></i></a>
+                    <a href="services/app-development.html" class="btn btn-outline" data-lang-en>Learn More</a>
+                    <a href="services/app-development.html" class="btn btn-outline" data-lang-fr>En savoir plus</a>
                 </article>
 
                 <article class="service-card">
@@ -360,22 +350,11 @@
                     <h3 data-lang-en>AI & Data Sciences</h3>
                     <h3 data-lang-fr>IA & Sciences des Données</h3>
                     
-                    <p data-lang-en>Unlock strategic insights and competitive advantages from your data using advanced analytics and AI.</p>
-                    <p data-lang-fr>Débloquez des insights stratégiques et des avantages concurrentiels à partir de vos données grâce à l'analyse avancée et l'IA.</p>
+                    <p data-lang-en>Advanced analytics and AI solutions to unlock strategic insights from your data.</p>
+                    <p data-lang-fr>Solutions d'analyse avancée et d'IA pour exploiter des insights stratégiques de vos données.</p>
                     
-                    <ul class="service-features">
-                        <li data-lang-en>Predictive analytics & modeling</li>
-                        <li data-lang-fr>Analytique prédictive & modélisation</li>
-                        
-                        <li data-lang-en>Data visualization & insights</li>
-                        <li data-lang-fr>Visualisation des données & insights</li>
-                        
-                        <li data-lang-en>AI-powered automation</li>
-                        <li data-lang-fr>Automatisation basée sur l'IA</li>
-                    </ul>
-                    
-                    <a href="services/ai-data-sciences.html" class="card-link" data-lang-en>Learn More <i class="fas fa-arrow-right"></i></a>
-                    <a href="services/ai-data-sciences.html" class="card-link" data-lang-fr>En savoir plus <i class="fas fa-arrow-right"></i></a>
+                    <a href="services/ai-data-sciences.html" class="btn btn-outline" data-lang-en>Learn More</a>
+                    <a href="services/ai-data-sciences.html" class="btn btn-outline" data-lang-fr>En savoir plus</a>
                 </article>
 
                 <article class="service-card">
@@ -385,217 +364,146 @@
                     <h3 data-lang-en>Cyber Security</h3>
                     <h3 data-lang-fr>Cybersécurité</h3>
                     
-                    <p data-lang-en>Safeguard your critical information assets, ensure regulatory compliance, and build trust with robust security solutions.</p>
-                    <p data-lang-fr>Protégez vos actifs d'information critiques, assurez la conformité réglementaire et établissez la confiance avec des solutions de sécurité robustes.</p>
+                    <p data-lang-en>Protect your critical information assets with robust security solutions and ensure compliance.</p>
+                    <p data-lang-fr>Protégez vos actifs d'information critiques avec des solutions de sécurité robustes et assurez la conformité.</p>
                     
-                    <ul class="service-features">
-                        <li data-lang-en>Security audits & implementation</li>
-                        <li data-lang-fr>Audits de sécurité & implémentation</li>
-                        
-                        <li data-lang-en>GDPR & NIS2 compliance</li>
-                        <li data-lang-fr>Conformité RGPD & NIS2</li>
-                        
-                        <li data-lang-en>Threat detection & prevention</li>
-                        <li data-lang-fr>Détection & prévention des menaces</li>
-                    </ul>
-                    
-                    <a href="services/cyber-security.html" class="card-link" data-lang-en>Learn More <i class="fas fa-arrow-right"></i></a>
-                    <a href="services/cyber-security.html" class="card-link" data-lang-fr>En savoir plus <i class="fas fa-arrow-right"></i></a>
-                </article>
-                
-                <article class="service-card">
-                    <div class="card-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3 data-lang-en>Collaboration Solutions</h3>
-                    <h3 data-lang-fr>Solutions de Collaboration</h3>
-                    
-                    <p data-lang-en>Empower your teams with integrated digital workplace platforms that enhance communication and productivity.</p>
-                    <p data-lang-fr>Donnez à vos équipes les moyens d'agir avec des plateformes de travail numériques intégrées qui améliorent la communication et la productivité.</p>
-                    
-                    <ul class="service-features">
-                        <li data-lang-en>Digital workplace solutions</li>
-                        <li data-lang-fr>Solutions de lieu de travail numérique</li>
-                        
-                        <li data-lang-en>Remote team enablement</li>
-                        <li data-lang-fr>Habilitation des équipes à distance</li>
-                        
-                        <li data-lang-en>Collaborative tools integration</li>
-                        <li data-lang-fr>Intégration d'outils collaboratifs</li>
-                    </ul>
-                    
-                    <a href="services/collaboration-solutions.html" class="card-link" data-lang-en>Learn More <i class="fas fa-arrow-right"></i></a>
-                    <a href="services/collaboration-solutions.html" class="card-link" data-lang-fr>En savoir plus <i class="fas fa-arrow-right"></i></a>
-                </article>
-                
-                <article class="service-card">
-                    <div class="card-icon">
-                        <i class="fas fa-link"></i>
-                    </div>
-                    <h3>Blockchain & NFT Advisory</h3>
-                    <p>Navigate the complexities of decentralized technologies with strategic guidance and development for blockchain applications.</p>
-                    <ul class="service-features">
-                        <li>Smart contracts development</li>
-                        <li>Tokenization strategies</li>
-                        <li>Blockchain implementation</li>
-                    </ul>
-                    <a href="services/blockchain-nft.html" class="card-link">Learn More <i class="fas fa-arrow-right"></i></a>
-                </article>
-                
-                <article class="service-card">
-                    <div class="card-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h3>24/7 Support</h3>
-                    <p>Ensure business continuity with our reliable, round-the-clock technical assistance and proactive monitoring.</p>
-                    <ul class="service-features">
-                        <li>24/7 technical support</li>
-                        <li>System maintenance</li>
-                        <li>Performance monitoring</li>
-                    </ul>
-                    <a href="services/support.html" class="card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    <a href="services/cyber-security.html" class="btn btn-outline" data-lang-en>Learn More</a>
+                    <a href="services/cyber-security.html" class="btn btn-outline" data-lang-fr>En savoir plus</a>
                 </article>
             </div>
-        </div>
-    </section>
-    
-    <!-- Why Choose Us Section -->
-    <section class="why-choose-us">
-        <div class="container">
-            <h2 class="section-title" data-lang-en>Why Choose Skylar Solutions?</h2>
-            <h2 class="section-title" data-lang-fr>Pourquoi Choisir Skylar Solutions ?</h2>
             
-            <div class="features-grid">
-                <div class="feature-card">
-                    <i class="fas fa-handshake"></i>
-                    <h3 data-lang-en>Trusted Partnership</h3>
-                    <h3 data-lang-fr>Partenariat de Confiance</h3>
-                    <p data-lang-en>We build long-term relationships based on trust, transparency, and mutual success.</p>
-                    <p data-lang-fr>Nous construisons des relations à long terme basées sur la confiance, la transparence et le succès mutuel.</p>
-                </div>
-
-                <div class="feature-card">
-                    <i class="fas fa-lightbulb"></i>
-                    <h3 data-lang-en>Innovative Solutions</h3>
-                    <h3 data-lang-fr>Solutions Innovantes</h3>
-                    <p data-lang-en>We leverage cutting-edge technologies to deliver innovative solutions that drive real business value.</p>
-                    <p data-lang-fr>Nous utilisons des technologies de pointe pour fournir des solutions innovantes qui génèrent une réelle valeur commerciale.</p>
-                </div>
-
-                <div class="feature-card">
-                    <i class="fas fa-users-cog"></i>
-                    <h3 data-lang-en>Expert Team</h3>
-                    <h3 data-lang-fr>Équipe Experte</h3>
-                    <p data-lang-en>Our certified professionals bring years of industry experience and technical expertise.</p>
-                    <p data-lang-fr>Nos professionnels certifiés apportent des années d'expérience dans l'industrie et d'expertise technique.</p>
-                </div>
-
-                <div class="feature-card">
-                    <i class="fas fa-chart-line"></i>
-                    <h3 data-lang-en>Results-Driven</h3>
-                    <h3 data-lang-fr>Axé sur les Résultats</h3>
-                    <p data-lang-en>We focus on delivering measurable outcomes that align with your business objectives.</p>
-                    <p data-lang-fr>Nous nous concentrons sur l'obtention de résultats mesurables alignés sur vos objectifs commerciaux.</p>
-                </div>
+            <div class="services-cta">
+                <a href="services/services.html" class="btn btn-primary" data-lang-en>View All Services</a>
+                <a href="services/services.html" class="btn btn-primary" data-lang-fr>Voir Tous les Services</a>
             </div>
         </div>
     </section>
     
-    <!-- About Us Highlight Section -->
-    <section class="about-highlight">
+    <!-- About Section -->
+    <section class="about-section">
         <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>Leader in Digital Transformation</h2>
-                    <p>In a rapidly evolving technological landscape, Skylar Solutions serves as a beacon for companies seeking modernity. We are committed to helping our clients navigate confidently through this constantly changing technological environment.</p>
-                    <p>Our team consists of ambitious problem solvers, passionate about creating processes, tools, and systems that deliver real added value. Our passion is complemented by proven experience, spanning nearly a decade, in delivering innovative and high-quality solutions. Over the years, we have consolidated our expertise in key sectors such as Financial Services, Public Sector, and Pharmaceutical R&D.</p>
-                    <p>Trusting Skylar Solutions means partnering with a dedicated team with a clear vision, unwavering commitment to excellence, and a steadfast determination to deliver revolutionary solutions tailored to each client's specific needs.</p>
-                    <a href="about.html" class="btn btn-secondary">Learn More About Us</a>
+            <div class="about-grid">
+                <div class="about-content">
+                    <div class="section-header">
+                        <h2 class="section-title" data-lang-en>Why Choose Skylar Solutions</h2>
+                        <h2 class="section-title" data-lang-fr>Pourquoi Choisir Skylar Solutions</h2>
+                    </div>
+                    
+                    <p class="about-lead" data-lang-en>We are determined to help our clients navigate with confidence in this constantly changing technological environment through innovative solutions that drive growth.</p>
+                    <p class="about-lead" data-lang-fr>Nous sommes déterminés à aider nos clients à naviguer avec confiance dans cet environnement technologique en constante évolution grâce à des solutions innovantes qui stimulent la croissance.</p>
+                    
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <i class="fas fa-handshake"></i>
+                            <div>
+                                <h3 data-lang-en>Trusted Partnership</h3>
+                                <h3 data-lang-fr>Partenariat de Confiance</h3>
+                                <p data-lang-en>We build long-term relationships based on trust and mutual success.</p>
+                                <p data-lang-fr>Nous construisons des relations à long terme basées sur la confiance et le succès mutuel.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <i class="fas fa-lightbulb"></i>
+                            <div>
+                                <h3 data-lang-en>Innovative Solutions</h3>
+                                <h3 data-lang-fr>Solutions Innovantes</h3>
+                                <p data-lang-en>We leverage cutting-edge technologies to deliver real business value.</p>
+                                <p data-lang-fr>Nous utilisons des technologies de pointe pour générer une réelle valeur commerciale.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <i class="fas fa-chart-line"></i>
+                            <div>
+                                <h3 data-lang-en>Results-Driven</h3>
+                                <h3 data-lang-fr>Axé sur les Résultats</h3>
+                                <p data-lang-en>We focus on delivering measurable outcomes aligned with your objectives.</p>
+                                <p data-lang-fr>Nous nous concentrons sur l'obtention de résultats mesurables alignés sur vos objectifs.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-cta">
+                        <a href="about.html" class="btn btn-outline" data-lang-en>Learn More About Us</a>
+                        <a href="about.html" class="btn btn-outline" data-lang-fr>En Savoir Plus Sur Nous</a>
+                    </div>
                 </div>
                 
                 <div class="about-image">
-                    <img src="images/about-image.webp" loading="lazy" style="max-width: 400px; height: auto;" alt="A team of IT consultants collaborating">
+                    <img src="images/about-image.webp" loading="lazy" alt="Skylar Solutions Team">
                 </div>
             </div>
         </div>
     </section>
-
+    
     <!-- Testimonials Section -->
-    <section class="testimonials">
+    <section class="testimonials-section">
         <div class="container">
-            <h2 class="section-title">What Our Clients Say</h2>
-            
-            <div class="testimonial-slider" id="testimonialSlider">
-                <div class="testimonial-slide">
-                    <div class="testimonial-content">
-                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
-                        <p>"Skylar Solutions transformed our operations with a custom application that streamlined our workflow and increased productivity by 30%. Their team's expertise and professionalism exceeded our expectations."</p>
-                        <div class="client-info">
-                            <img src="images/client-avatar1.webp" loading="lazy" style="width: 60px; height: 60px; object-fit: cover; border-radius: 50%;" alt="Client portrait">
-                            <div>
-                                <h4>Jean Dupont</h4>
-                                <p>CTO, Financial Services Company</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-slide">
-                    <div class="testimonial-content">
-                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
-                        <p>"The data analytics platform developed by Skylar Solutions has been instrumental in driving our data-informed decision making. We've seen a significant ROI within the first year of implementation."</p>
-                        <div class="client-info">
-                            <img src="images/client-avatar2.webp" loading="lazy" style="width: 60px; height: 60px; object-fit: cover; border-radius: 50%;" alt="Client portrait">
-                            <div>
-                                <h4>Marie Lambert</h4>
-                                <p>Data Director, Healthcare Organization</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-slide">
-                    <div class="testimonial-content">
-                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
-                        <p>"Skylar Solutions' cybersecurity audit identified critical vulnerabilities that other consultants had missed. Their remediation plan was clear, actionable, and helped us achieve regulatory compliance ahead of schedule."</p>
-                        <div class="client-info">
-                            <img src="images/client-avatar3.webp" loading="lazy" style="width: 60px; height: 60px; object-fit: cover; border-radius: 50%;" alt="Client portrait">
-                            <div>
-                                <h4>Thomas Renard</h4>
-                                <p>CISO, Public Sector Institution</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="section-header">
+                <h2 class="section-title" data-lang-en>Client Success Stories</h2>
+                <h2 class="section-title" data-lang-fr>Témoignages de Clients</h2>
+                <p class="section-description" data-lang-en>See what our clients have to say about working with us</p>
+                <p class="section-description" data-lang-fr>Découvrez ce que nos clients disent de notre collaboration</p>
             </div>
             
-            <div class="slider-controls">
-                <button id="prevSlide" aria-label="Previous testimonial"><i class="fas fa-chevron-left"></i></button>
-                <div class="slider-dots">
-                    <button class="dot active" aria-label="Testimonial 1"></button>
-                    <button class="dot" aria-label="Testimonial 2"></button>
-                    <button class="dot" aria-label="Testimonial 3"></button>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                    <p data-lang-en>"Skylar Solutions transformed our operations with a custom application that streamlined our workflow and increased productivity by 30%."</p>
+                    <p data-lang-fr>"Skylar Solutions a transformé nos opérations avec une application personnalisée qui a rationalisé notre flux de travail et augmenté la productivité de 30%."</p>
+                    <div class="client-info">
+                        <img src="images/client-avatar1.webp" loading="lazy" alt="Client portrait">
+                        <div>
+                            <h4>Jean Dupont</h4>
+                            <p>CTO, Financial Services</p>
+                        </div>
+                    </div>
                 </div>
-                <button id="nextSlide" aria-label="Next testimonial"><i class="fas fa-chevron-right"></i></button>
+                
+                <div class="testimonial-card">
+                    <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                    <p data-lang-en>"The data analytics platform has been instrumental in driving our data-informed decision making with significant ROI."</p>
+                    <p data-lang-fr>"La plateforme d'analyse de données a joué un rôle déterminant dans notre prise de décision basée sur les données avec un ROI significatif."</p>
+                    <div class="client-info">
+                        <img src="images/client-avatar2.webp" loading="lazy" alt="Client portrait">
+                        <div>
+                            <h4>Marie Lambert</h4>
+                            <p>Data Director, Healthcare</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                    <p data-lang-en>"Skylar Solutions' cybersecurity audit identified critical vulnerabilities and helped us achieve compliance ahead of schedule."</p>
+                    <p data-lang-fr>"L'audit de cybersécurité de Skylar Solutions a identifié des vulnérabilités critiques et nous a aidés à atteindre la conformité avant l'échéance."</p>
+                    <div class="client-info">
+                        <img src="images/client-avatar3.webp" loading="lazy" alt="Client portrait">
+                        <div>
+                            <h4>Thomas Renard</h4>
+                            <p>CISO, Public Sector</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="cta-section">
+    <section class="cta-banner">
         <div class="container">
-            <h2 data-lang-en>Ready to Transform Your Business?</h2>
-            <h2 data-lang-fr>Prêt à Transformer Votre Entreprise ?</h2>
-            
-            <p data-lang-en>Let's discuss how we can help you achieve your digital transformation goals.</p>
-            <p data-lang-fr>Discutons de la façon dont nous pouvons vous aider à atteindre vos objectifs de transformation numérique.</p>
-            
-            <div class="cta-buttons">
-                <a href="contact.html" class="btn btn-primary" data-lang-en>Schedule a Consultation</a>
-                <a href="contact.html" class="btn btn-primary" data-lang-fr>Planifier une Consultation</a>
+            <div class="cta-content">
+                <h2 data-lang-en>Ready to Transform Your Business?</h2>
+                <h2 data-lang-fr>Prêt à Transformer Votre Entreprise ?</h2>
                 
-                <a href="tel:+3210250018" class="btn btn-outline" data-lang-en>Call Us: +32 10 25.00.18</a>
-                <a href="tel:+3210250018" class="btn btn-outline" data-lang-fr>Appelez-nous: +32 10 25.00.18</a>
+                <p data-lang-en>Let's discuss how our expertise can address your specific challenges and goals</p>
+                <p data-lang-fr>Discutons de la façon dont notre expertise peut répondre à vos défis et objectifs spécifiques</p>
+                
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn btn-primary" data-lang-en>Schedule a Consultation</a>
+                    <a href="contact.html" class="btn btn-primary" data-lang-fr>Planifier une Consultation</a>
+                </div>
             </div>
         </div>
     </section>
@@ -603,69 +511,74 @@
     <!-- Latest Blog Posts -->
     <section class="blog-preview">
         <div class="container">
-            <h2 class="section-title">Latest Insights</h2>
-            <p class="section-description">Stay updated with industry trends and our latest thinking</p>
+            <div class="section-header">
+                <h2 class="section-title" data-lang-en>Latest Insights</h2>
+                <h2 class="section-title" data-lang-fr>Dernières Actualités</h2>
+                <p class="section-description" data-lang-en>Stay updated with industry trends and our latest thinking</p>
+                <p class="section-description" data-lang-fr>Restez informé des tendances de l'industrie et de nos dernières réflexions</p>
+            </div>
             
             <div class="blog-grid">
                 <article class="blog-card">
-                    <a href="blog/digital-transformation-trends.html" class="blog-image">
-                        <img src="images/ffff.jpg" loading="lazy" style="width: 100%; height: auto; max-height: 200px; object-fit: cover;" alt="Digital transformation trends diagram">
+                    <a href="blog.html" class="blog-image">
+                        <img src="images/ffff.jpg" loading="lazy" alt="Digital transformation trends diagram">
                     </a>
                     <div class="blog-content">
                         <span class="blog-date">April 1, 2025</span>
-                        <h3><a href="blog/digital-transformation-trends.html">Digital Transformation Trends for 2025</a></h3>
-                        <p>Exploring how AI, automation, and data analytics are reshaping businesses globally...</p>
-                        <a href="blog/digital-transformation-trends.html" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+                        <h3 data-lang-en><a href="blog.html">Digital Transformation Trends for 2025</a></h3>
+                        <h3 data-lang-fr><a href="blog.html">Tendances de Transformation Digitale pour 2025</a></h3>
+                        <p data-lang-en>Exploring how AI, automation, and data analytics are reshaping businesses globally.</p>
+                        <p data-lang-fr>Explorer comment l'IA, l'automatisation et l'analyse de données transforment les entreprises.</p>
                     </div>
                 </article>
                 
                 <article class="blog-card">
-                    <a href="blog/ai-business-applications.html" class="blog-image">
-                        <img src="images/rttyrrt.jpg" loading="lazy" style="width: 100%; height: auto; max-height: 200px; object-fit: cover;" alt="AI business applications">
+                    <a href="blog.html" class="blog-image">
+                        <img src="images/rttyrrt.jpg" loading="lazy" alt="AI business applications">
                     </a>
                     <div class="blog-content">
                         <span class="blog-date">March 15, 2025</span>
-                        <h3><a href="blog/ai-business-applications.html">Practical AI Applications for SMEs</a></h3>
-                        <p>How small and medium businesses can leverage AI technology without enterprise budgets...</p>
-                        <a href="blog/ai-business-applications.html" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
-                
-                <article class="blog-card">
-                    <a href="blog/cybersecurity-best-practices.html" class="blog-image">
-                        <img src="images/pexels-photo-2422294.jpeg" loading="lazy" style="width: 100%; height: auto; max-height: 200px; object-fit: cover;" alt="Cybersecurity best practices">
-                    </a>
-                    <div class="blog-content">
-                        <span class="blog-date">February 28, 2025</span>
-                        <h3><a href="blog/cybersecurity-best-practices.html">Essential Cybersecurity Practices for 2025</a></h3>
-                        <p>Key strategies to protect your business from evolving cyber threats...</p>
-                        <a href="blog/cybersecurity-best-practices.html" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+                        <h3 data-lang-en><a href="blog.html">Practical AI Applications for SMEs</a></h3>
+                        <h3 data-lang-fr><a href="blog.html">Applications Pratiques de l'IA pour les PME</a></h3>
+                        <p data-lang-en>How small and medium businesses can leverage AI without enterprise budgets.</p>
+                        <p data-lang-fr>Comment les PME peuvent tirer parti de l'IA sans budgets d'entreprise.</p>
                     </div>
                 </article>
             </div>
             
-            <div class="view-all-container">
-                <a href="blog.html" class="btn btn-outline">View All Articles</a>
+            <div class="blog-cta">
+                <a href="blog.html" class="btn btn-outline" data-lang-en>View All Articles</a>
+                <a href="blog.html" class="btn btn-outline" data-lang-fr>Voir Tous les Articles</a>
             </div>
         </div>
     </section>
 
     <!-- Newsletter Section -->
-    <section class="newsletter">
+    <section class="newsletter-section">
         <div class="container">
             <div class="newsletter-content">
-                <h2>Stay Updated with Industry Insights</h2>
-                <p>Subscribe to our newsletter for the latest trends in technology and digital transformation</p>
+                <div class="newsletter-text">
+                    <h2 data-lang-en>Stay Updated with Industry Insights</h2>
+                    <h2 data-lang-fr>Restez Informé des Tendances du Secteur</h2>
+                    <p data-lang-en>Subscribe to our newsletter for the latest in technology and digital transformation</p>
+                    <p data-lang-fr>Abonnez-vous à notre newsletter pour les dernières actualités en technologie et transformation digitale</p>
+                </div>
+                
                 <form class="newsletter-form">
                     <div class="form-group">
-                        <input type="email" placeholder="Your email address" required>
-                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                        <input type="email" placeholder="Your email address" aria-label="Email" required>
+                        <button type="submit" class="btn btn-primary" data-lang-en>Subscribe</button>
+                        <button type="submit" class="btn btn-primary" data-lang-fr>S'abonner</button>
                     </div>
-                    <label class="checkbox-container">
-                        <input type="checkbox" required>
-                        <span class="checkmark"></span>
-                        I agree to receive newsletters and accept the <a href="privacy.html">Privacy Policy</a>
-                    </label>
+                    
+                    <div class="privacy-consent">
+                        <label class="checkbox-container">
+                            <input type="checkbox" required>
+                            <span class="checkmark"></span>
+                            <span data-lang-en>I agree to receive newsletters and accept the <a href="privacy-policy.html">Privacy Policy</a></span>
+                            <span data-lang-fr>J'accepte de recevoir des newsletters et j'accepte la <a href="privacy-policy.html">Politique de Confidentialité</a></span>
+                        </label>
+                    </div>
                 </form>
             </div>
         </div>
@@ -676,7 +589,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <img src="Logo Skylar Solutions/logo_transparent.png" alt="Skylar Solutions Logo" class="footer-logo" style="height: 150px; width: auto;">
+                    <img src="Logo Skylar Solutions/logo_transparent.png" alt="Skylar Solutions Logo" class="footer-logo" style="height: 180px; width: auto;">
                     <p data-lang-en>Your trusted partner for digital transformation and innovative technology solutions.</p>
                     <p data-lang-fr>Votre partenaire de confiance pour la transformation digitale et les solutions technologiques innovantes.</p>
                     <div class="social-links">

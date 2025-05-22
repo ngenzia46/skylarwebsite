@@ -1,6 +1,37 @@
 // Skylar Solutions - Main JavaScript
 
+// Check WebP support
+function checkWebpSupport() {
+  const canvas = typeof document === 'object' ? document.createElement('canvas') : {};
+  canvas.width = canvas.height = 1;
+  return canvas.toDataURL && canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0;
+}
+
+// Set WebP support CSS class on the HTML element
+document.documentElement.className += checkWebpSupport() ? ' webp' : ' no-webp';
+
+// Helper function to replace images with WebP versions where available
+function replaceWithWebpImage() {
+  if(!checkWebpSupport()) return; // Skip if WebP is not supported
+  
+  const images = document.querySelectorAll('img[data-src-webp]');
+  images.forEach(img => {
+    const webpSrc = img.getAttribute('data-src-webp');
+    if (webpSrc) {
+      img.src = webpSrc;
+      
+      // If there's a srcset attribute, update that too if there's a webp version
+      const webpSrcset = img.getAttribute('data-srcset-webp');
+      if (webpSrcset) {
+        img.srcset = webpSrcset;
+      }
+    }
+  });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
+  // Replace images with WebP versions if supported
+  replaceWithWebpImage();
   // Language switcher
   const languageSwitcher = document.querySelector('.language-switcher');
   const langToggleBtn = document.getElementById('lang-toggle');
@@ -122,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Smooth scrolling for anchor links
+  // Enhanced Smooth scrolling for anchor links with easing
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       e.preventDefault();
@@ -132,10 +163,33 @@ document.addEventListener('DOMContentLoaded', function() {
       
       const targetElement = document.querySelector(targetId);
       if (targetElement) {
-        window.scrollTo({
-          top: targetElement.offsetTop - 80,
-          behavior: 'smooth'
-        });
+        // Enhanced smooth scroll with custom easing
+        const startPosition = window.pageYOffset;
+        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - 80;
+        const distance = targetPosition - startPosition;
+        const duration = 1000; // ms
+        let start = null;
+        
+        // Add a subtle scroll animation
+        function step(timestamp) {
+          if (!start) start = timestamp;
+          const progress = timestamp - start;
+          const easeInOutQuad = t => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t; // Smoother easing function
+          
+          // Calculate current position
+          const percentage = Math.min(progress / duration, 1);
+          const easing = easeInOutQuad(percentage);
+          const position = startPosition + distance * easing;
+          
+          window.scrollTo(0, position);
+          
+          // Continue animation if not done
+          if (progress < duration) {
+            window.requestAnimationFrame(step);
+          }
+        }
+        
+        window.requestAnimationFrame(step);
         
         // Close mobile menu if open
         navbar.classList.remove('active');
@@ -225,7 +279,41 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
-  // Handle header scroll effect
+  // Add parallax effect to hero section
+  const heroSection = document.querySelector('.home-hero');
+  const heroImage = document.querySelector('.hero-image img');
+  
+  if (heroSection && heroImage) {
+    window.addEventListener('scroll', function() {
+      const scrollPosition = window.pageYOffset;
+      const scrollSpeed = 0.5; // Adjust for desired parallax intensity
+      
+      // Only apply parallax if section is in view
+      if (scrollPosition < heroSection.offsetHeight) {
+        // Move the hero image slightly when scrolling
+        heroImage.style.transform = `translateY(${scrollPosition * scrollSpeed}px)`;
+        
+        // Add a subtle opacity fade effect
+        const opacity = 1 - (scrollPosition / heroSection.offsetHeight) * 0.5;
+        heroImage.style.opacity = Math.max(opacity, 0.5);
+      }
+    });
+  }
+  
+  // Add smooth hover effects for interactive elements
+  const interactiveElements = document.querySelectorAll('.btn, .service-card, .blog-card, .testimonial-card');
+  
+  interactiveElements.forEach(element => {
+    element.addEventListener('mouseenter', function() {
+      element.style.transition = 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+    });
+    
+    element.addEventListener('mouseleave', function() {
+      element.style.transition = 'all 0.3s ease';
+    });
+  });
+  
+  // Enhanced header scroll effect with blur
   const header = document.querySelector('.header');
   let lastScrollTop = 0;
   
@@ -234,9 +322,25 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (scrollTop > 50) {
       header.classList.add('scrolled');
+      
+      // Add blur effect based on scroll amount
+      const blurAmount = Math.min(scrollTop / 200, 10); // Max 10px blur
+      header.style.backdropFilter = `blur(${blurAmount}px)`;
+      header.style.webkitBackdropFilter = `blur(${blurAmount}px)`;
+      
+      // Slightly adjust background opacity based on scroll
+      const bgOpacity = Math.min(0.9, 0.7 + (scrollTop / 1000));
+      header.style.backgroundColor = `rgba(255, 255, 255, ${bgOpacity})`;
     } else {
       header.classList.remove('scrolled');
+      header.style.backdropFilter = 'blur(0px)';
+      header.style.webkitBackdropFilter = 'blur(0px)';
+      header.style.backgroundColor = 'rgba(255, 255, 255, 1)';
     }
+    
+    // Add subtle shadow based on scroll
+    const shadowOpacity = Math.min(0.15, scrollTop / 500);
+    header.style.boxShadow = `0 4px 20px rgba(0, 0, 0, ${shadowOpacity})`;
     
     lastScrollTop = scrollTop;
   });
