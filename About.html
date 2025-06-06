@@ -5,49 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Learn about Skylar Solutions - a premier digital transformation partner with over a decade of experience in IT consulting, led by founder Arthur Ngenzi.">
     <meta name="keywords" content="Skylar Solutions, IT consulting Belgium, digital transformation, Arthur Ngenzi, about us, IT expertise">
-    
     <!-- Canonical URL -->
     <link rel="canonical" href="https://skylarsolution.com/about.html">
-    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://skylarsolution.com/about.html">
     <meta property="og:title" content="About Skylar Solutions | Our Team & Expertise">
     <meta property="og:description" content="Learn about Skylar Solutions - a premier digital transformation partner with over a decade of experience in IT consulting.">
     <meta property="og:image" content="https://skylarsolution.com/images/about-og-image.webp">
-
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://skylarsolution.com/about.html">
     <meta property="twitter:title" content="About Skylar Solutions | Our Team & Expertise">
     <meta property="twitter:description" content="Learn about Skylar Solutions - a premier digital transformation partner with over a decade of experience in IT consulting.">
     <meta property="twitter:image" content="https://skylarsolution.com/images/about-og-image.webp">
-
     <!-- Language Alternatives -->
     <link rel="alternate" hreflang="en" href="https://skylarsolution.com/about.html" />
     <link rel="alternate" hreflang="fr" href="https://skylarsolution.com/fr/about.html" />
     <link rel="alternate" hreflang="x-default" href="https://skylarsolution.com/about.html" />
-
     <title>About Skylar Solutions - Our Story & Expertise</title>
-    
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    
     <!-- Preload Critical Assets -->
     <link rel="preload" href="styles.css" as="style">
     <link rel="preload" href="script.js" as="script">
     <link rel="preload" href="fonts/montserrat-v25-latin-600.woff2" as="font" type="font/woff2" crossorigin>
-    
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
-    
-    <!-- Cookie Consent -->
-    <link rel="stylesheet" href="cookie-consent.css">
-    
     <!-- Schema Markup -->
     <script type="application/ld+json">
     {
@@ -112,34 +99,25 @@
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXX"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-
     <!-- Theme Toggle Button -->
     <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
         <i class="fas fa-moon"></i>
         <i class="fas fa-sun"></i>
     </button>
-
     <!-- Header -->
     <header class="header sticky">
         <div class="container">
-            <a href="index.html" class="logo" aria-label="Skylar Solutions Homepage">
-                <img src="Logo Skylar Solutions/logo_transparent.png" style="height: 100px; width: auto;" alt="Skylar Solutions Logo">
-            </a>
-            
+            <a href="index.html" class="logo" aria-label="Skylar Solutions Homepage"><img src="Logo Skylar Solutions/logo_transparent.png" style="height: 100px; width: auto;" alt="Skylar Solutions Logo"></a>
             <nav class="navbar">
-                <button class="navbar-toggle" aria-label="Mobile Menu">
-                    <i class="fas fa-bars"></i>
-                </button>
-                
-                <ul class="nav-menu">
+                <button class="navbar-toggle" aria-label="Mobile Menu" aria-expanded="false" aria-controls="navMenuAbout"><i class="fas fa-bars"></i></button>
+                <ul class="nav-menu" id="navMenuAbout">
                     <li><a href="index.html" class="nav-link">Home</a></li>
                     <li><a href="about.html" class="nav-link active">About</a></li>
                     <li class="dropdown">
-                        <a href="services/" class="nav-link">Services <i class="fas fa-chevron-down"></i></a>
-                        <ul class="dropdown-menu">
+                        <a href="services/" class="nav-link" aria-haspopup="true" aria-expanded="false" aria-controls="servicesDropdownMenuAbout">Services <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu" id="servicesDropdownMenuAbout">
                             <li><a href="services/app-development.html">App Development</a></li>
                             <li><a href="services/ai-data-sciences.html">AI & Data Sciences</a></li>
                             <li><a href="services/cyber-security.html">Cyber Security</a></li>
@@ -151,32 +129,23 @@
                     <li><a href="blog.html" class="nav-link">Blog</a></li>
                     <li><a href="contact.html" class="nav-link">Contact</a></li>
                 </ul>
-                
-                <div class="language-switcher">
-                    <button class="lang-btn active" data-lang="en" aria-label="English Version">
-                        <span class="flag-icon">🇬🇧</span> EN
-                    </button>
+                <div class="language-switcher" role="group" aria-label="Language selection">
+                    <button class="lang-btn active" data-lang="en" aria-label="English Version" aria-pressed="true"><span class="flag-icon">🇬🇧</span> EN</button>
                     <span class="divider"></span>
-                    <button class="lang-btn" data-lang="fr" aria-label="French Version">
-                        <span class="flag-icon">🇫🇷</span> FR
-                    </button>
+                    <button class="lang-btn" data-lang="fr" aria-label="French Version" aria-pressed="false"><span class="flag-icon">🇫🇷</span> FR</button>
                 </div>
             </nav>
         </div>
     </header>
-
     <!-- Page Hero Section -->
     <section class="page-hero">
         <div class="container">
             <div class="page-hero-content">
                 <h1>About Skylar Solutions</h1>
-                <div class="breadcrumbs">
-                    <a href="index.html">Home</a> / <span>About</span>
-                </div>
+                <div class="breadcrumbs"><a href="index.html">Home</a> / <span>About</span></div>
             </div>
         </div>
     </section>
-
     <!-- Our Story Section -->
     <section class="about-story">
         <div class="container">
@@ -512,7 +481,7 @@
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2025 Skylar Solutions SRL. All rights reserved.</p>
+                <p>&copy; 2024 Skylar Solutions SRL. All rights reserved.</p>
                 <div class="legal-links">
                     <a href="privacy.html">Privacy Policy</a>
                     <a href="terms.html">Terms of Service</a>
@@ -528,11 +497,11 @@
     </button>
 
     <!-- Cookie Consent Banner -->
-    <div class="cookie-consent" id="cookieConsent">
+    <div class="cookie-consent" id="cookieConsent" role="region" aria-label="Cookie consent">
         <div class="cookie-content">
             <p>We use cookies to enhance your browsing experience, analyze site traffic, and personalize content. By clicking "Accept All", you consent to our use of cookies.</p>
             <div class="cookie-buttons">
-                <button id="cookieSettings" class="btn-text">Cookie Settings</button>
+                <button id="cookieSettings" class="btn-text" aria-haspopup="true" aria-expanded="false" aria-controls="cookieSettingsDialog">Cookie Settings</button>
                 <button id="cookieAccept" class="btn btn-primary">Accept All</button>
             </div>
         </div>

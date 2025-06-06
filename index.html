@@ -5,49 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Skylar Solutions - Premier digital transformation partner in Belgium specializing in Application Development, AI & Data Sciences, and Cybersecurity services.">
     <meta name="keywords" content="digital transformation, IT consulting Belgium, application development, data value, AI solutions, cybersecurity services, collaboration solutions, blockchain">
-    
     <!-- Canonical URL -->
     <link rel="canonical" href="https://skylarsolution.com/index.html">
-    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://skylarsolution.com/">
     <meta property="og:title" content="Skylar Solutions | Strategic Digital Transformation Partner">
     <meta property="og:description" content="Transform your business with Skylar Solutions - Your trusted partner for innovative technology solutions in Belgium.">
     <meta property="og:image" content="https://skylarsolution.com/images/og-image.webp">
-
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://skylarsolution.com/">
     <meta property="twitter:title" content="Skylar Solutions | Strategic Digital Transformation Partner">
     <meta property="twitter:description" content="Transform your business with Skylar Solutions - Your trusted partner for innovative technology solutions in Belgium.">
     <meta property="twitter:image" content="https://skylarsolution.com/images/og-image.webp">
-
     <!-- Language Alternatives -->
     <link rel="alternate" hreflang="en" href="https://skylarsolution.com/index.html" />
     <link rel="alternate" hreflang="fr" href="https://skylarsolution.com/fr/index.html" />
     <link rel="alternate" hreflang="x-default" href="https://skylarsolution.com/" />
-
     <title>Skylar Solutions - Your Digital Transformation Partner</title>
-    
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    
     <!-- Preload Critical Assets -->
     <link rel="preload" href="styles.css" as="style">
     <link rel="preload" href="script.js" as="script">
     <link rel="preload" href="fonts/montserrat-v25-latin-600.woff2" as="font" type="font/woff2" crossorigin>
-    
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
-    
-    <!-- Cookie Consent -->
-    <link rel="stylesheet" href="cookie-consent.css">
-    
     <!-- Schema Markup -->
     <script type="application/ld+json">
     {
@@ -96,34 +83,25 @@
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXX"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-
     <!-- Theme Toggle Button -->
     <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
         <i class="fas fa-moon"></i>
         <i class="fas fa-sun"></i>
     </button>
-
     <!-- Header -->
     <header class="header sticky">
         <div class="container">
-            <a href="index.html" class="logo" aria-label="Skylar Solutions Homepage">
-                <img src="Logo Skylar Solutions/logo_transparent.png" style="height: 100px; width: auto;" alt="Skylar Solutions Logo">
-            </a>
-            
+            <a href="index.html" class="logo" aria-label="Skylar Solutions Homepage"><img src="Logo Skylar Solutions/logo_transparent.png" style="height: 100px; width: auto;" alt="Skylar Solutions Logo"></a>
             <nav class="navbar">
-                <button class="navbar-toggle" aria-label="Mobile Menu">
-                    <i class="fas fa-bars"></i>
-                </button>
-                
-                <ul class="nav-menu">
+                <button class="navbar-toggle" aria-label="Mobile Menu" aria-expanded="false" aria-controls="navMenu"><i class="fas fa-bars"></i></button>
+                <ul class="nav-menu" id="navMenu">
                     <li><a href="index.html" class="nav-link active">Home</a></li>
                     <li><a href="about.html" class="nav-link">About</a></li>
                     <li class="dropdown">
-                        <a href="services/" class="nav-link">Services <i class="fas fa-chevron-down"></i></a>
-                        <ul class="dropdown-menu">
+                        <a href="services/" class="nav-link" aria-haspopup="true" aria-expanded="false" aria-controls="servicesDropdownMenu">Services <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu" id="servicesDropdownMenu">
                             <li><a href="services/app-development.html">App Development</a></li>
                             <li><a href="services/ai-data-sciences.html">AI & Data Sciences</a></li>
                             <li><a href="services/cyber-security.html">Cyber Security</a></li>
@@ -135,46 +113,32 @@
                     <li><a href="blog.html" class="nav-link">Blog</a></li>
                     <li><a href="contact.html" class="nav-link">Contact</a></li>
                 </ul>
-                
-                <div class="language-switcher">
-                    <button class="lang-btn active" data-lang="en" aria-label="English Version">
-                        <span class="flag-icon">🇬🇧</span> EN
-                    </button>
+                <div class="language-switcher" role="group" aria-label="Language selection">
+                    <button class="lang-btn active" data-lang="en" aria-label="English Version" aria-pressed="true"><span class="flag-icon">🇬🇧</span> EN</button>
                     <span class="divider"></span>
-                    <button class="lang-btn" data-lang="fr" aria-label="French Version">
-                        <span class="flag-icon">🇫🇷</span> FR
-                    </button>
+                    <button class="lang-btn" data-lang="fr" aria-label="French Version" aria-pressed="false"><span class="flag-icon">🇫🇷</span> FR</button>
                 </div>
             </nav>
         </div>
     </header>
-
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
                 <h1 class="hero-title">Your Partner for Digital Transformation</h1>
                 <p class="hero-subtitle">Transforming business challenges into technological opportunities</p>
-                
                 <div class="cta-group">
                     <a href="contact.html" class="btn btn-primary pulse-animation">Schedule Free Consultation</a>
                     <a href="services/" class="btn btn-outline">Explore Services</a>
                 </div>
             </div>
-            
-            <div class="hero-image">
-                <img src="images/hero-illustration.webp" loading="eager" style="max-width: 650px; height: auto;" alt="Digital transformation illustration">
-            </div>
+            <div class="hero-image"><img src="images/hero-illustration.webp" srcset="images/hero-illustration-small.webp 500w, images/hero-illustration-medium.webp 1000w, images/hero-illustration.webp 1500w" sizes="(max-width: 600px) 500px, (max-width: 1000px) 1000px, 1500px" loading="eager" style="max-width: 650px; height: auto;" alt="Digital transformation illustration"></div>
         </div>
-        
         <div class="scroll-indicator">
-            <span class="mouse">
-                <span class="wheel"></span>
-            </span>
+            <span class="mouse"><span class="wheel"></span></span>
             <p>Scroll to explore</p>
         </div>
     </section>
-
     <!-- Trusted By Section -->
     <section class="trusted-by">
         <div class="container">
@@ -189,18 +153,14 @@
             </div>
         </div>
     </section>
-
     <!-- Services Section -->
     <section class="services">
         <div class="container">
             <h2 class="section-title">Our Core Services</h2>
             <p class="section-description">Comprehensive technology solutions tailored to solve your business challenges</p>
-            
             <div class="services-grid">
                 <article class="service-card">
-                    <div class="card-icon">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
+                    <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
                     <h3>Application Development</h3>
                     <p>Transform your ideas into powerful custom applications tailored to your unique business needs.</p>
                     <ul class="service-features">
@@ -210,11 +170,8 @@
                     </ul>
                     <a href="services/app-development.html" class="card-link">Learn More <i class="fas fa-arrow-right"></i></a>
                 </article>
-
                 <article class="service-card">
-                    <div class="card-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
+                    <div class="card-icon"><i class="fas fa-brain"></i></div>
                     <h3>AI & Data Sciences</h3>
                     <p>Unlock strategic insights and competitive advantages from your data using advanced analytics and AI.</p>
                     <ul class="service-features">
@@ -224,11 +181,8 @@
                     </ul>
                     <a href="services/ai-data-sciences.html" class="card-link">Learn More <i class="fas fa-arrow-right"></i></a>
                 </article>
-
                 <article class="service-card">
-                    <div class="card-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
+                    <div class="card-icon"><i class="fas fa-shield-alt"></i></div>
                     <h3>Cyber Security</h3>
                     <p>Safeguard your critical information assets, ensure regulatory compliance, and build trust with robust security solutions.</p>
                     <ul class="service-features">
@@ -238,11 +192,8 @@
                     </ul>
                     <a href="services/cyber-security.html" class="card-link">Learn More <i class="fas fa-arrow-right"></i></a>
                 </article>
-                
                 <article class="service-card">
-                    <div class="card-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
+                    <div class="card-icon"><i class="fas fa-users"></i></div>
                     <h3>Collaboration Solutions</h3>
                     <p>Empower your teams with integrated digital workplace platforms that enhance communication and productivity.</p>
                     <ul class="service-features">
@@ -252,11 +203,8 @@
                     </ul>
                     <a href="services/collaboration-solutions.html" class="card-link">Learn More <i class="fas fa-arrow-right"></i></a>
                 </article>
-                
                 <article class="service-card">
-                    <div class="card-icon">
-                        <i class="fas fa-link"></i>
-                    </div>
+                    <div class="card-icon"><i class="fas fa-link"></i></div>
                     <h3>Blockchain & NFT Advisory</h3>
                     <p>Navigate the complexities of decentralized technologies with strategic guidance and development for blockchain applications.</p>
                     <ul class="service-features">
@@ -266,11 +214,8 @@
                     </ul>
                     <a href="services/blockchain-nft.html" class="card-link">Learn More <i class="fas fa-arrow-right"></i></a>
                 </article>
-                
                 <article class="service-card">
-                    <div class="card-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
+                    <div class="card-icon"><i class="fas fa-headset"></i></div>
                     <h3>24/7 Support</h3>
                     <p>Ensure business continuity with our reliable, round-the-clock technical assistance and proactive monitoring.</p>
                     <ul class="service-features">
@@ -283,48 +228,34 @@
             </div>
         </div>
     </section>
-    
     <!-- Why Choose Us Section -->
     <section class="why-us">
         <div class="container">
             <h2 class="section-title">Why Choose Skylar Solutions</h2>
-            
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
+                    <div class="feature-icon"><i class="fas fa-brain"></i></div>
                     <h3>Expertise</h3>
                     <p>Over a decade of experience in large-scale IT programs, digital transformation, and data-centric initiatives in regulated sectors.</p>
                 </div>
-                
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-user-tie"></i>
-                    </div>
+                    <div class="feature-icon"><i class="fas fa-user-tie"></i></div>
                     <h3>Client-Centric</h3>
                     <p>We listen first, then deliver solutions tailored specifically to your business goals and challenges.</p>
                 </div>
-                
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-virus"></i>
-                    </div>
+                    <div class="feature-icon"><i class="fas fa-shield-virus"></i></div>
                     <h3>Security Focus</h3>
                     <p>Security and data privacy are embedded in everything we do, from concept to deployment.</p>
                 </div>
-                
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-award"></i>
-                    </div>
+                    <div class="feature-icon"><i class="fas fa-award"></i></div>
                     <h3>Certified Excellence</h3>
                     <p>Our team holds certifications in PRINCE2, Lean Green Belt, ITIL V3, Scrum Master, and Enterprise Architecture.</p>
                 </div>
             </div>
         </div>
     </section>
-    
     <!-- About Us Highlight Section -->
     <section class="about-highlight">
         <div class="container">
@@ -336,19 +267,14 @@
                     <p>Trusting Skylar Solutions means partnering with a dedicated team with a clear vision, unwavering commitment to excellence, and a steadfast determination to deliver revolutionary solutions tailored to each client's specific needs.</p>
                     <a href="about.html" class="btn btn-secondary">Learn More About Us</a>
                 </div>
-                
-                <div class="about-image">
-                    <img src="images/about-image.webp" loading="lazy" style="max-width: 400px; height: auto;" alt="A team of IT consultants collaborating">
-                </div>
+                <div class="about-image"><img src="images/about-image.webp" srcset="images/about-image-small.webp 400w, images/about-image-medium.webp 800w, images/about-image.webp 1200w" sizes="(max-width: 600px) 400px, (max-width: 1000px) 800px, 1200px" loading="lazy" style="max-width: 400px; height: auto;" alt="A team of IT consultants collaborating"></div>
             </div>
         </div>
     </section>
-
     <!-- Testimonials Section -->
     <section class="testimonials">
         <div class="container">
             <h2 class="section-title">What Our Clients Say</h2>
-            
             <div class="testimonial-slider" id="testimonialSlider">
                 <div class="testimonial-slide">
                     <div class="testimonial-content">
@@ -356,55 +282,42 @@
                         <p>"Skylar Solutions transformed our operations with a custom application that streamlined our workflow and increased productivity by 30%. Their team's expertise and professionalism exceeded our expectations."</p>
                         <div class="client-info">
                             <img src="images/client-avatar1.webp" loading="lazy" style="width: 60px; height: 60px; object-fit: cover; border-radius: 50%;" alt="Client portrait">
-                            <div>
-                                <h4>Jean Dupont</h4>
-                                <p>CTO, Financial Services Company</p>
-                            </div>
+                            <div><h4>Jean Dupont</h4><p>CTO, Financial Services Company</p></div>
                         </div>
                     </div>
                 </div>
-                
                 <div class="testimonial-slide">
                     <div class="testimonial-content">
                         <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
                         <p>"The data analytics platform developed by Skylar Solutions has been instrumental in driving our data-informed decision making. We've seen a significant ROI within the first year of implementation."</p>
                         <div class="client-info">
                             <img src="images/client-avatar2.webp" loading="lazy" style="width: 60px; height: 60px; object-fit: cover; border-radius: 50%;" alt="Client portrait">
-                            <div>
-                                <h4>Marie Lambert</h4>
-                                <p>Data Director, Healthcare Organization</p>
-                            </div>
+                            <div><h4>Marie Lambert</h4><p>Data Director, Healthcare Organization</p></div>
                         </div>
                     </div>
                 </div>
-                
                 <div class="testimonial-slide">
                     <div class="testimonial-content">
                         <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
                         <p>"Skylar Solutions' cybersecurity audit identified critical vulnerabilities that other consultants had missed. Their remediation plan was clear, actionable, and helped us achieve regulatory compliance ahead of schedule."</p>
                         <div class="client-info">
                             <img src="images/client-avatar3.webp" loading="lazy" style="width: 60px; height: 60px; object-fit: cover; border-radius: 50%;" alt="Client portrait">
-                            <div>
-                                <h4>Thomas Renard</h4>
-                                <p>CISO, Public Sector Institution</p>
-                            </div>
+                            <div><h4>Thomas Renard</h4><p>CISO, Public Sector Institution</p></div>
                         </div>
                     </div>
                 </div>
             </div>
-            
             <div class="slider-controls">
-                <button id="prevSlide" aria-label="Previous testimonial"><i class="fas fa-chevron-left"></i></button>
-                <div class="slider-dots">
-                    <button class="dot active" aria-label="Testimonial 1"></button>
-                    <button class="dot" aria-label="Testimonial 2"></button>
-                    <button class="dot" aria-label="Testimonial 3"></button>
+                <button id="prevSlide" aria-label="Previous testimonial" aria-controls="testimonialSlider"><i class="fas fa-chevron-left"></i></button>
+                <div class="slider-dots" role="tablist">
+                    <button class="dot active" aria-label="Testimonial 1" aria-controls="testimonialSlider" role="tab" aria-selected="true"></button>
+                    <button class="dot" aria-label="Testimonial 2" aria-controls="testimonialSlider" role="tab" aria-selected="false"></button>
+                    <button class="dot" aria-label="Testimonial 3" aria-controls="testimonialSlider" role="tab" aria-selected="false"></button>
                 </div>
-                <button id="nextSlide" aria-label="Next testimonial"><i class="fas fa-chevron-right"></i></button>
+                <button id="nextSlide" aria-label="Next testimonial" aria-controls="testimonialSlider"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
     </section>
-
     <!-- CTA Section -->
     <section class="cta-banner">
         <div class="container">
@@ -412,64 +325,51 @@
                 <h2>Ready for the Transformation?</h2>
                 <p>Let's discuss how we can help you achieve your digital transformation goals</p>
                 <form class="cta-form">
-                    <input type="email" placeholder="Your email address" required>
+                    <label for="ctaEmailInput" class="sr-only">Your email address for consultation</label>
+                    <input type="email" id="ctaEmailInput" placeholder="Your email address" required>
                     <button type="submit" class="btn btn-secondary">Request a Consultation</button>
                 </form>
                 <p class="privacy-note">We respect your privacy. Your information is safe with us.</p>
             </div>
         </div>
     </section>
-    
     <!-- Latest Blog Posts -->
     <section class="blog-preview">
         <div class="container">
             <h2 class="section-title">Latest Insights</h2>
             <p class="section-description">Stay updated with industry trends and our latest thinking</p>
-            
             <div class="blog-grid">
                 <article class="blog-card">
-                    <a href="blog/digital-transformation-trends.html" class="blog-image">
-                        <img src="images/ffff.jpg" loading="lazy" style="width: 100%; height: auto; max-height: 200px; object-fit: cover;" alt="Digital transformation trends diagram">
-                    </a>
+                    <img src="images/ffff.jpg" srcset="images/ffff-small.jpg 300w, images/ffff-medium.jpg 600w, images/ffff.jpg 900w" sizes="(max-width: 400px) 300px, (max-width: 768px) 600px, 900px" loading="lazy" style="width: 100%; height: auto; max-height: 200px; object-fit: cover;" alt="Digital transformation trends diagram">
                     <div class="blog-content">
                         <span class="blog-date">April 1, 2025</span>
-                        <h3><a href="blog/digital-transformation-trends.html">Digital Transformation Trends for 2025</a></h3>
+                        <h3>Digital Transformation Trends for 2025</h3>
                         <p>Exploring how AI, automation, and data analytics are reshaping businesses globally...</p>
-                        <a href="blog/digital-transformation-trends.html" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+                        <!-- <a href="blog/digital-transformation-trends.html" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a> -->
                     </div>
                 </article>
-                
                 <article class="blog-card">
-                    <a href="blog/ai-business-applications.html" class="blog-image">
-                        <img src="images/rttyrrt.jpg" loading="lazy" style="width: 100%; height: auto; max-height: 200px; object-fit: cover;" alt="AI business applications">
-                    </a>
+                    <img src="images/rttyrrt.jpg" loading="lazy" style="width: 100%; height: auto; max-height: 200px; object-fit: cover;" alt="AI business applications">
                     <div class="blog-content">
                         <span class="blog-date">March 15, 2025</span>
-                        <h3><a href="blog/ai-business-applications.html">Practical AI Applications for SMEs</a></h3>
+                        <h3>Practical AI Applications for SMEs</h3>
                         <p>How small and medium businesses can leverage AI technology without enterprise budgets...</p>
-                        <a href="blog/ai-business-applications.html" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+                        <!-- <a href="blog/ai-business-applications.html" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a> -->
                     </div>
                 </article>
-                
                 <article class="blog-card">
-                    <a href="blog/cybersecurity-best-practices.html" class="blog-image">
-                        <img src="images/pexels-photo-2422294.jpeg" loading="lazy" style="width: 100%; height: auto; max-height: 200px; object-fit: cover;" alt="Cybersecurity best practices">
-                    </a>
+                    <img src="images/pexels-photo-2422294.jpeg" loading="lazy" style="width: 100%; height: auto; max-height: 200px; object-fit: cover;" alt="Cybersecurity best practices">
                     <div class="blog-content">
                         <span class="blog-date">February 28, 2025</span>
-                        <h3><a href="blog/cybersecurity-best-practices.html">Essential Cybersecurity Practices for 2025</a></h3>
+                        <h3>Essential Cybersecurity Practices for 2025</h3>
                         <p>Key strategies to protect your business from evolving cyber threats...</p>
-                        <a href="blog/cybersecurity-best-practices.html" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+                        <!-- <a href="blog/cybersecurity-best-practices.html" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a> -->
                     </div>
                 </article>
             </div>
-            
-            <div class="view-all-container">
-                <a href="blog.html" class="btn btn-outline">View All Articles</a>
-            </div>
+            <div class="view-all-container"><a href="blog.html" class="btn btn-outline">View All Articles</a></div>
         </div>
     </section>
-
     <!-- Newsletter Section -->
     <section class="newsletter">
         <div class="container">
@@ -478,19 +378,18 @@
                 <p>Subscribe to our newsletter for the latest trends in technology and digital transformation</p>
                 <form class="newsletter-form">
                     <div class="form-group">
-                        <input type="email" placeholder="Your email address" required>
+                        <label for="newsletterEmailInput" class="sr-only">Your email address for newsletter</label>
+                        <input type="email" id="newsletterEmailInput" placeholder="Your email address" required>
                         <button type="submit" class="btn btn-primary">Subscribe</button>
                     </div>
                     <label class="checkbox-container">
-                        <input type="checkbox" required>
-                        <span class="checkmark"></span>
-                        I agree to receive newsletters and accept the <a href="privacy.html">Privacy Policy</a>
+                        <input type="checkbox" required><span class="checkmark"></span>
+                        I agree to receive newsletters and accept the <a href="privacy-policy.html">Privacy Policy</a>
                     </label>
                 </form>
             </div>
         </div>
     </section>
-
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -504,7 +403,6 @@
                         <a href="https://www.facebook.com/skylarsolution" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
                     </div>
                 </div>
-
                 <div class="footer-col">
                     <h4>Services</h4>
                     <ul>
@@ -516,7 +414,6 @@
                         <li><a href="services/support.html">24/7 Support</a></li>
                     </ul>
                 </div>
-
                 <div class="footer-col">
                     <h4>Company</h4>
                     <ul>
@@ -526,7 +423,6 @@
                         <li><a href="blog.html">Blog</a></li>
                     </ul>
                 </div>
-
                 <div class="footer-col">
                     <h4>Contact</h4>
                     <address>
@@ -536,28 +432,21 @@
                     </address>
                 </div>
             </div>
-
             <div class="footer-bottom">
-                <p>&copy; 2025 Skylar Solutions SRL. All rights reserved.</p>
+                <p>&copy; 2024 Skylar Solutions SRL. All rights reserved.</p>
                 <div class="legal-links">
-                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="privacy-policy.html">Privacy Policy</a>
                     <a href="terms.html">Terms of Service</a>
                     <a href="sitemap.html">Sitemap</a>
                 </div>
             </div>
         </div>
     </footer>
-
     <!-- Back to Top Button -->
-    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
-        <i class="fas fa-chevron-up"></i>
-    </button>
-
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
     <!-- Chat Widget -->
     <div class="chat-widget" id="chatWidget">
-        <button class="chat-toggle" id="chatToggle" aria-label="Chat with us">
-            <i class="fas fa-comments"></i>
-        </button>
+        <button class="chat-toggle" id="chatToggle" aria-label="Chat with us" aria-expanded="false" aria-controls="chatContainer"><i class="fas fa-comments"></i></button>
         <div class="chat-container" id="chatContainer">
             <div class="chat-header">
                 <h4>Chat with Us</h4>
@@ -565,9 +454,7 @@
             </div>
             <div class="chat-body" id="chatBody">
                 <div class="chat-message">
-                    <div class="chat-avatar">
-                        <img src="images/uuyu-min.jpg" style="width: 30px; height: 30px; object-fit: cover; border-radius: 50%;" alt="Support agent">
-                    </div>
+                    <div class="chat-avatar"><img src="images/uuyu-min.jpg" style="width: 30px; height: 30px; object-fit: cover; border-radius: 50%;" alt="Support agent"></div>
                     <div class="message-content">
                         <p>Hi there! How can we help you today?</p>
                         <span class="message-time">Just now</span>
@@ -576,24 +463,23 @@
             </div>
             <div class="chat-footer">
                 <form id="chatForm">
-                    <input type="text" placeholder="Type your message..." required>
+                    <label for="chatMessageInput" class="sr-only">Your message</label>
+                    <input type="text" id="chatMessageInput" placeholder="Type your message..." required>
                     <button type="submit" aria-label="Send message"><i class="fas fa-paper-plane"></i></button>
                 </form>
             </div>
         </div>
     </div>
-
     <!-- Cookie Consent Banner -->
-    <div class="cookie-consent" id="cookieConsent">
+    <div class="cookie-consent" id="cookieConsent" role="region" aria-label="Cookie consent">
         <div class="cookie-content">
             <p>We use cookies to enhance your browsing experience, analyze site traffic, and personalize content. By clicking "Accept All", you consent to our use of cookies.</p>
             <div class="cookie-buttons">
-                <button id="cookieSettings" class="btn-text">Cookie Settings</button>
+                <button id="cookieSettings" class="btn-text" aria-haspopup="true" aria-expanded="false" aria-controls="cookieSettingsDialog">Cookie Settings</button>
                 <button id="cookieAccept" class="btn btn-primary">Accept All</button>
             </div>
         </div>
     </div>
-
     <!-- Scripts -->
     <script src="script.js" defer></script>
     <script src="cookie-consent.js" defer></script>

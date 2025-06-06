@@ -40,13 +40,10 @@
     <link rel="preload" href="fonts/montserrat-v25-latin-600.woff2" as="font" type="font/woff2" crossorigin>
     
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
-    
-    <!-- Cookie Consent -->
-    <link rel="stylesheet" href="cookie-consent.css">
     
     <!-- Schema Markup -->
     <script type="application/ld+json">
@@ -120,20 +117,20 @@
     <header class="header sticky">
         <div class="container">
             <a href="index.html" class="logo" aria-label="Skylar Solutions Homepage">
-                <img src="logo.webp" width="180" height="40" alt="Skylar Solutions Logo">
+                <img src="Logo Skylar Solutions/logo_transparent.png" style="height: 100px; width: auto;" alt="Skylar Solutions Logo">
             </a>
             
             <nav class="navbar">
-                <button class="navbar-toggle" aria-label="Mobile Menu">
+                <button class="navbar-toggle" aria-label="Mobile Menu" aria-expanded="false" aria-controls="navMenuContact">
                     <i class="fas fa-bars"></i>
                 </button>
                 
-                <ul class="nav-menu">
+                <ul class="nav-menu" id="navMenuContact">
                     <li><a href="index.html" class="nav-link">Home</a></li>
                     <li><a href="about.html" class="nav-link">About</a></li>
                     <li class="dropdown">
-                        <a href="services/" class="nav-link">Services <i class="fas fa-chevron-down"></i></a>
-                        <ul class="dropdown-menu">
+                        <a href="services/" class="nav-link" aria-haspopup="true" aria-expanded="false" aria-controls="servicesDropdownMenuContact">Services <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu" id="servicesDropdownMenuContact">
                             <li><a href="services/app-development.html">App Development</a></li>
                             <li><a href="services/ai-data-sciences.html">AI & Data Sciences</a></li>
                             <li><a href="services/cyber-security.html">Cyber Security</a></li>
@@ -146,12 +143,12 @@
                     <li><a href="contact.html" class="nav-link active">Contact</a></li>
                 </ul>
                 
-                <div class="language-switcher">
-                    <button class="lang-btn active" data-lang="en" aria-label="English Version">
+                <div class="language-switcher" role="group" aria-label="Language selection">
+                    <button class="lang-btn active" data-lang="en" aria-label="English Version" aria-pressed="true">
                         <span class="flag-icon">🇬🇧</span> EN
                     </button>
                     <span class="divider"></span>
-                    <button class="lang-btn" data-lang="fr" aria-label="French Version">
+                    <button class="lang-btn" data-lang="fr" aria-label="French Version" aria-pressed="false">
                         <span class="flag-icon">🇫🇷</span> FR
                     </button>
                 </div>
@@ -276,7 +273,7 @@
                         
                         <div class="form-group checkbox-group">
                             <input type="checkbox" id="privacy-en" required>
-                            <label for="privacy-en">I agree to the <a href="privacy.html">Privacy Policy</a> and consent to the processing of my data.</label>
+                            <label for="privacy-en">I agree to the <a href="privacy-policy.html">Privacy Policy</a> and consent to the processing of my data.</label>
                         </div>
                         
                         <div class="form-button">
@@ -390,7 +387,7 @@
                         
                         <div class="form-group checkbox-group">
                             <input type="checkbox" id="privacy-fr" required>
-                            <label for="privacy-fr">J'accepte la <a href="privacy.html">Politique de Confidentialité</a> et je consens au traitement de mes données.</label>
+                            <label for="privacy-fr">J'accepte la <a href="privacy-policy.html">Politique de Confidentialité</a> et je consens au traitement de mes données.</label>
                         </div>
                         
                         <div class="form-button">
@@ -425,9 +422,9 @@
                 <div class="faq-item">
                     <div class="faq-question">
                         <h3>What happens after I submit a contact form?</h3>
-                        <button class="faq-toggle" aria-label="Toggle answer"><i class="fas fa-plus"></i></button>
+                        <button class="faq-toggle" aria-label="Toggle answer for: What happens after I submit a contact form?" aria-expanded="false" aria-controls="faqAnswerEn1"><i class="fas fa-plus"></i></button>
                     </div>
-                    <div class="faq-answer">
+                    <div class="faq-answer" id="faqAnswerEn1">
                         <p>After submitting your contact form, you'll receive an automatic confirmation email. Our team will review your inquiry and respond within 1 business day to schedule a consultation or address your questions.</p>
                     </div>
                 </div>
@@ -435,9 +432,9 @@
                 <div class="faq-item">
                     <div class="faq-question">
                         <h3>Can we schedule a video call instead of meeting in person?</h3>
-                        <button class="faq-toggle" aria-label="Toggle answer"><i class="fas fa-plus"></i></button>
+                        <button class="faq-toggle" aria-label="Toggle answer for: Can we schedule a video call instead of meeting in person?" aria-expanded="false" aria-controls="faqAnswerEn2"><i class="fas fa-plus"></i></button>
                     </div>
-                    <div class="faq-answer">
+                    <div class="faq-answer" id="faqAnswerEn2">
                         <p>Absolutely! We regularly conduct consultations via video conferencing platforms like Microsoft Teams, Zoom, or Google Meet. Simply indicate your preference for a virtual meeting when you contact us.</p>
                     </div>
                 </div>
@@ -445,9 +442,9 @@
                 <div class="faq-item">
                     <div class="faq-question">
                         <h3>Do you provide services remotely or only in Belgium?</h3>
-                        <button class="faq-toggle" aria-label="Toggle answer"><i class="fas fa-plus"></i></button>
+                        <button class="faq-toggle" aria-label="Toggle answer for: Do you provide services remotely or only in Belgium?" aria-expanded="false" aria-controls="faqAnswerEn3"><i class="fas fa-plus"></i></button>
                     </div>
-                    <div class="faq-answer">
+                    <div class="faq-answer" id="faqAnswerEn3">
                         <p>While our office is located in Wavre, Belgium, we provide services to clients throughout Belgium and the EU. Many of our services can be delivered remotely, allowing us to serve clients regardless of location.</p>
                     </div>
                 </div>
@@ -457,9 +454,9 @@
                 <div class="faq-item">
                     <div class="faq-question">
                         <h3>Que se passe-t-il après avoir soumis un formulaire de contact?</h3>
-                        <button class="faq-toggle" aria-label="Toggle answer"><i class="fas fa-plus"></i></button>
+                        <button class="faq-toggle" aria-label="Basculer la réponse pour: Que se passe-t-il après avoir soumis un formulaire de contact?" aria-expanded="false" aria-controls="faqAnswerFr1"><i class="fas fa-plus"></i></button>
                     </div>
-                    <div class="faq-answer">
+                    <div class="faq-answer" id="faqAnswerFr1">
                         <p>Après avoir soumis votre formulaire de contact, vous recevrez un email de confirmation automatique. Notre équipe examinera votre demande et vous répondra dans un délai d'un jour ouvrable pour planifier une consultation ou répondre à vos questions.</p>
                     </div>
                 </div>
@@ -467,9 +464,9 @@
                 <div class="faq-item">
                     <div class="faq-question">
                         <h3>Pouvons-nous programmer un appel vidéo au lieu d'une réunion en personne?</h3>
-                        <button class="faq-toggle" aria-label="Toggle answer"><i class="fas fa-plus"></i></button>
+                        <button class="faq-toggle" aria-label="Basculer la réponse pour: Pouvons-nous programmer un appel vidéo au lieu d'une réunion en personne?" aria-expanded="false" aria-controls="faqAnswerFr2"><i class="fas fa-plus"></i></button>
                     </div>
-                    <div class="faq-answer">
+                    <div class="faq-answer" id="faqAnswerFr2">
                         <p>Absolument! Nous effectuons régulièrement des consultations via des plateformes de vidéoconférence comme Microsoft Teams, Zoom ou Google Meet. Indiquez simplement votre préférence pour une réunion virtuelle lorsque vous nous contactez.</p>
                     </div>
                 </div>
@@ -477,9 +474,9 @@
                 <div class="faq-item">
                     <div class="faq-question">
                         <h3>Fournissez-vous des services à distance ou uniquement en Belgique?</h3>
-                        <button class="faq-toggle" aria-label="Toggle answer"><i class="fas fa-plus"></i></button>
+                        <button class="faq-toggle" aria-label="Basculer la réponse pour: Fournissez-vous des services à distance ou uniquement en Belgique?" aria-expanded="false" aria-controls="faqAnswerFr3"><i class="fas fa-plus"></i></button>
                     </div>
-                    <div class="faq-answer">
+                    <div class="faq-answer" id="faqAnswerFr3">
                         <p>Bien que notre bureau soit situé à Wavre, en Belgique, nous fournissons des services à des clients dans toute la Belgique et l'UE. Beaucoup de nos services peuvent être fournis à distance, nous permettant de servir des clients indépendamment de leur emplacement.</p>
                     </div>
                 </div>
@@ -492,7 +489,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <img src="logo.webp" width="160" height="35" alt="Skylar Solutions Logo">
+                    <img src="Logo Skylar Solutions/logo_transparent.png" style="height: 80px; width: auto;" alt="Skylar Solutions Logo">
                     <p class="footer-text">Your strategic partner for digital transformation and innovation.</p>
                     <div class="social-links">
                         <a href="https://www.linkedin.com/company/skylarsolution" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
@@ -534,9 +531,9 @@
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2025 Skylar Solutions SRL. All rights reserved.</p>
+                <p>&copy; 2024 Skylar Solutions SRL. All rights reserved.</p>
                 <div class="legal-links">
-                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="privacy-policy.html">Privacy Policy</a>
                     <a href="terms.html">Terms of Service</a>
                     <a href="sitemap.html">Sitemap</a>
                 </div>
@@ -550,11 +547,11 @@
     </button>
 
     <!-- Cookie Consent Banner -->
-    <div class="cookie-consent" id="cookieConsent">
+    <div class="cookie-consent" id="cookieConsent" role="region" aria-label="Cookie consent">
         <div class="cookie-content">
             <p>We use cookies to enhance your browsing experience, analyze site traffic, and personalize content. By clicking "Accept All", you consent to our use of cookies.</p>
             <div class="cookie-buttons">
-                <button id="cookieSettings" class="btn-text">Cookie Settings</button>
+                <button id="cookieSettings" class="btn-text" aria-haspopup="true" aria-expanded="false" aria-controls="cookieSettingsDialog">Cookie Settings</button>
                 <button id="cookieAccept" class="btn btn-primary">Accept All</button>
             </div>
         </div>
