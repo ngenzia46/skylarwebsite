@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -52,6 +52,10 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="About.css">
+    
+    <!-- WebP-specific CSS -->
+    <link rel="stylesheet" href="webp-styles.css">
     
     <!-- Cookie Consent -->
     <link rel="stylesheet" href="cookie-consent.css">
@@ -119,59 +123,49 @@
     <!-- End Google Tag Manager -->
     
     <style>
-        /* Language Switching Styles */
-        [data-lang-en], [data-lang-fr] {
-            display: none !important;
-        }
-
-        html[lang="en"] [data-lang-en] {
-            display: block !important;
-        }
-
-        html[lang="fr"] [data-lang-fr] {
-            display: block !important;
-        }
-
-        html[lang="en"] span[data-lang-en],
-        html[lang="fr"] span[data-lang-fr] {
-            display: inline !important;
-        }
-
-        html[lang="en"] li[data-lang-en],
-        html[lang="fr"] li[data-lang-fr] {
-            display: list-item !important;
-        }
-
-        html[lang="en"] a[data-lang-en],
-        html[lang="fr"] a[data-lang-fr] {
-            display: inline-block !important;
-        }
-
-        /* Language Toggle Button */
-        .lang-toggle {
-            background: var(--primary-color);
-            color: var(--white-color);
-            border: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: background-color 0.3s ease;
-            margin-left: 20px;
-            font-size: 14px;
-            text-transform: uppercase;
-        }
-
-        .lang-toggle:hover {
-            background: var(--primary-dark);
-        }
-
-        @media (max-width: 768px) {
-            .lang-toggle {
-                margin: 10px 0;
-            }
-        }
+        /* Language styles already in main CSS */
     </style>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get saved language or default to English
+            const savedLanguage = localStorage.getItem('language') || 'en';
+            
+            // Set initial language
+            document.documentElement.lang = savedLanguage;
+            
+            // Update active state on language buttons
+            const langButtons = document.querySelectorAll('.language-switcher a');
+            langButtons.forEach(button => {
+                if (button.getAttribute('data-lang') === savedLanguage) {
+                    button.classList.add('active');
+                } else {
+                    button.classList.remove('active');
+                }
+                
+                // Add click event listeners to language buttons
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const lang = this.getAttribute('data-lang');
+                    
+                    // Update HTML lang attribute
+                    document.documentElement.lang = lang;
+                    
+                    // Save language preference
+                    localStorage.setItem('language', lang);
+                    
+                    // Update active state of buttons
+                    langButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Force re-render for better language switching
+                    document.body.style.display = 'none';
+                    document.body.offsetHeight; // Force reflow
+                    document.body.style.display = '';
+                });
+            });
+        });
+    </script>
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
@@ -197,9 +191,9 @@
                 </div>
                 <ul class="navbar">
                     <li><a href="index.html" data-lang-en="Home" data-lang-fr="Accueil">Home</a></li>
-                    <li><a href="About.html" data-lang-en="About" data-lang-fr="À propos" class="active">About</a></li>
+                    <li><a href="About.html" data-lang-en="About" data-lang-fr="À propos">About</a></li>
                     <li class="dropdown">
-                        <a href="services/services.html" data-lang-en="Services" data-lang-fr="Services" class="dropdown-toggle">Services <i class="fas fa-chevron-down"></i></a>
+                        <a href="services/services.html" data-lang-en="Services" data-lang-fr="Services">Services <i class="fas fa-chevron-down"></i></a>
                         <ul class="dropdown-menu">
                             <li><a href="services/app-development.html" data-lang-en="App Development" data-lang-fr="Développement d'Applications">App Development</a></li>
                             <li><a href="services/ai-data-sciences.html" data-lang-en="AI & Data Sciences" data-lang-fr="IA & Sciences des Données">AI & Data Sciences</a></li>
@@ -210,6 +204,7 @@
                         </ul>
                     </li>
                     <li><a href="blog.html" data-lang-en="Blog" data-lang-fr="Blog">Blog</a></li>
+                    <li><a href="careers.html" data-lang-en="Careers" data-lang-fr="Carrières">Careers</a></li>
                     <li><a href="Contact.html" data-lang-en="Contact" data-lang-fr="Contact">Contact</a></li>
                 </ul>
                 <div class="language-switcher">
@@ -263,7 +258,7 @@
                     </div>
                 </div>
                 <div class="column-image">
-                    <img src="images/about-story.webp" loading="lazy" width="500" height="600" alt="Skylar Solutions journey - timeline graphic showing company milestones">
+                    <img src="images/about-image.webp" loading="lazy" width="500" height="600" alt="Skylar Solutions journey - timeline graphic showing company milestones">
                 </div>
             </div>
         </div>
@@ -329,7 +324,11 @@
             <div class="team-grid">
                 <div class="team-member">
                     <div class="member-photo">
-                        <img src="images/Arthur Ngenzi.jpeg" loading="lazy" width="300" height="300" alt="Arthur Ngenzi - Founder & Managing Director">
+                        <picture>
+                            <source srcset="images/Arthur Ngenzi.webp" type="image/webp">
+                            <source srcset="images/Arthur Ngenzi.jpeg" type="image/jpeg">
+                            <img src="images/Arthur Ngenzi.jpeg" loading="lazy" width="300" height="300" alt="Arthur Ngenzi - Founder & Managing Director">
+                        </picture>
                     </div>
                     <div class="member-info">
                         <h3>Arthur Ngenzi</h3>
@@ -344,7 +343,11 @@
                 
                 <div class="team-member">
                     <div class="member-photo">
-                        <img src="images/Denis Esele.png" loading="lazy" width="300" height="300" alt="Denis Esele - Operations Director">
+                        <picture>
+                            <source srcset="images/Denis Esele.webp" type="image/webp">
+                            <source srcset="images/Denis Esele.png" type="image/png">
+                            <img src="images/Denis Esele.png" loading="lazy" width="300" height="300" alt="Denis Esele - Operations Director">
+                        </picture>
                     </div>
                     <div class="member-info">
                         <h3>Denis Esele</h3>
@@ -427,7 +430,7 @@
             <div class="certifications-grid">
                 <div class="certification-card">
                     <div class="certification-logo">
-                        <img src="images/prince2-logo.webp" loading="lazy" width="120" height="80" alt="PRINCE2 certification logo">
+                        <img src="images/certifications/prince2-logo.png" loading="lazy" width="120" height="80" alt="PRINCE2 certification logo">
                     </div>
                     <h3>PRINCE2</h3>
                     <p>Structured project management methodology focused on organization, control, and stakeholder management.</p>
@@ -435,7 +438,7 @@
                 
                 <div class="certification-card">
                     <div class="certification-logo">
-                        <img src="images/lean-logo.webp" loading="lazy" width="120" height="80" alt="Lean Green Belt certification logo">
+                        <img src="images/certifications/lean-logo.png" loading="lazy" width="120" height="80" alt="Lean Green Belt certification logo">
                     </div>
                     <h3>Lean Green Belt</h3>
                     <p>Intermediate-level certification in Lean methodology focusing on process improvement and waste reduction.</p>
@@ -443,7 +446,7 @@
                 
                 <div class="certification-card">
                     <div class="certification-logo">
-                        <img src="images/itil-logo.webp" loading="lazy" width="120" height="80" alt="ITIL V3 certification logo">
+                        <img src="images/certifications/itil-logo.png" loading="lazy" width="120" height="80" alt="ITIL V3 certification logo">
                     </div>
                     <h3>ITIL V3</h3>
                     <p>Framework for IT service management focused on aligning IT services with business needs.</p>
@@ -451,7 +454,7 @@
                 
                 <div class="certification-card">
                     <div class="certification-logo">
-                        <img src="images/scrum-logo.webp" loading="lazy" width="120" height="80" alt="Scrum Master certification logo">
+                        <img src="images/certifications/scrum-logo.png" loading="lazy" width="120" height="80" alt="Scrum Master certification logo">
                     </div>
                     <h3>Scrum Master</h3>
                     <p>Expertise in facilitating agile development teams using the Scrum framework.</p>
@@ -459,10 +462,10 @@
                 
                 <div class="certification-card">
                     <div class="certification-logo">
-                        <img src="images/ea-logo.webp" loading="lazy" width="120" height="80" alt="Enterprise Architect certification logo">
+                        <img src="images/certifications/itil-logo.png" loading="lazy" width="120" height="80" alt="ITIL certification logo">
                     </div>
-                    <h3>Enterprise Architecture</h3>
-                    <p>Strategic approach to designing and implementing organizational structure and technology.</p>
+                    <h3>ITIL Foundation</h3>
+                    <p>IT Service Management best practices for delivering efficient and effective IT services.</p>
                 </div>
             </div>
         </div>

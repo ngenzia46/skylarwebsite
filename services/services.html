@@ -44,7 +44,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="service-styles.css">
     
     <!-- Cookie Consent -->
@@ -158,59 +157,49 @@
     <!-- End Google Tag Manager -->
 
     <style>
-        /* Language Switching Styles */
-        [data-lang-en], [data-lang-fr] {
-            display: none !important;
-        }
-
-        html[lang="en"] [data-lang-en] {
-            display: block !important;
-        }
-
-        html[lang="fr"] [data-lang-fr] {
-            display: block !important;
-        }
-
-        html[lang="en"] span[data-lang-en],
-        html[lang="fr"] span[data-lang-fr] {
-            display: inline !important;
-        }
-
-        html[lang="en"] li[data-lang-en],
-        html[lang="fr"] li[data-lang-fr] {
-            display: list-item !important;
-        }
-
-        html[lang="en"] a[data-lang-en],
-        html[lang="fr"] a[data-lang-fr] {
-            display: inline-block !important;
-        }
-
-        /* Language Toggle Button */
-        .lang-toggle {
-            background: var(--primary-color);
-            color: var(--white-color);
-            border: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: background-color 0.3s ease;
-            margin-left: 20px;
-            font-size: 14px;
-            text-transform: uppercase;
-        }
-
-        .lang-toggle:hover {
-            background: var(--primary-dark);
-        }
-
-        @media (max-width: 768px) {
-            .lang-toggle {
-                margin: 10px 0;
-            }
-        }
+        /* Language styles already in main CSS */
     </style>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get saved language or default to English
+            const savedLanguage = localStorage.getItem('language') || 'en';
+            
+            // Set initial language
+            document.documentElement.lang = savedLanguage;
+            
+            // Update active state on language buttons
+            const langButtons = document.querySelectorAll('.language-switcher a');
+            langButtons.forEach(button => {
+                if (button.getAttribute('data-lang') === savedLanguage) {
+                    button.classList.add('active');
+                } else {
+                    button.classList.remove('active');
+                }
+                
+                // Add click event listeners to language buttons
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const lang = this.getAttribute('data-lang');
+                    
+                    // Update HTML lang attribute
+                    document.documentElement.lang = lang;
+                    
+                    // Save language preference
+                    localStorage.setItem('language', lang);
+                    
+                    // Update active state of buttons
+                    langButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Force re-render for better language switching
+                    document.body.style.display = 'none';
+                    document.body.offsetHeight; // Force reflow
+                    document.body.style.display = '';
+                });
+            });
+        });
+    </script>
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
@@ -249,6 +238,7 @@
                         </ul>
                     </li>
                     <li><a href="../blog.html" data-lang-en="Blog" data-lang-fr="Blog">Blog</a></li>
+                    <li><a href="../careers.html" data-lang-en="Careers" data-lang-fr="Carrières">Careers</a></li>
                     <li><a href="../Contact.html" data-lang-en="Contact" data-lang-fr="Contact">Contact</a></li>
                 </ul>
                 <div class="language-switcher">
@@ -260,14 +250,19 @@
         </div>
     </header>
 
-    <!-- Services Hero Section -->
-    <section class="service-hero">
+    <!-- Page Hero Section -->
+    <section class="page-hero">
         <div class="container">
-            <h1 class="hero-title" data-lang-en>Our Services</h1>
-            <h1 class="hero-title" data-lang-fr>Nos Services</h1>
-            
-            <p class="hero-subtitle" data-lang-en>Comprehensive technology solutions tailored to transform your business</p>
-            <p class="hero-subtitle" data-lang-fr>Solutions technologiques complètes adaptées pour transformer votre entreprise</p>
+            <div class="page-hero-content">
+                <h1 data-lang-en>Our Services</h1>
+                <h1 data-lang-fr>Nos Services</h1>
+                <div class="breadcrumbs">
+                    <a href="../index.html" data-lang-en>Home</a> / <span data-lang-en>Services</span>
+                    <a href="../index.html" data-lang-fr>Accueil</a> / <span data-lang-fr>Services</span>
+                </div>
+                <p class="hero-subtitle" data-lang-en>Comprehensive technology solutions tailored to transform your business</p>
+                <p class="hero-subtitle" data-lang-fr>Solutions technologiques complètes adaptées pour transformer votre entreprise</p>
+            </div>
         </div>
     </section>
 
@@ -377,7 +372,7 @@
                     <h4 data-lang-fr>Liens Rapides</h4>
                     <ul>
                         <li><a href="../about.html" data-lang-en>About Us</a><a href="../about.html" data-lang-fr>À Propos</a></li>
-                        <li><a href="../services/" data-lang-en>Services</a><a href="../services/" data-lang-fr>Services</a></li>
+                        <li><a href="services.html" data-lang-en>Services</a><a href="services.html" data-lang-fr>Services</a></li>
                         <li><a href="../blog.html" data-lang-en>Blog</a><a href="../blog.html" data-lang-fr>Blog</a></li>
                         <li><a href="../careers.html" data-lang-en>Careers</a><a href="../careers.html" data-lang-fr>Carrières</a></li>
                         <li><a href="../contact.html" data-lang-en>Contact</a><a href="../contact.html" data-lang-fr>Contact</a></li>
@@ -443,6 +438,15 @@
             </div>
         </div>
     </div>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
 
     <!-- Scripts -->
     <script src="../script.js"></script>

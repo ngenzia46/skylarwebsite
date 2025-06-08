@@ -19,7 +19,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="service-styles.css">
 </head>
 <body>
@@ -58,21 +57,23 @@
         </div>
     </header>
 
-    <!-- Hero Section (Smaller) -->
-    <section class="service-hero" id="home">
+    <!-- Page Hero Section -->
+    <section class="page-hero" id="home">
         <div class="container">
-            <div class="hero-content animate">
-                <!-- English content -->
-                <div data-lang-en>
-                    <h1 class="hero-title">Collaboration Solutions</h1>
-                    <h2 class="hero-subtitle">Smart Collaboration</h2>
+            <div class="page-hero-content">
+                <h1 data-lang-en>Collaboration Solutions</h1>
+                <h1 data-lang-fr>Solutions de Collaboration</h1>
+                <div class="breadcrumbs">
+                    <a href="../index.html" data-lang-en>Home</a> / 
+                    <a href="services.html" data-lang-en>Services</a> / 
+                    <span data-lang-en>Collaboration Solutions</span>
+
+                    <a href="../index.html" data-lang-fr>Accueil</a> / 
+                    <a href="services.html" data-lang-fr>Services</a> / 
+                    <span data-lang-fr>Solutions de Collaboration</span>
                 </div>
-                
-                <!-- French content -->
-                <div data-lang-fr>
-                    <h1 class="hero-title">Solutions de Collaboration</h1>
-                    <h2 class="hero-subtitle">Smart Collaboration</h2>
-                </div>
+                <p class="hero-subtitle" data-lang-en>Smart Collaboration</p>
+                <p class="hero-subtitle" data-lang-fr>Smart Collaboration</p>
             </div>
         </div>
     </section>
@@ -300,74 +301,100 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-column">
-                    <!-- English content -->
-                    <h4 data-lang-en>Contact</h4>
-                    <!-- French content -->
-                    <h4 data-lang-fr>Contact</h4>
-                    
-                    <!-- English content -->
-                    <div class="footer-contact" data-lang-en>
-                        <p><strong>Address:</strong> Avenue Pasteur 6, 1300 Wavre - BE</p>
-                        <p><strong>Email:</strong> admin@skylar-solutions.com</p>
-                        <p><strong>Phone:</strong> +32-10-25.00.18</p>
-                    </div>
-                    
-                    <!-- French content -->
-                    <div class="footer-contact" data-lang-fr>
-                        <p><strong>Adresse:</strong> Avenue Pasteur 6, 1300 Wavre - BE</p>
-                        <p><strong>Email:</strong> admin@skylar-solutions.com</p>
-                        <p><strong>Téléphone:</strong> +32-10-25.00.18</p>
+                <div class="footer-col">
+                    <img src="../Logo Skylar Solutions/logo_transparent.png" alt="Skylar Solutions Logo" class="footer-logo" style="height: 150px; width: auto;">
+                    <p data-lang-en>Your trusted partner for digital transformation and innovative technology solutions.</p>
+                    <p data-lang-fr>Votre partenaire de confiance pour la transformation digitale et les solutions technologiques innovantes.</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/company/skylarsolution" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://twitter.com/skylarsolution" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.facebook.com/skylarsolution" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
                     </div>
                 </div>
-                <div class="footer-column">
-                    <!-- English content -->
+
+                <div class="footer-col">
                     <h4 data-lang-en>Quick Links</h4>
-                    <!-- French content -->
                     <h4 data-lang-fr>Liens Rapides</h4>
-                    
-                    <!-- English content -->
-                    <ul class="footer-links" data-lang-en>
-                        <li><a href="../index.html">Home</a></li>
-                        <li><a href="../About.html">About</a></li>
-                        <li><a href="../services/services.html">Services</a></li>
-                        <li><a href="../Contact.html">Contact</a></li>
-                    </ul>
-                    
-                    <!-- French content -->
-                    <ul class="footer-links" data-lang-fr>
-                        <li><a href="../index.html">Accueil</a></li>
-                        <li><a href="../About.html">À propos</a></li>
-                        <li><a href="../services/services.html">Services</a></li>
-                        <li><a href="../Contact.html">Contact</a></li>
+                    <ul>
+                        <li><a href="../about.html" data-lang-en>About Us</a><a href="../about.html" data-lang-fr>À Propos</a></li>
+                        <li><a href="services.html" data-lang-en>Services</a><a href="services.html" data-lang-fr>Services</a></li>
+                        <li><a href="../blog.html" data-lang-en>Blog</a><a href="../blog.html" data-lang-fr>Blog</a></li>
+                        <li><a href="../careers.html" data-lang-en>Careers</a><a href="../careers.html" data-lang-fr>Carrières</a></li>
+                        <li><a href="../contact.html" data-lang-en>Contact</a><a href="../contact.html" data-lang-fr>Contact</a></li>
                     </ul>
                 </div>
-                <div class="footer-column">
-                    <!-- English content -->
-                    <h4 data-lang-en>Company</h4>
-                    <!-- French content -->
-                    <h4 data-lang-fr>Entreprise</h4>
-                    
-                    <p>SKYLAR SOLUTIONS SRL</p>
-                    
-                    <!-- English content -->
-                    <p data-lang-en>Your trusted partner for digital transformation and technology solutions.</p>
-                    <!-- French content -->
-                    <p data-lang-fr>Votre partenaire de confiance pour la transformation numérique et les solutions technologiques.</p>
+
+                <div class="footer-col">
+                    <h4 data-lang-en>Contact Info</h4>
+                    <h4 data-lang-fr>Coordonnées</h4>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Avenue Pasteur 6, 1300 Wavre, Belgium</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+32 10 25.00.18</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>admin@skylar-solutions.com</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 data-lang-en>Follow Us</h4>
+                    <h4 data-lang-fr>Suivez-nous</h4>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/company/skylarsolution" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://twitter.com/skylarsolution" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.facebook.com/skylarsolution" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    </div>
                 </div>
             </div>
-            <!-- English content -->
-            <div class="copyright" data-lang-en>
-                <p>&copy; 2025 Skylar Solutions. All rights reserved.</p>
-            </div>
-            <!-- French content -->
-            <div class="copyright" data-lang-fr>
-                <p>&copy; 2025 Skylar Solutions. Tous droits réservés.</p>
+
+            <div class="footer-bottom">
+                <p data-lang-en>&copy; 2024 Skylar Solutions. All rights reserved.</p>
+                <p data-lang-fr>&copy; 2024 Skylar Solutions. Tous droits réservés.</p>
+                <div class="footer-links">
+                    <a href="../privacy-policy.html" data-lang-en>Privacy Policy</a>
+                    <a href="../privacy-policy.html" data-lang-fr>Politique de Confidentialité</a>
+                    <span class="separator">|</span>
+                    <a href="../terms.html" data-lang-en>Terms of Service</a>
+                    <a href="../terms.html" data-lang-fr>Conditions d'Utilisation</a>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- Custom JavaScript -->
+    <!-- Back to Top Button -->
+    <button class="back-to-top" aria-label="Back to Top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Cookie Consent Banner -->
+    <div class="cookie-consent" id="cookieConsent">
+        <div class="cookie-content">
+            <p>We use cookies to enhance your browsing experience, analyze site traffic, and personalize content. By clicking "Accept All", you consent to our use of cookies.</p>
+            <div class="cookie-buttons">
+                <button id="cookieSettings" class="btn-text">Cookie Settings</button>
+                <button id="cookieAccept" class="btn btn-primary">Accept All</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <!-- Scripts -->
     <script src="../script.js"></script>
+    <script src="../cookie-consent.js" defer></script>
 </body>
 </html>
