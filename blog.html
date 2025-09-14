@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,161 +26,55 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="blog.css">
     
-    <style>
-        /* Blog Specific Styles */
-        .blog-hero {
-            background: var(--gradient-primary);
-            color: var(--white-color);
-            padding: 120px 0 60px;
-            margin-bottom: 60px;
-            text-align: center;
-        }
-        
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-        
-        .blog-card {
-            background: var(--white-color);
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition-base);
-        }
-        
-        .blog-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .blog-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        
-        .blog-content {
-            padding: 1.5rem;
-        }
-        
-        .blog-category {
-            color: var(--primary-color);
-            font-size: var(--text-sm);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            display: inline-block;
-        }
-        
-        .blog-title {
-            font-size: var(--text-xl);
-            margin-bottom: 1rem;
-            line-height: 1.4;
-        }
-        
-        .blog-excerpt {
-            color: var(--gray-600);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-        
-        .blog-meta {
-            display: flex;
-            align-items: center;
-            color: var(--gray-500);
-            font-size: var(--text-sm);
-        }
-        
-        .blog-meta i {
-            margin-right: 0.5rem;
-        }
-        
-        .blog-date {
-            margin-right: 1.5rem;
-        }
-        
-        .blog-filters {
-            margin-bottom: 2rem;
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        
-        .filter-btn {
-            padding: 0.5rem 1rem;
-            border: 1px solid var(--gray-300);
-            border-radius: var(--radius);
-            background: var(--white-color);
-            color: var(--gray-700);
-            cursor: pointer;
-            transition: var(--transition-base);
-        }
-        
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: var(--primary-color);
-            color: var(--white-color);
-            border-color: var(--primary-color);
-        }
-        
-        .pagination {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-top: 3rem;
-        }
-        
-        .page-link {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid var(--gray-300);
-            border-radius: var(--radius);
-            color: var(--gray-700);
-            transition: var(--transition-base);
-        }
-        
-        .page-link:hover,
-        .page-link.active {
-            background: var(--primary-color);
-            color: var(--white-color);
-            border-color: var(--primary-color);
-        }
-        
-        @media (max-width: 768px) {
-            .blog-grid {
-                grid-template-columns: 1fr;
-            }
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get saved language or default to English
+            const savedLanguage = localStorage.getItem('language') || 'en';
             
-            .blog-hero {
-                padding: 100px 0 40px;
-            }
-        }
-    </style>
+            // Set initial language
+            document.documentElement.lang = savedLanguage;
+            
+            // Update active state on language buttons
+            const langButtons = document.querySelectorAll('.language-switcher a');
+            langButtons.forEach(button => {
+                if (button.getAttribute('data-lang') === savedLanguage) {
+                    button.classList.add('active');
+                } else {
+                    button.classList.remove('active');
+                }
+                
+                // Add click event listeners to language buttons
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const lang = this.getAttribute('data-lang');
+                    
+                    // Update HTML lang attribute
+                    document.documentElement.lang = lang;
+                    
+                    // Save language preference
+                    localStorage.setItem('language', lang);
+                    
+                    // Update active state of buttons
+                    langButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Force re-render for better language switching
+                    document.body.style.display = 'none';
+                    document.body.offsetHeight; // Force reflow
+                    document.body.style.display = '';
+                });
+            });
+        });
+    </script>
 </head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXX"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-
-    <!-- Theme Toggle Button -->
-    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
-        <i class="fas fa-moon"></i>
-        <i class="fas fa-sun"></i>
-    </button>
-
     <!-- Header -->
     <header class="header">
         <div class="container">
             <a href="index.html" class="logo">
-                <img src="logo.png" alt="Skylar Solutions Logo">
+                <img src="Logo Skylar Solutions/logo_transparent.png" style="height: 150px; width: auto;" alt="Skylar Solutions Logo">
             </a>
             <div class="navbar-container">
                 <div class="navbar-toggle">
@@ -190,7 +84,7 @@
                     <li><a href="index.html" data-lang-en="Home" data-lang-fr="Accueil">Home</a></li>
                     <li><a href="About.html" data-lang-en="About" data-lang-fr="À propos">About</a></li>
                     <li class="dropdown">
-                        <a href="services/services.html" data-lang-en="Services" data-lang-fr="Services" class="dropdown-toggle">Services <i class="fas fa-chevron-down"></i></a>
+                        <a href="services/services.html" data-lang-en="Services" data-lang-fr="Services">Services <i class="fas fa-chevron-down"></i></a>
                         <ul class="dropdown-menu">
                             <li><a href="services/app-development.html" data-lang-en="App Development" data-lang-fr="Développement d'Applications">App Development</a></li>
                             <li><a href="services/ai-data-sciences.html" data-lang-en="AI & Data Sciences" data-lang-fr="IA & Sciences des Données">AI & Data Sciences</a></li>
@@ -200,7 +94,8 @@
                             <li><a href="services/support.html" data-lang-en="24/7 Support" data-lang-fr="Support 24/7">24/7 Support</a></li>
                         </ul>
                     </li>
-                    <li><a href="blog.html" data-lang-en="Blog" data-lang-fr="Blog" class="active">Blog</a></li>
+                    <li><a href="blog.html" data-lang-en="Blog" data-lang-fr="Blog">Blog</a></li>
+                    <li><a href="careers.html" data-lang-en="Careers" data-lang-fr="Carrières">Careers</a></li>
                     <li><a href="Contact.html" data-lang-en="Contact" data-lang-fr="Contact">Contact</a></li>
                 </ul>
                 <div class="language-switcher">
@@ -212,13 +107,19 @@
         </div>
     </header>
 
-    <!-- Blog Hero Section -->
-    <section class="blog-hero">
+    <!-- Page Hero Section -->
+    <section class="page-hero">
         <div class="container">
-            <h1 data-lang-en>Our Latest Insights</h1>
-            <h1 data-lang-fr>Nos Dernières Perspectives</h1>
-            <p class="hero-subtitle" data-lang-en>Stay updated with the latest trends and insights in technology and digital transformation</p>
-            <p class="hero-subtitle" data-lang-fr>Restez informé des dernières tendances et perspectives en technologie et transformation digitale</p>
+            <div class="page-hero-content">
+                <h1 data-lang-en>Our Latest Insights</h1>
+                <h1 data-lang-fr>Nos Dernières Perspectives</h1>
+                <div class="breadcrumbs">
+                    <a href="index.html" data-lang-en>Home</a>
+                    <a href="index.html" data-lang-fr>Accueil</a> / 
+                    <span data-lang-en>Blog</span>
+                    <span data-lang-fr>Blog</span>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -243,56 +144,129 @@
             <div class="blog-grid">
                 <!-- Blog Card 1 -->
                 <article class="blog-card" data-category="ai">
-                    <img src="images/blog/ai-trends.jpg" alt="AI Trends" class="blog-image">
+                    <div class="blog-image-container">
+                        <img src="Content/The Future of AI in Enterprise Solutions.png" alt="AI Trends" class="blog-image">
+                    </div>
                     <div class="blog-content">
                         <span class="blog-category" data-lang-en>AI & Data</span>
                         <span class="blog-category" data-lang-fr>IA & Données</span>
                         <h2 class="blog-title" data-lang-en>The Future of AI in Enterprise Solutions</h2>
                         <h2 class="blog-title" data-lang-fr>L'Avenir de l'IA dans les Solutions d'Entreprise</h2>
-                        <p class="blog-excerpt" data-lang-en>Explore how artificial intelligence is transforming business operations and decision-making processes.</p>
-                        <p class="blog-excerpt" data-lang-fr>Découvrez comment l'intelligence artificielle transforme les opérations commerciales et les processus décisionnels.</p>
+                        <p class="blog-excerpt" data-lang-en>Investigating, piloting, and scaling AI applications within enterprise ecosystems. With 78% of global enterprises now using AI in at least one business function and generative AI adoption surging from 33% to 71% in 2024.</p>
+                        <p class="blog-excerpt" data-lang-fr>Investigation, pilotage et mise à l'échelle des applications d'IA dans les écosystèmes d'entreprise. Avec 78% des entreprises mondiales utilisant maintenant l'IA dans au moins une fonction commerciale.</p>
                         <div class="blog-meta">
-                            <span class="blog-date"><i class="far fa-calendar"></i> 15 Mar 2024</span>
-                            <span class="blog-read-time"><i class="far fa-clock"></i> 5 min read</span>
+                            <span class="blog-date"><i class="far fa-calendar"></i> 15 Jan 2025</span>
+                            <span class="blog-read-time"><i class="far fa-clock"></i> 12 min read</span>
                         </div>
+                        <a href="#" class="btn btn-outline" data-lang-en>Read More</a>
+                        <a href="#" class="btn btn-outline" data-lang-fr>Lire Plus</a>
                     </div>
                 </article>
 
                 <!-- Blog Card 2 -->
                 <article class="blog-card" data-category="security">
-                    <img src="images/blog/cybersecurity.jpg" alt="Cybersecurity" class="blog-image">
+                    <div class="blog-image-container">
+                        <img src="Content/Essential Cybersecurity Practices for 2024.png" alt="Cybersecurity" class="blog-image">
+                    </div>
                     <div class="blog-content">
                         <span class="blog-category" data-lang-en>Security</span>
                         <span class="blog-category" data-lang-fr>Sécurité</span>
                         <h2 class="blog-title" data-lang-en>Essential Cybersecurity Practices for 2024</h2>
                         <h2 class="blog-title" data-lang-fr>Pratiques Essentielles en Cybersécurité pour 2024</h2>
-                        <p class="blog-excerpt" data-lang-en>Key strategies to protect your business from emerging cyber threats.</p>
-                        <p class="blog-excerpt" data-lang-fr>Stratégies clés pour protéger votre entreprise contre les menaces cybernétiques émergentes.</p>
+                        <p class="blog-excerpt" data-lang-en>A comprehensive research report covering AI-driven threats, Zero Trust architecture, NIS2 compliance, and building cybersecurity culture in distributed teams.</p>
+                        <p class="blog-excerpt" data-lang-fr>Un rapport de recherche complet couvrant les menaces pilotées par l'IA, l'architecture Zero Trust, la conformité NIS2 et la construction d'une culture de cybersécurité dans les équipes distribuées.</p>
                         <div class="blog-meta">
-                            <span class="blog-date"><i class="far fa-calendar"></i> 10 Mar 2024</span>
-                            <span class="blog-read-time"><i class="far fa-clock"></i> 4 min read</span>
+                            <span class="blog-date"><i class="far fa-calendar"></i> 10 Jan 2025</span>
+                            <span class="blog-read-time"><i class="far fa-clock"></i> 15 min read</span>
                         </div>
+                        <a href="#" class="btn btn-outline" data-lang-en>Read More</a>
+                        <a href="#" class="btn btn-outline" data-lang-fr>Lire Plus</a>
                     </div>
                 </article>
 
                 <!-- Blog Card 3 -->
                 <article class="blog-card" data-category="tech">
-                    <img src="images/blog/cloud-computing.jpg" alt="Cloud Computing" class="blog-image">
+                    <div class="blog-image-container">
+                        <img src="Content/Cloud Computing- Beyond the Basics.png" alt="Cloud Computing" class="blog-image">
+                    </div>
                     <div class="blog-content">
                         <span class="blog-category" data-lang-en>Technology</span>
                         <span class="blog-category" data-lang-fr>Technologie</span>
                         <h2 class="blog-title" data-lang-en>Cloud Computing: Beyond the Basics</h2>
                         <h2 class="blog-title" data-lang-fr>Cloud Computing: Au-delà des Bases</h2>
-                        <p class="blog-excerpt" data-lang-en>Advanced cloud strategies for modern businesses.</p>
-                        <p class="blog-excerpt" data-lang-fr>Stratégies cloud avancées pour les entreprises modernes.</p>
+                        <p class="blog-excerpt" data-lang-en>Advanced cloud strategies for modern enterprises. The global cloud computing market reached $753 billion in 2024 and is projected to reach $5.15 trillion by 2034, with 80% of enterprises expected to embrace multi-cloud approaches.</p>
+                        <p class="blog-excerpt" data-lang-fr>Stratégies cloud avancées pour les entreprises modernes. Le marché mondial du cloud computing a atteint 753 milliards de dollars en 2024 et devrait atteindre 5,15 billions de dollars d'ici 2034.</p>
                         <div class="blog-meta">
-                            <span class="blog-date"><i class="far fa-calendar"></i> 5 Mar 2024</span>
-                            <span class="blog-read-time"><i class="far fa-clock"></i> 6 min read</span>
+                            <span class="blog-date"><i class="far fa-calendar"></i> 5 Jan 2025</span>
+                            <span class="blog-read-time"><i class="far fa-clock"></i> 18 min read</span>
                         </div>
+                        <a href="#" class="btn btn-outline" data-lang-en>Read More</a>
+                        <a href="#" class="btn btn-outline" data-lang-fr>Lire Plus</a>
                     </div>
                 </article>
 
-                <!-- Add more blog cards as needed -->
+                <!-- Blog Card 4 -->
+                <article class="blog-card" data-category="business">
+                    <div class="blog-image-container">
+                        <img src="images/pexels-photo-2422294.jpeg" alt="Digital Transformation" class="blog-image">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-category" data-lang-en>Business</span>
+                        <span class="blog-category" data-lang-fr>Entreprise</span>
+                        <h2 class="blog-title" data-lang-en>Digital Transformation Success Stories</h2>
+                        <h2 class="blog-title" data-lang-fr>Histoires de Réussite de Transformation Digitale</h2>
+                        <p class="blog-excerpt" data-lang-en>How leading organizations are successfully navigating digital transformation.</p>
+                        <p class="blog-excerpt" data-lang-fr>Comment les organisations leaders réussissent leur transformation digitale.</p>
+                        <div class="blog-meta">
+                            <span class="blog-date"><i class="far fa-calendar"></i> 28 Feb 2024</span>
+                            <span class="blog-read-time"><i class="far fa-clock"></i> 7 min read</span>
+                        </div>
+                        <a href="#" class="btn btn-outline" data-lang-en>Read More</a>
+                        <a href="#" class="btn btn-outline" data-lang-fr>Lire Plus</a>
+                    </div>
+                </article>
+
+                <!-- Blog Card 5 -->
+                <article class="blog-card" data-category="ai">
+                    <div class="blog-image-container">
+                        <img src="images/uuyu-min.jpg" alt="Machine Learning" class="blog-image">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-category" data-lang-en>AI & Data</span>
+                        <span class="blog-category" data-lang-fr>IA & Données</span>
+                        <h2 class="blog-title" data-lang-en>Machine Learning for Business Intelligence</h2>
+                        <h2 class="blog-title" data-lang-fr>Machine Learning pour l'Intelligence d'Affaires</h2>
+                        <p class="blog-excerpt" data-lang-en>Implementing machine learning to enhance business intelligence and decision-making.</p>
+                        <p class="blog-excerpt" data-lang-fr>Implémentation du machine learning pour améliorer l'intelligence d'affaires et la prise de décision.</p>
+                        <div class="blog-meta">
+                            <span class="blog-date"><i class="far fa-calendar"></i> 20 Feb 2024</span>
+                            <span class="blog-read-time"><i class="far fa-clock"></i> 5 min read</span>
+                        </div>
+                        <a href="#" class="btn btn-outline" data-lang-en>Read More</a>
+                        <a href="#" class="btn btn-outline" data-lang-fr>Lire Plus</a>
+                    </div>
+                </article>
+
+                <!-- Blog Card 6 -->
+                <article class="blog-card" data-category="tech">
+                    <div class="blog-image-container">
+                        <img src="images/rttyrrt.jpg" alt="Software Development" class="blog-image">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-category" data-lang-en>Technology</span>
+                        <span class="blog-category" data-lang-fr>Technologie</span>
+                        <h2 class="blog-title" data-lang-en>Modern Software Development Methodologies</h2>
+                        <h2 class="blog-title" data-lang-fr>Méthodologies Modernes de Développement Logiciel</h2>
+                        <p class="blog-excerpt" data-lang-en>A comparison of agile, DevOps, and other contemporary approaches.</p>
+                        <p class="blog-excerpt" data-lang-fr>Une comparaison de l'agilité, DevOps et autres approches contemporaines.</p>
+                        <div class="blog-meta">
+                            <span class="blog-date"><i class="far fa-calendar"></i> 15 Feb 2024</span>
+                            <span class="blog-read-time"><i class="far fa-clock"></i> 6 min read</span>
+                        </div>
+                        <a href="#" class="btn btn-outline" data-lang-en>Read More</a>
+                        <a href="#" class="btn btn-outline" data-lang-fr>Lire Plus</a>
+                    </div>
+                </article>
             </div>
 
             <!-- Pagination -->
@@ -305,12 +279,35 @@
         </div>
     </section>
 
+    <!-- Subscribe Section -->
+    <section class="subscribe-section">
+        <div class="container">
+            <div class="subscribe-container">
+                <div class="subscribe-content">
+                    <h2 data-lang-en>Subscribe to Our Newsletter</h2>
+                    <h2 data-lang-fr>Abonnez-vous à Notre Newsletter</h2>
+                    <p data-lang-en>Stay updated with the latest insights, trends, and news in technology and digital transformation.</p>
+                    <p data-lang-fr>Restez informé des dernières perspectives, tendances et actualités en technologie et transformation digitale.</p>
+                </div>
+                <div class="subscribe-form">
+                    <form action="#" method="post">
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Your email address" required>
+                            <button type="submit" class="btn btn-primary" data-lang-en>Subscribe</button>
+                            <button type="submit" class="btn btn-primary" data-lang-fr>S'abonner</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <img src="Logo Skylar Solutions/logo_transparent.png" alt="Skylar Solutions Logo" class="footer-logo" style="height: 240px; width: auto;">
+                    <img src="Logo Skylar Solutions/logo_transparent.png" alt="Skylar Solutions Logo" class="footer-logo" style="height: 150px; width: auto;">
                     <p data-lang-en>Your trusted partner for digital transformation and innovative technology solutions.</p>
                     <p data-lang-fr>Votre partenaire de confiance pour la transformation digitale et les solutions technologiques innovantes.</p>
                     <div class="social-links">
@@ -410,4 +407,4 @@
         });
     </script>
 </body>
-</html> 
+</html>
