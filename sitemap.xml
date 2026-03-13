@@ -13,22 +13,31 @@
   
   <!-- About Page -->
   <url>
-    <loc>https://skylarsolution.com/About.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://skylarsolution.com/About.html"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://skylarsolution.com/fr/About.html"/>
+    <loc>https://skylarsolution.com/about.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://skylarsolution.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://skylarsolution.com/fr/about.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <!-- Contact Page -->
   <url>
-    <loc>https://skylarsolution.com/Contact.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://skylarsolution.com/Contact.html"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://skylarsolution.com/fr/Contact.html"/>
+    <loc>https://skylarsolution.com/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://skylarsolution.com/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://skylarsolution.com/fr/contact.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
+  <!-- Careers Page -->
+  <url>
+    <loc>https://skylarsolution.com/careers.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://skylarsolution.com/careers.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://skylarsolution.com/fr/careers.html"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <!-- Blog Page -->
   <url>
     <loc>https://skylarsolution.com/blog.html</loc>
