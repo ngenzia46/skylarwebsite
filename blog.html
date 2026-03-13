@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" data-title-en="Blog - Technology Insights | Skylar Solutions" data-title-fr="Blog - Perspectives Technologiques | Skylar Solutions">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,11 +25,10 @@
 
     <!-- Language Alternatives -->
     <link rel="alternate" hreflang="en" href="https://skylarsolution.com/blog.html">
-    <link rel="alternate" hreflang="fr" href="https://skylarsolution.com/fr/blog.html">
+    <link rel="alternate" hreflang="fr" href="https://skylarsolution.com/blog.html">
     <link rel="alternate" hreflang="x-default" href="https://skylarsolution.com/blog.html">
     
-    <title data-lang-en>Blog - Technology Insights | Skylar Solutions</title>
-    <title data-lang-fr>Blog - Perspectives Technologiques | Skylar Solutions</title>
+    <title>Blog - Technology Insights | Skylar Solutions</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
@@ -42,46 +41,6 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="blog.css">
     
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Get saved language or default to English
-            const savedLanguage = localStorage.getItem('language') || 'en';
-            
-            // Set initial language
-            document.documentElement.lang = savedLanguage;
-            
-            // Update active state on language buttons
-            const langButtons = document.querySelectorAll('.language-switcher a');
-            langButtons.forEach(button => {
-                if (button.getAttribute('data-lang') === savedLanguage) {
-                    button.classList.add('active');
-                } else {
-                    button.classList.remove('active');
-                }
-                
-                // Add click event listeners to language buttons
-                button.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const lang = this.getAttribute('data-lang');
-                    
-                    // Update HTML lang attribute
-                    document.documentElement.lang = lang;
-                    
-                    // Save language preference
-                    localStorage.setItem('language', lang);
-                    
-                    // Update active state of buttons
-                    langButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Force re-render for better language switching
-                    document.body.style.display = 'none';
-                    document.body.offsetHeight; // Force reflow
-                    document.body.style.display = '';
-                });
-            });
-        });
-    </script>
 </head>
 <body>
     <!-- Header -->
@@ -172,8 +131,8 @@
                             <span class="blog-date"><i class="far fa-calendar"></i> 15 Jan 2025</span>
                             <span class="blog-read-time"><i class="far fa-clock"></i> 12 min read</span>
                         </div>
-                        <a href="#" class="btn btn-outline" data-lang-en>Read More</a>
-                        <a href="#" class="btn btn-outline" data-lang-fr>Lire Plus</a>
+                        <a href="contact.html?topic=ai-enterprise-solutions" class="btn btn-outline" data-lang-en>Request the full brief</a>
+                        <a href="contact.html?topic=ai-enterprise-solutions" class="btn btn-outline" data-lang-fr>Demander la note complete</a>
                     </div>
                 </article>
 
@@ -193,8 +152,8 @@
                             <span class="blog-date"><i class="far fa-calendar"></i> 10 Jan 2025</span>
                             <span class="blog-read-time"><i class="far fa-clock"></i> 15 min read</span>
                         </div>
-                        <a href="#" class="btn btn-outline" data-lang-en>Read More</a>
-                        <a href="#" class="btn btn-outline" data-lang-fr>Lire Plus</a>
+                        <a href="contact.html?topic=cybersecurity-practices" class="btn btn-outline" data-lang-en>Request the full brief</a>
+                        <a href="contact.html?topic=cybersecurity-practices" class="btn btn-outline" data-lang-fr>Demander la note complete</a>
                     </div>
                 </article>
 
@@ -214,8 +173,8 @@
                             <span class="blog-date"><i class="far fa-calendar"></i> 5 Jan 2025</span>
                             <span class="blog-read-time"><i class="far fa-clock"></i> 18 min read</span>
                         </div>
-                        <a href="#" class="btn btn-outline" data-lang-en>Read More</a>
-                        <a href="#" class="btn btn-outline" data-lang-fr>Lire Plus</a>
+                        <a href="contact.html?topic=cloud-computing-strategy" class="btn btn-outline" data-lang-en>Request the full brief</a>
+                        <a href="contact.html?topic=cloud-computing-strategy" class="btn btn-outline" data-lang-fr>Demander la note complete</a>
                     </div>
                 </article>
 
@@ -235,8 +194,8 @@
                             <span class="blog-date"><i class="far fa-calendar"></i> 28 Feb 2024</span>
                             <span class="blog-read-time"><i class="far fa-clock"></i> 7 min read</span>
                         </div>
-                        <a href="#" class="btn btn-outline" data-lang-en>Read More</a>
-                        <a href="#" class="btn btn-outline" data-lang-fr>Lire Plus</a>
+                        <a href="contact.html?topic=digital-transformation-success-stories" class="btn btn-outline" data-lang-en>Discuss this topic</a>
+                        <a href="contact.html?topic=digital-transformation-success-stories" class="btn btn-outline" data-lang-fr>Discuter de ce sujet</a>
                     </div>
                 </article>
 
@@ -256,8 +215,8 @@
                             <span class="blog-date"><i class="far fa-calendar"></i> 20 Feb 2024</span>
                             <span class="blog-read-time"><i class="far fa-clock"></i> 5 min read</span>
                         </div>
-                        <a href="#" class="btn btn-outline" data-lang-en>Read More</a>
-                        <a href="#" class="btn btn-outline" data-lang-fr>Lire Plus</a>
+                        <a href="contact.html?topic=machine-learning-business-intelligence" class="btn btn-outline" data-lang-en>Discuss this topic</a>
+                        <a href="contact.html?topic=machine-learning-business-intelligence" class="btn btn-outline" data-lang-fr>Discuter de ce sujet</a>
                     </div>
                 </article>
 
@@ -277,19 +236,12 @@
                             <span class="blog-date"><i class="far fa-calendar"></i> 15 Feb 2024</span>
                             <span class="blog-read-time"><i class="far fa-clock"></i> 6 min read</span>
                         </div>
-                        <a href="#" class="btn btn-outline" data-lang-en>Read More</a>
-                        <a href="#" class="btn btn-outline" data-lang-fr>Lire Plus</a>
+                        <a href="contact.html?topic=software-development-methodologies" class="btn btn-outline" data-lang-en>Discuss this topic</a>
+                        <a href="contact.html?topic=software-development-methodologies" class="btn btn-outline" data-lang-fr>Discuter de ce sujet</a>
                     </div>
                 </article>
             </div>
 
-            <!-- Pagination -->
-            <div class="pagination">
-                <a href="#" class="page-link active">1</a>
-                <a href="#" class="page-link">2</a>
-                <a href="#" class="page-link">3</a>
-                <a href="#" class="page-link"><i class="fas fa-chevron-right"></i></a>
-            </div>
         </div>
     </section>
 
@@ -298,19 +250,14 @@
         <div class="container">
             <div class="subscribe-container">
                 <div class="subscribe-content">
-                    <h2 data-lang-en>Subscribe to Our Newsletter</h2>
-                    <h2 data-lang-fr>Abonnez-vous à Notre Newsletter</h2>
-                    <p data-lang-en>Stay updated with the latest insights, trends, and news in technology and digital transformation.</p>
-                    <p data-lang-fr>Restez informé des dernières perspectives, tendances et actualités en technologie et transformation digitale.</p>
+                    <h2 data-lang-en>Stay in the Loop</h2>
+                    <h2 data-lang-fr>Restons en Contact</h2>
+                    <p data-lang-en>Request research updates, case studies, and new insight briefs directly from our team.</p>
+                    <p data-lang-fr>Demandez nos nouvelles analyses, etudes de cas et notes de synthese directement a notre equipe.</p>
                 </div>
                 <div class="subscribe-form">
-                    <form action="#" method="post">
-                        <div class="form-group">
-                            <input type="email" name="email" placeholder="Your email address" required>
-                            <button type="submit" class="btn btn-primary" data-lang-en>Subscribe</button>
-                            <button type="submit" class="btn btn-primary" data-lang-fr>S'abonner</button>
-                        </div>
-                    </form>
+                    <a href="contact.html" class="btn btn-primary" data-lang-en>Request updates</a>
+                    <a href="contact.html" class="btn btn-primary" data-lang-fr>Recevoir des actualites</a>
                 </div>
             </div>
         </div>

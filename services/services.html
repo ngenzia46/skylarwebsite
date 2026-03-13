@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-title-en="Our Digital Transformation Services | Skylar Solutions" data-title-fr="Nos Services de Transformation Digitale | Skylar Solutions">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +7,11 @@
     <meta name="keywords" content="IT Services Belgium, Digital Transformation Services, Application Development, Data Science Consulting, Cybersecurity Solutions, Blockchain Development, IT Support, Skylar Solutions">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://skylarsolution.com/services.html">
+    <link rel="canonical" href="https://skylarsolution.com/services/services.html">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://skylarsolution.com/services.html">
+    <meta property="og:url" content="https://skylarsolution.com/services/services.html">
     <meta property="og:title" content="Our Digital Transformation Services | Skylar Solutions">
     <meta property="og:description" content="Explore Skylar Solutions' comprehensive IT services: Custom App Development, AI & Data Science, Cybersecurity, Collaboration Solutions, Blockchain, and 24/7 Support.">
     <meta property="og:image" content="https://skylarsolution.com/images/hero-illustration.webp">
@@ -24,20 +24,19 @@
     <meta property="twitter:image" content="https://skylarsolution.com/images/hero-illustration.webp">
 
     <!-- Language Alternatives -->
-    <link rel="alternate" hreflang="en" href="https://skylarsolution.com/services.html" />
-    <link rel="alternate" hreflang="fr" href="https://skylarsolution.com/fr/services.html" />
-    <link rel="alternate" hreflang="x-default" href="https://skylarsolution.com/services.html" />
+    <link rel="alternate" hreflang="en" href="https://skylarsolution.com/services/services.html" />
+    <link rel="alternate" hreflang="fr" href="https://skylarsolution.com/services/services.html" />
+    <link rel="alternate" hreflang="x-default" href="https://skylarsolution.com/services/services.html" />
 
-    <title data-lang-en>Our Digital Transformation Services | Skylar Solutions</title>
-    <title data-lang-fr>Nos Services de Transformation Digitale | Skylar Solutions</title>
+    <title>Our Digital Transformation Services | Skylar Solutions</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="../favicon.png">
     <link rel="apple-touch-icon" href="../apple-touch-icon.png">
     
     <!-- Preload Critical Assets -->
-    <link rel="preload" href="styles.css" as="style">
-    <link rel="preload" href="script.js" as="script">
+    <link rel="preload" href="service-styles.css" as="style">
+    <link rel="preload" href="../script.js" as="script">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -46,7 +45,7 @@
     <link rel="stylesheet" href="service-styles.css">
     
     <!-- Cookie Consent -->
-    <link rel="stylesheet" href="cookie-consent.css">
+    <link rel="stylesheet" href="../cookie-consent.css">
     
     <!-- Schema Markup -->
     <script type="application/ld+json">
@@ -159,58 +158,12 @@
         /* Language styles already in main CSS */
     </style>
     
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Get saved language or default to English
-            const savedLanguage = localStorage.getItem('language') || 'en';
-            
-            // Set initial language
-            document.documentElement.lang = savedLanguage;
-            
-            // Update active state on language buttons
-            const langButtons = document.querySelectorAll('.language-switcher a');
-            langButtons.forEach(button => {
-                if (button.getAttribute('data-lang') === savedLanguage) {
-                    button.classList.add('active');
-                } else {
-                    button.classList.remove('active');
-                }
-                
-                // Add click event listeners to language buttons
-                button.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const lang = this.getAttribute('data-lang');
-                    
-                    // Update HTML lang attribute
-                    document.documentElement.lang = lang;
-                    
-                    // Save language preference
-                    localStorage.setItem('language', lang);
-                    
-                    // Update active state of buttons
-                    langButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Force re-render for better language switching
-                    document.body.style.display = 'none';
-                    document.body.offsetHeight; // Force reflow
-                    document.body.style.display = '';
-                });
-            });
-        });
-    </script>
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WLX4WF3M"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-
-    <!-- Theme Toggle Button -->
-    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
-        <i class="fas fa-moon"></i>
-        <i class="fas fa-sun"></i>
-    </button>
 
     <!-- Header -->
     <header class="header">
@@ -449,6 +402,6 @@
 
     <!-- Scripts -->
     <script src="../script.js"></script>
-    <script src="cookie-consent.js" defer></script>
+    <script src="../cookie-consent.js" defer></script>
 </body>
 </html>

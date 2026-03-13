@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" data-title-en="Careers at Skylar Solutions | Join Our Team" data-title-fr="Carrières chez Skylar Solutions | Rejoignez Notre Équipe">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,15 +29,14 @@
     
     <!-- Language Alternatives -->
     <link rel="alternate" hreflang="en" href="https://skylarsolution.com/careers.html">
-    <link rel="alternate" hreflang="fr" href="https://skylarsolution.com/fr/careers.html">
+    <link rel="alternate" hreflang="fr" href="https://skylarsolution.com/careers.html">
     <link rel="alternate" hreflang="x-default" href="https://skylarsolution.com/careers.html">
     
     <!-- Region-specific metadata -->
     <meta name="ICBM" content="50.8466, 4.3528"> <!-- Brussels coordinates -->
     <meta name="DC.coverage" content="Europe, Africa">
     
-    <title data-lang-en>Careers at Skylar Solutions | Join Our Team</title>
-    <title data-lang-fr>Carrières chez Skylar Solutions | Rejoignez Notre Équipe</title>
+    <title>Careers at Skylar Solutions | Join Our Team</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
@@ -64,43 +63,15 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "JobPosting",
-        "title": "IT Careers at Skylar Solutions",
-        "description": "Join Skylar Solutions and be part of a dynamic team driving digital transformation across Europe and Africa. We offer exciting career opportunities in IT and technology.",
-        "datePosted": "2024-01-01",
-        "validThrough": "2024-12-31",
-        "employmentType": "FULL_TIME",
-        "hiringOrganization": {
+        "@type": "WebPage",
+        "name": "Careers at Skylar Solutions",
+        "description": "Explore current and future career opportunities at Skylar Solutions across digital transformation, software delivery, data, and cybersecurity.",
+        "publisher": {
             "@type": "Organization",
             "name": "Skylar Solutions",
-            "sameAs": "https://skylarsolution.com",
+            "url": "https://skylarsolution.com",
             "logo": "https://skylarsolution.com/logo.png"
-        },
-        "jobLocation": {
-            "@type": "Place",
-            "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "Avenue Pasteur 6",
-                "addressLocality": "Wavre",
-                "postalCode": "1300",
-                "addressCountry": "BE"
-            }
-        },
-        "baseSalary": {
-            "@type": "MonetaryAmount",
-            "currency": "EUR",
-            "value": {
-                "@type": "QuantitativeValue",
-                "minValue": 40000,
-                "maxValue": 90000,
-                "unitText": "YEAR"
-            }
-        },
-        "skills": "Software Development, AI, Data Science, Project Management, Cybersecurity",
-        "industry": "Information Technology",
-        "educationRequirements": "Bachelor's degree in Computer Science or related field, or equivalent experience",
-        "experienceRequirements": "Experience varies by position",
-        "qualifications": "Technical expertise in relevant domains, excellent communication skills, team player"
+        }
     }
     </script>
     
@@ -138,58 +109,12 @@
         /* Language styles already in main CSS */
     </style>
     
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Get saved language or default to English
-            const savedLanguage = localStorage.getItem('language') || 'en';
-            
-            // Set initial language
-            document.documentElement.lang = savedLanguage;
-            
-            // Update active state on language buttons
-            const langButtons = document.querySelectorAll('.language-switcher a');
-            langButtons.forEach(button => {
-                if (button.getAttribute('data-lang') === savedLanguage) {
-                    button.classList.add('active');
-                } else {
-                    button.classList.remove('active');
-                }
-                
-                // Add click event listeners to language buttons
-                button.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const lang = this.getAttribute('data-lang');
-                    
-                    // Update HTML lang attribute
-                    document.documentElement.lang = lang;
-                    
-                    // Save language preference
-                    localStorage.setItem('language', lang);
-                    
-                    // Update active state of buttons
-                    langButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Force re-render for better language switching
-                    document.body.style.display = 'none';
-                    document.body.offsetHeight; // Force reflow
-                    document.body.style.display = '';
-                });
-            });
-        });
-    </script>
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WLX4WF3M"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    
-    <!-- Theme Toggle Button -->
-    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
-        <i class="fas fa-moon"></i>
-        <i class="fas fa-sun"></i>
-    </button>
     
     <!-- Header -->
     <header class="header">
