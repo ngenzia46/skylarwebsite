@@ -3,6 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Critical: Language switching styles (must load first) -->
+    <style>
+        [data-lang-en], [data-lang-fr] { display: none !important; }
+        html[lang="en"] [data-lang-en] { display: block !important; }
+        html[lang="en"] span[data-lang-en], html[lang="en"] a[data-lang-en] { display: inline !important; }
+        html[lang="en"] li[data-lang-en] { display: list-item !important; }
+        html[lang="fr"] [data-lang-fr] { display: block !important; }
+        html[lang="fr"] span[data-lang-fr], html[lang="fr"] a[data-lang-fr] { display: inline !important; }
+        html[lang="fr"] li[data-lang-fr] { display: list-item !important; }
+    </style>
     <meta name="description" content="Join Skylar Solutions and be part of a dynamic team driving digital transformation across Europe and Africa. Explore exciting career opportunities in IT and technology.">
     <meta name="keywords" content="IT Jobs Belgium, Technology Careers, Digital Transformation Jobs, IT Opportunities Africa, Skylar Solutions Careers">
     <meta name="geo.region" content="BE, CD, RW, KE, NG, ZA">
