@@ -318,6 +318,21 @@ html[lang="fr"] .form-label[data-lang-fr] {
     outline: none;
 }
 
+.form-control.error {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.15);
+}
+
+.form-check-input.error {
+    outline: 2px solid #dc3545;
+}
+
+.btn-submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
 textarea.form-control {
     min-height: 150px;
     resize: vertical;

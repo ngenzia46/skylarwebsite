@@ -1,0 +1,78 @@
+/* WebP specific styles */
+
+/* Example of how to use WebP for background images with fallbacks */
+
+/* Default background image (fallback) */
+.hero-section {
+  background-image: url('images/hero-bg.jpg');
+}
+
+/* WebP version for browsers with support */
+.webp .hero-section {
+  background-image: url('images/hero-bg.webp');
+}
+
+/* About section background */
+.about-section {
+  background-image: url('images/about-bg.jpg');
+}
+
+.webp .about-section {
+  background-image: url('images/about-bg.webp');
+}
+
+/* Testimonials section background */
+.testimonials {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/testimonial-bg.jpg');
+}
+
+.webp .testimonials {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/testimonial-bg.webp');
+}
+
+/* CTA section background */
+.cta-section {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('images/cta-bg.jpg');
+}
+
+.webp .cta-section {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('images/cta-bg.webp');
+}
+
+/* Footer logo */
+.footer-logo {
+  background-image: url('Logo Skylar Solutions/logo_transparent.png');
+}
+
+.webp .footer-logo {
+  background-image: url('Logo Skylar Solutions/logo_transparent.webp');
+}
+
+/* Service cards icons - as examples
+   These would be implemented as the actual icons get converted to WebP */
+.service-card-app {
+  background-image: url('images/icons/app-dev.png');
+}
+
+.webp .service-card-app {
+  background-image: url('images/icons/app-dev.webp');
+}
+
+.service-card-ai {
+  background-image: url('images/icons/ai.png');
+}
+
+.webp .service-card-ai {
+  background-image: url('images/icons/ai.webp');
+}
+
+.service-card-security {
+  background-image: url('images/icons/security.png');
+}
+
+.webp .service-card-security {
+  background-image: url('images/icons/security.webp');
+}
+
+/* This file serves as a template for adding more WebP background images
+   as they become available for the site */

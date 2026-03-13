@@ -1,0 +1,701 @@
+/* Careers Page Specific Styles */
+
+/* Language Switching Overrides */
+html[lang="en"] p[data-lang-en],
+html[lang="fr"] p[data-lang-fr],
+html[lang="en"] h1[data-lang-en],
+html[lang="fr"] h1[data-lang-fr],
+html[lang="en"] h2[data-lang-en],
+html[lang="fr"] h2[data-lang-fr],
+html[lang="en"] h3[data-lang-en],
+html[lang="fr"] h3[data-lang-fr],
+html[lang="en"] ul[data-lang-en],
+html[lang="fr"] ul[data-lang-fr],
+html[lang="en"] a[data-lang-en],
+html[lang="fr"] a[data-lang-fr] {
+    display: block !important;
+}
+
+/* Page Hero Section */
+.page-hero {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: var(--white-color);
+    padding: 120px 0 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.page-hero::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+}
+
+.page-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    left: -50px;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+}
+
+.page-hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.page-hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.breadcrumbs {
+    font-size: 0.9rem;
+}
+
+.breadcrumbs a {
+    color: var(--white-color);
+    text-decoration: none;
+    transition: var(--transition-base);
+}
+
+.breadcrumbs a:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Careers Hero Section */
+.careers-hero {
+    padding: 5rem 0;
+    background-color: var(--white-color);
+}
+
+.two-column-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.column-content {
+    padding-right: 2rem;
+}
+
+.column-content h2 {
+    color: var(--gray-800);
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.column-content h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+}
+
+.lead-text {
+    font-size: 1.25rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.column-image img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.column-image img:hover {
+    transform: scale(1.02);
+}
+
+@media (max-width: 992px) {
+    .two-column-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .column-content {
+        padding-right: 0;
+    }
+}
+
+/* Introduction Section Styles */
+.intro-section {
+    padding: 5rem 0;
+    background-color: var(--white-color);
+}
+
+.intro-content {
+    max-width: 900px;
+    margin: 0 auto 4rem;
+}
+
+.intro-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--gray-700);
+    margin-bottom: 2rem;
+}
+
+.intro-text h2 {
+    color: var(--gray-800);
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.intro-text h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--gray-800);
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -10px;
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+}
+
+.section-description {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 3rem;
+    color: var(--gray-600);
+    font-size: 1.1rem;
+}
+
+/* Features Grid Styles */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.feature-card {
+    background-color: var(--white-color);
+    border-radius: var(--radius-lg);
+    padding: var(--space-8);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--gray-200);
+    z-index: 1;
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, var(--secondary-color), var(--accent-color));
+    top: 0;
+    left: 0;
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card:hover::before {
+    height: 8px;
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+    transform: scale(1.1);
+}
+
+.feature-card h3 {
+    color: var(--gray-800);
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+.feature-card p {
+    color: var(--gray-700);
+    line-height: 1.6;
+}
+
+.why-join-us {
+    margin-top: 4rem;
+}
+
+.why-join-us .section-title {
+    margin-bottom: 2rem;
+}
+
+/* Career Cards */
+.careers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.career-card {
+    background-color: var(--white-color);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    padding: 2rem;
+    position: relative;
+    border: 1px solid var(--gray-200);
+    z-index: 1;
+}
+
+.career-card::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+    bottom: 0;
+    left: 0;
+    transition: all 0.3s ease;
+}
+
+.career-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.career-card:hover::before {
+    height: 6px;
+}
+
+.career-title {
+    font-size: var(--text-xl);
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.career-location {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--gray-600);
+    margin-bottom: 1rem;
+}
+
+.career-type {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: var(--primary-light);
+    color: var(--primary-color);
+    border-radius: var(--radius);
+    font-size: var(--text-sm);
+    margin-bottom: 1rem;
+}
+
+.career-description {
+    color: var(--gray-700);
+    margin-bottom: 1.5rem;
+}
+
+/* Career Cards Update */
+.career-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+}
+
+.career-card ul li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.career-card ul li:last-child {
+    border-bottom: none;
+}
+
+/* Benefits Section */
+.benefits-section {
+    background: var(--gray-100);
+    padding: 4rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.benefits-section::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 250px;
+    height: 250px;
+    background: rgba(255, 107, 107, 0.05);
+    border-radius: 50%;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.benefit-card {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--white-color);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    position: relative;
+    border: 1px solid var(--gray-200);
+    overflow: hidden;
+}
+
+.benefit-card::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 0;
+    background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+    bottom: 0;
+    left: 0;
+    transition: all 0.3s ease;
+}
+
+.benefit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.benefit-card:hover::before {
+    height: 4px;
+}
+
+.benefit-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease;
+}
+
+.benefit-card:hover .benefit-icon {
+    transform: scale(1.1);
+}
+
+.benefit-card h3 {
+    margin-bottom: 1rem;
+    color: var(--gray-800);
+    font-size: 1.2rem;
+}
+
+.benefit-card p {
+    color: var(--gray-600);
+    font-size: 0.95rem;
+}
+
+/* Process Grid Styles */
+.process-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.process-step {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--white-color);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    position: relative;
+    border: 1px solid var(--gray-200);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.process-step::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 0;
+    background: linear-gradient(to right, var(--secondary-color), var(--accent-color));
+    top: 0;
+    left: 0;
+    transition: all 0.3s ease;
+}
+
+.process-step:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.process-step:hover::before {
+    height: 4px;
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(to right, var(--primary-color), var(--primary-dark));
+    color: var(--white-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin: 0 auto 1rem;
+    box-shadow: 0 4px 10px rgba(255, 107, 107, 0.3);
+    position: relative;
+    z-index: 1;
+}
+
+.process-step h3 {
+    margin-bottom: 1rem;
+    color: var(--gray-800);
+    font-size: 1.2rem;
+}
+
+.process-step p {
+    color: var(--gray-600);
+    font-size: 0.95rem;
+}
+
+/* Apply Section Styles */
+.apply-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.apply-content p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    color: var(--gray-700);
+    line-height: 1.7;
+}
+
+.apply-content strong {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Equal Opportunity Statement */
+.equal-opportunity {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: var(--gray-100);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    border: 1px solid var(--gray-200);
+    position: relative;
+    overflow: hidden;
+}
+
+.equal-opportunity::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, var(--secondary-color), var(--accent-color));
+    top: 0;
+    left: 0;
+}
+
+.statement {
+    font-size: 1.1rem;
+    color: var(--gray-700);
+    line-height: 1.6;
+}
+
+/* Culture Section */
+.culture-section {
+    padding: 5rem 0;
+    background-color: var(--white-color);
+}
+
+.culture-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
+    align-items: center;
+}
+
+.culture-content h2 {
+    margin-bottom: 1.5rem;
+    color: var(--gray-800);
+    position: relative;
+    display: inline-block;
+}
+
+.culture-content h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+}
+
+.culture-content p {
+    margin-bottom: 2rem;
+    color: var(--gray-700);
+    line-height: 1.7;
+}
+
+.culture-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.culture-list li {
+    padding: 0.75rem 0;
+    display: flex;
+    align-items: center;
+    color: var(--gray-700);
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.culture-list li:before {
+    content: '✓';
+    color: var(--accent-color);
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.culture-image {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.culture-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.culture-image:hover img {
+    transform: scale(1.02);
+}
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.mt-4 {
+    margin-top: 2rem;
+}
+
+.bg-light {
+    background: var(--gray-50);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .culture-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .culture-content {
+        order: 2;
+    }
+    
+    .culture-image {
+        order: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .careers-hero h1 {
+        font-size: 2rem;
+    }
+    
+    .process-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .careers-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .benefits-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .feature-card {
+        padding: 1.5rem;
+    }
+    
+    .career-card, 
+    .benefit-card,
+    .process-step {
+        padding: 1.5rem;
+    }
+}

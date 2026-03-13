@@ -16,7 +16,7 @@
     <meta property="og:url" content="https://skylarsolution.com/contact.html">
     <meta property="og:title" content="Contact Skylar Solutions | EU & Africa IT Solutions">
     <meta property="og:description" content="Contact our team of IT experts for digital transformation solutions across Europe and Africa. Our services bridge EU standards with African market needs. Schedule a free consultation today.">
-    <meta property="og:image" content="https://skylarsolution.com/images/contact-og-image.webp">
+    <meta property="og:image" content="https://skylarsolution.com/images/hero-illustration.webp">
     <meta property="og:locale" content="en_GB">
     <meta property="og:locale:alternate" content="fr_FR">
 
@@ -25,7 +25,7 @@
     <meta property="twitter:url" content="https://skylarsolution.com/contact.html">
     <meta property="twitter:title" content="Contact Skylar Solutions | EU & Africa IT Solutions">
     <meta property="twitter:description" content="Contact our team of IT experts for digital transformation solutions across Europe and Africa. Our services bridge EU standards with African market needs. Schedule a free consultation today.">
-    <meta property="twitter:image" content="https://skylarsolution.com/images/contact-og-image.webp">
+    <meta property="twitter:image" content="https://skylarsolution.com/images/hero-illustration.webp">
 
     <!-- Language Alternatives -->
     <link rel="alternate" hreflang="en" href="https://skylarsolution.com/contact.html">
@@ -415,8 +415,8 @@
             </div>
 
             <div class="footer-bottom">
-                <p data-lang-en>&copy; 2024 Skylar Solutions. All rights reserved.</p>
-                <p data-lang-fr>&copy; 2024 Skylar Solutions. Tous droits réservés.</p>
+                <p data-lang-en>&copy; 2025 Skylar Solutions. All rights reserved.</p>
+                <p data-lang-fr>&copy; 2025 Skylar Solutions. Tous droits réservés.</p>
                 <div class="footer-links">
                     <span data-lang-en><a href="privacy-policy.html">Privacy Policy</a></span>
                     <span data-lang-fr><a href="privacy-policy.html">Politique de Confidentialité</a></span>
@@ -467,36 +467,7 @@
                 });
             });
             
-            // Form submission
-            const contactForm = document.getElementById('contactForm');
-            const formMessage = document.getElementById('formMessage');
-            
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    // Simulate form submission (replace with actual submission code)
-                    formMessage.className = 'form-message success';
-                    formMessage.style.display = 'block';
-                    
-                    // Detect language
-                    const lang = document.documentElement.lang;
-                    
-                    if (lang === 'fr') {
-                        formMessage.textContent = 'Merci pour votre message! Nous vous contacterons sous peu.';
-                    } else {
-                        formMessage.textContent = 'Thank you for your message! We will be in touch soon.';
-                    }
-                    
-                    // Reset the form
-                    contactForm.reset();
-                    
-                    // Hide success message after a few seconds
-                    setTimeout(() => {
-                        formMessage.style.display = 'none';
-                    }, 5000);
-                });
-            }
+            // Form submission is handled by script.js
         });
     </script>
 </body>

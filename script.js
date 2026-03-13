@@ -210,25 +210,28 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // Contact form validation
+  // Contact form validation and submission
   const contactForm = document.querySelector('.contact-form');
   if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
+    contactForm.addEventListener('submit', async function(e) {
       e.preventDefault();
-      
+
       // Simple validation
       let isValid = true;
       const requiredFields = contactForm.querySelectorAll('[required]');
-      
+
       requiredFields.forEach(field => {
-        if (!field.value.trim()) {
+        if (!field.value.trim() && field.type !== 'checkbox') {
+          isValid = false;
+          field.classList.add('error');
+        } else if (field.type === 'checkbox' && !field.checked) {
           isValid = false;
           field.classList.add('error');
         } else {
           field.classList.remove('error');
         }
       });
-      
+
       // Email validation
       const emailField = contactForm.querySelector('input[type="email"]');
       if (emailField && emailField.value) {
@@ -238,15 +241,81 @@ document.addEventListener('DOMContentLoaded', function() {
           emailField.classList.add('error');
         }
       }
-      
-      if (isValid) {
-        // In a real implementation, you would send the form data to a server
-        alert('Thank you for your message. We will get back to you soon!');
-        contactForm.reset();
-      } else {
-        alert('Please fill in all required fields correctly.');
+
+      if (!isValid) {
+        const lang = document.documentElement.lang;
+        const errorMsg = lang === 'fr'
+          ? 'Veuillez remplir tous les champs obligatoires correctement.'
+          : 'Please fill in all required fields correctly.';
+        showFormMessage(contactForm, errorMsg, 'error');
+        return;
+      }
+
+      // Get form data
+      const formData = new FormData(contactForm);
+      const submitButton = contactForm.querySelector('button[type="submit"]');
+      const originalButtonText = submitButton.textContent;
+
+      // Show loading state
+      submitButton.disabled = true;
+      submitButton.textContent = document.documentElement.lang === 'fr' ? 'Envoi en cours...' : 'Sending...';
+
+      try {
+        // Submit to Formspree
+        const response = await fetch(contactForm.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        const lang = document.documentElement.lang;
+
+        if (response.ok) {
+          const successMsg = lang === 'fr'
+            ? 'Merci pour votre message! Nous vous contacterons sous peu.'
+            : 'Thank you for your message! We will be in touch soon.';
+          showFormMessage(contactForm, successMsg, 'success');
+          contactForm.reset();
+        } else {
+          const data = await response.json();
+          const errorMsg = data.errors
+            ? data.errors.map(err => err.message).join(', ')
+            : (lang === 'fr' ? 'Une erreur est survenue. Veuillez réessayer.' : 'An error occurred. Please try again.');
+          showFormMessage(contactForm, errorMsg, 'error');
+        }
+      } catch (error) {
+        const lang = document.documentElement.lang;
+        const errorMsg = lang === 'fr'
+          ? 'Erreur de connexion. Veuillez vérifier votre connexion internet.'
+          : 'Connection error. Please check your internet connection.';
+        showFormMessage(contactForm, errorMsg, 'error');
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = originalButtonText;
       }
     });
+  }
+
+  // Helper function to show form messages
+  function showFormMessage(form, message, type) {
+    let messageEl = form.querySelector('.form-message') || document.getElementById('formMessage');
+    if (!messageEl) {
+      messageEl = document.createElement('div');
+      messageEl.className = 'form-message';
+      form.appendChild(messageEl);
+    }
+    messageEl.textContent = message;
+    messageEl.className = 'form-message ' + type;
+    messageEl.style.display = 'block';
+
+    // Auto-hide after 5 seconds for success messages
+    if (type === 'success') {
+      setTimeout(() => {
+        messageEl.style.display = 'none';
+      }, 5000);
+    }
   }
 
   // Animation on scroll with improved performance
