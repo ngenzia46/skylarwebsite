@@ -1,21 +1,5 @@
 /* Careers Page Specific Styles */
 
-/* Language Switching Overrides */
-html[lang="en"] p[data-lang-en],
-html[lang="fr"] p[data-lang-fr],
-html[lang="en"] h1[data-lang-en],
-html[lang="fr"] h1[data-lang-fr],
-html[lang="en"] h2[data-lang-en],
-html[lang="fr"] h2[data-lang-fr],
-html[lang="en"] h3[data-lang-en],
-html[lang="fr"] h3[data-lang-fr],
-html[lang="en"] ul[data-lang-en],
-html[lang="fr"] ul[data-lang-fr],
-html[lang="en"] a[data-lang-en],
-html[lang="fr"] a[data-lang-fr] {
-    display: block !important;
-}
-
 /* Page Hero Section */
 .page-hero {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);

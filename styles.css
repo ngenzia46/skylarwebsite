@@ -2447,23 +2447,37 @@ li {
 }
 
 /* Language Switching */
+/* Hide all language-specific content by default */
 [data-lang-en], [data-lang-fr] {
-    display: none;
+    display: none !important;
 }
 
-html[lang="en"] [data-lang-en],
-html[lang="fr"] [data-lang-fr] {
-    display: block;
+/* Show English content when English is active */
+html[lang="en"] [data-lang-en] {
+    display: block !important;
 }
 
 html[lang="en"] span[data-lang-en],
-html[lang="fr"] span[data-lang-fr] {
-    display: inline;
+html[lang="en"] a[data-lang-en] {
+    display: inline !important;
 }
 
-html[lang="en"] li[data-lang-en],
+html[lang="en"] li[data-lang-en] {
+    display: list-item !important;
+}
+
+/* Show French content when French is active */
+html[lang="fr"] [data-lang-fr] {
+    display: block !important;
+}
+
+html[lang="fr"] span[data-lang-fr],
+html[lang="fr"] a[data-lang-fr] {
+    display: inline !important;
+}
+
 html[lang="fr"] li[data-lang-fr] {
-    display: list-item;
+    display: list-item !important;
 }
 
 /* Language Toggle Button */
