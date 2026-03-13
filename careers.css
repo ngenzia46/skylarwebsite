@@ -1,5 +1,39 @@
 /* Careers Page Specific Styles */
 
+/* Language Switching - Hide inactive language */
+html[lang="en"] [data-lang-fr],
+html[lang="fr"] [data-lang-en] {
+    display: none !important;
+}
+
+/* Language Switching - Show active language elements */
+html[lang="en"] p[data-lang-en],
+html[lang="fr"] p[data-lang-fr],
+html[lang="en"] h1[data-lang-en],
+html[lang="fr"] h1[data-lang-fr],
+html[lang="en"] h2[data-lang-en],
+html[lang="fr"] h2[data-lang-fr],
+html[lang="en"] h3[data-lang-en],
+html[lang="fr"] h3[data-lang-fr],
+html[lang="en"] ul[data-lang-en],
+html[lang="fr"] ul[data-lang-fr],
+html[lang="en"] div[data-lang-en],
+html[lang="fr"] div[data-lang-fr] {
+    display: block !important;
+}
+
+html[lang="en"] a[data-lang-en],
+html[lang="fr"] a[data-lang-fr],
+html[lang="en"] span[data-lang-en],
+html[lang="fr"] span[data-lang-fr] {
+    display: inline !important;
+}
+
+html[lang="en"] li[data-lang-en],
+html[lang="fr"] li[data-lang-fr] {
+    display: list-item !important;
+}
+
 /* Page Hero Section */
 .page-hero {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
