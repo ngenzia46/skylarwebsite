@@ -1,14 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-title-en="AI & Data Sciences - Skylar Solutions" data-title-fr="IA & Sciences des Donnees - Skylar Solutions">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Transform your raw data into strategic insights and tangible competitive advantages with Skylar Solutions' AI & Data Sciences expertise.">
     <meta name="keywords" content="AI, Data Sciences, Machine Learning, Predictive Analytics, Natural Language Processing, Data Value, Skylar Solutions">
     <title data-lang-en="AI & Data Sciences - Skylar Solutions" data-lang-fr="IA & Sciences des Données - Skylar Solutions">AI & Data Sciences - Skylar Solutions</title>
+    <link rel="canonical" href="https://skylarsolution.com/services/ai-data-sciences.html">
+    <link rel="alternate" hreflang="en" href="https://skylarsolution.com/services/ai-data-sciences.html">
+    <link rel="alternate" hreflang="fr" href="https://skylarsolution.com/services/ai-data-sciences.html">
+    <link rel="alternate" hreflang="x-default" href="https://skylarsolution.com/services/ai-data-sciences.html">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+    <link rel="preload" href="service-styles.css" as="style">
+    <link rel="preload" href="../script.js" as="script">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,6 +27,7 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="service-styles.css">
+    <link rel="stylesheet" href="../cookie-consent.css">
 </head>
 <body>
     <!-- Header -->
@@ -51,9 +59,9 @@
                     <li><a href="../contact.html" data-lang-en="Contact" data-lang-fr="Contact">Contact</a></li>
                 </ul>
                 <div class="language-switcher">
-                    <a href="#" data-lang="en" class="active">EN</a>
+                    <button type="button" data-lang="en" class="active" aria-label="Switch to English">EN</button>
                     <div class="language-divider"></div>
-                    <a href="#" data-lang="fr">FR</a>
+                    <button type="button" data-lang="fr" aria-label="Basculer en francais">FR</button>
                 </div>
             </div>
         </div>
@@ -393,28 +401,8 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <!-- Cookie Consent Banner -->
-    <div class="cookie-consent" id="cookieConsent">
-        <div class="cookie-content">
-            <p>We use cookies to enhance your browsing experience, analyze site traffic, and personalize content. By clicking "Accept All", you consent to our use of cookies.</p>
-            <div class="cookie-buttons">
-                <button id="cookieSettings" class="btn-text">Cookie Settings</button>
-                <button id="cookieAccept" class="btn btn-primary">Accept All</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX');
-    </script>
-
     <!-- Scripts -->
-    <script src="../script.js"></script>
+    <script src="../script.js" defer></script>
     <script src="../cookie-consent.js" defer></script>
 </body>
 </html>

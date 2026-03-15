@@ -40,6 +40,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="blog.css">
+    <link rel="stylesheet" href="cookie-consent.css">
     
 </head>
 <body>
@@ -72,9 +73,9 @@
                     <li><a href="contact.html" data-lang-en="Contact" data-lang-fr="Contact">Contact</a></li>
                 </ul>
                 <div class="language-switcher">
-                    <a href="#" data-lang="en" class="active">EN</a>
+                    <button type="button" data-lang="en" class="active" aria-label="Switch to English">EN</button>
                     <div class="language-divider"></div>
-                    <a href="#" data-lang="fr">FR</a>
+                    <button type="button" data-lang="fr" aria-label="Basculer en francais">FR</button>
                 </div>
             </div>
         </div>
@@ -340,32 +341,7 @@
     </button>
 
     <!-- Scripts -->
-    <script src="script.js"></script>
-    <script>
-        // Blog filter functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const blogCards = document.querySelectorAll('.blog-card');
-            
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const filter = this.getAttribute('data-filter');
-                    
-                    // Update active button
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Filter blog cards
-                    blogCards.forEach(card => {
-                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
-                            card.style.display = 'block';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
-                });
-            });
-        });
-    </script>
+    <script src="script.js" defer></script>
+    <script src="cookie-consent.js" defer></script>
 </body>
 </html>

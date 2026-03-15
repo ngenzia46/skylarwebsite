@@ -48,6 +48,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="Contact.css">
+    <link rel="stylesheet" href="cookie-consent.css">
     
 </head>
 <body>
@@ -80,9 +81,9 @@
                     <li><a href="contact.html" data-lang-en="Contact" data-lang-fr="Contact">Contact</a></li>
                 </ul>
                 <div class="language-switcher">
-                    <a href="#" data-lang="en" class="active">EN</a>
+                    <button type="button" data-lang="en" class="active" aria-label="Switch to English">EN</button>
                     <div class="language-divider"></div>
-                    <a href="#" data-lang="fr">FR</a>
+                    <button type="button" data-lang="fr" aria-label="Basculer en francais">FR</button>
                 </div>
             </div>
         </div>
@@ -393,41 +394,7 @@
     </button>
 
     <!-- Scripts -->
-    <script src="script.js"></script>
-    <script>
-        // FAQ toggling
-        document.addEventListener('DOMContentLoaded', function() {
-            const faqItems = document.querySelectorAll('.faq-item');
-            
-            faqItems.forEach(item => {
-                const question = item.querySelector('.faq-question');
-                const answer = item.querySelector('.faq-answer');
-                
-                question.addEventListener('click', function() {
-                    // Toggle current item
-                    const isActive = item.classList.contains('active');
-                    
-                    // Close other open items
-                    faqItems.forEach(otherItem => {
-                        if (otherItem !== item && otherItem.classList.contains('active')) {
-                            otherItem.classList.remove('active');
-                            otherItem.querySelector('.faq-answer').style.maxHeight = '0';
-                        }
-                    });
-                    
-                    // Toggle current item
-                    if (isActive) {
-                        item.classList.remove('active');
-                        answer.style.maxHeight = '0';
-                    } else {
-                        item.classList.add('active');
-                        answer.style.maxHeight = answer.scrollHeight + 'px';
-                    }
-                });
-            });
-            
-            // Form submission is handled by script.js
-        });
-    </script>
+    <script src="script.js" defer></script>
+    <script src="cookie-consent.js" defer></script>
 </body>
 </html>

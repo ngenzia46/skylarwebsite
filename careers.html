@@ -114,25 +114,12 @@
     }
     </script>
     
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-WLX4WF3M');</script>
-    <!-- End Google Tag Manager -->
-    
     <style>
         /* Language styles already in main CSS */
     </style>
     
 </head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WLX4WF3M"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    
     <!-- Header -->
     <header class="header">
         <div class="container">
@@ -162,9 +149,9 @@
                     <li><a href="contact.html" data-lang-en="Contact" data-lang-fr="Contact">Contact</a></li>
                 </ul>
                 <div class="language-switcher">
-                    <a href="#" data-lang="en" class="active">EN</a>
+                    <button type="button" data-lang="en" class="active" aria-label="Switch to English">EN</button>
                     <div class="language-divider"></div>
-                    <a href="#" data-lang="fr">FR</a>
+                    <button type="button" data-lang="fr" aria-label="Basculer en francais">FR</button>
                 </div>
             </div>
         </div>
@@ -593,6 +580,7 @@
     </button>
 
     <!-- Scripts -->
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
+    <script src="cookie-consent.js" defer></script>
 </body>
-</html> 
+</html>

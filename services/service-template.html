@@ -20,6 +20,7 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="service-styles.css">
+    <link rel="stylesheet" href="../cookie-consent.css">
 </head>
 <body>
     <!-- Header -->
@@ -51,9 +52,9 @@
                     <li><a href="../contact.html" data-lang-en="Contact" data-lang-fr="Contact">Contact</a></li>
                 </ul>
                 <div class="language-switcher">
-                    <a href="#" data-lang="en" class="active">EN</a>
+                    <button type="button" data-lang="en" class="active" aria-label="Switch to English">EN</button>
                     <div class="language-divider"></div>
-                    <a href="#" data-lang="fr">FR</a>
+                    <button type="button" data-lang="fr" aria-label="Basculer en francais">FR</button>
                 </div>
             </div>
         </div>
@@ -230,16 +231,8 @@
         <i class="fas fa-chevron-up"></i>
     </a>
 
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX');
-    </script>
-
     <!-- Custom JavaScript -->
-    <script src="../script.js"></script>
+    <script src="../script.js" defer></script>
+    <script src="../cookie-consent.js" defer></script>
 </body>
 </html>

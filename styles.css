@@ -17,11 +17,11 @@
   --primary-color: var(--primary-coral);
   --primary-dark: var(--primary-deep);
   --secondary-color: var(--secondary-blue);
-  --secondary-dark: var(--secondary-dark);
-  --secondary-light: var(--secondary-light);
+  --secondary-color-dark: var(--secondary-dark);
+  --secondary-color-light: var(--secondary-light);
   --accent-color: var(--accent-teal);
-  --accent-dark: var(--accent-dark);
-  --accent-light: var(--accent-light);
+  --accent-color-dark: var(--accent-dark);
+  --accent-color-light: var(--accent-light);
   
   /* Gray scale with 7 shades */
   --gray-100: #F8F9FA; /* Lightest gray - for backgrounds */
@@ -299,14 +299,14 @@ li {
 }
 
 .logo img {
-  height: 240px;
+  height: clamp(88px, 10vw, 150px);
   width: auto;
   margin-right: var(--space-2);
   transition: var(--transition-base);
 }
 
 .header.sticky .logo img {
-  height: 210px;
+  height: clamp(80px, 9vw, 130px);
 }
 
 .logo-text {
@@ -481,15 +481,18 @@ li {
   margin-left: var(--space-md);
 }
 
-.language-switcher a {
+.language-switcher [data-lang] {
   color: var(--gray-700);
-  text-decoration: none;
+  background: transparent;
+  border: 0;
+  font-family: inherit;
   font-weight: 500;
   padding: 0.5rem;
   transition: color 0.3s ease;
+  cursor: pointer;
 }
 
-.language-switcher a.active {
+.language-switcher [data-lang].active {
   color: var(--primary-color);
   font-weight: 600;
 }
@@ -582,21 +585,24 @@ li {
   padding: 4px;
 }
 
-.language-switcher a {
+.language-switcher [data-lang] {
   color: var(--gray-800);
-  text-decoration: none;
+  background: transparent;
+  border: 0;
+  font-family: inherit;
   font-weight: 500;
   padding: 5px 12px;
   border-radius: 20px;
   transition: all 0.3s ease;
   font-size: 14px;
+  cursor: pointer;
 }
 
-.language-switcher a:hover {
+.language-switcher [data-lang]:hover {
   color: var(--secondary-color);
 }
 
-.language-switcher a.active {
+.language-switcher [data-lang].active {
   background: var(--white-color);
   color: var(--secondary-color);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -2150,7 +2156,7 @@ li {
 }
 
 .footer-logo {
-  height: 240px;
+  height: clamp(88px, 10vw, 150px);
   width: auto;
   margin-bottom: var(--space-md);
 }

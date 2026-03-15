@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-title-en="Skylar Solutions - Your Digital Transformation Partner" data-title-fr="Skylar Solutions - Votre Partenaire en Transformation Digitale">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -160,14 +160,6 @@
     }
     </script>
     
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-WLX4WF3M');</script>
-    <!-- End Google Tag Manager -->
-
     <style>
         /* Language Switching Styles */
         [data-lang-en], [data-lang-fr] {
@@ -224,11 +216,6 @@
     </style>
 </head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WLX4WF3M"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-
     <!-- Header -->
     <header class="header">
         <div class="container">
@@ -258,9 +245,9 @@
                     <li><a href="contact.html" data-lang-en="Contact" data-lang-fr="Contact">Contact</a></li>
                 </ul>
                 <div class="language-switcher">
-                    <a href="#" data-lang="en" class="active">EN</a>
+                    <button type="button" data-lang="en" class="active" aria-label="Switch to English">EN</button>
                     <div class="language-divider"></div>
-                    <a href="#" data-lang="fr">FR</a>
+                    <button type="button" data-lang="fr" aria-label="Basculer en francais">FR</button>
                 </div>
             </div>
         </div>
@@ -581,22 +568,14 @@
                     <p data-lang-fr>Abonnez-vous à notre newsletter pour les dernières actualités en technologie et transformation digitale</p>
                 </div>
                 
-                <form class="newsletter-form">
+                <div class="newsletter-form" role="group" aria-label="Insight updates">
                     <div class="form-group">
-                        <input type="email" placeholder="Your email address" aria-label="Email" required>
-                        <button type="submit" class="btn btn-primary" data-lang-en>Subscribe</button>
-                        <button type="submit" class="btn btn-primary" data-lang-fr>S'abonner</button>
+                        <a href="contact.html?topic=insight-updates" class="btn btn-primary" data-lang-en>Request updates</a>
+                        <a href="contact.html?topic=insight-updates" class="btn btn-primary" data-lang-fr>Recevoir les actualites</a>
                     </div>
-                    
-                    <div class="privacy-consent">
-                        <label class="checkbox-container">
-                            <input type="checkbox" required>
-                            <span class="checkmark"></span>
-                            <span data-lang-en>I agree to receive newsletters and accept the <a href="privacy-policy.html">Privacy Policy</a></span>
-                            <span data-lang-fr>J'accepte de recevoir des newsletters et j'accepte la <a href="privacy-policy.html">Politique de Confidentialité</a></span>
-                        </label>
-                    </div>
-                </form>
+                    <p class="privacy-consent" data-lang-en>We will only send research updates when you explicitly request them through our contact form.</p>
+                    <p class="privacy-consent" data-lang-fr>Nous envoyons des actualites uniquement lorsque vous en faites la demande explicite via notre formulaire de contact.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -676,19 +655,6 @@
     <button class="back-to-top" aria-label="Back to Top">
         <i class="fas fa-arrow-up"></i>
     </button>
-
-
-    <!-- Cookie Consent Banner -->
-    <div class="cookie-consent" id="cookieConsent">
-        <div class="cookie-content">
-            <p>We use cookies to enhance your browsing experience, analyze site traffic, and personalize content. By clicking "Accept All", you consent to our use of cookies.</p>
-            <div class="cookie-buttons">
-                <button id="cookieSettings" class="btn-text">Cookie Settings</button>
-                <button id="cookieAccept" class="btn btn-primary">Accept All</button>
-            </div>
-        </div>
-    </div>
-
     <!-- Scripts -->
     <script src="script.js" defer></script>
     <script src="cookie-consent.js" defer></script>
