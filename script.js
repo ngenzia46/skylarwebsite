@@ -15,10 +15,14 @@ function checkWebpSupport() {
 }
 
 function getSavedLanguage() {
-  const storedLanguage = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);
-  return LANGUAGE_CODES.includes(storedLanguage)
-    ? storedLanguage
-    : document.documentElement.lang || 'en';
+  try {
+    const stored = localStorage.getItem(LANGUAGE_STORAGE_KEY);
+    if (LANGUAGE_CODES.includes(stored)) return stored;
+  } catch {
+    // Storage can be disabled by the browser.
+  }
+  return navigator.languages?.map(code => code.split('-')[0])
+    .find(code => LANGUAGE_CODES.includes(code)) || 'en';
 }
 
 function resolveTitleVariant(lang) {
@@ -26,10 +30,9 @@ function resolveTitleVariant(lang) {
   const body = document.body;
   const titleNode = document.querySelector('title');
 
-  const titleByLang =
-    html?.dataset?.[`title${lang.toUpperCase()}`] ||
-    body?.dataset?.[`title${lang.toUpperCase()}`] ||
-    titleNode?.dataset?.[`title${lang.toUpperCase()}`];
+  const attribute = 'data-title-' + lang;
+  const titleByLang = html.getAttribute(attribute) ||
+    body.getAttribute(attribute) || titleNode?.getAttribute('data-lang-' + lang);
 
   return titleByLang || null;
 }
@@ -99,10 +102,20 @@ function updateLanguageControls(lang) {
 
 function updateLanguageContent(lang) {
   document.documentElement.setAttribute('lang', lang);
-  window.localStorage.setItem(LANGUAGE_STORAGE_KEY, lang);
+  try {
+    localStorage.setItem(LANGUAGE_STORAGE_KEY, lang);
+  } catch {
+    // The selected language still applies to this page.
+  }
+  document.querySelectorAll('header a[data-lang-en][data-lang-fr]').forEach(link => {
+    const label = link.getAttribute(`data-lang-${lang}`);
+    const text = Array.from(link.childNodes).find(node => node.nodeType === Node.TEXT_NODE);
+    if (label && text) text.nodeValue = label + ' ';
+  });
   updateDocumentTitle(lang);
   setLanguageVisibility(lang);
   updateLanguageControls(lang);
+  updateEnquirySubject(lang);
 }
 
 function showFormMessage(form, message, type) {
@@ -174,28 +187,36 @@ function setupNavigation() {
   const navbarToggle = document.querySelector('.navbar-toggle');
   const mobileNav = document.querySelector('.nav-menu') || document.querySelector('.navbar');
 
+  const servicesToggle = document.querySelector('.services-toggle');
+  const dropdown = servicesToggle?.closest('.dropdown');
+
   if (navbarToggle && mobileNav) {
     navbarToggle.addEventListener('click', () => {
-      navbarToggle.classList.toggle('active');
-      mobileNav.classList.toggle('active');
-      navbarToggle.setAttribute('aria-expanded', String(mobileNav.classList.contains('active')));
+      const open = mobileNav.classList.toggle('active');
+      navbarToggle.classList.toggle('active', open);
+      navbarToggle.setAttribute('aria-expanded', String(open));
+      if (!open) {
+        dropdown?.classList.remove('active');
+        servicesToggle?.setAttribute('aria-expanded', 'false');
+      }
     });
   }
 
-  document.querySelectorAll('.dropdown-toggle, .dropdown > a').forEach((toggle) => {
-    const parent = toggle.closest('.dropdown');
-    const menu = parent?.querySelector('.dropdown-menu');
+  servicesToggle?.addEventListener('click', () => {
+    const expanded = dropdown.classList.toggle('active');
+    servicesToggle.setAttribute('aria-expanded', String(expanded));
+  });
 
-    if (!parent || !menu) {
-      return;
+  document.addEventListener('keydown', event => {
+    if (event.key !== 'Escape' || !mobileNav?.classList.contains('active')) return;
+    if (dropdown?.classList.contains('active')) {
+      dropdown.classList.remove('active');
+      servicesToggle.setAttribute('aria-expanded', 'false');
+      servicesToggle.focus();
+    } else {
+      navbarToggle.click();
+      navbarToggle.focus();
     }
-
-    toggle.addEventListener('click', (event) => {
-      if (window.innerWidth <= 1024) {
-        event.preventDefault();
-        parent.classList.toggle('active');
-      }
-    });
   });
 
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
@@ -215,8 +236,7 @@ function setupNavigation() {
       targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
       if (mobileNav && navbarToggle) {
-        mobileNav.classList.remove('active');
-        navbarToggle.classList.remove('active');
+        if (mobileNav.classList.contains('active')) navbarToggle.click();
       }
     });
   });
@@ -237,15 +257,42 @@ function setupNavigation() {
   });
 }
 
+const enquiryTopics = new Map([
+  ['consultation', ['Project consultation', 'Échange sur un projet']],
+  ['app-development', ['Application development', 'Développement d’applications']],
+  ['ai-data-sciences', ['AI and data science', 'IA et science des données']],
+  ['cyber-security', ['Cybersecurity', 'Cybersécurité']],
+  ['collaboration-solutions', ['Collaboration tools', 'Outils collaboratifs']],
+  ['blockchain-nft', ['Blockchain and NFT', 'Blockchain et NFT']],
+  ['support', ['IT support', 'Assistance informatique']],
+  ['insight-updates', ['Research updates', 'Actualités et études']],
+  ['ai-enterprise-solutions', ['Brief on enterprise AI', 'Note sur l’IA en entreprise']],
+  ['cybersecurity-practices', ['Brief on cybersecurity practices', 'Note sur la cybersécurité']],
+  ['cloud-computing-strategy', ['Brief on cloud strategy', 'Note sur la stratégie cloud']],
+  ['digital-transformation-success-stories', ['Digital transformation projects', 'Projets de transformation numérique']],
+  ['machine-learning-business-intelligence', ['Machine learning and reporting', 'Apprentissage automatique et reporting']],
+  ['software-development-methodologies', ['Software development methods', 'Méthodes de développement logiciel']],
+]);
+
+function updateEnquirySubject(lang) {
+  const subject = document.querySelector('#contactForm [name="subject"]');
+  const topic = new URLSearchParams(location.search).get('topic');
+  const labels = enquiryTopics.get(topic);
+  if (!subject || !labels || subject.value !== subject.defaultValue) return;
+  subject.defaultValue = labels[lang === 'fr' ? 1 : 0];
+}
+
 function setupContactForm() {
   const contactForm = document.querySelector('.contact-form');
   if (!contactForm) {
     return;
   }
 
+  let sending = false;
   contactForm.addEventListener('submit', async (event) => {
     event.preventDefault();
 
+    if (sending) return;
     let isValid = true;
     const requiredFields = contactForm.querySelectorAll('[required]');
 
@@ -281,6 +328,7 @@ function setupContactForm() {
       return;
     }
 
+    sending = true;
     const formData = new FormData(contactForm);
     const submitButton = getActiveSubmitButton(contactForm);
     const originalButtonText = submitButton?.textContent || '';
@@ -309,6 +357,11 @@ function setupContactForm() {
           'success'
         );
         contactForm.reset();
+        const topic = new URLSearchParams(location.search).get('topic');
+        contactForm.dispatchEvent(new CustomEvent('enquiry-sent', {
+          bubbles: true,
+          detail: enquiryTopics.has(topic) ? topic : 'general',
+        }));
       } else {
         let errorMessage =
           document.documentElement.lang === 'fr'
@@ -335,6 +388,7 @@ function setupContactForm() {
         'error'
       );
     } finally {
+      sending = false;
       if (submitButton) {
         submitButton.disabled = false;
         submitButton.textContent = originalButtonText;

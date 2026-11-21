@@ -6,7 +6,7 @@
     <meta name="description" content="Skylar Solutions offers custom application development services in Belgium, creating tailored software, web, and mobile apps to drive business efficiency and growth.">
     <meta name="keywords" content="App Development, Custom Software Development, Business Applications, Web Development, Mobile App Development, Low-code, No-code, Skylar Solutions, Belgium">
     <title data-lang-en="Custom Application Development Services | Skylar Solutions Belgium" data-lang-fr="Services de Développement d'Applications sur Mesure | Skylar Solutions Belgique">Custom Application Development Services | Skylar Solutions Belgium</title>
-    <link rel="canonical" href="https://skylarsolution.com/services/app-development.html">
+    <link rel="canonical" href="https://www.skylar-solutions.com/services/app-development.html">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="../favicon.png">
@@ -15,9 +15,9 @@
     <link rel="preload" href="../script.js" as="script">
 
     <!-- Hreflang Tags for SEO -->
-    <link rel="alternate" hreflang="en" href="https://skylarsolution.com/services/app-development.html" />
-    <link rel="alternate" hreflang="fr" href="https://skylarsolution.com/services/app-development.html" />
-    <link rel="alternate" hreflang="x-default" href="https://skylarsolution.com/services/app-development.html" />
+    <link rel="alternate" hreflang="en" href="https://www.skylar-solutions.com/services/app-development.html" />
+    <link rel="alternate" hreflang="fr" href="https://www.skylar-solutions.com/services/app-development.html" />
+    <link rel="alternate" hreflang="x-default" href="https://www.skylar-solutions.com/services/app-development.html" />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,7 +25,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha384-8b0dcea1312b09824907d9826bc2cd4b685bb10eccdc2d04a48b0efc7e7e1060243c673aae4f95f22d38a16fcae71ab4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha384-iw3OoTErCYJJB9mCa8LNS2hbsQ7M3C0EpIsO/H5+EGAkPGc6rk+V8i04oW/K5xq0" crossorigin="anonymous">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="service-styles.css">
@@ -40,7 +40,7 @@
       "provider": {
         "@type": "Organization",
         "name": "Skylar Solutions",
-        "url": "https://skylarsolution.com"
+        "url": "https://www.skylar-solutions.com"
       },
       "description": "We translate your vision into powerful, scalable web and mobile applications tailored precisely to your business needs and user expectations.",
       "areaServed": {
@@ -109,15 +109,14 @@
                 <img src="../logo/logo_transparent.png" style="height: 150px; width: auto;" alt="Skylar Solutions Logo">
             </a>
             <div class="navbar-container">
-                <div class="navbar-toggle">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <ul class="navbar">
+                <button type="button" class="navbar-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-menu">☰</button>
+                <ul class="navbar" id="primary-menu">
                     <li><a href="../index.html" data-lang-en="Home" data-lang-fr="Accueil">Home</a></li>
                     <li><a href="../about.html" data-lang-en="About" data-lang-fr="À propos">About</a></li>
                     <li class="dropdown">
                         <a href="services.html" data-lang-en="Services" data-lang-fr="Services" class="dropdown-toggle active">Services <i class="fas fa-chevron-down"></i></a>
-                        <ul class="dropdown-menu">
+                        <button type="button" class="services-toggle" aria-label="Services" aria-expanded="false" aria-controls="services-menu">▾</button>
+                        <ul class="dropdown-menu" id="services-menu">
                             <li><a href="app-development.html" data-lang-en="App Development" data-lang-fr="Développement d'Applications" class="active">App Development</a></li>
                             <li><a href="ai-data-sciences.html" data-lang-en="AI & Data Sciences" data-lang-fr="IA & Sciences des Données">AI & Data Sciences</a></li>
                             <li><a href="cyber-security.html" data-lang-en="Cyber Security" data-lang-fr="Cybersécurité">Cyber Security</a></li>
@@ -255,8 +254,8 @@
                         <h3 data-lang-fr>Contactez-nous</h3>
                         <p data-lang-en>Have an app idea? Let's build it together. Contact our development team.</p>
                         <p data-lang-fr>Vous avez une idée d'application ? Construissons-la ensemble. Contactez notre équipe de développement.</p>
-                        <a href="../contact.html" class="btn btn-primary btn-block" data-lang-en>Discuss Your App</a>
-                        <a href="../contact.html" class="btn btn-primary btn-block" data-lang-fr>Discuter de Votre App</a>
+                        <a href="../contact.html?topic=app-development#enquiry" class="btn btn-primary btn-block" data-lang-en>Discuss Your App</a>
+                        <a href="../contact.html?topic=app-development#enquiry" class="btn btn-primary btn-block" data-lang-fr>Discuter de Votre App</a>
                     </div>
 
                     <div class="sidebar-widget">
@@ -306,12 +305,12 @@
             <div data-lang-en>
                 <h2>Ready to Build Your Next Application?</h2>
                 <p>Let's collaborate to create innovative software solutions tailored precisely to your business needs.</p>
-                <a href="../contact.html" class="btn btn-primary">Start Your Project</a>
+                <a href="../contact.html?topic=app-development#enquiry" class="btn btn-primary">Start Your Project</a>
             </div>
             <div data-lang-fr>
                 <h2>Prêt à Construire Votre Prochaine Application ?</h2>
                 <p>Collaborons pour créer des solutions logicielles innovantes adaptées précisément à vos besoins métier.</p>
-                <a href="../contact.html" class="btn btn-primary">Démarrer Votre Projet</a>
+                <a href="../contact.html?topic=app-development#enquiry" class="btn btn-primary">Démarrer Votre Projet</a>
             </div>
         </div>
     </section>

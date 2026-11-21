@@ -7,26 +7,26 @@
     <meta name="keywords" content="privacy policy, Skylar Solutions, data protection, personal information, GDPR compliance">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://skylarsolution.com/privacy-policy.html">
+    <link rel="canonical" href="https://www.skylar-solutions.com/privacy-policy.html">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://skylarsolution.com/privacy-policy.html">
+    <meta property="og:url" content="https://www.skylar-solutions.com/privacy-policy.html">
     <meta property="og:title" content="Privacy Policy | Skylar Solutions">
     <meta property="og:description" content="Learn how Skylar Solutions collects, uses, and protects your personal information when you use our services.">
-    <meta property="og:image" content="https://skylarsolution.com/images/hero-illustration.webp">
+    <meta property="og:image" content="https://www.skylar-solutions.com/images/hero-illustration.webp">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://skylarsolution.com/privacy-policy.html">
+    <meta property="twitter:url" content="https://www.skylar-solutions.com/privacy-policy.html">
     <meta property="twitter:title" content="Privacy Policy | Skylar Solutions">
     <meta property="twitter:description" content="Learn how Skylar Solutions collects, uses, and protects your personal information when you use our services.">
-    <meta property="twitter:image" content="https://skylarsolution.com/images/hero-illustration.webp">
+    <meta property="twitter:image" content="https://www.skylar-solutions.com/images/hero-illustration.webp">
 
     <!-- Language Alternatives -->
-    <link rel="alternate" hreflang="en" href="https://skylarsolution.com/privacy-policy.html" />
-    <link rel="alternate" hreflang="fr" href="https://skylarsolution.com/privacy-policy.html" />
-    <link rel="alternate" hreflang="x-default" href="https://skylarsolution.com/privacy-policy.html" />
+    <link rel="alternate" hreflang="en" href="https://www.skylar-solutions.com/privacy-policy.html" />
+    <link rel="alternate" hreflang="fr" href="https://www.skylar-solutions.com/privacy-policy.html" />
+    <link rel="alternate" hreflang="x-default" href="https://www.skylar-solutions.com/privacy-policy.html" />
 
     <title>Privacy Policy | Skylar Solutions</title>
     
@@ -39,7 +39,7 @@
     <link rel="preload" href="script.js" as="script">
     
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha384-8b0dcea1312b09824907d9826bc2cd4b685bb10eccdc2d04a48b0efc7e7e1060243c673aae4f95f22d38a16fcae71ab4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha384-iw3OoTErCYJJB9mCa8LNS2hbsQ7M3C0EpIsO/H5+EGAkPGc6rk+V8i04oW/K5xq0" crossorigin="anonymous">
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
@@ -57,7 +57,7 @@
         "publisher": {
             "@type": "Organization",
             "name": "Skylar Solutions",
-            "logo": "https://skylarsolution.com/logo.png"
+            "logo": "https://www.skylar-solutions.com/logo.png"
         },
         "breadcrumb": {
             "@type": "BreadcrumbList",
@@ -66,13 +66,13 @@
                     "@type": "ListItem",
                     "position": 1,
                     "name": "Home",
-                    "item": "https://skylarsolution.com/"
+                    "item": "https://www.skylar-solutions.com/"
                 },
                 {
                     "@type": "ListItem",
                     "position": 2,
                     "name": "Privacy Policy",
-                    "item": "https://skylarsolution.com/privacy-policy.html"
+                    "item": "https://www.skylar-solutions.com/privacy-policy.html"
                 }
             ]
         }
@@ -82,45 +82,38 @@
 </head>
 <body>
     <!-- Header -->
-    <header class="header sticky">
+    <header class="header">
         <div class="container">
-            <a href="index.html" class="logo" aria-label="Skylar Solutions Homepage">
-                <img src="logo/logo_transparent.png" style="height: 100px; width: auto;" alt="Skylar Solutions Logo">
+            <a href="index.html" class="logo">
+                <img src="logo/logo_transparent.png" style="height: 180px; width: auto;" alt="Skylar Solutions Logo">
             </a>
-            
-            <nav class="navbar">
-                <button class="navbar-toggle" aria-label="Mobile Menu">
-                    <i class="fas fa-bars"></i>
-                </button>
-                
-                <ul class="nav-menu">
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="about.html" class="nav-link">About</a></li>
+            <div class="navbar-container">
+                <button type="button" class="navbar-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-menu">☰</button>
+                <ul class="navbar" id="primary-menu">
+                    <li><a href="index.html" data-lang-en="Home" data-lang-fr="Accueil">Home</a></li>
+                    <li><a href="about.html" data-lang-en="About" data-lang-fr="À propos">About</a></li>
                     <li class="dropdown">
-                        <a href="services/services.html" class="nav-link">Services <i class="fas fa-chevron-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="services/app-development.html">App Development</a></li>
-                            <li><a href="services/ai-data-sciences.html">AI & Data Sciences</a></li>
-                            <li><a href="services/cyber-security.html">Cyber Security</a></li>
-                            <li><a href="services/collaboration-solutions.html">Collaboration Solutions</a></li>
-                            <li><a href="services/blockchain-nft.html">Blockchain & NFT</a></li>
-                            <li><a href="services/support.html">24/7 Support</a></li>
+                        <a href="services/services.html" data-lang-en="Services" data-lang-fr="Services" class="dropdown-toggle">Services <i class="fas fa-chevron-down"></i></a>
+                        <button type="button" class="services-toggle" aria-label="Services" aria-expanded="false" aria-controls="services-menu">▾</button>
+                        <ul class="dropdown-menu" id="services-menu">
+                            <li><a href="services/app-development.html" data-lang-en="App Development" data-lang-fr="Développement d'Applications">App Development</a></li>
+                            <li><a href="services/ai-data-sciences.html" data-lang-en="AI & Data Sciences" data-lang-fr="IA & Sciences des Données">AI & Data Sciences</a></li>
+                            <li><a href="services/cyber-security.html" data-lang-en="Cyber Security" data-lang-fr="Cybersécurité">Cyber Security</a></li>
+                            <li><a href="services/collaboration-solutions.html" data-lang-en="Collaboration Solutions" data-lang-fr="Solutions de Collaboration">Collaboration Solutions</a></li>
+                            <li><a href="services/blockchain-nft.html" data-lang-en="Blockchain & NFT" data-lang-fr="Blockchain & NFT">Blockchain & NFT</a></li>
+                            <li><a href="services/support.html" data-lang-en="24/7 Support" data-lang-fr="Support 24/7">24/7 Support</a></li>
                         </ul>
                     </li>
-                    <li><a href="blog.html" class="nav-link">Blog</a></li>
-                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="blog.html" data-lang-en="Blog" data-lang-fr="Blog">Blog</a></li>
+                    <li><a href="careers.html" data-lang-en="Careers" data-lang-fr="Carrières">Careers</a></li>
+                    <li><a href="contact.html" data-lang-en="Contact" data-lang-fr="Contact">Contact</a></li>
                 </ul>
-                
                 <div class="language-switcher">
-                    <button type="button" class="lang-btn active" data-lang="en" aria-label="English Version">
-                        <span class="flag-icon">🇬🇧</span> EN
-                    </button>
-                    <span class="divider"></span>
-                    <button type="button" class="lang-btn" data-lang="fr" aria-label="French Version">
-                        <span class="flag-icon">🇫🇷</span> FR
-                    </button>
+                    <button type="button" data-lang="en" class="active" aria-label="Switch to English">EN</button>
+                    <div class="language-divider"></div>
+                    <button type="button" data-lang="fr" aria-label="Basculer en francais">FR</button>
                 </div>
-            </nav>
+            </div>
         </div>
     </header>
 
@@ -243,7 +236,7 @@
             </div>
             
             <!-- French Version -->
-            <div class="language-content" id="content-fr" style="display: none;">
+            <div class="language-content" id="content-fr" hidden>
                 <div class="last-updated">
                     <p><strong>Dernière mise à jour: 3 avril 2025</strong></p>
                 </div>

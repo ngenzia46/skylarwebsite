@@ -5,34 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Essential cybersecurity checklist for Belgian companies in 2026. GDPR, NIS2, and best practices.">
     <meta name="keywords" content="Cybersecurity, Belgium, GDPR, NIS2, Checklist, Security">
-    <link rel="canonical" href="https://skylarsolution.com/blog-cyber-checklist-2026.html">
+    <link rel="canonical" href="https://www.skylar-solutions.com/blog-cyber-checklist-2026.html">
     <title>Cybersecurity Checklist for Belgian Companies 2026 | Skylar Solutions</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="blog.css">
-    <link rel="canonical" href="https://skylarsolution.com/blog-cyber-checklist-2026.html">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://skylarsolution.com/blog-cyber-checklist-2026.html">
+    <meta property="og:url" content="https://www.skylar-solutions.com/blog-cyber-checklist-2026.html">
     <meta property="og:title" content="Cybersecurity Checklist for Belgian Companies 2026">
     <meta property="og:description" content="Essential cybersecurity checklist for Belgian companies in 2026: GDPR, NIS2 and practical hardening steps.">
-    <meta property="og:image" content="https://skylarsolution.com/images/hero-illustration.webp">
+    <meta property="og:image" content="https://www.skylar-solutions.com/images/hero-illustration.webp">
     <meta property="og:image:alt" content="Cybersecurity Checklist for Belgian Companies 2026 - Skylar Solutions">
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://skylarsolution.com/blog-cyber-checklist-2026.html">
+    <meta property="twitter:url" content="https://www.skylar-solutions.com/blog-cyber-checklist-2026.html">
     <meta property="twitter:title" content="Cybersecurity Checklist for Belgian Companies 2026">
     <meta property="twitter:description" content="Essential cybersecurity checklist for Belgian companies in 2026: GDPR, NIS2 and practical hardening steps.">
-    <meta property="twitter:image" content="https://skylarsolution.com/images/hero-illustration.webp">
+    <meta property="twitter:image" content="https://www.skylar-solutions.com/images/hero-illustration.webp">
 </head>
 <body>
     <header class="header">
         <div class="container">
             <a href="index.html" class="logo"><img src="logo/logo_transparent.png" style="height:150px" alt="Skylar Solutions"></a>
             <div class="navbar-container">
-                <ul class="navbar">
+                <button type="button" class="navbar-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-menu">☰</button>
+                <ul class="navbar" id="primary-menu">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li class="dropdown">
                         <a href="services/services.html">Services <i class="fas fa-chevron-down"></i></a>
-                        <ul class="dropdown-menu">
+                        <button type="button" class="services-toggle" aria-label="Services" aria-expanded="false" aria-controls="services-menu">▾</button>
+                        <ul class="dropdown-menu" id="services-menu">
                             <li><a href="services/ai-data-sciences.html">AI & Data Sciences</a></li>
                             <li><a href="services/cyber-security.html">Cyber Security</a></li>
                             <li><a href="services/collaboration-solutions.html">Collaboration</a></li>
@@ -158,5 +159,6 @@
             <p>&copy; 2026 Skylar Solutions. All rights reserved.</p>
         </div>
     </footer>
+    <script src="script.js" defer></script>
 </body>
 </html>

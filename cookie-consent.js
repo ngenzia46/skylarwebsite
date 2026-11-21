@@ -184,6 +184,15 @@
     ensureBanner();
     updateBannerCopy();
     bindEvents();
+    document.addEventListener('enquiry-sent', event => {
+      if (getStoredConsent() === 'accepted' && gtmLoaded) {
+        window.dataLayer.push({
+          event: 'generate_lead',
+          enquiry_topic: event.detail,
+          language: document.documentElement.lang,
+        });
+      }
+    });
 
     const observer = new MutationObserver(() => {
       updateBannerCopy();

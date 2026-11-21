@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import re
 import sys
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -95,6 +96,25 @@ def check_public_pages() -> list[str]:
     return issues
 
 
+def check_search_urls() -> list[str]:
+    origin = "https://" + read_text(ROOT / "CNAME").strip()
+    expected = set()
+    issues = []
+    for page in [*PUBLIC_PAGES, *ROOT.glob("blog-*.html")]:
+        path = "" if page == ROOT / "index.html" else page.relative_to(ROOT).as_posix()
+        url = f"{origin}/{path}"
+        expected.add(url)
+        if f'rel="canonical" href="{url}"' not in read_text(page):
+            issues.append(f"{page.name} -> expected canonical URL {url}")
+
+    locations = {node.text for node in ET.parse(ROOT / "sitemap.xml").iterfind(".//{*}loc")}
+    if locations != expected:
+        issues.append("sitemap.xml -> URLs differ from the configured public pages")
+    if f"Sitemap: {origin}/sitemap.xml" not in read_text(ROOT / "robots.txt").splitlines():
+        issues.append("robots.txt -> sitemap URL differs from configured domain")
+    return issues
+
+
 def check_redirect_page() -> list[str]:
     issues: list[str] = []
     redirect_page = ROOT / "en" / "index.html"
@@ -111,6 +131,7 @@ def main() -> int:
     issues.extend(check_internal_links())
     issues.extend(check_public_pages())
     issues.extend(check_redirect_page())
+    issues.extend(check_search_urls())
 
     if issues:
         print("Site validation failed:\n")

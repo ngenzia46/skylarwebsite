@@ -6,4 +6,4 @@ Disallow: /*/wp-admin/
 Disallow: /cgi-bin/
 
 # Sitemap location
-Sitemap: https://skylarsolution.com/sitemap.xml
+Sitemap: https://www.skylar-solutions.com/sitemap.xml

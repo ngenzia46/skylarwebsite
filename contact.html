@@ -9,28 +9,28 @@
     <meta name="geo.placename" content="Brussels, Kinshasa, Kigali, Nairobi, Lagos, Johannesburg">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://skylarsolution.com/contact.html">
+    <link rel="canonical" href="https://www.skylar-solutions.com/contact.html">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://skylarsolution.com/contact.html">
+    <meta property="og:url" content="https://www.skylar-solutions.com/contact.html">
     <meta property="og:title" content="Contact Skylar Solutions | EU & Africa IT Solutions">
     <meta property="og:description" content="Contact our team of IT experts for digital transformation solutions across Europe and Africa. Our services bridge EU standards with African market needs. Schedule a free consultation today.">
-    <meta property="og:image" content="https://skylarsolution.com/images/hero-illustration.webp">
+    <meta property="og:image" content="https://www.skylar-solutions.com/images/hero-illustration.webp">
     <meta property="og:locale" content="en_GB">
     <meta property="og:locale:alternate" content="fr_FR">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://skylarsolution.com/contact.html">
+    <meta property="twitter:url" content="https://www.skylar-solutions.com/contact.html">
     <meta property="twitter:title" content="Contact Skylar Solutions | EU & Africa IT Solutions">
     <meta property="twitter:description" content="Contact our team of IT experts for digital transformation solutions across Europe and Africa. Our services bridge EU standards with African market needs. Schedule a free consultation today.">
-    <meta property="twitter:image" content="https://skylarsolution.com/images/hero-illustration.webp">
+    <meta property="twitter:image" content="https://www.skylar-solutions.com/images/hero-illustration.webp">
 
     <!-- Language Alternatives -->
-    <link rel="alternate" hreflang="en" href="https://skylarsolution.com/contact.html">
-    <link rel="alternate" hreflang="fr" href="https://skylarsolution.com/contact.html">
-    <link rel="alternate" hreflang="x-default" href="https://skylarsolution.com/contact.html">
+    <link rel="alternate" hreflang="en" href="https://www.skylar-solutions.com/contact.html">
+    <link rel="alternate" hreflang="fr" href="https://www.skylar-solutions.com/contact.html">
+    <link rel="alternate" hreflang="x-default" href="https://www.skylar-solutions.com/contact.html">
     
     <!-- Region-specific metadata -->
     <meta name="ICBM" content="50.8466, 4.3528"> <!-- Brussels coordinates -->
@@ -43,7 +43,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha384-8b0dcea1312b09824907d9826bc2cd4b685bb10eccdc2d04a48b0efc7e7e1060243c673aae4f95f22d38a16fcae71ab4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha384-iw3OoTErCYJJB9mCa8LNS2hbsQ7M3C0EpIsO/H5+EGAkPGc6rk+V8i04oW/K5xq0" crossorigin="anonymous">
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
@@ -59,15 +59,14 @@
                 <img src="logo/logo_transparent.png" style="height: 150px; width: auto;" alt="Skylar Solutions Logo">
             </a>
             <div class="navbar-container">
-                <div class="navbar-toggle">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <ul class="navbar">
+                <button type="button" class="navbar-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-menu">☰</button>
+                <ul class="navbar" id="primary-menu">
                     <li><a href="index.html" data-lang-en="Home" data-lang-fr="Accueil">Home</a></li>
                     <li><a href="about.html" data-lang-en="About" data-lang-fr="À propos">About</a></li>
                     <li class="dropdown">
                         <a href="services/services.html" data-lang-en="Services" data-lang-fr="Services">Services <i class="fas fa-chevron-down"></i></a>
-                        <ul class="dropdown-menu">
+                        <button type="button" class="services-toggle" aria-label="Services" aria-expanded="false" aria-controls="services-menu">▾</button>
+                        <ul class="dropdown-menu" id="services-menu">
                             <li><a href="services/app-development.html" data-lang-en="App Development" data-lang-fr="Développement d'Applications">App Development</a></li>
                             <li><a href="services/ai-data-sciences.html" data-lang-en="AI & Data Sciences" data-lang-fr="IA & Sciences des Données">AI & Data Sciences</a></li>
                             <li><a href="services/cyber-security.html" data-lang-en="Cyber Security" data-lang-fr="Cybersécurité">Cyber Security</a></li>
@@ -177,38 +176,38 @@
                     </div>
                 </div>
                 
-                <div class="contact-form-container">
+                <div class="contact-form-container" id="enquiry">
                     <h2 data-lang-en>Send Us a Message</h2>
                     <h2 data-lang-fr>Envoyez-Nous un Message</h2>
                     <form id="contactForm" class="contact-form" action="https://formspree.io/f/xandzyvy" method="POST">
                         <div class="form-group">
                             <label for="name" class="form-label" data-lang-en>Name <span class="required-field">*</span></label>
                             <label for="name" class="form-label" data-lang-fr>Nom <span class="required-field">*</span></label>
-                            <input type="text" id="name" name="name" class="form-control" required>
+                            <input type="text" id="name" autocomplete="name" name="name" class="form-control" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="email" class="form-label" data-lang-en>Email <span class="required-field">*</span></label>
                             <label for="email" class="form-label" data-lang-fr>Email <span class="required-field">*</span></label>
-                            <input type="email" id="email" name="email" class="form-control" required>
+                            <input type="email" id="email" autocomplete="email" name="email" class="form-control" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="phone" class="form-label" data-lang-en>Phone</label>
                             <label for="phone" class="form-label" data-lang-fr>Téléphone</label>
-                            <input type="tel" id="phone" name="phone" class="form-control">
+                            <input type="tel" id="phone" autocomplete="tel" name="phone" class="form-control">
                         </div>
                         
                         <div class="form-group">
                             <label for="company" class="form-label" data-lang-en>Company</label>
                             <label for="company" class="form-label" data-lang-fr>Entreprise</label>
-                            <input type="text" id="company" name="company" class="form-control">
+                            <input type="text" id="company" autocomplete="organization" name="company" class="form-control">
                         </div>
                         
                         <div class="form-group">
-                            <label for="subject" class="form-label" data-lang-en>Subject <span class="required-field">*</span></label>
-                            <label for="subject" class="form-label" data-lang-fr>Sujet <span class="required-field">*</span></label>
-                            <input type="text" id="subject" name="subject" class="form-control" required>
+                            <label for="subject" class="form-label" data-lang-en>Subject (optional)</label>
+                            <label for="subject" class="form-label" data-lang-fr>Objet (facultatif)</label>
+                            <input type="text" id="subject" name="subject" class="form-control">
                         </div>
                         
                         <div class="form-group">
@@ -230,7 +229,9 @@
                             <button type="submit" class="btn-submit">Envoyer le Message</button>
                         </div>
                         
-                        <div id="formMessage" class="form-message"></div>
+                        <p data-lang-en>Prefer email? Write to <a href="mailto:admin@skylar-solutions.com">admin@skylar-solutions.com</a>.</p>
+                        <p data-lang-fr>Vous préférez le courriel ? Écrivez à <a href="mailto:admin@skylar-solutions.com">admin@skylar-solutions.com</a>.</p>
+                        <div role="status" aria-live="polite" id="formMessage" class="form-message"></div>
                     </form>
                 </div>
             </div>
