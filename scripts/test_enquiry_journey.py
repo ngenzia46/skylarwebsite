@@ -1,5 +1,6 @@
 """Run with Playwright and Chromium installed. Uses only local site content."""
 
+import os
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -60,7 +61,7 @@ if __name__ == "__main__":
     handler = partial(SimpleHTTPRequestHandler, directory=str(root))
     with ThreadingHTTPServer(("127.0.0.1", 0), handler) as server, sync_playwright() as playwright:
         Thread(target=server.serve_forever, daemon=True).start()
-        browser = playwright.chromium.launch()
+        browser = playwright.chromium.launch(channel=os.getenv("CHROME_CHANNEL"))
         try:
             exercise(browser, f"http://127.0.0.1:{server.server_port}")
             print("Enquiry journey passed")
