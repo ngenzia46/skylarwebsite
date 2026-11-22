@@ -403,3 +403,6 @@ html[lang="fr"] a[data-lang-fr] {
         padding: 1.5rem;
     }
 }
+.blog-card[hidden] {
+    display: none;
+}
