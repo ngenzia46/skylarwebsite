@@ -2269,13 +2269,13 @@ li {
   }
 }
 
-.animate {
+.animate.awaiting-reveal {
   opacity: 0;
   transform: translateY(20px);
-  transition: all 1s ease;
 }
 
-.animate.animate-visible {
+.animate {
+  transition: opacity 1s ease, transform 1s ease;
   opacity: 1;
   transform: translateY(0);
 }
@@ -2930,5 +2930,17 @@ html[lang="fr"] .hero-highlight-label[data-lang-fr] {
   }
   .dropdown > a i {
     display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate, .animate.awaiting-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .home-hero .hero-image img {
+    transform: none !important;
+    opacity: 1 !important;
   }
 }
