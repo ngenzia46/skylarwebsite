@@ -134,21 +134,6 @@ function showFormMessage(form, message, type) {
   messageElement.setAttribute('role', 'status');
   messageElement.setAttribute('aria-live', type === 'error' ? 'assertive' : 'polite');
 
-  if (type === 'success') {
-    window.setTimeout(() => {
-      messageElement.style.display = 'none';
-    }, 5000);
-  }
-}
-
-function getActiveSubmitButton(form) {
-  const activeLanguage = document.documentElement.lang || 'en';
-
-  const scopedButton = form.querySelector(
-    `[data-lang-${activeLanguage}] button[type="submit"], button[type="submit"][data-lang-${activeLanguage}]`
-  );
-
-  return scopedButton || form.querySelector('button[type="submit"]');
 }
 
 function setupLanguageControls(initialLanguage) {
@@ -258,6 +243,9 @@ function setupNavigation() {
 }
 
 const enquiryTopics = new Map([
+  ['ai-consultation', ['AI project consultation', 'Consultation sur un projet IA']],
+  ['microsoft365-migration', ['Microsoft 365 migration', 'Migration vers Microsoft 365']],
+  ['odoo-implementation', ['Odoo implementation', 'Mise en place d’Odoo']],
   ['consultation', ['Project consultation', 'Échange sur un projet']],
   ['app-development', ['Application development', 'Développement d’applications']],
   ['ai-data-sciences', ['AI and data science', 'IA et science des données']],
@@ -288,60 +276,34 @@ function setupContactForm() {
     return;
   }
 
+  contactForm.addEventListener('input', event => event.target.setCustomValidity?.(''));
   let sending = false;
   contactForm.addEventListener('submit', async (event) => {
     event.preventDefault();
 
     if (sending) return;
-    let isValid = true;
-    const requiredFields = contactForm.querySelectorAll('[required]');
-
-    requiredFields.forEach((field) => {
-      if (!field.value?.trim?.() && field.type !== 'checkbox') {
-        isValid = false;
-        field.classList.add('error');
-      } else if (field.type === 'checkbox' && !field.checked) {
-        isValid = false;
-        field.classList.add('error');
-      } else {
-        field.classList.remove('error');
-      }
-    });
-
-    const emailField = contactForm.querySelector('input[type="email"]');
-    if (emailField && emailField.value) {
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailPattern.test(emailField.value)) {
-        isValid = false;
-        emailField.classList.add('error');
+    for (const field of contactForm.querySelectorAll('[required]')) {
+      if (field.type !== 'checkbox' && !field.value.trim()) {
+        field.setCustomValidity(document.documentElement.lang === 'fr'
+          ? 'Veuillez renseigner ce champ.' : 'Please complete this field.');
       }
     }
-
-    if (!isValid) {
-      showFormMessage(
-        contactForm,
-        document.documentElement.lang === 'fr'
-          ? 'Veuillez remplir correctement tous les champs obligatoires.'
-          : 'Please complete all required fields correctly.',
-        'error'
-      );
-      return;
-    }
+    if (!contactForm.reportValidity()) return;
 
     sending = true;
     const formData = new FormData(contactForm);
-    const submitButton = getActiveSubmitButton(contactForm);
-    const originalButtonText = submitButton?.textContent || '';
+    const submitButtons = contactForm.querySelectorAll('button[type="submit"]');
+    submitButtons.forEach(button => { button.disabled = true; });
+    contactForm.setAttribute('aria-busy', 'true');
+    showFormMessage(contactForm, document.documentElement.lang === 'fr'
+      ? 'Envoi en cours…' : 'Sending…', 'pending');
 
-    if (submitButton) {
-      submitButton.disabled = true;
-      submitButton.textContent =
-        document.documentElement.lang === 'fr' ? 'Envoi en cours...' : 'Sending...';
-    }
-
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 20000);
     try {
       const response = await fetch(contactForm.action, {
         method: 'POST',
+        signal: controller.signal,
         body: formData,
         headers: {
           Accept: 'application/json',
@@ -383,16 +345,15 @@ function setupContactForm() {
       showFormMessage(
         contactForm,
         document.documentElement.lang === 'fr'
-          ? 'Erreur de connexion. Veuillez verifier votre connexion internet.'
-          : 'Connection error. Please check your internet connection.',
+          ? 'Envoi non confirmé. Votre texte est conservé. Vous pouvez réessayer ou nous écrire par courriel.'
+          : 'Delivery is unconfirmed. Your text is still here. You can retry or contact us by email.',
         'error'
       );
     } finally {
+      window.clearTimeout(timeout);
       sending = false;
-      if (submitButton) {
-        submitButton.disabled = false;
-        submitButton.textContent = originalButtonText;
-      }
+      contactForm.removeAttribute('aria-busy');
+      submitButtons.forEach(button => { button.disabled = false; });
     }
   });
 }
@@ -436,15 +397,21 @@ function setupHeaderAndHeroEffects() {
   const heroSection = document.querySelector('.home-hero');
   const heroImage = document.querySelector('.hero-image img');
 
-  const checkIfInView = () => {
-    const windowHeight = window.innerHeight;
-
-    animateElements.forEach((element) => {
-      if (element.getBoundingClientRect().top < windowHeight - 100) {
-        element.classList.add('animate-visible');
-      }
+  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if ('IntersectionObserver' in window && !motion.matches) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.remove('awaiting-reveal');
+          observer.unobserve(entry.target);
+        }
+      });
     });
-  };
+    animateElements.forEach(element => {
+      element.classList.add('awaiting-reveal');
+      observer.observe(element);
+    });
+  }
 
   const updateHeader = () => {
     if (!header) {
@@ -473,7 +440,7 @@ function setupHeaderAndHeroEffects() {
   };
 
   const updateHeroParallax = () => {
-    if (!heroSection || !heroImage) {
+    if (!heroSection || !heroImage || motion.matches) {
       return;
     }
 
@@ -489,7 +456,6 @@ function setupHeaderAndHeroEffects() {
   };
 
   return () => {
-    checkIfInView();
     updateHeader();
     updateHeroParallax();
   };
@@ -547,6 +513,10 @@ function setupFaqItems() {
       return;
     }
 
+    answer.id ||= 'faq-answer-' + Array.from(faqItems).indexOf(item);
+    question.setAttribute('aria-controls', answer.id);
+    question.setAttribute('aria-expanded', String(item.classList.contains('active')));
+    answer.hidden = !item.classList.contains('active');
     question.setAttribute('role', 'button');
     question.setAttribute('tabindex', '0');
 
@@ -558,13 +528,16 @@ function setupFaqItems() {
           otherItem.classList.remove('active');
           const otherAnswer = otherItem.querySelector('.faq-answer');
           if (otherAnswer) {
-            otherAnswer.style.maxHeight = '0';
+            otherAnswer.hidden = true;
+            otherItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
           }
         }
       });
 
       item.classList.toggle('active', !isActive);
-      answer.style.maxHeight = isActive ? '0' : `${answer.scrollHeight}px`;
+      question.setAttribute('aria-expanded', String(!isActive));
+      answer.hidden = isActive;
+      answer.style.maxHeight = isActive ? '0' : 'none';
     };
 
     question.addEventListener('click', toggleItem);
@@ -586,16 +559,16 @@ function setupBlogFilters() {
   }
 
   filterButtons.forEach((button) => {
+    button.classList.toggle('active', button.dataset.filter === 'all');
+    button.setAttribute('aria-pressed', String(button.dataset.filter === 'all'));
     button.addEventListener('click', () => {
       const filter = button.getAttribute('data-filter');
-      const activeLanguage = document.documentElement.lang || 'en';
+
 
       filterButtons.forEach((candidate) => {
-        const matchesLanguage =
-          candidate.hasAttribute(`data-lang-${activeLanguage}`) ||
-          (!candidate.hasAttribute('data-lang-en') && !candidate.hasAttribute('data-lang-fr'));
-
-        candidate.classList.toggle('active', candidate === button && matchesLanguage);
+        const selected = candidate.dataset.filter === filter;
+        candidate.classList.toggle('active', selected);
+        candidate.setAttribute('aria-pressed', String(selected));
       });
 
       blogCards.forEach((card) => {
