@@ -77,6 +77,9 @@ function updateLanguageContent(lang) {
   } catch {
     // The selected language still applies to this page.
   }
+  document.querySelectorAll('img[data-alt-en][data-alt-fr]').forEach(image => {
+    image.alt = image.getAttribute('data-alt-' + lang);
+  });
   document.querySelectorAll('header a[data-lang-en][data-lang-fr]').forEach(link => {
     const label = link.getAttribute(`data-lang-${lang}`);
     const text = Array.from(link.childNodes).find(node => node.nodeType === Node.TEXT_NODE);

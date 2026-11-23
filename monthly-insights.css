@@ -1,4 +1,31 @@
 /* Bilingual monthly editions on the archive, homepage and article pages. */
+.edition-thumbnail,
+.edition-cover img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.edition-thumbnail {
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    flex: none;
+}
+
+.edition-cover {
+    margin: 1.5rem 0 0;
+}
+
+.edition-cover img {
+    border-radius: var(--radius-lg);
+}
+
+.edition-cover figcaption {
+    margin-top: 0.4rem;
+    color: #475569;
+    font-size: 0.875rem;
+}
+
 .edition-card .blog-content {
     padding: clamp(1.25rem, 3vw, 2rem);
     border-top: 3px solid var(--secondary-color);
