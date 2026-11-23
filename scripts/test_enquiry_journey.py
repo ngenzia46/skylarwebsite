@@ -60,15 +60,23 @@ def exercise(browser, origin):
     editions = []
     for card in cards.all():
         link = card.get_by_role("heading").get_by_role("link")
+        thumbnail = card.locator(".edition-thumbnail")
+        thumbnail.scroll_into_view_if_needed()
+        assert thumbnail.evaluate("async img => { await img.decode(); return img.naturalWidth > 0; }")
         editions.append((link.get_attribute("href"), link.inner_text(),
                          card.locator("time").get_attribute("datetime")))
     assert editions
     for path, title, month in editions:
         page.goto(f"{origin}/{path}")
         expect(page.get_by_role("heading", level=1)).to_have_text(title, use_inner_text=True)
+        cover = page.locator(".edition-cover img")
+        expect(cover).to_be_visible()
+        assert cover.evaluate("async img => { await img.decode(); return img.naturalWidth > 0; }")
+        expect(cover).to_have_attribute("alt", cover.get_attribute("data-alt-fr"))
         expect(page.locator(".edition-body [lang=fr]").first).to_be_visible()
         expect(page.locator("article time")).to_have_attribute("datetime", month)
         page.locator('button[data-lang="en"]').click()
+        expect(cover).to_have_attribute("alt", cover.get_attribute("data-alt-en"))
         expect(page.locator(".edition-body [lang=en]").first).to_be_visible()
         expect(page.locator(".edition-body [lang=fr]").first).to_be_hidden()
         page.locator('button[data-lang="fr"]').click()
