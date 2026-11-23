@@ -55,6 +55,23 @@ def exercise(browser, origin):
     expect(page.locator('[data-filter="ai"]:visible')).to_have_attribute("aria-pressed", "true")
     page.locator('[data-filter="all"]:visible').click()
     assert page.locator('.blog-card:visible').count() == page.locator('.blog-card').count()
+    # Follow each monthly edition as a French reader and switch within the article.
+    cards = page.locator(".edition-card")
+    editions = []
+    for card in cards.all():
+        link = card.get_by_role("heading").get_by_role("link")
+        editions.append((link.get_attribute("href"), link.inner_text(),
+                         card.locator("time").get_attribute("datetime")))
+    assert editions
+    for path, title, month in editions:
+        page.goto(f"{origin}/{path}")
+        expect(page.get_by_role("heading", level=1)).to_have_text(title, use_inner_text=True)
+        expect(page.locator(".edition-body [lang=fr]").first).to_be_visible()
+        expect(page.locator("article time")).to_have_attribute("datetime", month)
+        page.locator('button[data-lang="en"]').click()
+        expect(page.locator(".edition-body [lang=en]").first).to_be_visible()
+        expect(page.locator(".edition-body [lang=fr]").first).to_be_hidden()
+        page.locator('button[data-lang="fr"]').click()
     page.close()
 
 
