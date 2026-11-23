@@ -49,7 +49,9 @@ def check_internal_links() -> list[str]:
             if target.startswith(("http://", "https://", "mailto:", "tel:", "javascript:", "#", "data:")):
                 continue
 
-            resolved = (path.parent / target.split("#", 1)[0].split("?", 1)[0]).resolve()
+            asset = target.split("#", 1)[0].split("?", 1)[0]
+            base = ROOT if asset.startswith("/") else path.parent
+            resolved = (base / asset.lstrip("/")).resolve()
             if not resolved.exists():
                 issues.append(f"{path.relative_to(ROOT)} -> missing asset/link target: {target}")
 
