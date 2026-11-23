@@ -3,17 +3,6 @@
 const LANGUAGE_STORAGE_KEY = 'language';
 const LANGUAGE_CODES = ['en', 'fr'];
 
-function checkWebpSupport() {
-  const canvas =
-    typeof document === 'object' ? document.createElement('canvas') : {};
-  canvas.width = canvas.height = 1;
-
-  return (
-    typeof canvas.toDataURL === 'function' &&
-    canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0
-  );
-}
-
 function getSavedLanguage() {
   try {
     const stored = localStorage.getItem(LANGUAGE_STORAGE_KEY);
@@ -43,25 +32,6 @@ function updateDocumentTitle(lang) {
   if (nextTitle) {
     document.title = nextTitle;
   }
-}
-
-function replaceWithWebpImage() {
-  if (!checkWebpSupport()) {
-    return;
-  }
-
-  document.querySelectorAll('img[data-src-webp]').forEach((image) => {
-    const webpSrc = image.getAttribute('data-src-webp');
-    const webpSrcset = image.getAttribute('data-srcset-webp');
-
-    if (webpSrc) {
-      image.src = webpSrc;
-    }
-
-    if (webpSrcset) {
-      image.srcset = webpSrcset;
-    }
-  });
 }
 
 function setLanguageVisibility(lang) {
@@ -116,6 +86,7 @@ function updateLanguageContent(lang) {
   setLanguageVisibility(lang);
   updateLanguageControls(lang);
   updateEnquirySubject(lang);
+  updateMessageHint(lang);
 }
 
 function showFormMessage(form, message, type) {
@@ -128,6 +99,8 @@ function showFormMessage(form, message, type) {
     form.appendChild(messageElement);
   }
 
+  const recovery = form.querySelector('#delivery-recovery');
+  if (recovery) recovery.hidden = type !== 'error';
   messageElement.textContent = message;
   messageElement.className = `form-message ${type}`;
   messageElement.style.display = 'block';
@@ -204,26 +177,10 @@ function setupNavigation() {
     }
   });
 
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener('click', (event) => {
-      const targetId = anchor.getAttribute('href');
-
-      if (!targetId || targetId === '#') {
-        return;
-      }
-
-      const targetElement = document.querySelector(targetId);
-      if (!targetElement) {
-        return;
-      }
-
-      event.preventDefault();
-      targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-      if (mobileNav && navbarToggle) {
-        if (mobileNav.classList.contains('active')) navbarToggle.click();
-      }
-    });
+  mobileNav?.addEventListener('click', event => {
+    if (event.target.closest('a[href^="#"]') && mobileNav.classList.contains('active')) {
+      navbarToggle?.click();
+    }
   });
 
   const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
@@ -270,12 +227,58 @@ function updateEnquirySubject(lang) {
   subject.defaultValue = labels[lang === 'fr' ? 1 : 0];
 }
 
+const projectQuestions = new Map([
+  ['app-development', ['Which workflow should the application support, and who will use it?', 'Quel processus l’application doit-elle prendre en charge et qui l’utilisera ?']],
+  ['ai-data-sciences', ['What decision or task should the pilot improve? Which data is available?', 'Quelle décision ou tâche le pilote doit-il améliorer ? De quelles données disposez-vous ?']],
+  ['cyber-security', ['Which systems should the review cover, and what decision will it inform?', 'Quels systèmes la revue doit-elle couvrir et quelle décision doit-elle éclairer ?']],
+  ['collaboration-solutions', ['Which tools do you use today and which teams would move first?', 'Quels outils utilisez-vous et quelles équipes participeraient à la première phase ?']],
+  ['blockchain-nft', ['What needs to be traced, and which organisations need to verify it?', 'Que souhaitez-vous retracer et quels organismes doivent pouvoir le vérifier ?']],
+  ['support', ['Which applications need support and during which hours?', 'Quelles applications nécessitent une assistance et sur quelles plages horaires ?']],
+]);
+
+function updateMessageHint(lang) {
+  const hint = document.getElementById('message-hint');
+  const questions = projectQuestions.get(new URLSearchParams(location.search).get('topic'));
+  if (hint && questions) {
+    hint.querySelector(`[data-lang-${lang}]`).textContent = questions[lang === 'fr' ? 1 : 0];
+  }
+}
+
+function setupEnquiryRecovery(form) {
+  const recovery = form.querySelector('#delivery-recovery');
+  if (!recovery) return;
+  const manual = recovery.querySelector('.manual-copy');
+  const status = recovery.querySelector('.copy-status');
+  const field = manual.querySelector('textarea');
+  recovery.querySelector('button').addEventListener('click', async () => {
+    const content = ['subject', 'message', 'name', 'email', 'phone', 'company']
+      .map(name => form.elements.namedItem(name).value.trim()).filter(Boolean).join('\n\n');
+    try {
+      await navigator.clipboard.writeText(content);
+      status.textContent = document.documentElement.lang === 'fr' ? 'Demande copiée.' : 'Enquiry copied.';
+    } catch {
+      manual.hidden = false;
+      field.value = content;
+      field.focus();
+      field.select();
+    }
+  });
+  function clearCopy() {
+    manual.hidden = true;
+    field.value = '';
+    status.textContent = '';
+  }
+  form.addEventListener('input', clearCopy);
+  form.addEventListener('reset', clearCopy);
+}
+
 function setupContactForm() {
   const contactForm = document.querySelector('.contact-form');
   if (!contactForm) {
     return;
   }
 
+  setupEnquiryRecovery(contactForm);
   contactForm.addEventListener('input', event => event.target.setCustomValidity?.(''));
   let sending = false;
   contactForm.addEventListener('submit', async (event) => {
@@ -580,9 +583,6 @@ function setupBlogFilters() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.documentElement.classList.add(checkWebpSupport() ? 'webp' : 'no-webp');
-  replaceWithWebpImage();
-
   const initialLanguage = getSavedLanguage();
   setupLanguageControls(initialLanguage);
   updateLanguageContent(initialLanguage);

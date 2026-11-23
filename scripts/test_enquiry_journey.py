@@ -9,6 +9,8 @@ from urllib.parse import urlparse
 
 from playwright.sync_api import expect, sync_playwright
 
+from test_consultation import exercise_consultation
+
 
 def exercise(browser, origin):
     page = browser.new_page(locale="en-GB")
@@ -64,7 +66,8 @@ if __name__ == "__main__":
         browser = playwright.chromium.launch(channel=os.getenv("CHROME_CHANNEL"))
         try:
             exercise(browser, f"http://127.0.0.1:{server.server_port}")
-            print("Enquiry journey passed")
+            exercise_consultation(browser, f"http://127.0.0.1:{server.server_port}")
+            print("Enquiry and mobile consultation journeys passed")
         finally:
             browser.close()
             server.shutdown()
