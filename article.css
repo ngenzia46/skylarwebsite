@@ -416,7 +416,7 @@
 @media print {
     .buying-guide-page { padding: 0; }
     .buying-guide-page > .header, .buying-guide-page > footer, .buying-guide-page .back-to-top, .buying-guide-page #cookieConsent,
-    .guide-print, .guide-contact, .buyer-guide nav, .buying-guide-page main .breadcrumbs { display: none !important; }
+    .guide-print, .guide-contact, html[lang] .buying-guide-page .guide-sharing[data-lang-en], html[lang] .buying-guide-page .guide-sharing[data-lang-fr], .buyer-guide nav, .buying-guide-page main .breadcrumbs { display: none !important; }
     .buying-guide-page main .page-hero, .buyer-guide { padding: 0; background: white; color: black; }
     .buying-guide-page main .page-hero h1 { color: black; font-size: 20pt; }
     .buying-guide-page main .page-hero::before, .buying-guide-page main .page-hero::after { display: none; }

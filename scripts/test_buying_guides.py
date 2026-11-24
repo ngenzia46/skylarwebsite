@@ -24,7 +24,7 @@ def exercise_buying_guides(browser, origin):
         currency = page.evaluate("""() => new Intl.NumberFormat('en-BE',
             {style:'currency', currency:'EUR'}).format(12000)""")
         expect(result.locator("dd").nth(2)).to_have_text(currency)
-        page.get_by_label("Cases per month", exact=True).fill("0")
+        page.get_by_role("spinbutton", name="Cases per month", exact=True).fill("0")
         expect(result).to_contain_text("Setup cost is not recovered")
         page.locator("#estimate-running").fill("0")
         expect(result).to_contain_text("Setup cost is not recovered")
@@ -36,6 +36,9 @@ def exercise_buying_guides(browser, origin):
         expect(result).to_contain_text("Check all five")
         page.locator("#estimate-cases").fill("200")
         assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
+        share = page.locator('.guide-sharing:visible a[href^="mailto:"]')
+        share.evaluate("a => { a.addEventListener('click', e => e.preventDefault()); a.click(); }")
+        assert not page.evaluate("window.dataLayer.some(e => e.event === 'contact_channel_click')")
         page.evaluate("window.print = () => {window.printRequested = true}")
         page.get_by_role("button", name="Print or save this guide as PDF").click()
         assert page.evaluate("window.printRequested")
@@ -53,7 +56,7 @@ def exercise_buying_guides(browser, origin):
         expect(page.locator("#enquiry-service")).to_be_hidden()
 
         page.goto(origin + "/contact.html?topic=consultation&lang=fr")
-        service = page.get_by_label("Service souhaité (facultatif)")
+        service = page.get_by_role("combobox", name="Service souhaité (facultatif)", exact=True)
         expect(service.locator("option")).to_have_count(7)
         service.select_option("support")
         expect(page.locator("#subject")).to_have_value("Assistance informatique")
