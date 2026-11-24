@@ -292,7 +292,7 @@ html[lang="fr"] .contact-form-container h2[data-lang-fr] {
 }
 
 .form-label {
-    display: none; /* Hide by default */
+    display: block;
     margin-bottom: 0.5rem;
     color: var(--gray-700);
     font-weight: 500;
