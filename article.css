@@ -374,3 +374,53 @@
         font-size: 1.5rem;
     }
 }
+
+/* Keep the estimate readable on a phone and when buyers enlarge the text. */
+.buyer-guide .article-body section { scroll-margin-top: 8rem; }
+.buyer-guide .guide-contact { margin-block: 2rem; }
+.buyer-guide details { margin-block: 1rem; }
+.buyer-guide summary { cursor: pointer; font-weight: 600; }
+.estimate-fields,
+#estimate-result dl {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+    gap: 1rem;
+}
+.estimate-fields label { display: grid; align-content: end; gap: .4rem; }
+.estimate-fields input {
+    width: 100%;
+    min-width: 0;
+    padding: .65rem;
+    font: inherit;
+    border: 1px solid #687487;
+    border-radius: .25rem;
+}
+#estimate-result {
+    margin-top: 1.25rem;
+    padding: 1rem;
+    background: #f1f5f9;
+    color: #22304a;
+}
+#estimate-result dl { margin: 0; }
+#estimate-result dd { margin: .3rem 0 0; font-weight: 700; }
+
+.guide-print {
+    font: inherit;
+    margin-top: 1.25rem;
+    padding: .6rem 1rem;
+    background: white;
+    border: 1px solid currentColor;
+    border-radius: .25rem;
+    cursor: pointer;
+}
+@media print {
+    .buying-guide-page { padding: 0; }
+    .buying-guide-page > .header, .buying-guide-page > footer, .buying-guide-page .back-to-top, .buying-guide-page #cookieConsent,
+    .guide-print, .guide-contact, .buyer-guide nav, .buying-guide-page main .breadcrumbs { display: none !important; }
+    .buying-guide-page main .page-hero, .buyer-guide { padding: 0; background: white; color: black; }
+    .buying-guide-page main .page-hero h1 { color: black; font-size: 20pt; }
+    .buying-guide-page main .page-hero::before, .buying-guide-page main .page-hero::after { display: none; }
+    .buyer-guide .article-body h2 { break-after: avoid; font-size: 14pt; margin: 1em 0 .25em; }
+    .buyer-guide .article-body p { font-size: 10pt; line-height: 1.4; margin-bottom: .6em; }
+    .estimate-fields, #estimate-result { break-inside: avoid; }
+}

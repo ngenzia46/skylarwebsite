@@ -755,3 +755,4 @@ html[lang="fr"] a[data-lang-fr] {
         grid-template-columns: 1fr;
     }
 }
+#team { scroll-margin-top: 6rem; }
