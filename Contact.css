@@ -285,6 +285,8 @@ html[lang="fr"] .contact-form-container h2[data-lang-fr] {
     border-radius: 2px;
 }
 
+.contact-form .form-group[hidden] { display: none; }
+
 .form-group {
     margin-bottom: 1.5rem;
 }
