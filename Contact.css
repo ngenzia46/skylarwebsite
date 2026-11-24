@@ -285,12 +285,14 @@ html[lang="fr"] .contact-form-container h2[data-lang-fr] {
     border-radius: 2px;
 }
 
+.contact-form .form-group[hidden] { display: none; }
+
 .form-group {
     margin-bottom: 1.5rem;
 }
 
 .form-label {
-    display: none; /* Hide by default */
+    display: block;
     margin-bottom: 0.5rem;
     color: var(--gray-700);
     font-weight: 500;

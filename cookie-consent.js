@@ -211,14 +211,18 @@
         started = true;
       }
     });
+    const salesEmails = new Set([
+      'admin@skylar-solutions.com', 'ngenzi@skylar-solutions.com', 'esele@skylar-solutions.com',
+    ]);
+    const salesPhones = new Set(['+3210250018', '+32474690382']);
     document.addEventListener('click', event => {
       if (getStoredConsent() !== 'accepted' || !gtmLoaded) return;
       const link = event.target.closest?.('a[href]');
       if (!link) return;
       let channel;
-      if (link.protocol === 'tel:') channel = 'phone';
-      if (link.protocol === 'mailto:' && !link.pathname.startsWith('careers@')) channel = 'email';
-      if (link.origin === 'https://wa.me') channel = 'whatsapp';
+      if (link.protocol === 'tel:' && salesPhones.has(link.pathname)) channel = 'phone';
+      if (link.protocol === 'mailto:' && salesEmails.has(link.pathname.toLowerCase())) channel = 'email';
+      if (link.origin === 'https://wa.me' && link.pathname === '/32474690382') channel = 'whatsapp';
       if (channel) window.dataLayer.push({
         event: 'contact_channel_click', contact_channel: channel, language: document.documentElement.lang,
       });
@@ -229,7 +233,7 @@
           event: 'generate_lead',
           enquiry_topic: event.detail.topic,
           ...(event.detail.edition && { enquiry_edition: event.detail.edition }),
-          language: document.documentElement.lang,
+          language: event.detail.language,
         });
       }
     });

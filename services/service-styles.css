@@ -1091,3 +1091,6 @@ html[lang="fr"] li[data-lang-fr] {
         border-radius: 1rem;
     }
 }
+
+.page-hero .service-guide { margin: .85rem 0 0; }
+.page-hero .service-guide a { color: inherit; text-decoration: underline; text-underline-offset: .2em; }

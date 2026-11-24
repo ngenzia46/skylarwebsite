@@ -77,7 +77,17 @@ function updateLanguageContent(lang) {
   try {
     localStorage.setItem(LANGUAGE_STORAGE_KEY, lang);
   } catch {
-    // The selected language still applies to this page.
+    // Preserve the language on internal page links when browser storage is unavailable.
+    document.querySelectorAll('a[href]').forEach(link => {
+      const raw = link.getAttribute('href');
+      if (raw.startsWith('#') || link.hasAttribute('download')) return;
+      const url = new URL(raw, location.href);
+      if (url.origin !== location.origin || !/(\.html|\/)$/.test(url.pathname)) return;
+      if (url.searchParams.has('lang') && !link.hasAttribute('data-carried-language')) return;
+      url.searchParams.set('lang', lang);
+      link.href = url.href;
+      link.dataset.carriedLanguage = '';
+    });
   }
   document.querySelectorAll('img[data-alt-en][data-alt-fr]').forEach(image => {
     image.alt = image.getAttribute('data-alt-' + lang);
@@ -90,8 +100,7 @@ function updateLanguageContent(lang) {
   updateDocumentTitle(lang);
   setLanguageVisibility(lang);
   updateLanguageControls(lang);
-  updateEnquirySubject(lang);
-  updateMessageHint(lang);
+  updateEnquiryFields(lang);
 }
 
 function showFormMessage(form, message, type) {
@@ -246,6 +255,10 @@ const fieldEditions = new Map([
 
 function getEnquiryContext() {
   const params = new URLSearchParams(location.search);
+  const selectedService = document.getElementById('enquiry-service')?.value;
+  if (projectQuestions.has(selectedService)) {
+    return { topic: selectedService, labels: enquiryTopics.get(selectedService) };
+  }
   const topic = params.get('topic');
   const edition = params.get('edition');
   const fieldExample = fieldEditions.get(edition);
@@ -253,13 +266,6 @@ function getEnquiryContext() {
     return { topic, edition, labels: fieldExample.slice(1) };
   }
   return { topic: enquiryTopics.has(topic) ? topic : 'general', labels: enquiryTopics.get(topic) };
-}
-
-function updateEnquirySubject(lang) {
-  const subject = document.querySelector('#contactForm [name="subject"]');
-  const { labels } = getEnquiryContext();
-  if (!subject || !labels || subject.value !== subject.defaultValue) return;
-  subject.defaultValue = labels[lang === 'fr' ? 1 : 0];
 }
 
 const projectQuestions = new Map([
@@ -271,11 +277,35 @@ const projectQuestions = new Map([
   ['support', ['Which applications need support and during which hours?', 'Quelles applications nécessitent une assistance et sur quelles plages horaires ?']],
 ]);
 
-function updateMessageHint(lang) {
-  const hint = document.getElementById('message-hint');
-  const questions = projectQuestions.get(new URLSearchParams(location.search).get('topic'));
-  if (hint && questions) {
-    hint.querySelector(`[data-lang-${lang}]`).textContent = questions[lang === 'fr' ? 1 : 0];
+function updateEnquiryFields(lang) {
+  const form = document.getElementById('contactForm');
+  if (!form) return;
+  const index = lang === 'fr' ? 1 : 0;
+  const { topic, labels } = getEnquiryContext();
+  const select = form.querySelector('#enquiry-service');
+  const originalTopic = new URLSearchParams(location.search).get('topic');
+  // An article or service link already specifies the subject of the enquiry.
+  const offerChoice = !enquiryTopics.has(originalTopic) || originalTopic === 'consultation';
+  if (select) {
+    const selected = select.value;
+    if (offerChoice) {
+      select.replaceChildren(new Option(index ? 'À préciser ensemble' : 'Help me choose', ''));
+      for (const service of projectQuestions.keys()) {
+        select.add(new Option(enquiryTopics.get(service)[index], service));
+      }
+      select.value = selected;
+    }
+    select.closest('.form-group').hidden = !offerChoice;
+  }
+  const subject = form.elements.subject;
+  const suggested = labels?.[index] || '';
+  if (subject.value === subject.defaultValue) subject.value = suggested;
+  subject.defaultValue = suggested;
+
+  const hint = document.getElementById('message-hint')?.querySelector(`[data-lang-${lang}]`);
+  if (hint) {
+    hint.dataset.original ??= hint.textContent;
+    hint.textContent = projectQuestions.get(topic)?.[index] || hint.dataset.original;
   }
 }
 
@@ -314,6 +344,9 @@ function setupContactForm() {
   }
 
   setupEnquiryRecovery(contactForm);
+  contactForm.querySelector('#enquiry-service')?.addEventListener('change', () => {
+    updateEnquiryFields(document.documentElement.lang);
+  });
   contactForm.addEventListener('input', event => event.target.setCustomValidity?.(''));
   let sending = false;
   contactForm.addEventListener('submit', async (event) => {
@@ -331,6 +364,9 @@ function setupContactForm() {
     sending = true;
     const formData = new FormData(contactForm);
     const { topic, edition } = getEnquiryContext();
+    const language = document.documentElement.lang;
+    formData.set('topic', topic);
+    formData.set('reply_language', language);
     if (edition) formData.set('article', edition);
     let editedDuringSend = false;
     const markEdited = () => { editedDuringSend = true; };
@@ -365,10 +401,13 @@ function setupContactForm() {
               : 'Thank you for your message. We will get back to you shortly.'),
           'success'
         );
-        if (!editedDuringSend) contactForm.reset();
+        if (!editedDuringSend) {
+          contactForm.reset();
+          updateEnquiryFields(document.documentElement.lang);
+        }
         contactForm.dispatchEvent(new CustomEvent('enquiry-sent', {
           bubbles: true,
-          detail: { topic, edition },
+          detail: { topic, edition, language },
         }));
       } else {
         let errorMessage =
@@ -665,6 +704,11 @@ document.addEventListener('DOMContentLoaded', () => {
   setupTestimonials();
   setupFaqItems();
   setupBlogFilters();
+  const printGuide = document.querySelector('.guide-print');
+  if (printGuide) {
+    printGuide.hidden = false;
+    printGuide.addEventListener('click', () => window.print());
+  }
 
   const runScrollEffects = setupHeaderAndHeroEffects();
   const updateBackToTopButton = setupBackToTopButton();
