@@ -110,12 +110,13 @@
         <div class="container">
             <div class="page-hero-content">
                 <h1 data-lang-en>Contact Us</h1>
-                <h1 data-lang-fr>Contactez-Nous</h1>
+                <h1 data-lang-fr>Contactez-nous</h1>
                 <div class="breadcrumbs">
                     <a href="index.html" data-lang-en>Home</a>
                     <a href="index.html" data-lang-fr>Accueil</a> / 
                     <span>Contact</span>
                 </div>
+                <a href="#enquiry" class="service-enquiry"><span data-lang-en>Send a project enquiry</span><span data-lang-fr>Présenter votre projet</span></a>
             </div>
         </div>
     </section>
@@ -138,7 +139,8 @@
                             <div class="method-details">
                                 <h3 data-lang-en>Our Office</h3>
                                 <h3 data-lang-fr>Notre Bureau</h3>
-                                <p>Avenue Pasteur 6<br>1300 Wavre, Belgium</p>
+                                <p>Avenue Pasteur 6<br>1300 Wavre</p>
+                                <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Avenue+Pasteur+6%2C+1300+Wavre%2C+Belgium"><span data-lang-en>Get directions</span><span data-lang-fr>Obtenir l’itinéraire</span></a>
                             </div>
                         </div>
                         
@@ -165,7 +167,8 @@
                                 <h3 data-lang-en>Phone</h3>
                                 <h3 data-lang-fr>Téléphone</h3>
                                 <p><a href="tel:+3210250018">+32 10 25 00 18</a></p>
-                                <p><a href="tel:+32474690382">+32 474 69 03 82</a> <span data-lang-en>(WhatsApp available)</span><span data-lang-fr>(WhatsApp disponible)</span></p>
+                                <p><a href="tel:+32474690382">+32 474 69 03 82</a> </p>
+                                <p><a href="https://wa.me/32474690382"><span data-lang-en>Message us on WhatsApp</span><span data-lang-fr>Écrivez-nous sur WhatsApp</span></a></p>
                             </div>
                         </div>
                         
@@ -195,7 +198,7 @@
                 
                 <div class="contact-form-container" id="enquiry">
                     <h2 data-lang-en>Send Us a Message</h2>
-                    <h2 data-lang-fr>Envoyez-Nous un Message</h2>
+                    <h2 data-lang-fr>Envoyez-nous un message</h2>
                     <form id="contactForm" class="contact-form" action="https://formspree.io/f/xandzyvy" method="POST">
                         <div class="form-group">
                             <label for="name" class="form-label" data-lang-en>Name <span class="required-field">*</span></label>
@@ -209,18 +212,11 @@
                             <input type="email" id="email" autocomplete="email" name="email" class="form-control" required>
                         </div>
                         
-                        <div class="form-group">
-                            <label for="phone" class="form-label" data-lang-en>Phone</label>
-                            <label for="phone" class="form-label" data-lang-fr>Téléphone</label>
-                            <input type="tel" id="phone" autocomplete="tel" name="phone" class="form-control">
+                        <div class="form-group" hidden>
+                            <label for="enquiry-service" class="form-label"><span data-lang-en>Service of interest (optional)</span><span data-lang-fr>Service souhaité (facultatif)</span></label>
+                            <select id="enquiry-service" class="form-control"></select>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="company" class="form-label" data-lang-en>Company</label>
-                            <label for="company" class="form-label" data-lang-fr>Entreprise</label>
-                            <input type="text" id="company" autocomplete="organization" name="company" class="form-control">
-                        </div>
-                        
+
                         <div class="form-group">
                             <label for="subject" class="form-label" data-lang-en>Subject (optional)</label>
                             <label for="subject" class="form-label" data-lang-fr>Objet (facultatif)</label>
@@ -230,9 +226,25 @@
                         <div class="form-group">
                             <label for="message" class="form-label" data-lang-en>Message <span class="required-field">*</span></label>
                             <label for="message" class="form-label" data-lang-fr>Message <span class="required-field">*</span></label>
-                            <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
+                            <p id="message-hint" class="message-hint"><span data-lang-en>What would you like to improve, and when do you need it?</span><span data-lang-fr>Que souhaitez-vous améliorer et pour quelle échéance ?</span></p>
+                            <textarea aria-describedby="message-hint" id="message" name="message" class="form-control" rows="5" required></textarea>
                         </div>
                         
+                        <details class="optional-details">
+                            <summary><span data-lang-en>Add a phone number or company (optional)</span><span data-lang-fr>Ajouter un téléphone ou une entreprise (facultatif)</span></summary>
+                            <div class="form-group">
+                                <label for="phone" class="form-label" data-lang-en>Phone</label>
+                                <label for="phone" class="form-label" data-lang-fr>Téléphone</label>
+                                <input type="tel" id="phone" autocomplete="tel" name="phone" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="company" class="form-label" data-lang-en>Company</label>
+                                <label for="company" class="form-label" data-lang-fr>Entreprise</label>
+                                <input type="text" id="company" autocomplete="organization" name="company" class="form-control">
+                            </div>
+                        </details>
+
                         <div class="form-check">
                             <input type="checkbox" id="privacy" name="privacy" class="form-check-input" required>
                             <label for="privacy" class="form-check-label" data-lang-en>I have read and agree to the <a href="privacy-policy.html" target="_blank">Privacy Policy</a> <span class="required-field">*</span></label>
@@ -243,23 +255,22 @@
                             <button type="submit" class="btn-submit">Send Message</button>
                         </div>
                         <div data-lang-fr>
-                            <button type="submit" class="btn-submit">Envoyer le Message</button>
+                            <button type="submit" class="btn-submit">Envoyer le message</button>
                         </div>
                         
                         <p data-lang-en>Prefer email? Write to <a href="mailto:admin@skylar-solutions.com">admin@skylar-solutions.com</a>.</p>
                         <p data-lang-fr>Vous préférez le courriel ? Écrivez à <a href="mailto:admin@skylar-solutions.com">admin@skylar-solutions.com</a>.</p>
                         <div role="status" aria-live="polite" id="formMessage" class="form-message"></div>
+                        <div id="delivery-recovery" hidden>
+                            <button class="copy-enquiry" type="button"><span data-lang-en>Copy enquiry for email</span><span data-lang-fr>Copier la demande pour l’envoyer par courriel</span></button>
+                            <div class="manual-copy" hidden>
+                                <label for="enquiry-copy"><span data-lang-en>Select and copy your enquiry</span><span data-lang-fr>Sélectionnez et copiez votre demande</span></label>
+                                <textarea id="enquiry-copy" class="form-control" readonly rows="4"></textarea>
+                            </div>
+                            <span class="copy-status" role="status"></span>
+                        </div>
                     </form>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Map Section -->
-    <section class="map-section">
-        <div class="container">
-            <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2528.4731009687153!2d4.6073095!3d50.7151863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c17d2cd136286f%3A0x9c13f74f5fc82a3!2sAvenue%20Pasteur%206%2C%201300%20Wavre%2C%20Belgium!5e0!3m2!1sen!2sbe!4v1614183834378!5m2!1sen!2sbe" allowfullscreen="" loading="lazy" title="Skylar Solutions Office Location"></iframe>
             </div>
         </div>
     </section>
@@ -372,11 +383,11 @@
                         </li>
                         <li>
                             <i class="fas fa-phone"></i>
-                            <span>+32 10 25.00.18</span>
+                            <a href="tel:+3210250018">+32 10 25 00 18</a>
                         </li>
                         <li>
                             <i class="fas fa-envelope"></i>
-                            <span>admin@skylar-solutions.com</span>
+                            <a href="mailto:admin@skylar-solutions.com">admin@skylar-solutions.com</a>
                         </li>
                     </ul>
                 </div>

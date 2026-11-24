@@ -56,6 +56,7 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="monthly-insights.css">
     <link rel="stylesheet" href="blog.css">
     <link rel="stylesheet" href="cookie-consent.css">
     
@@ -116,7 +117,10 @@
     <!-- Blog Content -->
     <section class="blog-content section-padding">
         <div class="container">
-            <!-- Blog Filters -->
+            <div class="archive-search" hidden>
+                <label for="archive-query"><span lang="en" data-lang-en>Search the articles</span><span lang="fr" data-lang-fr>Rechercher dans les articles</span></label>
+                <input id="archive-query" type="search" autocomplete="off" aria-controls="archive-results">
+            </div>
             <div class="blog-filters">
                 <button class="filter-btn active" data-filter="all" data-lang-en>All</button>
                 <button class="filter-btn" data-filter="all" data-lang-fr>Tout</button>
@@ -130,12 +134,201 @@
                 <button class="filter-btn" data-filter="business" data-lang-fr>Entreprise</button>
             </div>
 
-            <!-- Blog Grid -->
-            <div class="blog-grid">
+            <div class="archive-feedback" hidden>
+                <p id="archive-count" role="status"></p>
+                <button type="button" id="archive-reset" hidden><span lang="en" data-lang-en>Clear search and filters</span><span lang="fr" data-lang-fr>Effacer la recherche et les filtres</span></button>
+            </div>
+            <div class="blog-grid" id="archive-results">
+                <article class="blog-card edition-card" data-category="business">
+                    <img class="edition-thumbnail" src="images/editions/drc-inspection-follow-up-480.webp" srcset="images/editions/drc-inspection-follow-up-480.webp 480w, images/editions/drc-inspection-follow-up.jpg 762w"
+                         sizes="(max-width: 48rem) 90vw, (max-width: 62rem) 45vw, 25rem"
+                         width="480" height="320" loading="lazy" decoding="async" alt="">
+                    <div class="blog-content">
+                        <div class="edition-meta"><strong><span lang="en" data-lang-en>DR Congo</span><span lang="fr" data-lang-fr>RD Congo</span></strong><time datetime="2026-11"><span lang="en" data-lang-en>November 2026 edition</span><span lang="fr" data-lang-fr>Édition de novembre 2026</span></time></div>
+                        <h2 class="blog-title"><a href="blog-drc-inspection-follow-up.html"><span lang="en" data-lang-en>After the inspection in the DRC, who verifies the fix?</span><span lang="fr" data-lang-fr>Après une inspection en RDC, qui vérifie la correction ?</span></a></h2>
+                        <p class="blog-excerpt"><span lang="en" data-lang-en>A field guide for Congolese provincial teams turning inspection findings into corrective actions that someone can independently check.</span><span lang="fr" data-lang-fr>Comment une équipe provinciale congolaise peut passer d’un constat d’inspection à une action corrective dont la clôture est vérifiable.</span></p>
+                        <p class="edition-topic"><span lang="en" data-lang-en>Business operations</span><span lang="fr" data-lang-fr>Gestion des opérations</span></p>
+                    </div>
+                </article>
+
+                <article class="blog-card edition-card" data-category="business">
+                    <img class="edition-thumbnail" src="images/editions/zambia-depot-recovery-drill-480.webp" srcset="images/editions/zambia-depot-recovery-drill-480.webp 480w, images/editions/zambia-depot-recovery-drill.jpg 762w"
+                         sizes="(max-width: 48rem) 90vw, (max-width: 62rem) 45vw, 25rem"
+                         width="480" height="320" loading="lazy" decoding="async" alt="">
+                    <div class="blog-content">
+                        <div class="edition-meta"><strong><span lang="en" data-lang-en>Zambia</span><span lang="fr" data-lang-fr>Zambie</span></strong><time datetime="2026-10"><span lang="en" data-lang-en>October 2026 edition</span><span lang="fr" data-lang-fr>Édition d’octobre 2026</span></time></div>
+                        <h2 class="blog-title"><a href="blog-zambia-depot-recovery-drill.html"><span lang="en" data-lang-en>Can the Ndola depot dispatch an order while Lusaka is offline?</span><span lang="fr" data-lang-fr>Le dépôt de Ndola peut-il expédier une commande si Lusaka est hors ligne ?</span></a></h2>
+                        <p class="blog-excerpt"><span lang="en" data-lang-en>A practical recovery drill for Zambian distributors who need to know whether a branch can keep a delivery promise during an IT outage.</span><span lang="fr" data-lang-fr>Un exercice de reprise pour les distributeurs zambiens qui veulent vérifier si une agence peut tenir son engagement de livraison pendant une panne.</span></p>
+                        <p class="edition-topic"><span lang="en" data-lang-en>Business operations</span><span lang="fr" data-lang-fr>Gestion des opérations</span></p>
+                    </div>
+                </article>
+
+                <article class="blog-card edition-card" data-category="ai">
+                    <img class="edition-thumbnail" src="images/editions/togo-multilingual-service-desk-480.webp" srcset="images/editions/togo-multilingual-service-desk-480.webp 480w, images/editions/togo-multilingual-service-desk.jpg 762w"
+                         sizes="(max-width: 48rem) 90vw, (max-width: 62rem) 45vw, 25rem"
+                         width="480" height="320" loading="lazy" decoding="async" alt="">
+                    <div class="blog-content">
+                        <div class="edition-meta"><strong><span lang="en" data-lang-en>Togo</span><span lang="fr" data-lang-fr>Togo</span></strong><time datetime="2026-09"><span lang="en" data-lang-en>September 2026 edition</span><span lang="fr" data-lang-fr>Édition de septembre 2026</span></time></div>
+                        <h2 class="blog-title"><a href="blog-togo-multilingual-service-desk.html"><span lang="en" data-lang-en>Can an AI assistant tell a Lomé resident which document to request?</span><span lang="fr" data-lang-fr>À Lomé, un assistant IA saurait-il orienter un usager de l’état civil ?</span></a></h2>
+                        <p class="blog-excerpt"><span lang="en" data-lang-en>How a Togolese public-service team can test a French and Ewe information desk against the official source before residents rely on it.</span><span lang="fr" data-lang-fr>Comment tester un accueil numérique en français et en éwé à partir des démarches officielles du Togo.</span></p>
+                        <p class="edition-topic"><span lang="en" data-lang-en>AI &amp; data</span><span lang="fr" data-lang-fr>IA et données</span></p>
+                    </div>
+                </article>
+
+                <article class="blog-card edition-card" data-category="tech">
+                    <img class="edition-thumbnail" src="images/editions/uganda-coffee-lot-traceability-480.webp" srcset="images/editions/uganda-coffee-lot-traceability-480.webp 480w, images/editions/uganda-coffee-lot-traceability.jpg 762w"
+                         sizes="(max-width: 48rem) 90vw, (max-width: 62rem) 45vw, 25rem"
+                         width="480" height="320" loading="lazy" decoding="async" alt="">
+                    <div class="blog-content">
+                        <div class="edition-meta"><strong><span lang="en" data-lang-en>Uganda</span><span lang="fr" data-lang-fr>Ouganda</span></strong><time datetime="2026-08"><span lang="en" data-lang-en>August 2026 edition</span><span lang="fr" data-lang-fr>Édition d’août 2026</span></time></div>
+                        <h2 class="blog-title"><a href="blog-uganda-coffee-lot-traceability.html"><span lang="en" data-lang-en>Can a coffee buyer trace a split lot back to the mill?</span><span lang="fr" data-lang-fr>Peut-on remonter d’un sac de café au lot dont il provient ?</span></a></h2>
+                        <p class="blog-excerpt"><span lang="en" data-lang-en>For Ugandan coffee cooperatives, a shipment split between two buyers is a good first test of a digital traceability system.</span><span lang="fr" data-lang-fr>Pour une coopérative ougandaise, un lot réparti entre deux acheteurs constitue une bonne épreuve de traçabilité.</span></p>
+                        <p class="edition-topic"><span lang="en" data-lang-en>Technology</span><span lang="fr" data-lang-fr>Technologie</span></p>
+                    </div>
+                </article>
+
+                <article class="blog-card edition-card" data-category="security">
+                    <img class="edition-thumbnail" src="images/editions/ghana-supplier-payment-checks-480.webp" srcset="images/editions/ghana-supplier-payment-checks-480.webp 480w, images/editions/ghana-supplier-payment-checks.jpg 762w"
+                         sizes="(max-width: 48rem) 90vw, (max-width: 62rem) 45vw, 25rem"
+                         width="480" height="320" loading="lazy" decoding="async" alt="">
+                    <div class="blog-content">
+                        <div class="edition-meta"><strong><span lang="en" data-lang-en>Ghana</span><span lang="fr" data-lang-fr>Ghana</span></strong><time datetime="2026-07"><span lang="en" data-lang-en>July 2026 edition</span><span lang="fr" data-lang-fr>Édition de juillet 2026</span></time></div>
+                        <h2 class="blog-title"><a href="blog-ghana-supplier-payment-checks.html"><span lang="en" data-lang-en>A supplier sends new bank details before dispatch. Who calls back?</span><span lang="fr" data-lang-fr>Un fournisseur change de compte juste avant l’enlèvement. Qui le rappelle ?</span></a></h2>
+                        <p class="blog-excerpt"><span lang="en" data-lang-en>A payment-verification routine for Ghanaian finance teams facing a last-minute change of beneficiary.</span><span lang="fr" data-lang-fr>Un contrôle simple pour les équipes financières au Ghana lorsqu’un fournisseur demande un changement de bénéficiaire au dernier moment.</span></p>
+                        <p class="edition-topic"><span lang="en" data-lang-en>Cybersecurity</span><span lang="fr" data-lang-fr>Cybersécurité</span></p>
+                    </div>
+                </article>
+
+                <article class="blog-card edition-card" data-category="tech">
+                    <img class="edition-thumbnail" src="images/editions/cote-ivoire-purchasing-approvals-480.webp" srcset="images/editions/cote-ivoire-purchasing-approvals-480.webp 480w, images/editions/cote-ivoire-purchasing-approvals.jpg 762w"
+                         sizes="(max-width: 48rem) 90vw, (max-width: 62rem) 45vw, 25rem"
+                         width="480" height="320" loading="lazy" decoding="async" alt="">
+                    <div class="blog-content">
+                        <div class="edition-meta"><strong><span lang="en" data-lang-en>Côte d’Ivoire</span><span lang="fr" data-lang-fr>Côte d’Ivoire</span></strong><time datetime="2026-06"><span lang="en" data-lang-en>June 2026 edition</span><span lang="fr" data-lang-fr>Édition de juin 2026</span></time></div>
+                        <h2 class="blog-title"><a href="blog-cote-ivoire-purchasing-approvals.html"><span lang="en" data-lang-en>Which quotation did Abidjan approve?</span><span lang="fr" data-lang-fr>Quel devis Abidjan a-t-il validé ?</span></a></h2>
+                        <p class="blog-excerpt"><span lang="en" data-lang-en>A purchasing team in Côte d’Ivoire can connect a branch request, a revised supplier quote and the final decision in one shared file.</span><span lang="fr" data-lang-fr>En Côte d’Ivoire, un dossier d’achat partagé peut relier la demande d’un atelier, le devis révisé du fournisseur et la décision du siège.</span></p>
+                        <p class="edition-topic"><span lang="en" data-lang-en>Technology</span><span lang="fr" data-lang-fr>Technologie</span></p>
+                    </div>
+                </article>
+
+                <article class="blog-card edition-card" data-category="business">
+                    <img class="edition-thumbnail" src="images/editions/kenya-mpesa-reconciliation-480.webp" srcset="images/editions/kenya-mpesa-reconciliation-480.webp 480w, images/editions/kenya-mpesa-reconciliation.jpg 762w"
+                         sizes="(max-width: 48rem) 90vw, (max-width: 62rem) 45vw, 25rem"
+                         width="480" height="320" loading="lazy" decoding="async" alt="">
+                    <div class="blog-content">
+                        <div class="edition-meta"><strong><span lang="en" data-lang-en>Kenya</span><span lang="fr" data-lang-fr>Kenya</span></strong><time datetime="2026-05"><span lang="en" data-lang-en>May 2026 edition</span><span lang="fr" data-lang-fr>Édition de mai 2026</span></time></div>
+                        <h2 class="blog-title"><a href="blog-kenya-mpesa-reconciliation.html"><span lang="en" data-lang-en>Two M-PESA payments, one amount. Which invoice is paid?</span><span lang="fr" data-lang-fr>Deux paiements M-PESA du même montant. Quelle facture est réglée ?</span></a></h2>
+                        <p class="blog-excerpt"><span lang="en" data-lang-en>A daily reconciliation method for Kenyan merchants who take M-PESA payments at more than one counter.</span><span lang="fr" data-lang-fr>Une méthode de rapprochement quotidien pour les commerçants kényans qui encaissent par M-PESA à plusieurs comptoirs.</span></p>
+                        <p class="edition-topic"><span lang="en" data-lang-en>Business operations</span><span lang="fr" data-lang-fr>Gestion des opérations</span></p>
+                    </div>
+                </article>
+
+                <article class="blog-card edition-card" data-category="tech">
+                    <img class="edition-thumbnail" src="images/editions/senegal-offline-collection-480.webp" srcset="images/editions/senegal-offline-collection-480.webp 480w, images/editions/senegal-offline-collection.jpg 762w"
+                         sizes="(max-width: 48rem) 90vw, (max-width: 62rem) 45vw, 25rem"
+                         width="480" height="320" loading="lazy" decoding="async" alt="">
+                    <div class="blog-content">
+                        <div class="edition-meta"><strong><span lang="en" data-lang-en>Senegal</span><span lang="fr" data-lang-fr>Sénégal</span></strong><time datetime="2026-04"><span lang="en" data-lang-en>April 2026 edition</span><span lang="fr" data-lang-fr>Édition d’avril 2026</span></time></div>
+                        <h2 class="blog-title"><a href="blog-senegal-offline-collection.html"><span lang="en" data-lang-en>A groundnut delivery receipt that works offline</span><span lang="fr" data-lang-fr>Un reçu de livraison utilisable hors ligne pour la collecte d’arachides</span></a></h2>
+                        <p class="blog-excerpt"><span lang="en" data-lang-en>How a Senegalese cooperative can record a delivery at the scale, give the grower a receipt and reconcile the day’s stock at the depot.</span><span lang="fr" data-lang-fr>Comment une coopérative sénégalaise peut enregistrer la pesée, remettre un reçu au producteur et rapprocher les livraisons du stock entré au dépôt.</span></p>
+                        <p class="edition-topic"><span lang="en" data-lang-en>Technology</span><span lang="fr" data-lang-fr>Technologie</span></p>
+                    </div>
+                </article>
+
+                <!-- NEW: AI in Belgian Business -->
+                <article class="blog-card" data-category="ai">
+                    <div class="blog-image-container">
+                        <img src="images/hero-illustration.webp" width="1200" height="800" loading="lazy" decoding="async" alt="" class="blog-image">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-category"><span lang="en" data-lang-en>AI &amp; Data</span><span lang="fr" data-lang-fr>IA et données</span></span>
+                        <h2 class="blog-title"><a href="blog-ai-belgium.html"><span lang="en" data-lang-en>Is an AI pilot worth funding?</span><span lang="fr" data-lang-fr>Faut-il financer ce pilote IA ?</span></a></h2>
+                        <p class="blog-excerpt"><span lang="en" data-lang-en>Estimate capacity value and payback using your own volumes and costs.</span><span lang="fr" data-lang-fr>Chiffrez le temps libéré et le délai de récupération à partir de vos volumes et de vos coûts.</span></p>
+                        <div class="blog-meta">
+                            <span class="blog-date"><i class="far fa-calendar"></i> <time datetime="2026-03"><span lang="en" data-lang-en>March 2026</span><span lang="fr" data-lang-fr>Mars 2026</span></time></span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- NEW: Cybersecurity Checklist 2026 -->
+                <article class="blog-card" data-category="security">
+                    <div class="blog-image-container">
+                        <img src="images/hero-illustration.webp" width="1200" height="800" loading="lazy" decoding="async" alt="" class="blog-image">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-category"><span lang="en" data-lang-en>Security</span><span lang="fr" data-lang-fr>Cybersécurité</span></span>
+                        <h2 class="blog-title"><a href="blog-cyber-checklist-2026.html"><span lang="en" data-lang-en>Cybersecurity checklist for Belgian companies</span><span lang="fr" data-lang-fr>Cybersécurité en Belgique : les points à vérifier</span></a></h2>
+                        <p class="blog-excerpt"><span lang="en" data-lang-en>Check GDPR responsibilities and decide whether NIS2 applies.</span><span lang="fr" data-lang-fr>Vérifiez vos responsabilités au titre du RGPD et si votre organisation relève de NIS2.</span></p>
+                        <div class="blog-meta">
+                            <span class="blog-date"><i class="far fa-calendar"></i> <time datetime="2026-03"><span lang="en" data-lang-en>March 2026</span><span lang="fr" data-lang-fr>Mars 2026</span></time></span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- NEW: Microsoft 365 -->
+                <article class="blog-card" data-category="tech">
+                    <div class="blog-image-container">
+                        <img src="images/hero-illustration.webp" width="1200" height="800" loading="lazy" decoding="async" alt="" class="blog-image">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-category"><span lang="en" data-lang-en>Technology</span><span lang="fr" data-lang-fr>Technologie</span></span>
+                        <h2 class="blog-title"><a href="blog-microsoft365-belgium.html"><span lang="en" data-lang-en>Budgeting a Microsoft 365 migration</span><span lang="fr" data-lang-fr>Chiffrer une migration vers Microsoft 365</span></a></h2>
+                        <p class="blog-excerpt"><span lang="en" data-lang-en>Compare costs, access controls and migration steps.</span><span lang="fr" data-lang-fr>Comparez les coûts, les contrôles d’accès et les étapes de migration.</span></p>
+                        <div class="blog-meta">
+                            <span class="blog-date"><i class="far fa-calendar"></i> <time datetime="2026-03"><span lang="en" data-lang-en>March 2026</span><span lang="fr" data-lang-fr>Mars 2026</span></time></span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- NEW: Odoo Mistakes -->
+                <article class="blog-card" data-category="business">
+                    <div class="blog-image-container">
+                        <img src="images/hero-illustration.webp" width="1200" height="800" loading="lazy" decoding="async" alt="" class="blog-image">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-category"><span lang="en" data-lang-en>Business</span><span lang="fr" data-lang-fr>Gestion</span></span>
+                        <h2 class="blog-title"><a href="blog-odoo-mistakes.html"><span lang="en" data-lang-en>Five common Odoo implementation mistakes</span><span lang="fr" data-lang-fr>Cinq erreurs fréquentes lors d’un déploiement Odoo</span></a></h2>
+                        <p class="blog-excerpt"><span lang="en" data-lang-en>Plan the migration, training and first measures of success.</span><span lang="fr" data-lang-fr>Préparez la migration, la formation et les premiers indicateurs de réussite.</span></p>
+                        <div class="blog-meta">
+                            <span class="blog-date"><i class="far fa-calendar"></i> <time datetime="2026-03"><span lang="en" data-lang-en>March 2026</span><span lang="fr" data-lang-fr>Mars 2026</span></time></span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- NEW: Blockchain -->
+                <article class="blog-card" data-category="tech">
+                    <div class="blog-image-container">
+                        <img src="images/hero-illustration.webp" width="1200" height="800" loading="lazy" decoding="async" alt="" class="blog-image">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-category"><span lang="en" data-lang-en>Technology</span><span lang="fr" data-lang-fr>Technologie</span></span>
+                        <h2 class="blog-title"><a href="blog-blockchain-enterprise.html"><span lang="en" data-lang-en>Where blockchain helps a business</span><span lang="fr" data-lang-fr>Quand la blockchain est-elle utile en entreprise ?</span></a></h2>
+                        <p class="blog-excerpt"><span lang="en" data-lang-en>Compare traceability, document verification and shared databases.</span><span lang="fr" data-lang-fr>Comparez les options pour tracer un lot ou vérifier un document entre partenaires.</span></p>
+                        <div class="blog-meta">
+                            <span class="blog-date"><i class="far fa-calendar"></i> <time datetime="2026-03"><span lang="en" data-lang-en>March 2026</span><span lang="fr" data-lang-fr>Mars 2026</span></time></span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- NEW: IT Support -->
+                <article class="blog-card" data-category="business">
+                    <div class="blog-image-container">
+                        <img src="images/hero-illustration.webp" width="1200" height="800" loading="lazy" decoding="async" alt="" class="blog-image">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-category"><span lang="en" data-lang-en>Business</span><span lang="fr" data-lang-fr>Gestion</span></span>
+                        <h2 class="blog-title"><a href="blog-it-support-strategy.html"><span lang="en" data-lang-en>Choosing an IT support model</span><span lang="fr" data-lang-fr>Quel modèle d’assistance informatique choisir ?</span></a></h2>
+                        <p class="blog-excerpt"><span lang="en" data-lang-en>Compare incident-by-incident support with preventive maintenance.</span><span lang="fr" data-lang-fr>Comparez l’assistance à la demande et la maintenance préventive.</span></p>
+                        <div class="blog-meta">
+                            <span class="blog-date"><i class="far fa-calendar"></i> <time datetime="2026-03"><span lang="en" data-lang-en>March 2026</span><span lang="fr" data-lang-fr>Mars 2026</span></time></span>
+                        </div>
+                    </div>
+                </article>
+
                 <!-- Blog Card 1 -->
                 <article class="blog-card" data-category="ai">
                     <div class="blog-image-container">
-                        <img src="Content/The Future of AI in Enterprise Solutions.png" alt="AI Trends" class="blog-image">
+                        <img src="images/enterprise-ai-preview.webp" width="540" height="540" loading="lazy" decoding="async" alt="" class="blog-image">
                     </div>
                     <div class="blog-content">
                         <span class="blog-category" data-lang-en>AI & Data</span>
@@ -149,14 +342,14 @@
                             <span class="blog-read-time"><i class="far fa-clock"></i> 12 min read</span>
                         </div>
                         <a href="contact.html?topic=ai-enterprise-solutions#enquiry" class="btn btn-outline" data-lang-en>Request the full brief</a>
-                        <a href="contact.html?topic=ai-enterprise-solutions#enquiry" class="btn btn-outline" data-lang-fr>Demander la note complete</a>
+                        <a href="contact.html?topic=ai-enterprise-solutions#enquiry" class="btn btn-outline" data-lang-fr>Demander la note complète</a>
                     </div>
                 </article>
 
                 <!-- Blog Card 2 -->
                 <article class="blog-card" data-category="security">
                     <div class="blog-image-container">
-                        <img src="Content/Essential Cybersecurity Practices for 2024.png" alt="Cybersecurity" class="blog-image">
+                        <img src="images/cybersecurity-practices-preview.webp" width="360" height="540" loading="lazy" decoding="async" alt="" class="blog-image">
                     </div>
                     <div class="blog-content">
                         <span class="blog-category" data-lang-en>Security</span>
@@ -170,14 +363,14 @@
                             <span class="blog-read-time"><i class="far fa-clock"></i> 15 min read</span>
                         </div>
                         <a href="contact.html?topic=cybersecurity-practices#enquiry" class="btn btn-outline" data-lang-en>Request the full brief</a>
-                        <a href="contact.html?topic=cybersecurity-practices#enquiry" class="btn btn-outline" data-lang-fr>Demander la note complete</a>
+                        <a href="contact.html?topic=cybersecurity-practices#enquiry" class="btn btn-outline" data-lang-fr>Demander la note complète</a>
                     </div>
                 </article>
 
                 <!-- Blog Card 3 -->
                 <article class="blog-card" data-category="tech">
                     <div class="blog-image-container">
-                        <img src="Content/Cloud Computing- Beyond the Basics.png" alt="Cloud Computing" class="blog-image">
+                        <img src="images/cloud-computing-preview.webp" width="540" height="540" loading="lazy" decoding="async" alt="" class="blog-image">
                     </div>
                     <div class="blog-content">
                         <span class="blog-category" data-lang-en>Technology</span>
@@ -191,14 +384,14 @@
                             <span class="blog-read-time"><i class="far fa-clock"></i> 18 min read</span>
                         </div>
                         <a href="contact.html?topic=cloud-computing-strategy#enquiry" class="btn btn-outline" data-lang-en>Request the full brief</a>
-                        <a href="contact.html?topic=cloud-computing-strategy#enquiry" class="btn btn-outline" data-lang-fr>Demander la note complete</a>
+                        <a href="contact.html?topic=cloud-computing-strategy#enquiry" class="btn btn-outline" data-lang-fr>Demander la note complète</a>
                     </div>
                 </article>
 
                 <!-- Blog Card 4 -->
                 <article class="blog-card" data-category="business">
                     <div class="blog-image-container">
-                        <img src="images/pexels-photo-2422294.webp" alt="Digital Transformation" class="blog-image">
+                        <img src="images/pexels-photo-2422294.webp" width="1529" height="1080" loading="lazy" decoding="async" alt="" class="blog-image">
                     </div>
                     <div class="blog-content">
                         <span class="blog-category" data-lang-en>Business</span>
@@ -219,7 +412,7 @@
                 <!-- Blog Card 5 -->
                 <article class="blog-card" data-category="ai">
                     <div class="blog-image-container">
-                        <img src="images/machine-learning-concept.webp" alt="Machine Learning" class="blog-image">
+                        <img src="images/machine-learning-concept.webp" width="1200" height="839" loading="lazy" decoding="async" alt="" class="blog-image">
                     </div>
                     <div class="blog-content">
                         <span class="blog-category" data-lang-en>AI & Data</span>
@@ -240,7 +433,7 @@
                 <!-- Blog Card 6 -->
                 <article class="blog-card" data-category="tech">
                     <div class="blog-image-container">
-                        <img src="images/ai-software-development.webp" alt="Software Development" class="blog-image">
+                        <img src="images/ai-software-development.webp" width="800" height="695" loading="lazy" decoding="async" alt="" class="blog-image">
                     </div>
                     <div class="blog-content">
                         <span class="blog-category" data-lang-en>Technology</span>
@@ -257,102 +450,6 @@
                         <a href="contact.html?topic=software-development-methodologies#enquiry" class="btn btn-outline" data-lang-fr>Discuter de ce sujet</a>
                     </div>
                 </article>
-
-                <!-- NEW: AI in Belgian Business -->
-                <article class="blog-card" data-category="ai">
-                    <div class="blog-image-container">
-                        <img src="images/hero-illustration.webp" alt="AI in Belgian Business" class="blog-image">
-                    </div>
-                    <div class="blog-content">
-                        <span class="blog-category">AI & Data</span>
-                        <h2 class="blog-title">AI in Belgian Business: From Hype to Real ROI</h2>
-                        <p class="blog-excerpt">Discover how Belgian SMEs are achieving real ROI with AI implementation.</p>
-                        <div class="blog-meta">
-                            <span class="blog-date"><i class="far fa-calendar"></i> Mar 2026</span>
-                        </div>
-                        <a href="blog-ai-belgium.html" class="btn btn-outline">Read More</a>
-                    </div>
-                </article>
-
-                <!-- NEW: Cybersecurity Checklist 2026 -->
-                <article class="blog-card" data-category="security">
-                    <div class="blog-image-container">
-                        <img src="images/hero-illustration.webp" alt="Cybersecurity" class="blog-image">
-                    </div>
-                    <div class="blog-content">
-                        <span class="blog-category">Security</span>
-                        <h2 class="blog-title">Cybersecurity Checklist 2026</h2>
-                        <p class="blog-excerpt">GDPR, NIS2, and best practices for Belgian companies.</p>
-                        <div class="blog-meta">
-                            <span class="blog-date"><i class="far fa-calendar"></i> Mar 2026</span>
-                        </div>
-                        <a href="blog-cyber-checklist-2026.html" class="btn btn-outline">Read More</a>
-                    </div>
-                </article>
-
-                <!-- NEW: Microsoft 365 -->
-                <article class="blog-card" data-category="tech">
-                    <div class="blog-image-container">
-                        <img src="images/hero-illustration.webp" alt="Microsoft 365" class="blog-image">
-                    </div>
-                    <div class="blog-content">
-                        <span class="blog-category">Technology</span>
-                        <h2 class="blog-title">Why Belgian SMEs Moving to Microsoft 365</h2>
-                        <p class="blog-excerpt">Cost comparison, security benefits, and migration tips.</p>
-                        <div class="blog-meta">
-                            <span class="blog-date"><i class="far fa-calendar"></i> Mar 2026</span>
-                        </div>
-                        <a href="blog-microsoft365-belgium.html" class="btn btn-outline">Read More</a>
-                    </div>
-                </article>
-
-                <!-- NEW: Odoo Mistakes -->
-                <article class="blog-card" data-category="business">
-                    <div class="blog-image-container">
-                        <img src="images/hero-illustration.webp" alt="Odoo" class="blog-image">
-                    </div>
-                    <div class="blog-content">
-                        <span class="blog-category">Business</span>
-                        <h2 class="blog-title">Odoo: Common Mistakes</h2>
-                        <p class="blog-excerpt">Implementation mistakes and how to avoid them.</p>
-                        <div class="blog-meta">
-                            <span class="blog-date"><i class="far fa-calendar"></i> Mar 2026</span>
-                        </div>
-                        <a href="blog-odoo-mistakes.html" class="btn btn-outline">Read More</a>
-                    </div>
-                </article>
-
-                <!-- NEW: Blockchain -->
-                <article class="blog-card" data-category="tech">
-                    <div class="blog-image-container">
-                        <img src="images/hero-illustration.webp" alt="Blockchain" class="blog-image">
-                    </div>
-                    <div class="blog-content">
-                        <span class="blog-category">Technology</span>
-                        <h2 class="blog-title">Blockchain: Enterprise Use Cases</h2>
-                        <p class="blog-excerpt">Beyond crypto - practical applications for businesses.</p>
-                        <div class="blog-meta">
-                            <span class="blog-date"><i class="far fa-calendar"></i> Mar 2026</span>
-                        </div>
-                        <a href="blog-blockchain-enterprise.html" class="btn btn-outline">Read More</a>
-                    </div>
-                </article>
-
-                <!-- NEW: IT Support -->
-                <article class="blog-card" data-category="business">
-                    <div class="blog-image-container">
-                        <img src="images/hero-illustration.webp" alt="IT Support" class="blog-image">
-                    </div>
-                    <div class="blog-content">
-                        <span class="blog-category">Business</span>
-                        <h2 class="blog-title">IT Support Strategy</h2>
-                        <p class="blog-excerpt">Preventative vs Reactive - what's right for you?</p>
-                        <div class="blog-meta">
-                            <span class="blog-date"><i class="far fa-calendar"></i> Mar 2026</span>
-                        </div>
-                        <a href="blog-it-support-strategy.html" class="btn btn-outline">Read More</a>
-                    </div>
-                </article>
             </div>
 
         </div>
@@ -366,11 +463,11 @@
                     <h2 data-lang-en>Stay in the Loop</h2>
                     <h2 data-lang-fr>Restons en Contact</h2>
                     <p data-lang-en>Request research updates, case studies, and new insight briefs directly from our team.</p>
-                    <p data-lang-fr>Demandez nos nouvelles analyses, etudes de cas et notes de synthese directement a notre equipe.</p>
+                    <p data-lang-fr>Demandez à notre équipe de vous envoyer les prochaines analyses et études de cas.</p>
                 </div>
                 <div class="subscribe-form">
-                    <a href="contact.html" class="btn btn-primary" data-lang-en>Request updates</a>
-                    <a href="contact.html" class="btn btn-primary" data-lang-fr>Recevoir des actualites</a>
+                    <a href="contact.html?topic=insight-updates#enquiry" class="btn btn-primary" data-lang-en>Request updates</a>
+                    <a href="contact.html?topic=insight-updates#enquiry" class="btn btn-primary" data-lang-fr>Recevoir les prochaines analyses</a>
                 </div>
             </div>
         </div>
@@ -413,11 +510,11 @@
                         </li>
                         <li>
                             <i class="fas fa-phone"></i>
-                            <span>+32 10 25.00.18</span>
+                            <a href="tel:+3210250018">+32 10 25 00 18</a>
                         </li>
                         <li>
                             <i class="fas fa-envelope"></i>
-                            <span>admin@skylar-solutions.com</span>
+                            <a href="mailto:admin@skylar-solutions.com">admin@skylar-solutions.com</a>
                         </li>
                     </ul>
                 </div>

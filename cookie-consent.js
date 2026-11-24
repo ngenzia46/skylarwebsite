@@ -14,7 +14,7 @@
 
   function getCookie(name) {
     const match = document.cookie.match(new RegExp(`(^| )${name}=([^;]+)`));
-    return match ? decodeURIComponent(match[2]) : null;
+    return match ? match[2] : null;
   }
 
   function setCookie(name, value, days) {
@@ -42,7 +42,8 @@
       return {
         message:
           'Nous utilisons des cookies essentiels pour faire fonctionner le site et des cookies analytiques uniquement avec votre consentement.',
-        learnMore: 'Politique de Confidentialite',
+        learnMore: 'Politique de confidentialité',
+        label: 'Choix des cookies',
         settings: 'Voir la politique',
         decline: 'Refuser',
         accept: 'Accepter',
@@ -53,6 +54,7 @@
       message:
         'We use essential cookies to run the site and analytics cookies only when you explicitly consent.',
       learnMore: 'Privacy Policy',
+      label: 'Cookie choices',
       settings: 'View policy',
       decline: 'Decline',
       accept: 'Accept',
@@ -92,6 +94,7 @@
   function updateBannerCopy() {
     const lang = document.documentElement.lang === 'fr' ? 'fr' : 'en';
     const copy = getBannerCopy(lang);
+    document.getElementById('cookieConsent').setAttribute('aria-label', copy.label);
     const message = document.getElementById('cookieConsentMessage');
     const settingsButton = document.getElementById('cookieSettings');
     const declineButton = document.getElementById('cookieDecline');
@@ -147,15 +150,25 @@
     gtmLoaded = true;
   }
 
+  const preferences = () => document.getElementById('manage-cookies');
+  let openedFromSettings = false;
+
+  function finishChoice() {
+    hideBanner();
+    if (openedFromSettings) preferences()?.focus();
+    openedFromSettings = false;
+  }
+
   function acceptCookies() {
     setCookie(COOKIE_NAME, 'accepted', COOKIE_EXPIRY_DAYS);
     loadTagManager();
-    hideBanner();
+    finishChoice();
   }
 
   function declineCookies() {
     setCookie(COOKIE_NAME, 'declined', COOKIE_EXPIRY_DAYS);
-    hideBanner();
+    finishChoice();
+    if (gtmLoaded) window.location.reload();
   }
 
   function openPolicy() {
@@ -184,12 +197,43 @@
     ensureBanner();
     updateBannerCopy();
     bindEvents();
+    preferences()?.addEventListener('click', () => {
+      openedFromSettings = true;
+      showBanner();
+      document.getElementById('cookieDecline').focus();
+    });
+
+    // Only fixed event names and channel labels are sent. Never read form values here.
+    let started = false;
+    document.getElementById('contactForm')?.addEventListener('input', () => {
+      if (!started && getStoredConsent() === 'accepted' && gtmLoaded) {
+        window.dataLayer.push({ event: 'enquiry_start', language: document.documentElement.lang });
+        started = true;
+      }
+    });
+    const salesEmails = new Set([
+      'admin@skylar-solutions.com', 'ngenzi@skylar-solutions.com', 'esele@skylar-solutions.com',
+    ]);
+    const salesPhones = new Set(['+3210250018', '+32474690382']);
+    document.addEventListener('click', event => {
+      if (getStoredConsent() !== 'accepted' || !gtmLoaded) return;
+      const link = event.target.closest?.('a[href]');
+      if (!link) return;
+      let channel;
+      if (link.protocol === 'tel:' && salesPhones.has(link.pathname)) channel = 'phone';
+      if (link.protocol === 'mailto:' && salesEmails.has(link.pathname.toLowerCase())) channel = 'email';
+      if (link.origin === 'https://wa.me' && link.pathname === '/32474690382') channel = 'whatsapp';
+      if (channel) window.dataLayer.push({
+        event: 'contact_channel_click', contact_channel: channel, language: document.documentElement.lang,
+      });
+    });
     document.addEventListener('enquiry-sent', event => {
       if (getStoredConsent() === 'accepted' && gtmLoaded) {
         window.dataLayer.push({
           event: 'generate_lead',
-          enquiry_topic: event.detail,
-          language: document.documentElement.lang,
+          enquiry_topic: event.detail.topic,
+          ...(event.detail.edition && { enquiry_edition: event.detail.edition }),
+          language: event.detail.language,
         });
       }
     });

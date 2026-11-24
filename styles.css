@@ -2944,3 +2944,23 @@ html[lang="fr"] .hero-highlight-label[data-lang-fr] {
     opacity: 1 !important;
   }
 }
+
+
+/* Direct enquiry link in page headers */
+.service-enquiry {
+  display: inline-block;
+  margin: 1rem auto 0;
+  padding: .7rem 1.2rem;
+  border: 1px solid #fff;
+  border-radius: .5rem;
+  background: #fff;
+  color: #203a72;
+  font-weight: 700;
+  text-decoration: none;
+}
+.service-enquiry:hover, .service-enquiry:focus-visible { color: #14284d; text-decoration: underline; }
+.missing-page { max-width: 44rem; margin: 10vh auto; padding: 2rem; }
+.missing-page .language-switcher { display: inline-flex; margin-left: 1rem; }
+.missing-page h1 { margin: 2rem 0 1rem; }
+.missing-page ul { margin-top: 1rem; line-height: 2; }
+.missing-page a { color: #233f7a; text-decoration: underline; }

@@ -285,12 +285,14 @@ html[lang="fr"] .contact-form-container h2[data-lang-fr] {
     border-radius: 2px;
 }
 
+.contact-form .form-group[hidden] { display: none; }
+
 .form-group {
     margin-bottom: 1.5rem;
 }
 
 .form-label {
-    display: none; /* Hide by default */
+    display: block;
     margin-bottom: 0.5rem;
     color: var(--gray-700);
     font-weight: 500;
@@ -403,26 +405,13 @@ html[lang="fr"] .form-check-label[data-lang-fr] {
     border: 1px solid rgba(58, 204, 159, 0.3);
 }
 
-/* Map Section */
-.map-section {
-    padding: 5rem 0;
-    background-color: var(--gray-100);
-}
-
-.map-container {
-    width: 100%;
-    height: 450px;
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
-    border: 1px solid var(--gray-200);
-}
-
-.map-container iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
-}
+#enquiry { scroll-margin-top: 7rem; }
+.optional-details { margin: 1rem 0; }
+.optional-details summary, .copy-enquiry { color: #243b78; cursor: pointer; font: inherit; font-weight: 600; }
+.optional-details[open] summary { margin-bottom: 1rem; }
+.copy-enquiry { margin: 1rem 0; padding: .65rem 1rem; background: #fff; border: 1px solid currentColor; border-radius: .5rem; }
+.message-hint { font-size: .95rem; color: #475569; margin: .25rem 0 .5rem; }
+.manual-copy label { display: block; }
 
 /* FAQ Section */
 .faq-section {

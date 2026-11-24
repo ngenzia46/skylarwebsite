@@ -49,7 +49,9 @@ def check_internal_links() -> list[str]:
             if target.startswith(("http://", "https://", "mailto:", "tel:", "javascript:", "#", "data:")):
                 continue
 
-            resolved = (path.parent / target.split("#", 1)[0].split("?", 1)[0]).resolve()
+            asset = target.split("#", 1)[0].split("?", 1)[0]
+            base = ROOT if asset.startswith("/") else path.parent
+            resolved = (base / asset.lstrip("/")).resolve()
             if not resolved.exists():
                 issues.append(f"{path.relative_to(ROOT)} -> missing asset/link target: {target}")
 
@@ -104,8 +106,19 @@ def check_search_urls() -> list[str]:
         path = "" if page == ROOT / "index.html" else page.relative_to(ROOT).as_posix()
         url = f"{origin}/{path}"
         expected.add(url)
-        if f'rel="canonical" href="{url}"' not in read_text(page):
+        markup = read_text(page)
+        if f'rel="canonical" href="{url}"' not in markup:
             issues.append(f"{page.name} -> expected canonical URL {url}")
+
+        if page.parent == ROOT / "services":
+            for name in ("og:type", "og:title", "og:description", "og:image"):
+                if f'property="{name}" content="' not in markup:
+                    issues.append(f"{page.name} -> missing {name} for service sharing")
+            if f'property="og:url" content="{url}"' not in markup:
+                issues.append(f"{page.name} -> social preview URL differs from canonical")
+        for target in re.findall(re.escape(origin) + r'(/[^"\s<>]*?\.html)', markup):
+            if not (ROOT / target.lstrip("/")).is_file():
+                issues.append(f"{page.name} -> missing production page {target}")
 
     locations = {node.text for node in ET.parse(ROOT / "sitemap.xml").iterfind(".//{*}loc")}
     if locations != expected:

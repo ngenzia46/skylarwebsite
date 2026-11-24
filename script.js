@@ -3,18 +3,9 @@
 const LANGUAGE_STORAGE_KEY = 'language';
 const LANGUAGE_CODES = ['en', 'fr'];
 
-function checkWebpSupport() {
-  const canvas =
-    typeof document === 'object' ? document.createElement('canvas') : {};
-  canvas.width = canvas.height = 1;
-
-  return (
-    typeof canvas.toDataURL === 'function' &&
-    canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0
-  );
-}
-
 function getSavedLanguage() {
+  const requested = new URLSearchParams(location.search).get('lang');
+  if (LANGUAGE_CODES.includes(requested)) return requested;
   try {
     const stored = localStorage.getItem(LANGUAGE_STORAGE_KEY);
     if (LANGUAGE_CODES.includes(stored)) return stored;
@@ -43,25 +34,6 @@ function updateDocumentTitle(lang) {
   if (nextTitle) {
     document.title = nextTitle;
   }
-}
-
-function replaceWithWebpImage() {
-  if (!checkWebpSupport()) {
-    return;
-  }
-
-  document.querySelectorAll('img[data-src-webp]').forEach((image) => {
-    const webpSrc = image.getAttribute('data-src-webp');
-    const webpSrcset = image.getAttribute('data-srcset-webp');
-
-    if (webpSrc) {
-      image.src = webpSrc;
-    }
-
-    if (webpSrcset) {
-      image.srcset = webpSrcset;
-    }
-  });
 }
 
 function setLanguageVisibility(lang) {
@@ -105,8 +77,21 @@ function updateLanguageContent(lang) {
   try {
     localStorage.setItem(LANGUAGE_STORAGE_KEY, lang);
   } catch {
-    // The selected language still applies to this page.
+    // Preserve the language on internal page links when browser storage is unavailable.
+    document.querySelectorAll('a[href]').forEach(link => {
+      const raw = link.getAttribute('href');
+      if (raw.startsWith('#') || link.hasAttribute('download')) return;
+      const url = new URL(raw, location.href);
+      if (url.origin !== location.origin || !/(\.html|\/)$/.test(url.pathname)) return;
+      if (url.searchParams.has('lang') && !link.hasAttribute('data-carried-language')) return;
+      url.searchParams.set('lang', lang);
+      link.href = url.href;
+      link.dataset.carriedLanguage = '';
+    });
   }
+  document.querySelectorAll('img[data-alt-en][data-alt-fr]').forEach(image => {
+    image.alt = image.getAttribute('data-alt-' + lang);
+  });
   document.querySelectorAll('header a[data-lang-en][data-lang-fr]').forEach(link => {
     const label = link.getAttribute(`data-lang-${lang}`);
     const text = Array.from(link.childNodes).find(node => node.nodeType === Node.TEXT_NODE);
@@ -115,7 +100,7 @@ function updateLanguageContent(lang) {
   updateDocumentTitle(lang);
   setLanguageVisibility(lang);
   updateLanguageControls(lang);
-  updateEnquirySubject(lang);
+  updateEnquiryFields(lang);
 }
 
 function showFormMessage(form, message, type) {
@@ -128,12 +113,22 @@ function showFormMessage(form, message, type) {
     form.appendChild(messageElement);
   }
 
+  const recovery = form.querySelector('#delivery-recovery');
+  if (recovery) recovery.hidden = type !== 'error';
   messageElement.textContent = message;
   messageElement.className = `form-message ${type}`;
   messageElement.style.display = 'block';
   messageElement.setAttribute('role', 'status');
   messageElement.setAttribute('aria-live', type === 'error' ? 'assertive' : 'polite');
 
+}
+
+function chooseLanguage(lang) {
+  if (!LANGUAGE_CODES.includes(lang)) return;
+  const url = new URL(location.href);
+  url.searchParams.set('lang', lang);
+  history.replaceState(history.state, '', url);
+  updateLanguageContent(lang);
 }
 
 function setupLanguageControls(initialLanguage) {
@@ -145,7 +140,7 @@ function setupLanguageControls(initialLanguage) {
 
     const changeLanguage = (event) => {
       event.preventDefault();
-      updateLanguageContent(control.getAttribute('data-lang') || initialLanguage);
+      chooseLanguage(control.getAttribute('data-lang') || initialLanguage);
     };
 
     control.addEventListener('click', changeLanguage);
@@ -163,7 +158,7 @@ function setupLanguageControls(initialLanguage) {
         (langToggleButton.getAttribute('data-lang') || initialLanguage) === 'en'
           ? 'fr'
           : 'en';
-      updateLanguageContent(nextLanguage);
+      chooseLanguage(nextLanguage);
     });
   }
 }
@@ -204,26 +199,10 @@ function setupNavigation() {
     }
   });
 
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener('click', (event) => {
-      const targetId = anchor.getAttribute('href');
-
-      if (!targetId || targetId === '#') {
-        return;
-      }
-
-      const targetElement = document.querySelector(targetId);
-      if (!targetElement) {
-        return;
-      }
-
-      event.preventDefault();
-      targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-      if (mobileNav && navbarToggle) {
-        if (mobileNav.classList.contains('active')) navbarToggle.click();
-      }
-    });
+  mobileNav?.addEventListener('click', event => {
+    if (event.target.closest('a[href^="#"]') && mobileNav.classList.contains('active')) {
+      navbarToggle?.click();
+    }
   });
 
   const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
@@ -262,12 +241,100 @@ const enquiryTopics = new Map([
   ['software-development-methodologies', ['Software development methods', 'Méthodes de développement logiciel']],
 ]);
 
-function updateEnquirySubject(lang) {
-  const subject = document.querySelector('#contactForm [name="subject"]');
-  const topic = new URLSearchParams(location.search).get('topic');
-  const labels = enquiryTopics.get(topic);
-  if (!subject || !labels || subject.value !== subject.defaultValue) return;
-  subject.defaultValue = labels[lang === 'fr' ? 1 : 0];
+// Edition identifiers and topic pairs come from the links in the published articles.
+const fieldEditions = new Map([
+  ['drc-inspection-follow-up', ['app-development', 'Inspection follow-up', 'Suivi des inspections']],
+  ['senegal-offline-collection', ['app-development', 'Offline field collection', 'Collecte de terrain hors ligne']],
+  ['kenya-mpesa-reconciliation', ['ai-data-sciences', 'M-PESA reconciliation', 'Rapprochement des paiements M-PESA']],
+  ['togo-multilingual-service-desk', ['ai-data-sciences', 'Multilingual service desk', 'Accueil multilingue']],
+  ['ghana-supplier-payment-checks', ['cyber-security', 'Supplier payment checks', 'Vérification des paiements fournisseurs']],
+  ['cote-ivoire-purchasing-approvals', ['collaboration-solutions', 'Purchasing approvals', 'Validation des achats']],
+  ['uganda-coffee-lot-traceability', ['blockchain-nft', 'Coffee lot traceability', 'Traçabilité des lots de café']],
+  ['zambia-depot-recovery-drill', ['support', 'Depot recovery drill', 'Exercice de reprise dans un dépôt']],
+]);
+
+function getEnquiryContext() {
+  const params = new URLSearchParams(location.search);
+  const selectedService = document.getElementById('enquiry-service')?.value;
+  if (projectQuestions.has(selectedService)) {
+    return { topic: selectedService, labels: enquiryTopics.get(selectedService) };
+  }
+  const topic = params.get('topic');
+  const edition = params.get('edition');
+  const fieldExample = fieldEditions.get(edition);
+  if (fieldExample && fieldExample[0] === topic) {
+    return { topic, edition, labels: fieldExample.slice(1) };
+  }
+  return { topic: enquiryTopics.has(topic) ? topic : 'general', labels: enquiryTopics.get(topic) };
+}
+
+const projectQuestions = new Map([
+  ['app-development', ['Which workflow should the application support, and who will use it?', 'Quel processus l’application doit-elle prendre en charge et qui l’utilisera ?']],
+  ['ai-data-sciences', ['What decision or task should the pilot improve? Which data is available?', 'Quelle décision ou tâche le pilote doit-il améliorer ? De quelles données disposez-vous ?']],
+  ['cyber-security', ['Which systems should the review cover, and what decision will it inform?', 'Quels systèmes la revue doit-elle couvrir et quelle décision doit-elle éclairer ?']],
+  ['collaboration-solutions', ['Which tools do you use today and which teams would move first?', 'Quels outils utilisez-vous et quelles équipes participeraient à la première phase ?']],
+  ['blockchain-nft', ['What needs to be traced, and which organisations need to verify it?', 'Que souhaitez-vous retracer et quels organismes doivent pouvoir le vérifier ?']],
+  ['support', ['Which applications need support and during which hours?', 'Quelles applications nécessitent une assistance et sur quelles plages horaires ?']],
+]);
+
+function updateEnquiryFields(lang) {
+  const form = document.getElementById('contactForm');
+  if (!form) return;
+  const index = lang === 'fr' ? 1 : 0;
+  const { topic, labels } = getEnquiryContext();
+  const select = form.querySelector('#enquiry-service');
+  const originalTopic = new URLSearchParams(location.search).get('topic');
+  // An article or service link already specifies the subject of the enquiry.
+  const offerChoice = !enquiryTopics.has(originalTopic) || originalTopic === 'consultation';
+  if (select) {
+    const selected = select.value;
+    if (offerChoice) {
+      select.replaceChildren(new Option(index ? 'À préciser ensemble' : 'Help me choose', ''));
+      for (const service of projectQuestions.keys()) {
+        select.add(new Option(enquiryTopics.get(service)[index], service));
+      }
+      select.value = selected;
+    }
+    select.closest('.form-group').hidden = !offerChoice;
+  }
+  const subject = form.elements.subject;
+  const suggested = labels?.[index] || '';
+  if (subject.value === subject.defaultValue) subject.value = suggested;
+  subject.defaultValue = suggested;
+
+  const hint = document.getElementById('message-hint')?.querySelector(`[data-lang-${lang}]`);
+  if (hint) {
+    hint.dataset.original ??= hint.textContent;
+    hint.textContent = projectQuestions.get(topic)?.[index] || hint.dataset.original;
+  }
+}
+
+function setupEnquiryRecovery(form) {
+  const recovery = form.querySelector('#delivery-recovery');
+  if (!recovery) return;
+  const manual = recovery.querySelector('.manual-copy');
+  const status = recovery.querySelector('.copy-status');
+  const field = manual.querySelector('textarea');
+  recovery.querySelector('button').addEventListener('click', async () => {
+    const content = ['subject', 'message', 'name', 'email', 'phone', 'company']
+      .map(name => form.elements.namedItem(name).value.trim()).filter(Boolean).join('\n\n');
+    try {
+      await navigator.clipboard.writeText(content);
+      status.textContent = document.documentElement.lang === 'fr' ? 'Demande copiée.' : 'Enquiry copied.';
+    } catch {
+      manual.hidden = false;
+      field.value = content;
+      field.focus();
+      field.select();
+    }
+  });
+  function clearCopy() {
+    manual.hidden = true;
+    field.value = '';
+    status.textContent = '';
+  }
+  form.addEventListener('input', clearCopy);
+  form.addEventListener('reset', clearCopy);
 }
 
 function setupContactForm() {
@@ -276,6 +343,10 @@ function setupContactForm() {
     return;
   }
 
+  setupEnquiryRecovery(contactForm);
+  contactForm.querySelector('#enquiry-service')?.addEventListener('change', () => {
+    updateEnquiryFields(document.documentElement.lang);
+  });
   contactForm.addEventListener('input', event => event.target.setCustomValidity?.(''));
   let sending = false;
   contactForm.addEventListener('submit', async (event) => {
@@ -292,6 +363,14 @@ function setupContactForm() {
 
     sending = true;
     const formData = new FormData(contactForm);
+    const { topic, edition } = getEnquiryContext();
+    const language = document.documentElement.lang;
+    formData.set('topic', topic);
+    formData.set('reply_language', language);
+    if (edition) formData.set('article', edition);
+    let editedDuringSend = false;
+    const markEdited = () => { editedDuringSend = true; };
+    contactForm.addEventListener('input', markEdited);
     const submitButtons = contactForm.querySelectorAll('button[type="submit"]');
     submitButtons.forEach(button => { button.disabled = true; });
     contactForm.setAttribute('aria-busy', 'true');
@@ -313,16 +392,22 @@ function setupContactForm() {
       if (response.ok) {
         showFormMessage(
           contactForm,
-          document.documentElement.lang === 'fr'
-            ? 'Merci pour votre message. Nous reviendrons vers vous sous peu.'
-            : 'Thank you for your message. We will get back to you shortly.',
+          editedDuringSend
+            ? (document.documentElement.lang === 'fr'
+              ? 'Message envoyé. Vos modifications ultérieures sont conservées ci-dessous et restent à envoyer.'
+              : 'Message sent. Your later edits are still in the form and have not been sent.')
+            : (document.documentElement.lang === 'fr'
+              ? 'Merci pour votre message. Nous reviendrons vers vous sous peu.'
+              : 'Thank you for your message. We will get back to you shortly.'),
           'success'
         );
-        contactForm.reset();
-        const topic = new URLSearchParams(location.search).get('topic');
+        if (!editedDuringSend) {
+          contactForm.reset();
+          updateEnquiryFields(document.documentElement.lang);
+        }
         contactForm.dispatchEvent(new CustomEvent('enquiry-sent', {
           bubbles: true,
-          detail: enquiryTopics.has(topic) ? topic : 'general',
+          detail: { topic, edition, language },
         }));
       } else {
         let errorMessage =
@@ -350,6 +435,7 @@ function setupContactForm() {
         'error'
       );
     } finally {
+      contactForm.removeEventListener('input', markEdited);
       window.clearTimeout(timeout);
       sending = false;
       contactForm.removeAttribute('aria-busy');
@@ -554,35 +640,61 @@ function setupBlogFilters() {
   const filterButtons = document.querySelectorAll('.filter-btn');
   const blogCards = document.querySelectorAll('.blog-card[data-category]');
 
-  if (!filterButtons.length || !blogCards.length) {
-    return;
+  const search = document.querySelector('#archive-query');
+  if (!filterButtons.length || !search) return;
+
+  const reset = document.querySelector('#archive-reset');
+  const count = document.querySelector('#archive-count');
+  let category = 'all';
+  const normalise = value => value.toLowerCase().normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, ' ').trim();
+  const index = Array.from(blogCards, card => ({
+    card,
+    words: normalise(card.textContent),
+  }));
+
+  function filterArchive() {
+    const terms = normalise(search.value).split(/\s+/).filter(Boolean);
+    let matches = 0;
+    for (const { card, words } of index) {
+      const visible = (category === 'all' || card.dataset.category === category)
+        && terms.every(term => words.includes(term));
+      card.hidden = !visible;
+      if (visible) matches++;
+    }
+    filterButtons.forEach(button => {
+      const selected = button.dataset.filter === category;
+      button.classList.toggle('active', selected);
+      button.setAttribute('aria-pressed', String(selected));
+    });
+    const fr = document.documentElement.lang === 'fr';
+    const plural = matches === 1 ? '' : 's';
+    count.textContent = matches === 0
+      ? (fr ? 'Aucun article trouvé.' : 'No articles found.')
+      : matches + ' article' + plural;
+    reset.hidden = category === 'all' && !search.value;
   }
 
-  filterButtons.forEach((button) => {
-    button.classList.toggle('active', button.dataset.filter === 'all');
-    button.setAttribute('aria-pressed', String(button.dataset.filter === 'all'));
-    button.addEventListener('click', () => {
-      const filter = button.getAttribute('data-filter');
-
-
-      filterButtons.forEach((candidate) => {
-        const selected = candidate.dataset.filter === filter;
-        candidate.classList.toggle('active', selected);
-        candidate.setAttribute('aria-pressed', String(selected));
-      });
-
-      blogCards.forEach((card) => {
-        const matches = filter === 'all' || card.getAttribute('data-category') === filter;
-        card.hidden = !matches;
-      });
-    });
+  filterButtons.forEach(button => button.addEventListener('click', () => {
+    category = button.dataset.filter;
+    filterArchive();
+  }));
+  search.addEventListener('input', filterArchive);
+  reset.addEventListener('click', () => {
+    search.value = '';
+    category = 'all';
+    filterArchive();
+    search.focus();
   });
+  new MutationObserver(filterArchive).observe(document.documentElement, {
+    attributes: true, attributeFilter: ['lang'],
+  });
+  search.closest('.archive-search').hidden = false;
+  count.closest('.archive-feedback').hidden = false;
+  filterArchive();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.documentElement.classList.add(checkWebpSupport() ? 'webp' : 'no-webp');
-  replaceWithWebpImage();
-
   const initialLanguage = getSavedLanguage();
   setupLanguageControls(initialLanguage);
   updateLanguageContent(initialLanguage);
@@ -592,6 +704,11 @@ document.addEventListener('DOMContentLoaded', () => {
   setupTestimonials();
   setupFaqItems();
   setupBlogFilters();
+  const printGuide = document.querySelector('.guide-print');
+  if (printGuide) {
+    printGuide.hidden = false;
+    printGuide.addEventListener('click', () => window.print());
+  }
 
   const runScrollEffects = setupHeaderAndHeroEffects();
   const updateBackToTopButton = setupBackToTopButton();

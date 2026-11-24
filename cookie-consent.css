@@ -121,3 +121,6 @@
         flex: 1 1 100%;
     }
 }
+
+.cookie-preferences { scroll-margin-top: 8rem; }
+.cookie-preferences button { margin-top: .75rem; }
