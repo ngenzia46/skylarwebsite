@@ -100,7 +100,10 @@
     <!-- Blog Content -->
     <section class="blog-content section-padding">
         <div class="container">
-            <!-- Blog Filters -->
+            <div class="archive-search" hidden>
+                <label for="archive-query"><span lang="en" data-lang-en>Search the articles</span><span lang="fr" data-lang-fr>Rechercher dans les articles</span></label>
+                <input id="archive-query" type="search" autocomplete="off" aria-controls="archive-results">
+            </div>
             <div class="blog-filters">
                 <button class="filter-btn active" data-filter="all" data-lang-en>All</button>
                 <button class="filter-btn" data-filter="all" data-lang-fr>Tout</button>
@@ -114,8 +117,11 @@
                 <button class="filter-btn" data-filter="business" data-lang-fr>Entreprise</button>
             </div>
 
-            <!-- Blog Grid -->
-            <div class="blog-grid">
+            <div class="archive-feedback" hidden>
+                <p id="archive-count" role="status"></p>
+                <button type="button" id="archive-reset" hidden><span lang="en" data-lang-en>Clear search and filters</span><span lang="fr" data-lang-fr>Effacer la recherche et les filtres</span></button>
+            </div>
+            <div class="blog-grid" id="archive-results">
                 <article class="blog-card edition-card" data-category="business">
                     <img class="edition-thumbnail" src="images/editions/drc-inspection-follow-up-480.webp" srcset="images/editions/drc-inspection-follow-up-480.webp 480w, images/editions/drc-inspection-follow-up.jpg 762w"
                          sizes="(max-width: 48rem) 90vw, (max-width: 62rem) 45vw, 25rem"
@@ -215,103 +221,97 @@
                 <!-- NEW: AI in Belgian Business -->
                 <article class="blog-card" data-category="ai">
                     <div class="blog-image-container">
-                        <img src="images/hero-illustration.webp" alt="AI in Belgian Business" class="blog-image">
+                        <img src="images/hero-illustration.webp" width="1200" height="800" loading="lazy" decoding="async" alt="" class="blog-image">
                     </div>
                     <div class="blog-content">
-                        <span class="blog-category">AI & Data</span>
-                        <h2 class="blog-title">AI in Belgian Business: From Hype to Real ROI</h2>
-                        <p class="blog-excerpt">Discover how Belgian SMEs are achieving real ROI with AI implementation.</p>
+                        <span class="blog-category"><span lang="en" data-lang-en>AI &amp; Data</span><span lang="fr" data-lang-fr>IA et données</span></span>
+                        <h2 class="blog-title"><a href="blog-ai-belgium.html"><span lang="en" data-lang-en>AI in Belgian business</span><span lang="fr" data-lang-fr>L’IA dans les entreprises belges</span></a></h2>
+                        <p class="blog-excerpt"><span lang="en" data-lang-en>How to evaluate an AI pilot before rolling it out.</span><span lang="fr" data-lang-fr>Comment évaluer un pilote IA avant de le déployer.</span></p>
                         <div class="blog-meta">
-                            <span class="blog-date"><i class="far fa-calendar"></i> Mar 2026</span>
+                            <span class="blog-date"><i class="far fa-calendar"></i> <time datetime="2026-03"><span lang="en" data-lang-en>March 2026</span><span lang="fr" data-lang-fr>Mars 2026</span></time></span>
                         </div>
-                        <a href="blog-ai-belgium.html" class="btn btn-outline">Read More</a>
                     </div>
                 </article>
 
                 <!-- NEW: Cybersecurity Checklist 2026 -->
                 <article class="blog-card" data-category="security">
                     <div class="blog-image-container">
-                        <img src="images/hero-illustration.webp" alt="Cybersecurity" class="blog-image">
+                        <img src="images/hero-illustration.webp" width="1200" height="800" loading="lazy" decoding="async" alt="" class="blog-image">
                     </div>
                     <div class="blog-content">
-                        <span class="blog-category">Security</span>
-                        <h2 class="blog-title">Cybersecurity Checklist 2026</h2>
-                        <p class="blog-excerpt">GDPR, NIS2, and best practices for Belgian companies.</p>
+                        <span class="blog-category"><span lang="en" data-lang-en>Security</span><span lang="fr" data-lang-fr>Cybersécurité</span></span>
+                        <h2 class="blog-title"><a href="blog-cyber-checklist-2026.html"><span lang="en" data-lang-en>Cybersecurity checklist for Belgian companies</span><span lang="fr" data-lang-fr>Cybersécurité en Belgique : les points à vérifier</span></a></h2>
+                        <p class="blog-excerpt"><span lang="en" data-lang-en>Check GDPR responsibilities and decide whether NIS2 applies.</span><span lang="fr" data-lang-fr>Vérifiez vos responsabilités au titre du RGPD et si votre organisation relève de NIS2.</span></p>
                         <div class="blog-meta">
-                            <span class="blog-date"><i class="far fa-calendar"></i> Mar 2026</span>
+                            <span class="blog-date"><i class="far fa-calendar"></i> <time datetime="2026-03"><span lang="en" data-lang-en>March 2026</span><span lang="fr" data-lang-fr>Mars 2026</span></time></span>
                         </div>
-                        <a href="blog-cyber-checklist-2026.html" class="btn btn-outline">Read More</a>
                     </div>
                 </article>
 
                 <!-- NEW: Microsoft 365 -->
                 <article class="blog-card" data-category="tech">
                     <div class="blog-image-container">
-                        <img src="images/hero-illustration.webp" alt="Microsoft 365" class="blog-image">
+                        <img src="images/hero-illustration.webp" width="1200" height="800" loading="lazy" decoding="async" alt="" class="blog-image">
                     </div>
                     <div class="blog-content">
-                        <span class="blog-category">Technology</span>
-                        <h2 class="blog-title">Why Belgian SMEs Moving to Microsoft 365</h2>
-                        <p class="blog-excerpt">Cost comparison, security benefits, and migration tips.</p>
+                        <span class="blog-category"><span lang="en" data-lang-en>Technology</span><span lang="fr" data-lang-fr>Technologie</span></span>
+                        <h2 class="blog-title"><a href="blog-microsoft365-belgium.html"><span lang="en" data-lang-en>Moving to Microsoft 365</span><span lang="fr" data-lang-fr>Migrer vers Microsoft 365</span></a></h2>
+                        <p class="blog-excerpt"><span lang="en" data-lang-en>Compare costs, access controls and migration steps.</span><span lang="fr" data-lang-fr>Comparez les coûts, les contrôles d’accès et les étapes de migration.</span></p>
                         <div class="blog-meta">
-                            <span class="blog-date"><i class="far fa-calendar"></i> Mar 2026</span>
+                            <span class="blog-date"><i class="far fa-calendar"></i> <time datetime="2026-03"><span lang="en" data-lang-en>March 2026</span><span lang="fr" data-lang-fr>Mars 2026</span></time></span>
                         </div>
-                        <a href="blog-microsoft365-belgium.html" class="btn btn-outline">Read More</a>
                     </div>
                 </article>
 
                 <!-- NEW: Odoo Mistakes -->
                 <article class="blog-card" data-category="business">
                     <div class="blog-image-container">
-                        <img src="images/hero-illustration.webp" alt="Odoo" class="blog-image">
+                        <img src="images/hero-illustration.webp" width="1200" height="800" loading="lazy" decoding="async" alt="" class="blog-image">
                     </div>
                     <div class="blog-content">
-                        <span class="blog-category">Business</span>
-                        <h2 class="blog-title">Odoo: Common Mistakes</h2>
-                        <p class="blog-excerpt">Implementation mistakes and how to avoid them.</p>
+                        <span class="blog-category"><span lang="en" data-lang-en>Business</span><span lang="fr" data-lang-fr>Gestion</span></span>
+                        <h2 class="blog-title"><a href="blog-odoo-mistakes.html"><span lang="en" data-lang-en>Five common Odoo implementation mistakes</span><span lang="fr" data-lang-fr>Cinq erreurs fréquentes lors d’un déploiement Odoo</span></a></h2>
+                        <p class="blog-excerpt"><span lang="en" data-lang-en>Plan the migration, training and first measures of success.</span><span lang="fr" data-lang-fr>Préparez la migration, la formation et les premiers indicateurs de réussite.</span></p>
                         <div class="blog-meta">
-                            <span class="blog-date"><i class="far fa-calendar"></i> Mar 2026</span>
+                            <span class="blog-date"><i class="far fa-calendar"></i> <time datetime="2026-03"><span lang="en" data-lang-en>March 2026</span><span lang="fr" data-lang-fr>Mars 2026</span></time></span>
                         </div>
-                        <a href="blog-odoo-mistakes.html" class="btn btn-outline">Read More</a>
                     </div>
                 </article>
 
                 <!-- NEW: Blockchain -->
                 <article class="blog-card" data-category="tech">
                     <div class="blog-image-container">
-                        <img src="images/hero-illustration.webp" alt="Blockchain" class="blog-image">
+                        <img src="images/hero-illustration.webp" width="1200" height="800" loading="lazy" decoding="async" alt="" class="blog-image">
                     </div>
                     <div class="blog-content">
-                        <span class="blog-category">Technology</span>
-                        <h2 class="blog-title">Blockchain: Enterprise Use Cases</h2>
-                        <p class="blog-excerpt">Beyond crypto - practical applications for businesses.</p>
+                        <span class="blog-category"><span lang="en" data-lang-en>Technology</span><span lang="fr" data-lang-fr>Technologie</span></span>
+                        <h2 class="blog-title"><a href="blog-blockchain-enterprise.html"><span lang="en" data-lang-en>Where blockchain helps a business</span><span lang="fr" data-lang-fr>Quand la blockchain est-elle utile en entreprise ?</span></a></h2>
+                        <p class="blog-excerpt"><span lang="en" data-lang-en>Compare traceability, document verification and shared databases.</span><span lang="fr" data-lang-fr>Comparez les options pour tracer un lot ou vérifier un document entre partenaires.</span></p>
                         <div class="blog-meta">
-                            <span class="blog-date"><i class="far fa-calendar"></i> Mar 2026</span>
+                            <span class="blog-date"><i class="far fa-calendar"></i> <time datetime="2026-03"><span lang="en" data-lang-en>March 2026</span><span lang="fr" data-lang-fr>Mars 2026</span></time></span>
                         </div>
-                        <a href="blog-blockchain-enterprise.html" class="btn btn-outline">Read More</a>
                     </div>
                 </article>
 
                 <!-- NEW: IT Support -->
                 <article class="blog-card" data-category="business">
                     <div class="blog-image-container">
-                        <img src="images/hero-illustration.webp" alt="IT Support" class="blog-image">
+                        <img src="images/hero-illustration.webp" width="1200" height="800" loading="lazy" decoding="async" alt="" class="blog-image">
                     </div>
                     <div class="blog-content">
-                        <span class="blog-category">Business</span>
-                        <h2 class="blog-title">IT Support Strategy</h2>
-                        <p class="blog-excerpt">Preventative vs Reactive - what's right for you?</p>
+                        <span class="blog-category"><span lang="en" data-lang-en>Business</span><span lang="fr" data-lang-fr>Gestion</span></span>
+                        <h2 class="blog-title"><a href="blog-it-support-strategy.html"><span lang="en" data-lang-en>Choosing an IT support model</span><span lang="fr" data-lang-fr>Quel modèle d’assistance informatique choisir ?</span></a></h2>
+                        <p class="blog-excerpt"><span lang="en" data-lang-en>Compare incident-by-incident support with preventive maintenance.</span><span lang="fr" data-lang-fr>Comparez l’assistance à la demande et la maintenance préventive.</span></p>
                         <div class="blog-meta">
-                            <span class="blog-date"><i class="far fa-calendar"></i> Mar 2026</span>
+                            <span class="blog-date"><i class="far fa-calendar"></i> <time datetime="2026-03"><span lang="en" data-lang-en>March 2026</span><span lang="fr" data-lang-fr>Mars 2026</span></time></span>
                         </div>
-                        <a href="blog-it-support-strategy.html" class="btn btn-outline">Read More</a>
                     </div>
                 </article>
 
                 <!-- Blog Card 1 -->
                 <article class="blog-card" data-category="ai">
                     <div class="blog-image-container">
-                        <img src="Content/The Future of AI in Enterprise Solutions.png" alt="AI Trends" class="blog-image">
+                        <img src="images/enterprise-ai-preview.webp" width="540" height="540" loading="lazy" decoding="async" alt="" class="blog-image">
                     </div>
                     <div class="blog-content">
                         <span class="blog-category" data-lang-en>AI & Data</span>
@@ -325,14 +325,14 @@
                             <span class="blog-read-time"><i class="far fa-clock"></i> 12 min read</span>
                         </div>
                         <a href="contact.html?topic=ai-enterprise-solutions#enquiry" class="btn btn-outline" data-lang-en>Request the full brief</a>
-                        <a href="contact.html?topic=ai-enterprise-solutions#enquiry" class="btn btn-outline" data-lang-fr>Demander la note complete</a>
+                        <a href="contact.html?topic=ai-enterprise-solutions#enquiry" class="btn btn-outline" data-lang-fr>Demander la note complète</a>
                     </div>
                 </article>
 
                 <!-- Blog Card 2 -->
                 <article class="blog-card" data-category="security">
                     <div class="blog-image-container">
-                        <img src="Content/Essential Cybersecurity Practices for 2024.png" alt="Cybersecurity" class="blog-image">
+                        <img src="images/cybersecurity-practices-preview.webp" width="360" height="540" loading="lazy" decoding="async" alt="" class="blog-image">
                     </div>
                     <div class="blog-content">
                         <span class="blog-category" data-lang-en>Security</span>
@@ -346,14 +346,14 @@
                             <span class="blog-read-time"><i class="far fa-clock"></i> 15 min read</span>
                         </div>
                         <a href="contact.html?topic=cybersecurity-practices#enquiry" class="btn btn-outline" data-lang-en>Request the full brief</a>
-                        <a href="contact.html?topic=cybersecurity-practices#enquiry" class="btn btn-outline" data-lang-fr>Demander la note complete</a>
+                        <a href="contact.html?topic=cybersecurity-practices#enquiry" class="btn btn-outline" data-lang-fr>Demander la note complète</a>
                     </div>
                 </article>
 
                 <!-- Blog Card 3 -->
                 <article class="blog-card" data-category="tech">
                     <div class="blog-image-container">
-                        <img src="Content/Cloud Computing- Beyond the Basics.png" alt="Cloud Computing" class="blog-image">
+                        <img src="images/cloud-computing-preview.webp" width="540" height="540" loading="lazy" decoding="async" alt="" class="blog-image">
                     </div>
                     <div class="blog-content">
                         <span class="blog-category" data-lang-en>Technology</span>
@@ -367,14 +367,14 @@
                             <span class="blog-read-time"><i class="far fa-clock"></i> 18 min read</span>
                         </div>
                         <a href="contact.html?topic=cloud-computing-strategy#enquiry" class="btn btn-outline" data-lang-en>Request the full brief</a>
-                        <a href="contact.html?topic=cloud-computing-strategy#enquiry" class="btn btn-outline" data-lang-fr>Demander la note complete</a>
+                        <a href="contact.html?topic=cloud-computing-strategy#enquiry" class="btn btn-outline" data-lang-fr>Demander la note complète</a>
                     </div>
                 </article>
 
                 <!-- Blog Card 4 -->
                 <article class="blog-card" data-category="business">
                     <div class="blog-image-container">
-                        <img src="images/pexels-photo-2422294.webp" alt="Digital Transformation" class="blog-image">
+                        <img src="images/pexels-photo-2422294.webp" width="1529" height="1080" loading="lazy" decoding="async" alt="" class="blog-image">
                     </div>
                     <div class="blog-content">
                         <span class="blog-category" data-lang-en>Business</span>
@@ -395,7 +395,7 @@
                 <!-- Blog Card 5 -->
                 <article class="blog-card" data-category="ai">
                     <div class="blog-image-container">
-                        <img src="images/machine-learning-concept.webp" alt="Machine Learning" class="blog-image">
+                        <img src="images/machine-learning-concept.webp" width="1200" height="839" loading="lazy" decoding="async" alt="" class="blog-image">
                     </div>
                     <div class="blog-content">
                         <span class="blog-category" data-lang-en>AI & Data</span>
@@ -416,7 +416,7 @@
                 <!-- Blog Card 6 -->
                 <article class="blog-card" data-category="tech">
                     <div class="blog-image-container">
-                        <img src="images/ai-software-development.webp" alt="Software Development" class="blog-image">
+                        <img src="images/ai-software-development.webp" width="800" height="695" loading="lazy" decoding="async" alt="" class="blog-image">
                     </div>
                     <div class="blog-content">
                         <span class="blog-category" data-lang-en>Technology</span>
@@ -446,11 +446,11 @@
                     <h2 data-lang-en>Stay in the Loop</h2>
                     <h2 data-lang-fr>Restons en Contact</h2>
                     <p data-lang-en>Request research updates, case studies, and new insight briefs directly from our team.</p>
-                    <p data-lang-fr>Demandez nos nouvelles analyses, etudes de cas et notes de synthese directement a notre equipe.</p>
+                    <p data-lang-fr>Demandez à notre équipe de vous envoyer les prochaines analyses et études de cas.</p>
                 </div>
                 <div class="subscribe-form">
-                    <a href="contact.html" class="btn btn-primary" data-lang-en>Request updates</a>
-                    <a href="contact.html" class="btn btn-primary" data-lang-fr>Recevoir des actualites</a>
+                    <a href="contact.html?topic=insight-updates#enquiry" class="btn btn-primary" data-lang-en>Request updates</a>
+                    <a href="contact.html?topic=insight-updates#enquiry" class="btn btn-primary" data-lang-fr>Recevoir les prochaines analyses</a>
                 </div>
             </div>
         </div>

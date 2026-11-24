@@ -4,6 +4,8 @@ const LANGUAGE_STORAGE_KEY = 'language';
 const LANGUAGE_CODES = ['en', 'fr'];
 
 function getSavedLanguage() {
+  const requested = new URLSearchParams(location.search).get('lang');
+  if (LANGUAGE_CODES.includes(requested)) return requested;
   try {
     const stored = localStorage.getItem(LANGUAGE_STORAGE_KEY);
     if (LANGUAGE_CODES.includes(stored)) return stored;
@@ -112,6 +114,14 @@ function showFormMessage(form, message, type) {
 
 }
 
+function chooseLanguage(lang) {
+  if (!LANGUAGE_CODES.includes(lang)) return;
+  const url = new URL(location.href);
+  url.searchParams.set('lang', lang);
+  history.replaceState(history.state, '', url);
+  updateLanguageContent(lang);
+}
+
 function setupLanguageControls(initialLanguage) {
   document.querySelectorAll('.language-switcher [data-lang]').forEach((control) => {
     if (control.tagName === 'A') {
@@ -121,7 +131,7 @@ function setupLanguageControls(initialLanguage) {
 
     const changeLanguage = (event) => {
       event.preventDefault();
-      updateLanguageContent(control.getAttribute('data-lang') || initialLanguage);
+      chooseLanguage(control.getAttribute('data-lang') || initialLanguage);
     };
 
     control.addEventListener('click', changeLanguage);
@@ -139,7 +149,7 @@ function setupLanguageControls(initialLanguage) {
         (langToggleButton.getAttribute('data-lang') || initialLanguage) === 'en'
           ? 'fr'
           : 'en';
-      updateLanguageContent(nextLanguage);
+      chooseLanguage(nextLanguage);
     });
   }
 }
@@ -222,10 +232,32 @@ const enquiryTopics = new Map([
   ['software-development-methodologies', ['Software development methods', 'Méthodes de développement logiciel']],
 ]);
 
+// Edition identifiers and topic pairs come from the links in the published articles.
+const fieldEditions = new Map([
+  ['drc-inspection-follow-up', ['app-development', 'Inspection follow-up', 'Suivi des inspections']],
+  ['senegal-offline-collection', ['app-development', 'Offline field collection', 'Collecte de terrain hors ligne']],
+  ['kenya-mpesa-reconciliation', ['ai-data-sciences', 'M-PESA reconciliation', 'Rapprochement des paiements M-PESA']],
+  ['togo-multilingual-service-desk', ['ai-data-sciences', 'Multilingual service desk', 'Accueil multilingue']],
+  ['ghana-supplier-payment-checks', ['cyber-security', 'Supplier payment checks', 'Vérification des paiements fournisseurs']],
+  ['cote-ivoire-purchasing-approvals', ['collaboration-solutions', 'Purchasing approvals', 'Validation des achats']],
+  ['uganda-coffee-lot-traceability', ['blockchain-nft', 'Coffee lot traceability', 'Traçabilité des lots de café']],
+  ['zambia-depot-recovery-drill', ['support', 'Depot recovery drill', 'Exercice de reprise dans un dépôt']],
+]);
+
+function getEnquiryContext() {
+  const params = new URLSearchParams(location.search);
+  const topic = params.get('topic');
+  const edition = params.get('edition');
+  const fieldExample = fieldEditions.get(edition);
+  if (fieldExample && fieldExample[0] === topic) {
+    return { topic, edition, labels: fieldExample.slice(1) };
+  }
+  return { topic: enquiryTopics.has(topic) ? topic : 'general', labels: enquiryTopics.get(topic) };
+}
+
 function updateEnquirySubject(lang) {
   const subject = document.querySelector('#contactForm [name="subject"]');
-  const topic = new URLSearchParams(location.search).get('topic');
-  const labels = enquiryTopics.get(topic);
+  const { labels } = getEnquiryContext();
   if (!subject || !labels || subject.value !== subject.defaultValue) return;
   subject.defaultValue = labels[lang === 'fr' ? 1 : 0];
 }
@@ -298,6 +330,11 @@ function setupContactForm() {
 
     sending = true;
     const formData = new FormData(contactForm);
+    const { topic, edition } = getEnquiryContext();
+    if (edition) formData.set('article', edition);
+    let editedDuringSend = false;
+    const markEdited = () => { editedDuringSend = true; };
+    contactForm.addEventListener('input', markEdited);
     const submitButtons = contactForm.querySelectorAll('button[type="submit"]');
     submitButtons.forEach(button => { button.disabled = true; });
     contactForm.setAttribute('aria-busy', 'true');
@@ -319,16 +356,19 @@ function setupContactForm() {
       if (response.ok) {
         showFormMessage(
           contactForm,
-          document.documentElement.lang === 'fr'
-            ? 'Merci pour votre message. Nous reviendrons vers vous sous peu.'
-            : 'Thank you for your message. We will get back to you shortly.',
+          editedDuringSend
+            ? (document.documentElement.lang === 'fr'
+              ? 'Message envoyé. Vos modifications ultérieures sont conservées ci-dessous et restent à envoyer.'
+              : 'Message sent. Your later edits are still in the form and have not been sent.')
+            : (document.documentElement.lang === 'fr'
+              ? 'Merci pour votre message. Nous reviendrons vers vous sous peu.'
+              : 'Thank you for your message. We will get back to you shortly.'),
           'success'
         );
-        contactForm.reset();
-        const topic = new URLSearchParams(location.search).get('topic');
+        if (!editedDuringSend) contactForm.reset();
         contactForm.dispatchEvent(new CustomEvent('enquiry-sent', {
           bubbles: true,
-          detail: enquiryTopics.has(topic) ? topic : 'general',
+          detail: { topic, edition },
         }));
       } else {
         let errorMessage =
@@ -356,6 +396,7 @@ function setupContactForm() {
         'error'
       );
     } finally {
+      contactForm.removeEventListener('input', markEdited);
       window.clearTimeout(timeout);
       sending = false;
       contactForm.removeAttribute('aria-busy');
@@ -560,29 +601,58 @@ function setupBlogFilters() {
   const filterButtons = document.querySelectorAll('.filter-btn');
   const blogCards = document.querySelectorAll('.blog-card[data-category]');
 
-  if (!filterButtons.length || !blogCards.length) {
-    return;
+  const search = document.querySelector('#archive-query');
+  if (!filterButtons.length || !search) return;
+
+  const reset = document.querySelector('#archive-reset');
+  const count = document.querySelector('#archive-count');
+  let category = 'all';
+  const normalise = value => value.toLowerCase().normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, ' ').trim();
+  const index = Array.from(blogCards, card => ({
+    card,
+    words: normalise(card.textContent),
+  }));
+
+  function filterArchive() {
+    const terms = normalise(search.value).split(/\s+/).filter(Boolean);
+    let matches = 0;
+    for (const { card, words } of index) {
+      const visible = (category === 'all' || card.dataset.category === category)
+        && terms.every(term => words.includes(term));
+      card.hidden = !visible;
+      if (visible) matches++;
+    }
+    filterButtons.forEach(button => {
+      const selected = button.dataset.filter === category;
+      button.classList.toggle('active', selected);
+      button.setAttribute('aria-pressed', String(selected));
+    });
+    const fr = document.documentElement.lang === 'fr';
+    const plural = matches === 1 ? '' : 's';
+    count.textContent = matches === 0
+      ? (fr ? 'Aucun article trouvé.' : 'No articles found.')
+      : matches + ' article' + plural;
+    reset.hidden = category === 'all' && !search.value;
   }
 
-  filterButtons.forEach((button) => {
-    button.classList.toggle('active', button.dataset.filter === 'all');
-    button.setAttribute('aria-pressed', String(button.dataset.filter === 'all'));
-    button.addEventListener('click', () => {
-      const filter = button.getAttribute('data-filter');
-
-
-      filterButtons.forEach((candidate) => {
-        const selected = candidate.dataset.filter === filter;
-        candidate.classList.toggle('active', selected);
-        candidate.setAttribute('aria-pressed', String(selected));
-      });
-
-      blogCards.forEach((card) => {
-        const matches = filter === 'all' || card.getAttribute('data-category') === filter;
-        card.hidden = !matches;
-      });
-    });
+  filterButtons.forEach(button => button.addEventListener('click', () => {
+    category = button.dataset.filter;
+    filterArchive();
+  }));
+  search.addEventListener('input', filterArchive);
+  reset.addEventListener('click', () => {
+    search.value = '';
+    category = 'all';
+    filterArchive();
+    search.focus();
   });
+  new MutationObserver(filterArchive).observe(document.documentElement, {
+    attributes: true, attributeFilter: ['lang'],
+  });
+  search.closest('.archive-search').hidden = false;
+  count.closest('.archive-feedback').hidden = false;
+  filterArchive();
 }
 
 document.addEventListener('DOMContentLoaded', () => {

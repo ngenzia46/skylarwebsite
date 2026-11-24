@@ -227,7 +227,8 @@
       if (getStoredConsent() === 'accepted' && gtmLoaded) {
         window.dataLayer.push({
           event: 'generate_lead',
-          enquiry_topic: event.detail,
+          enquiry_topic: event.detail.topic,
+          ...(event.detail.edition && { enquiry_edition: event.detail.edition }),
           language: document.documentElement.lang,
         });
       }

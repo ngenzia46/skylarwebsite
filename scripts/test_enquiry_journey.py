@@ -9,6 +9,7 @@ from urllib.parse import urlparse
 
 from playwright.sync_api import expect, sync_playwright
 
+from test_buyer_journey import exercise_buyers
 from test_consultation import exercise_consultation
 
 
@@ -92,7 +93,8 @@ if __name__ == "__main__":
         try:
             exercise(browser, f"http://127.0.0.1:{server.server_port}")
             exercise_consultation(browser, f"http://127.0.0.1:{server.server_port}")
-            print("Enquiry and mobile consultation journeys passed")
+            exercise_buyers(browser, f"http://127.0.0.1:{server.server_port}")
+            print("Enquiry, mobile consultation and buyer journeys passed")
         finally:
             browser.close()
             server.shutdown()
