@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-title-en="Blockchain Beyond Crypto: Enterprise Use Cases | Skylar Solutions" data-title-fr="Blockchain en entreprise : quand un registre partagé est-il utile ? | Skylar Solutions">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,24 +23,44 @@
 <body>
     <header class="header">
         <div class="container">
-            <a href="index.html" class="logo"><img src="logo/logo_transparent.png" style="height:150px" alt="Skylar Solutions"></a>
+            <a href="index.html" class="logo">
+                <img src="logo/logo_transparent.png" alt="Skylar Solutions Logo">
+            </a>
             <div class="navbar-container">
                 <button type="button" class="navbar-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-menu">☰</button>
                 <ul class="navbar" id="primary-menu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="services/services.html">Services</a></li>
-                    <li><a href="blog.html" class="active">Blog</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="index.html" data-lang-en="Home" data-lang-fr="Accueil">Home</a></li>
+                    <li><a href="about.html" data-lang-en="About" data-lang-fr="À propos">About</a></li>
+                    <li class="dropdown">
+                        <a href="services/services.html" data-lang-en="Services" data-lang-fr="Services">Services <i class="fas fa-chevron-down"></i></a>
+                        <button type="button" class="services-toggle" aria-label="Services" aria-expanded="false" aria-controls="services-menu">▾</button>
+                        <ul class="dropdown-menu" id="services-menu">
+                            <li><a href="services/app-development.html" data-lang-en="App Development" data-lang-fr="Développement d'Applications">App Development</a></li>
+                            <li><a href="services/ai-data-sciences.html" data-lang-en="AI & Data Sciences" data-lang-fr="IA & Sciences des Données">AI & Data Sciences</a></li>
+                            <li><a href="services/cyber-security.html" data-lang-en="Cyber Security" data-lang-fr="Cybersécurité">Cyber Security</a></li>
+                            <li><a href="services/collaboration-solutions.html" data-lang-en="Collaboration Solutions" data-lang-fr="Solutions de Collaboration">Collaboration Solutions</a></li>
+                            <li><a href="services/blockchain-nft.html" data-lang-en="Blockchain & NFT" data-lang-fr="Blockchain & NFT">Blockchain & NFT</a></li>
+                            <li><a href="services/support.html" data-lang-en="24/7 Support" data-lang-fr="Support 24/7">24/7 Support</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="blog.html" data-lang-en="Blog" data-lang-fr="Blog">Blog</a></li>
+                    <li><a href="careers.html" data-lang-en="Careers" data-lang-fr="Carrières">Careers</a></li>
+                    <li><a href="contact.html" data-lang-en="Contact" data-lang-fr="Contact">Contact</a></li>
                 </ul>
+                <div class="language-switcher">
+                    <button type="button" data-lang="en" class="active" aria-label="Switch to English">EN</button>
+                    <div class="language-divider"></div>
+                    <button type="button" data-lang="fr" aria-label="Basculer en français">FR</button>
+                </div>
             </div>
         </div>
     </header>
 
     <section class="page-hero">
         <div class="container">
-            <h1>Blockchain Beyond Crypto: Enterprise Use Cases</h1>
+            <h1><span lang="en" data-lang-en>Blockchain Beyond Crypto: Enterprise Use Cases</span><span lang="fr" data-lang-fr>Blockchain en entreprise : quand un registre partagé est-il utile ?</span></h1>
             <div class="breadcrumbs">
-                <a href="index.html">Home</a> / <a href="blog.html">Blog</a> / <span>Blockchain</span>
+                <a href="index.html"><span lang="en" data-lang-en>Home</span><span lang="fr" data-lang-fr>Accueil</span></a> / <a href="blog.html">Blog</a> / <span lang="en" data-lang-en>Blockchain</span><span lang="fr" data-lang-fr>Blockchain en entreprise</span>
             </div>
         </div>
     </section>
@@ -48,7 +68,8 @@
     <section class="blog-content">
         <div class="container">
             <article>
-                <p class="intro">
+                <div lang="en" data-lang-en>
+                    <p class="intro">
                     <strong>Blockchain is more than cryptocurrency.</strong> 
                     Enterprise blockchain offers real solutions to real business problems.
                 </p>
@@ -59,8 +80,8 @@
                 </p>
                 <ul>
                     <li>Requires permission to participate</li>
-                    <li>Is more energy-efficient</li>
-                    <li>Offers better privacy and control</li>
+                    <li>Can use consensus mechanisms designed for a limited group of participants</li>
+                    <li>Can restrict access to authorised participants</li>
                     <li>Integrates with existing systems</li>
                 </ul>
 
@@ -73,7 +94,7 @@
 
                 <h3>2. Digital Identity</h3>
                 <p>
-                    Secure digital IDs for employees, customers, and partners. GDPR-compliant identity management.
+                    Secure digital IDs for employees, customers, and partners. Define who can access identity records and how credentials can be revoked.
                 </p>
 
                 <h3>3. Smart Contracts</h3>
@@ -97,10 +118,22 @@
                 <p>
                     We help Belgian enterprises explore and implement blockchain solutions tailored to their needs.
                 </p>
-
+                </div>
+                <div lang="fr" data-lang-fr>
+                    <p class="intro">Lorsque plusieurs organisations doivent vérifier la même opération, la première question est de savoir qui peut écrire dans le registre et qui tranche en cas d’erreur.</p>
+                    <h2>Comment fonctionne un registre d’entreprise ?</h2>
+                    <p>Dans un réseau à accès contrôlé, les partenaires définissent les participants, les droits de lecture et les règles de validation. Le registre doit aussi pouvoir échanger des données avec leurs systèmes existants.</p>
+                    <h2>Quatre usages à examiner</h2>
+                    <ul><li><strong>Traçabilité.</strong> Suivre un lot entre producteur, transformateur et acheteur, puis retrouver les expéditions concernées par un rappel.</li>
+                    <li><strong>Identité.</strong> Permettre à un partenaire de vérifier une attestation. Préciser au préalable quelles informations peuvent circuler et comment révoquer un accès.</li>
+                    <li><strong>Exécution d’un contrat.</strong> Déclencher une étape après confirmation d’une livraison et prévoir une procédure de contestation.</li>
+                    <li><strong>Vérification de documents.</strong> Contrôler qu’un certificat correspond à la version émise et que l’émetteur est reconnu.</li></ul>
+                    <h2>Quand une base de données suffit-elle ?</h2>
+                    <p>Si les participants acceptent un gestionnaire commun, une base partagée avec un journal des modifications peut répondre au besoin. Comparez le débit requis, le coût par opération et la manière de corriger une saisie.</p>
+                    <h2>Cadrer un essai</h2><p>Choisissez un lot ou un certificat, identifiez deux partenaires et vérifiez ensemble ce qu’ils peuvent reconstituer à partir d’un enregistrement.</p>
+                </div>
                 <div class="cta-section">
-                    <h3>Explore Blockchain Opportunities?</h3>
-                    <a href="contact.html?topic=blockchain-nft#enquiry" class="btn btn-primary">Contact Us</a>
+                    <a href="contact.html?topic=blockchain-nft#enquiry" class="btn btn-primary"><span lang="en" data-lang-en>Discuss a traceability pilot</span><span lang="fr" data-lang-fr>Échanger sur un pilote de traçabilité</span></a>
                 </div>
             </article>
         </div>

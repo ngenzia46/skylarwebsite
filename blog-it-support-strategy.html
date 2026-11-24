@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-title-en="IT Support Strategy: Preventative vs Reactive | Skylar Solutions" data-title-fr="Assistance informatique : intervenir à la panne ou prévenir les interruptions ? | Skylar Solutions">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,24 +23,44 @@
 <body>
     <header class="header">
         <div class="container">
-            <a href="index.html" class="logo"><img src="logo/logo_transparent.png" style="height:150px" alt="Skylar Solutions"></a>
+            <a href="index.html" class="logo">
+                <img src="logo/logo_transparent.png" alt="Skylar Solutions Logo">
+            </a>
             <div class="navbar-container">
                 <button type="button" class="navbar-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-menu">☰</button>
                 <ul class="navbar" id="primary-menu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="services/services.html">Services</a></li>
-                    <li><a href="blog.html" class="active">Blog</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="index.html" data-lang-en="Home" data-lang-fr="Accueil">Home</a></li>
+                    <li><a href="about.html" data-lang-en="About" data-lang-fr="À propos">About</a></li>
+                    <li class="dropdown">
+                        <a href="services/services.html" data-lang-en="Services" data-lang-fr="Services">Services <i class="fas fa-chevron-down"></i></a>
+                        <button type="button" class="services-toggle" aria-label="Services" aria-expanded="false" aria-controls="services-menu">▾</button>
+                        <ul class="dropdown-menu" id="services-menu">
+                            <li><a href="services/app-development.html" data-lang-en="App Development" data-lang-fr="Développement d'Applications">App Development</a></li>
+                            <li><a href="services/ai-data-sciences.html" data-lang-en="AI & Data Sciences" data-lang-fr="IA & Sciences des Données">AI & Data Sciences</a></li>
+                            <li><a href="services/cyber-security.html" data-lang-en="Cyber Security" data-lang-fr="Cybersécurité">Cyber Security</a></li>
+                            <li><a href="services/collaboration-solutions.html" data-lang-en="Collaboration Solutions" data-lang-fr="Solutions de Collaboration">Collaboration Solutions</a></li>
+                            <li><a href="services/blockchain-nft.html" data-lang-en="Blockchain & NFT" data-lang-fr="Blockchain & NFT">Blockchain & NFT</a></li>
+                            <li><a href="services/support.html" data-lang-en="24/7 Support" data-lang-fr="Support 24/7">24/7 Support</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="blog.html" data-lang-en="Blog" data-lang-fr="Blog">Blog</a></li>
+                    <li><a href="careers.html" data-lang-en="Careers" data-lang-fr="Carrières">Careers</a></li>
+                    <li><a href="contact.html" data-lang-en="Contact" data-lang-fr="Contact">Contact</a></li>
                 </ul>
+                <div class="language-switcher">
+                    <button type="button" data-lang="en" class="active" aria-label="Switch to English">EN</button>
+                    <div class="language-divider"></div>
+                    <button type="button" data-lang="fr" aria-label="Basculer en français">FR</button>
+                </div>
             </div>
         </div>
     </header>
 
     <section class="page-hero">
         <div class="container">
-            <h1>IT Support Strategy: Preventative vs Reactive</h1>
+            <h1><span lang="en" data-lang-en>IT Support Strategy: Preventative vs Reactive</span><span lang="fr" data-lang-fr>Assistance informatique : intervenir à la panne ou prévenir les interruptions ?</span></h1>
             <div class="breadcrumbs">
-                <a href="index.html">Home</a> / <a href="blog.html">Blog</a> / <span>IT Support</span>
+                <a href="index.html"><span lang="en" data-lang-en>Home</span><span lang="fr" data-lang-fr>Accueil</span></a> / <a href="blog.html">Blog</a> / <span lang="en" data-lang-en>IT Support</span><span lang="fr" data-lang-fr>Assistance informatique</span>
             </div>
         </div>
     </section>
@@ -48,7 +68,8 @@
     <section class="blog-content">
         <div class="container">
             <article>
-                <p class="intro">
+                <div lang="en" data-lang-en>
+                    <p class="intro">
                     <strong>What's the right IT support strategy for your business?</strong> 
                     The answer depends on your budget, risk tolerance, and business criticality.
                 </p>
@@ -63,7 +84,7 @@
                     <li>Data loss risk</li>
                     <li>Productivity interruptions</li>
                 </ul>
-                <p><strong>Average cost:</strong> €150-300 per incident + lost productivity</p>
+                <p>Estimate the call-out charge, hours of interruption and work that must be repeated.</p>
 
                 <h2>Preventative Support: The Proactive Model</h2>
                 <p>
@@ -75,10 +96,11 @@
                     <li>Performance optimization</li>
                     <li>Security hardening</li>
                 </ul>
-                <p><strong>Average cost:</strong> €80-150/month per user (predictable)</p>
+                <p>Compare the recurring fee with the tasks and coverage hours included.</p>
 
                 <h2>The Real Cost Comparison</h2>
                 <table>
+                    <caption>Illustrative annual scenario. Replace these assumptions with your own costs.</caption>
                     <tr><th>Scenario</th><th>Reactive</th><th>Preventative</th></tr>
                     <tr><td>Annual IT Spend</td><td>€8,000</td><td>€12,000</td></tr>
                     <tr><td>Downtime Days/Year</td><td>8</td><td>1</td></tr>
@@ -99,7 +121,7 @@
                     <li>5+ employees</li>
                     <li>Business depends on IT</li>
                     <li>Customer data handled</li>
-                    <li>Regulated industry (GDPR!)</li>
+                    <li>The application supports a regulated process</li>
                 </ul>
 
                 <h2>Skylar Solutions: Hybrid Approach</h2>
@@ -112,11 +134,17 @@
                     <li>Quarterly business reviews</li>
                     <li>Emergency support when needed</li>
                 </ul>
-
+                </div>
+                <div lang="fr" data-lang-fr>
+                    <p class="intro">Une panne du site vitrine et un arrêt de la facturation n’ont pas le même coût. Classez vos applications selon le temps pendant lequel l’équipe peut continuer à travailler sans elles.</p>
+                    <h2>L’assistance à la demande</h2><p>Vous sollicitez un technicien lorsqu’un incident survient. Prévoyez le coût de l’intervention, l’attente et le travail à reprendre. Ce modèle peut convenir à un outil peu critique si une solution de remplacement existe.</p>
+                    <h2>La maintenance préventive</h2><p>Le contrat peut prévoir des mises à jour planifiées, de la supervision et des essais de restauration. Définissez les heures de couverture et les conditions qui déclenchent une intervention.</p>
+                    <h2>Comparer les coûts sur un an</h2><p>À titre d’illustration, 8 000 € d’interventions et 15 000 € de temps perdu représentent 23 000 € au total. Un forfait de 12 000 € auquel s’ajoutent 2 000 € de temps perdu représente 14 000 €. Remplacez ces hypothèses par vos dépenses et vos heures d’arrêt.</p>
+                    <h2>Choisir application par application</h2><p>Pour chacune, indiquez la personne à prévenir, le délai de reprise acceptable et le dernier essai de restauration réussi. Ces éléments permettent de décider où financer de la prévention et où garder une intervention ponctuelle.</p>
+                    <h2>Combiner les deux modèles</h2><p>Un accord peut associer supervision, ordre de priorité, revue trimestrielle et interventions d’urgence. Précisez les tâches incluses, le coût des demandes hors forfait et le mode d’escalade.</p>
+                </div>
                 <div class="cta-section">
-                    <h3>Assess Your IT Support Needs</h3>
-                    <p>Get a free consultation and recommendations.</p>
-                    <a href="contact.html?topic=support#enquiry" class="btn btn-primary">Contact Us</a>
+                    <a href="contact.html?topic=support#enquiry" class="btn btn-primary"><span lang="en" data-lang-en>Discuss your support needs</span><span lang="fr" data-lang-fr>Définir vos besoins d’assistance</span></a>
                 </div>
             </article>
         </div>
